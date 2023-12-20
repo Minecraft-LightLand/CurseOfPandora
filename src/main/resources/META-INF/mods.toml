@@ -1,0 +1,42 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All rights reserved"
+[[mods]]
+modId="curseofpandora"
+version="${file.jarVersion}" #mandatory
+displayName="Curse of Pandora" #mandatory
+logoFile="curseofpandora.png" #optional
+credits="Thanks for this example mod goes to Java" #optional
+authors="Love, Cheese and small house plants" #optional
+description='''
+'''
+[[dependencies.curseofpandora]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47.1.0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.curseofpandora]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20,1.21)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.curseofpandora]]
+    modId="l2library"
+    mandatory=true
+    versionRange="[2.4.21,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.curseofpandora]]
+    modId="l2tabs"
+    mandatory=true
+    versionRange="[0.2.3,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.curseofpandora]]
+    modId="curios"
+    mandatory=true
+    versionRange="[5.4.5,)"
+    ordering="AFTER"
+    side="BOTH"

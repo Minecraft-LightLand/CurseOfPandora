@@ -1,0 +1,34 @@
+2.4.23
+- Fix refmap
+
+2.4.22
+- Allow potion enchantments to be effective on multipart entities
+- fix damage calculation bugs
+- make void touch stronger
+
+2.4.21
+- support armor trims
+- fix EMI compat
+- add night vision and similar effects to Cleanse's white list
+- fix space shard ban implemented in reverse
+
+2.4.20
+- Fix hellfire wand damage source
+- Fix CME bug
+
+2.4.19
+- add sonic shooter, hellfire wand, winterstorm wand, diffusion wand
+- make mobs not drop loot when death event is cancelled
+- allow mods to ban space shard
+- add config option to disable immunity enchantments
+- add config option to reverse digging enchantment key bind requirements
+
+2.4.18
+- add mining enchantments
+- add enchantment identifier character
+
+2.4.17
+- Add Safeguard enchantment
+- Change recipes for most enchantments
+- Fix creative tab ordering for enchantments
+- Make transparent armor visibility factor implementation more robust

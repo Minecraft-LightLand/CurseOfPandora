@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "priority": 1000,
+  "package": "dev.xkmc.curseofpandora.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "l2complements.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+	"defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
