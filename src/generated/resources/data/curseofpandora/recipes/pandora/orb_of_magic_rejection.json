@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "l2complements:void_eye"
+    },
+    "2": {
+      "item": "l2complements:force_field"
+    },
+    "B": {
+      "item": "l2complements:resonant_feather"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "item": "curseofpandora:orb_of_magic_rejection"
+  },
+  "show_notification": true
+}

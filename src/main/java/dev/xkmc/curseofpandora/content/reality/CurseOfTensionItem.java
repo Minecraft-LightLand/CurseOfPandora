@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.content.reality;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
@@ -30,7 +31,7 @@ import java.util.UUID;
 
 public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker> {
 
-	public static final TokenKey<Ticker> KEY = new TokenKey<>(dev.xkmc.l2complements.init.CurseOfPandora.MODID, "curse_of_tension");
+	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_tension");
 
 	public static int getPenaltyDuration() {
 		return 60;

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:blaze_powder"
+    },
+    "B": {
+      "type": "l2library:potion",
+      "potion": "minecraft:strong_regeneration"
+    },
+    "C": {
+      "item": "curseofpandora:mini_beacon"
+    },
+    "D": {
+      "tag": "minecraft:beacon_payment_items"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ADA"
+  ],
+  "result": {
+    "item": "curseofpandora:mini_beacon_regen"
+  },
+  "show_notification": true
+}

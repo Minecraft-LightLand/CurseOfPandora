@@ -7,7 +7,6 @@ import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.l2complements.init.CurseOfPandora;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
@@ -26,7 +25,7 @@ import java.util.List;
 public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
 	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", "hostility_curse", 1);
-	public static final TokenKey<Ticker> KEY = new TokenKey<>(dev.xkmc.l2complements.init.CurseOfPandora.MODID, "curse_of_spell");
+	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_spell");
 
 	public static double getItemSpellPenalty(double base, ItemStack stack) {
 		double level = 0;

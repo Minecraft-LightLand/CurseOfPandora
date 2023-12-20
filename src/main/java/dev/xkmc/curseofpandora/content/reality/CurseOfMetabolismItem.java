@@ -6,7 +6,6 @@ import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.l2complements.init.CurseOfPandora;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -28,7 +27,7 @@ import java.util.function.Supplier;
 
 public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.Ticker> {
 
-	private static final TokenKey<Ticker> KEY = new TokenKey<>(dev.xkmc.l2complements.init.CurseOfPandora.MODID, "curse_of_metabolism");
+	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_metabolism");
 
 	private static int getThreshold() {
 		return 16;

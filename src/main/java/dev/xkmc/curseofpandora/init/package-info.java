@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.l2complements.init;
+package dev.xkmc.curseofpandora.init;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

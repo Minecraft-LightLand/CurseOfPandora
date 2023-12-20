@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "curseofpandora:pandora_initial"
+    ]
+  },
+  "sends_telemetry_event": true
+}

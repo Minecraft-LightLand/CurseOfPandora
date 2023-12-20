@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "curseofpandora:item/pandora/mini_beacon_speed"
+  }
+}

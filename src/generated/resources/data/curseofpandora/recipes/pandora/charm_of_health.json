@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2hostility:tank"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "curseofpandora:charm_of_health"
+  },
+  "show_notification": true
+}

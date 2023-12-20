@@ -2,28 +2,34 @@ package dev.xkmc.curseofpandora.init.data;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2complements.init.data.RecipeGen;
+import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
+import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.BiFunction;
 
 public class CoPRecipeGen {
+
+	private static String currentFolder = "";
 
 	public static void recipeGen(RegistrateRecipeProvider pvd) {
 
@@ -320,17 +326,25 @@ public class CoPRecipeGen {
 
 	}
 
+	private static void convert(RegistrateRecipeProvider pvd, Item in, Item out, int count) {
+		(unlock(pvd, new BurntRecipeBuilder(Ingredient.of(in), out.getDefaultInstance(), count)::unlockedBy, in)).save(pvd, getID(in));
+	}
+
+	private static void convert(RegistrateRecipeProvider pvd, Ingredient ing, Item out, int count, String id) {
+		(unlock(pvd, new BurntRecipeBuilder(ing, out.getDefaultInstance(), count)::unlockedBy, ing.getItems()[0].getItem())).save(pvd, getID(out).withSuffix(id));
+	}
+
 	public static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {
 		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCritereon(pvd));
 	}
 
 	private static ResourceLocation getID(Item item) {
-		return new ResourceLocation(dev.xkmc.l2complements.init.CurseOfPandora.MODID, RecipeGen.currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
+		return new ResourceLocation(CurseOfPandora.MODID, CoPRecipeGen.currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Item item, String suffix) {
-		return new ResourceLocation(dev.xkmc.l2complements.init.CurseOfPandora.MODID, RecipeGen.currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath() + suffix);
+		return new ResourceLocation(CurseOfPandora.MODID, CoPRecipeGen.currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath() + suffix);
 	}
 
 

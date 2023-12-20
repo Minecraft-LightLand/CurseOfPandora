@@ -4,6 +4,7 @@ import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.content.complex.SlotAdder;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
@@ -28,7 +29,7 @@ import java.util.*;
 
 public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Ticker> {
 
-	public static final TokenKey<Ticker> KEY = new TokenKey<>(dev.xkmc.l2complements.init.CurseOfPandora.MODID, "curse_of_prudence");
+	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_prudence");
 
 	public static final SlotAdder ADDER = SlotAdder.of("curse_of_prudence", "charm", 3);
 

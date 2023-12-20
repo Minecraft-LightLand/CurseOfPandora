@@ -1,6 +1,7 @@
 package dev.xkmc.curseofpandora.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -40,7 +41,7 @@ public class CoPLangData {
 		public MutableComponent get(Object... objs) {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(dev.xkmc.l2complements.init.CurseOfPandora.MODID + "." + id, objs);
+			return translate(CurseOfPandora.MODID + "." + id, objs);
 		}
 
 	}
@@ -49,7 +50,7 @@ public class CoPLangData {
 		for (IDS id : IDS.values()) {
 			String[] strs = id.id.split("\\.");
 			String str = strs[strs.length - 1];
-			pvd.add(dev.xkmc.l2complements.init.CurseOfPandora.MODID + "." + id.id, id.def);
+			pvd.add(CurseOfPandora.MODID + "." + id.id, id.def);
 		}
 	}
 

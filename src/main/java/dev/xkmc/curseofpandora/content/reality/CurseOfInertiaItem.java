@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.content.reality;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.content.complex.SlotAdder;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -22,7 +23,7 @@ import java.util.UUID;
 public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker> {
 
 	private static final SlotAdder ADDER = SlotAdder.of("curse_of_inertia", "necklace", 1);
-	private static final TokenKey<CurseOfInertiaItem.Ticker> KEY = new TokenKey<>(dev.xkmc.l2complements.init.CurseOfPandora.MODID, "curse_of_inertia");
+	private static final TokenKey<CurseOfInertiaItem.Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_inertia");
 
 	private static int getCap() {
 		return 3;

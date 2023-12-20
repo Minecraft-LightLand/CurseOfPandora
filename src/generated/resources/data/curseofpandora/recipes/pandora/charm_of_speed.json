@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2hostility:speedy"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "curseofpandora:charm_of_speed"
+  },
+  "show_notification": true
+}

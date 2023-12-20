@@ -8,7 +8,6 @@ import dev.xkmc.l2library.serial.advancements.CriterionBuilder;
 import dev.xkmc.l2library.serial.advancements.RewardBuilder;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
-import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootPool;

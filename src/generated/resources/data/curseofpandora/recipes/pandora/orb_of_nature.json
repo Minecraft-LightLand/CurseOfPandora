@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "l2complements:sun_membrane"
+    },
+    "2": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:protection",
+      "min_level": 4
+    },
+    "B": {
+      "item": "l2complements:void_eye"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "item": "curseofpandora:orb_of_nature"
+  },
+  "show_notification": true
+}

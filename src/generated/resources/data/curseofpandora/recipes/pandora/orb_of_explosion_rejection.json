@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:blast_protection",
+      "min_level": 4
+    },
+    "2": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:protection",
+      "min_level": 4
+    },
+    "B": {
+      "item": "l2complements:explosion_shard"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "item": "curseofpandora:orb_of_explosion_rejection"
+  },
+  "show_notification": true
+}

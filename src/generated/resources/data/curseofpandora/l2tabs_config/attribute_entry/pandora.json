@@ -1,0 +1,16 @@
+{
+  "list": [
+    {
+      "id": "curseofpandora:spell_tolerance",
+      "intrinsic": 0.0,
+      "order": 20000,
+      "usePercent": false
+    },
+    {
+      "id": "curseofpandora:reality_index",
+      "intrinsic": 0.0,
+      "order": 21000,
+      "usePercent": false
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2hostility:weakness"
+    },
+    "B": {
+      "item": "l2hostility:chaos_ingot"
+    },
+    "C": {
+      "item": "l2hostility:slowness"
+    }
+  },
+  "pattern": [
+    " C ",
+    "ABA",
+    " C "
+  ],
+  "result": {
+    "item": "curseofpandora:curse_of_inertia"
+  },
+  "show_notification": true
+}

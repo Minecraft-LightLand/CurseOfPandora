@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.content.reality;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.content.complex.SlotAdder;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
 public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ticker> {
 
 	private static final SlotAdder ADDER = SlotAdder.of("curse_of_proximity", "bracelet", 1);
-	private static final TokenKey<Ticker> KEY = new TokenKey<>(dev.xkmc.l2complements.init.CurseOfPandora.MODID, "curse_of_proximity");
+	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_proximity");
 
 	private static int getCap() {
 		return 6;

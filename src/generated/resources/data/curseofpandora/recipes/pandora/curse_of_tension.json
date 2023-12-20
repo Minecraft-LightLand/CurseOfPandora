@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2hostility:nausea"
+    },
+    "B": {
+      "item": "l2hostility:chaos_ingot"
+    },
+    "C": {
+      "item": "l2hostility:weakness"
+    }
+  },
+  "pattern": [
+    " C ",
+    "ABA",
+    " C "
+  ],
+  "result": {
+    "item": "curseofpandora:curse_of_tension"
+  },
+  "show_notification": true
+}

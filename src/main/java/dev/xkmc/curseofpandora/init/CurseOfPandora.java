@@ -30,14 +30,16 @@ public class CurseOfPandora {
 
 	public static final String MODID = "curseofpandora";
 
-	public static final RegistryEntry<Attribute> SPELL = reg("spell_tolerance", 1, 10000, "Spell Tolerance");
-	public static final RegistryEntry<Attribute> REALITY = reg("reality_index", 0, 10000, "Reality Index");
+	public static final Logger LOGGER = LogManager.getLogger();
+	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
 			new ResourceLocation(MODID, "main"), 2
 	);
-	public static final Logger LOGGER = LogManager.getLogger();
-	public static final L2Registrate REGISTRATE = new L2Registrate(MODID);
+
+	public static final RegistryEntry<Attribute> SPELL = reg("spell_tolerance", 1, 10000, "Spell Tolerance");
+	public static final RegistryEntry<Attribute> REALITY = reg("reality_index", 0, 10000, "Reality Index");
+
 
 	public CurseOfPandora() {
 		CoPItems.register();
