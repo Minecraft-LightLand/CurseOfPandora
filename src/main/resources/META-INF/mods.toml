@@ -29,6 +29,18 @@ description='''
     ordering="AFTER"
     side="BOTH"
 [[dependencies.curseofpandora]]
+    modId="l2complements"
+    mandatory=true
+    versionRange="[2.4.23,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.curseofpandora]]
+    modId="l2hostility"
+    mandatory=true
+    versionRange="[2.4.12,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.curseofpandora]]
     modId="l2tabs"
     mandatory=true
     versionRange="[0.2.3,)"

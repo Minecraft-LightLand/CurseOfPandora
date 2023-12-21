@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.event;
 import dev.xkmc.curseofpandora.content.reality.CurseOfSpellItem;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.util.Proxy;
 import net.minecraft.ChatFormatting;
@@ -31,7 +32,7 @@ public class ClientSpellText {
 		if (event.getEntity() == null) return;
 		if (ConditionalData.HOLDER.get(event.getEntity()).getData(CurseOfSpellItem.KEY) == null) return;
 		if (!event.getItemStack().isEnchanted()) return;
-		double bonus = event.getEntity().getAttributeValue(CurseOfPandora.SPELL.get());
+		double bonus = event.getEntity().getAttributeValue(CoPMisc.SPELL.get());
 		bonus = Math.max(1, bonus);
 		double penalty = CurseOfSpellItem.getItemSpellPenalty(bonus, event.getItemStack());
 		int load = (int) Math.round(penalty * 100);
@@ -41,7 +42,7 @@ public class ClientSpellText {
 	public static int getReality(Level level) {
 		Player player = Proxy.getClientPlayer();
 		if (player == null) return 0;
-		var ins = player.getAttribute(CurseOfPandora.REALITY.get());
+		var ins = player.getAttribute(CoPMisc.REALITY.get());
 		return ins == null ? 0 : (int) Math.round(ins.getValue());
 	}
 }

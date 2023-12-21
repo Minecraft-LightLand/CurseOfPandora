@@ -78,8 +78,8 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		@Override
 		protected void removeImpl(Player player) {
 			super.removeImpl(player);
-			fear.clear();
 			removeEffect(player);
+			fear.clear();
 		}
 
 		@Override

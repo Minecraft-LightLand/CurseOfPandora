@@ -61,5 +61,7 @@
   "item.curseofpandora.orb_of_nature": "Orb of Nature",
   "item.curseofpandora.orb_of_projectile_rejection": "Orb of Projectile Rejection",
   "item.curseofpandora.orb_of_stability": "Orb of Stability",
-  "item.curseofpandora.plain_charm": "Plain Charm"
+  "item.curseofpandora.plain_charm": "Plain Charm",
+  "trait.curseofpandora.reality": "Reality",
+  "trait.curseofpandora.reality.desc": "Immune to damage from entities will less reality index than rank of this trait."
 }

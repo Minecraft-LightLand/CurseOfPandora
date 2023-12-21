@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.content.reality;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
-import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -12,11 +12,11 @@ import java.util.UUID;
 public class CursePandoraUtil {
 
 	public static AttrAdder spell(TokenKey<?> key) {
-		return AttrAdder.of(key.id(), CurseOfPandora.SPELL, AttributeModifier.Operation.ADDITION, 1);
+		return AttrAdder.of(key.id(), CoPMisc.SPELL, AttributeModifier.Operation.ADDITION, 1);
 	}
 
 	public static AttrAdder reality(TokenKey<?> key) {
-		return AttrAdder.of(key.id(), CurseOfPandora.REALITY, AttributeModifier.Operation.ADDITION, 1);
+		return AttrAdder.of(key.id(), CoPMisc.REALITY, AttributeModifier.Operation.ADDITION, 1);
 	}
 
 	public static void remove(AttributeInstance attr, AttributeModifier.Operation op, UUID negId, String negName,

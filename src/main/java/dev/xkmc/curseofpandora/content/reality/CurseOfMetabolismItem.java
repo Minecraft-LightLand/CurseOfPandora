@@ -6,6 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -119,7 +120,7 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 			var ins = player.getAttribute(attr.get());
 			if (ins == null) return;
 			double val = (player.getFoodData().getFoodLevel() - getThreshold()) * getFactor();
-			boolean doBonus = bonus && player.getAttributeValue(CurseOfPandora.REALITY.get()) >= getIndexReq();
+			boolean doBonus = bonus && player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq();
 			if (!doBonus && val > 0) return;
 			if (!player.getFoodData().needsFood()) val += getBonus();
 			var old = ins.getModifier(id);

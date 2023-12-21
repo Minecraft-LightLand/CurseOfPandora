@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "curseofpandora:item/bg",
+    "layer1": "curseofpandora:item/trait/reality"
+  }
+}

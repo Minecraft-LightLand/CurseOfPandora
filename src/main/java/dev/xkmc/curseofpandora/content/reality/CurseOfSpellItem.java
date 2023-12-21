@@ -7,6 +7,7 @@ import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
@@ -37,7 +38,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	}
 
 	public static double getSpellPenalty(Player player) {
-		double bonus = player.getAttributeValue(CurseOfPandora.SPELL.get());
+		double bonus = player.getAttributeValue(CoPMisc.SPELL.get());
 		bonus = Math.max(1, bonus);
 		double penalty = 0;
 		for (var e : EquipmentSlot.values()) {
