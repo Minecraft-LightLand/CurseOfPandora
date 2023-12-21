@@ -197,7 +197,7 @@ dependencies {
     runtimeOnly fg.deobf("dev.xkmc.modulargolems:modulargolems:2.4.19-slim")
     runtimeOnly fg.deobf("dev.xkmc.l2archery:l2archery:2.4.9")
     implementation fg.deobf("dev.xkmc.l2weaponry:l2weaponry:2.4.18")
-    implementation fg.deobf("dev.xkmc.l2hostility:l2hostility:2.4.13-pre2-slim")
+    implementation fg.deobf("dev.xkmc.l2hostility:l2hostility:2.4.13-pre10-slim")
     implementation fg.deobf("dev.xkmc.l2complements:l2complements:2.4.24-pre11-slim")
 
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")

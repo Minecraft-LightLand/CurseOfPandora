@@ -16,6 +16,7 @@ public class CoPConfigGen extends ConfigDataProvider {
 
 	@Override
 	public void add(Collector collector) {
+		CurseOfPandora.REGISTRATE.CONFIGS.forEach(e -> e.accept(collector));
 		collector.add(L2Tabs.ATTRIBUTE_ENTRY, new ResourceLocation(CurseOfPandora.MODID, "pandora"),
 				new AttributeDisplayConfig()
 						.add(CoPMisc.SPELL.get(), 20000)
