@@ -60,13 +60,11 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 		private static final UUID WEAPON_SPEED = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
 
 		protected Lim() {
-			super("inertia");
+			super(Attributes.ATTACK_SPEED, "inertia");
 		}
 
 		public void tickImpl(Player player) {
-			var attr = player.getAttribute(Attributes.ATTACK_SPEED);
-			if (attr == null) return;
-			doAttributeLimit(player, attr, Set.of(WEAPON_SPEED), false);
+			doAttributeLimit(player, Set.of(WEAPON_SPEED), false);
 		}
 
 		@Override

@@ -2,10 +2,9 @@ package dev.xkmc.curseofpandora.content.reality;
 
 import dev.xkmc.curseofpandora.content.complex.ISubToken;
 import dev.xkmc.l2library.util.math.MathHelper;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.ForgeMod;
 
 import java.util.Set;
 import java.util.UUID;
@@ -14,18 +13,22 @@ public abstract class AttributeLimiter implements ISubToken {
 
 	protected final String baseName;
 	protected final UUID add, base, total;
+	protected final Attribute attribute;
 
-	protected AttributeLimiter(String baseName) {
+	protected AttributeLimiter(Attribute attribute, String baseName) {
 		add = MathHelper.getUUIDFromString(baseName + "_add");
 		base = MathHelper.getUUIDFromString(baseName + "_mult_base");
 		total = MathHelper.getUUIDFromString(baseName + "_mult_total");
 		this.baseName = baseName;
+		this.attribute = attribute;
 	}
 
 	protected abstract CursePandoraUtil.ValueConsumer curseMult(double finVal, CursePandoraUtil.Mult valMult);
 
-	protected final void doAttributeLimit(Player player, AttributeInstance attr, Set<UUID> set, boolean posOnly) {
+	protected final void doAttributeLimit(Player player, Set<UUID> set, boolean posOnly) {
 		if (player.level().isClientSide) return;
+		var attr = player.getAttribute(attribute);
+		if (attr == null) return;
 		CursePandoraUtil.Add valAdd = new CursePandoraUtil.Add();
 		CursePandoraUtil.remove(attr, AttributeModifier.Operation.ADDITION,
 				add, baseName + "_negate_add",
@@ -43,7 +46,7 @@ public abstract class AttributeLimiter implements ISubToken {
 
 	public void removeImpl(Player player) {
 		if (player.level().isClientSide) return;
-		var attr = player.getAttribute(ForgeMod.ENTITY_REACH.get());
+		var attr = player.getAttribute(attribute);
 		if (attr == null) return;
 		attr.removeModifier(add);
 		attr.removeModifier(base);

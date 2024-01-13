@@ -59,7 +59,7 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 	public static class Lim extends AttributeLimiter {
 
 		protected Lim() {
-			super("proximity");
+			super(ForgeMod.ENTITY_REACH.get(), "proximity");
 		}
 
 		@Override
@@ -68,12 +68,10 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 		}
 
 		public void tickImpl(Player player) {
-			var attr = player.getAttribute(ForgeMod.ENTITY_REACH.get());
-			if (attr == null) return;
 			var map = player.getMainHandItem().getAttributeModifiers(EquipmentSlot.MAINHAND);
 			var list = map.get(ForgeMod.ENTITY_REACH.get());
 			var set = list.stream().map(AttributeModifier::getId).collect(Collectors.toSet());
-			doAttributeLimit(player, attr, set, false);
+			doAttributeLimit(player, set, false);
 		}
 
 	}

@@ -79,7 +79,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 		private final Ticker ticker;
 
 		protected Lim(Ticker ticker) {
-			super("flesh");
+			super(Attributes.MAX_HEALTH, "flesh");
 			this.ticker = ticker;
 		}
 
@@ -89,9 +89,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 		}
 
 		public void tickImpl(Player player) {
-			var attr = player.getAttribute(Attributes.MAX_HEALTH);
-			if (attr == null) return;
-			doAttributeLimit(player, attr, Set.of(), false);
+			doAttributeLimit(player, Set.of(), false);
 		}
 
 	}

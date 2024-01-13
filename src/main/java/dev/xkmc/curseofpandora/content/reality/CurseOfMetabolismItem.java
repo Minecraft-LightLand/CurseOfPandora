@@ -79,17 +79,15 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 	private static class Lim extends AttributeLimiter {
 
 		protected Lim() {
-			super("metabolism");
+			super(Attributes.MOVEMENT_SPEED, "metabolism");
 		}
 
 		@Override
 		public void tickImpl(Player player) {
-			var ins = player.getAttribute(Attributes.MOVEMENT_SPEED);
-			if (ins == null) return;
 			if (player.getFoodData().needsFood()) {
 				removeImpl(player);
 			} else {
-				doAttributeLimit(player, ins, Set.of(Ticker.SPEED.id()), true);
+				doAttributeLimit(player, Set.of(Ticker.SPEED.id()), true);
 			}
 		}
 

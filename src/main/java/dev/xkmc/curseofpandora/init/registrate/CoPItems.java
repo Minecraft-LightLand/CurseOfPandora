@@ -145,7 +145,7 @@ public class CoPItems {
 
 			MINI_BEACON_REGEN = item("mini_beacon_regen",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.REGENERATION, 60, 0, true, true)))
+							MobEffects.REGENERATION, 60, 1, true, true)))
 					.lang("Mini Beacon: Regeneration")
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
