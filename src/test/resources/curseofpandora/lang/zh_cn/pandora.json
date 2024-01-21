@@ -36,12 +36,17 @@
 	"curse_of_metabolism": "现实第四诅咒：羸弱",
 	"curse_of_tension": "现实第五诅咒：恐惧",
 	"curse_of_prudence": "现实第六诅咒：碎魂",
-	"curse_of_spell": "现实第七诅咒：咒缚"
+	"curse_of_spell": "现实第七诅咒：咒缚",
+	"angelic_wing": "天使之翼",
+	"angelic_bless": "天使祝福",
+	"angelic_descent": "天使神降"
   },
-  "curseofpandora.tooltip.misc": {
-	"effect_refresh": "给穿戴者提供：",
-	"bind": "这个物品不可取下",
-	"reality": "当你有%s以上现实指数时：",
+  "curseofpandora.tooltip": {
+	"misc": {
+	  "effect_refresh": "给穿戴者提供：",
+	  "bind": "这个物品不可取下",
+	  "reality": "当你有%s以上现实指数时："
+	},
 	"curse": {
 	  "inertia": "抹除其他所有攻击速度加成。玩家最高攻击速度为%s。如果玩家攻击速度在%s及以下，给予玩家%s%%攻击速度加成。",
 	  "proximity": "抹除其他所有攻击距离加成。玩家最高攻击距离为%s。如果玩家攻击距离在%s及以下，给予玩家%s%%攻击距离加成。",
@@ -56,6 +61,12 @@
 	  "spell_1": "装备的附魔会对你产生负担，增加你受到的伤害，减少你能造成的伤害。使用高魔力亲和度的附魔以及提高魔力耐性可以降低负担",
 	  "spell_2": "当前总魔力过载：%s%%",
 	  "spell_3": "物品魔力负荷：%s%%"
+	},
+	"angel": {
+	  "check": "只有玩家在天空下时生效",
+	  "bless": "所有受到的伤害降低%s%%",
+	  "descent": "对亡灵生物造成的伤害上升%s%%",
+	  "wing": "鞘翅飞行时提供额外动力"
 	}
   },
   "effect.curseofpandora": {
@@ -70,7 +81,8 @@
   },
   "attribute.name": {
 	"reality_index": "现实指数",
-	"spell_tolerance": "魔力耐性"
+	"spell_tolerance": "魔力耐性",
+	"damage_absorption": "伤害吸收"
   },
   "trait.curseofpandora": {
 	"reality": "现实压制",

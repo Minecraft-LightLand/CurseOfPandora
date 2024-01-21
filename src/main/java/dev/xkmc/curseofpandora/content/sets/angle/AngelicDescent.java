@@ -5,6 +5,7 @@ import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -25,14 +26,19 @@ import java.util.List;
 
 public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 
-	private static final AttrAdder ATTACK = AttrAdder.of("angelic_descent", () -> Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.MULTIPLY_BASE, 0.5);
+	private static final AttrAdder ATTACK = AttrAdder.of("angelic_descent", () -> Attributes.ATTACK_DAMAGE,
+			AttributeModifier.Operation.MULTIPLY_BASE, AngelicDescent::getStat);
+
+	private static double getStat() {
+		return CoPConfig.COMMON.angelicDescentMeleeBonus.get();
+	}
 
 	private static int getIndexReq() {
-		return 5;
+		return CoPConfig.COMMON.angelicDescentRealityIndex.get();
 	}
 
 	private static double getBonus() {
-		return 1;
+		return CoPConfig.COMMON.angelicDescentUndeadBonus.get();
 	}
 
 	public AngelicDescent(Properties properties) {

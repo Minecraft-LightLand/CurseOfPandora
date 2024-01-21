@@ -17,6 +17,7 @@ public class CoPConfig {
 
 	public static class Common {
 
+		// reality
 		public final ForgeConfigSpec.DoubleValue curseOfInertiaCap;
 		public final ForgeConfigSpec.DoubleValue curseOfInertiaBase;
 		public final ForgeConfigSpec.DoubleValue curseOfInertiaBonus;
@@ -43,6 +44,17 @@ public class CoPConfig {
 		public final ForgeConfigSpec.DoubleValue curseOfSpellLoadFactor;
 		public final ForgeConfigSpec.DoubleValue curseOfSpellDamageFactor;
 		public final ForgeConfigSpec.DoubleValue curseOfSpellWeakenFactor;
+
+		// angelic
+		public final ForgeConfigSpec.IntValue angelicWingRealityIndex;
+		public final ForgeConfigSpec.DoubleValue angelicWingBoost;
+		public final ForgeConfigSpec.DoubleValue angelicWingMaxSpeed;
+		public final ForgeConfigSpec.IntValue angelicBlessRealityIndex;
+		public final ForgeConfigSpec.DoubleValue angelicBlessDamageReduction;
+		public final ForgeConfigSpec.DoubleValue angelicBlessAbsorption;
+		public final ForgeConfigSpec.IntValue angelicDescentRealityIndex;
+		public final ForgeConfigSpec.DoubleValue angelicDescentMeleeBonus;
+		public final ForgeConfigSpec.DoubleValue angelicDescentUndeadBonus;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("Reality");
@@ -102,6 +114,29 @@ public class CoPConfig {
 				curseOfSpellWeakenFactor = builder.comment("Curse of Spell: player will deal less damage when having spell overload")
 						.comment("Higher number means mob takes less damage")
 						.defineInRange("curseOfSpellWeakenFactor", 1d, 0, 100);
+			}
+			builder.pop();
+
+			builder.push("Angelic");
+			{
+				angelicWingRealityIndex = builder.comment("Reality Index requirement for Angelic Wing")
+						.defineInRange("angelicWingRealityIndex", 3, 0, 7);
+				angelicWingBoost = builder.comment("Angelic Wing speed boost in block per tick")
+						.defineInRange("angelicWingBoost", 0.03, 0, 0.1);
+				angelicWingMaxSpeed = builder.comment("Angelic Wing max speed in block per tick")
+						.defineInRange("angelicWingMaxSpeed", 5d, 0, 50);
+				angelicBlessRealityIndex = builder.comment("Reality Index requirement for Angelic Bless")
+						.defineInRange("angelicBlessRealityIndex", 4, 0, 7);
+				angelicBlessDamageReduction = builder.comment("Angelic Bless total damage reduction")
+						.defineInRange("angelicBlessDamageReduction", 0.2, 0, 1);
+				angelicBlessAbsorption = builder.comment("Angelic Bless damage absorption")
+						.defineInRange("angelicBlessAbsorption", 1d, 0, 100);
+				angelicDescentRealityIndex = builder.comment("Reality Index requirement for Angelic Descent")
+						.defineInRange("angelicDescentRealityIndex", 5, 0, 7);
+				angelicDescentMeleeBonus = builder.comment("Angelic Descent melee damage bonus")
+						.defineInRange("angelicDescentMeleeBonus", 0.5, 0, 10);
+				angelicDescentUndeadBonus = builder.comment("Angelic Descent damage bonus against undead")
+						.defineInRange("angelicDescentUndeadBonus", 0.5, 0, 10);
 			}
 			builder.pop();
 		}
