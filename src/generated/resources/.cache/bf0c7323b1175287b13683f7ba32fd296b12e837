@@ -1,6 +1,9 @@
-// 1.20.1	2023-12-21T09:25:32.265073	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-aa5f5f6088411522a9e589df988ed6909ae9d7ee assets/curseofpandora/lang/en_ud.json
-8a94bafc75988d481167188922dc113a692fe9a8 assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-01-21T13:32:47.463394	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+52f5411197fca6ae9328f7bc58e397151358fcbf assets/curseofpandora/lang/en_ud.json
+88b0ed262a63059d82c55519f08984e6359aa463 assets/curseofpandora/lang/en_us.json
+ee44b4df5dd60e5aec209a4d4e49a54793c12dc2 assets/curseofpandora/models/item/angelic_bless.json
+c76acfeacfdb7dda82312c93fa6615b73832edb6 assets/curseofpandora/models/item/angelic_descent.json
+d716bfddcefcd58e41cfd8660c49f82fe57df05e assets/curseofpandora/models/item/angelic_wing.json
 b5a90f39e92310bdfc72208fe5e6d428df3386d4 assets/curseofpandora/models/item/bless_of_lava_walker.json
 c50857ec4afda02f726154328424c720aa2922a2 assets/curseofpandora/models/item/bless_of_snow_walker.json
 c755a0162b78554b539c2186534fc34ed1328438 assets/curseofpandora/models/item/charm_of_accuracy.json
@@ -38,7 +41,7 @@ a09af7f3835259b2871c012ed97f6358c8d3226a assets/curseofpandora/models/item/orb_o
 847cc89f9d92b759289cc953f668bc29180316e7 assets/curseofpandora/models/item/orb_of_stability.json
 2c0f191baf7c7ac620b23ee24a3f2b24f390abfa assets/curseofpandora/models/item/plain_charm.json
 b6a7b1b18de7706ca615f3502a49f203613cf034 assets/curseofpandora/models/item/reality.json
-c5144039b4a698dffefbd0b7480a701b83d6824e data/curios/tags/items/pandora_charm.json
+7491e5d6b6ed70024b3a67719d9d24d4f01af451 data/curios/tags/items/pandora_charm.json
 996ce41e49808183206928826a92d5bb4197be7f data/curseofpandora/advancements/pandora/pandora_box.json
 f2916a01345c26938623dd1154cf6ffccd1b09b8 data/curseofpandora/advancements/recipes/burnt/burnt/mini_beacon_base_block.json
 724f9c10bf3ccb56cf13fbe6012854af97a77f37 data/curseofpandora/advancements/recipes/burnt/burnt/mini_beacon_base_ingot.json
@@ -119,7 +122,7 @@ a49134e54b6aa4119a0e6c385b91533dbe39d558 data/curseofpandora/recipes/pandora/orb
 38428c1561e6f6fe8852426222f1964c49a189d8 data/curseofpandora/recipes/pandora/plain_charm_craft.json
 0bc793ff63fcec5e2057217b4d3f8ed84875e9ff data/curseofpandora/recipes/pandora/plain_charm_renew.json
 b9f76d2f1816e9a9dac4eabbd421a66052d8d2c7 data/curseofpandora/recipes/pandora/plain_charm_smelt.json
-6559659bd66e21f1f600d0f81e21a6e2e2855ee6 data/curseofpandora/tags/items/pandora_base.json
+d84a02426840a6c1764e75c7ba75f9e49360ccce data/curseofpandora/tags/items/pandora_base.json
 6cccdb86989ad373511ab81c763dcda36b015d6b data/curseofpandora/tags/items/pandora_curse.json
 54dbeb697e82ab8c4a9505b47395450dd78cbcdf data/l2hostility/tags/items/trait_item.json
 207ada98f21e099b4e72a1926b3a3cd436f37029 data/pandora/tags/items/allow_duplicates.json

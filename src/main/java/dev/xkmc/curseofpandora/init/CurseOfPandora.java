@@ -38,6 +38,7 @@ public class CurseOfPandora {
 		CoPItems.register();
 		CoPFakeEffects.register();
 		CoPMisc.register();
+		CoPConfig.init();
 		AttackEventHandler.register(5200, new PandoraAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);
@@ -56,6 +57,7 @@ public class CurseOfPandora {
 	public static void modifyAttributes(EntityAttributeModificationEvent event) {
 		event.add(EntityType.PLAYER, CoPMisc.SPELL.get());
 		event.add(EntityType.PLAYER, CoPMisc.REALITY.get());
+		event.add(EntityType.PLAYER, CoPMisc.ABSORB.get());
 	}
 
 	@SubscribeEvent

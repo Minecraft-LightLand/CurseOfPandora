@@ -1,5 +1,6 @@
 package dev.xkmc.curseofpandora.content.complex;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -17,7 +18,7 @@ public record BaseCurseCurio(Item item, ItemStack stack) implements ICurio {
 		var ans = new ArrayList<>(ICurio.super.getAttributesTooltip(tooltips));
 		if (item instanceof ISlotAdderItem<?> sa) {
 			for (var e : sa.getSlotAdder()) {
-				ans.add(e.getTooltip());
+				ans.add(e.getTooltip().withStyle(ChatFormatting.BLUE));
 			}
 		}
 		return ans;

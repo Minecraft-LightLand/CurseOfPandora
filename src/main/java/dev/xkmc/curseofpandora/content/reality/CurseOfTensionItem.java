@@ -132,6 +132,20 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			sync(sp);
 		}
 
+		public boolean isTerrorized(LivingEntity target) {
+			return terror.containsKey(target.getUUID());
+		}
+
+		@Override
+		public void onPlayerAttackTarget(Player player, AttackCache cache) {
+			if (!(player instanceof ServerPlayer)) return;
+			if (isTerrorized(cache.getAttackTarget())) {
+				var event = cache.getLivingAttackEvent();
+				assert event != null;
+				event.setCanceled(true);
+			}
+		}
+
 		@Override
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
 			if (!(player instanceof ServerPlayer sp)) return;

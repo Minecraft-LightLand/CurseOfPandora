@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.content.complex;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -39,12 +40,11 @@ public record AttrAdder(String name, Supplier<Attribute> attr, UUID uuid,
 		ins.removeModifier(uuid);
 	}
 
-	public Component getTooltip() {
+	public MutableComponent getTooltip() {
 		return Component.translatable(
 						"attribute.modifier.plus." + op.toValue(),
 						ATTRIBUTE_MODIFIER_FORMAT.format(value),
-						Component.translatable(attr.get().getDescriptionId()))
-				.withStyle(ChatFormatting.BLUE);
+						Component.translatable(attr.get().getDescriptionId()));
 	}
 
 }

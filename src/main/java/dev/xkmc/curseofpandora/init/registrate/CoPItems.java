@@ -5,6 +5,9 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
+import dev.xkmc.curseofpandora.content.sets.angle.AngelicBless;
+import dev.xkmc.curseofpandora.content.sets.angle.AngelicDescent;
+import dev.xkmc.curseofpandora.content.sets.angle.AngelicWing;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.content.feature.CurioFeaturePredicate;
@@ -44,6 +47,9 @@ public class CoPItems {
 	public static final ItemEntry<CurseOfTensionItem> CURSE_OF_TENSION;
 	public static final ItemEntry<CurseOfPrudenceItem> CURSE_OF_PRUDENCE;
 	public static final ItemEntry<CurseOfSpellItem> CURSE_OF_SPELL;
+	public static final ItemEntry<AngelicWing> ANGELIC_WING;
+	public static final ItemEntry<AngelicBless> ANGELIC_BLESS;
+	public static final ItemEntry<AngelicDescent> ANGELIC_DESCENT;
 
 
 	static {
@@ -232,6 +238,17 @@ public class CoPItems {
 			CURSE_OF_SPELL = item("curse_of_spell", CurseOfSpellItem::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
 
+		}
+
+		//sets
+
+		{
+			ANGELIC_WING = item("angelic_wing", AngelicWing::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			ANGELIC_BLESS = item("angelic_bless", AngelicBless::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			ANGELIC_DESCENT = item("angelic_descent", AngelicDescent::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 		}
 
 	}

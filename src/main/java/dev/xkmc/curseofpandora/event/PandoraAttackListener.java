@@ -1,8 +1,10 @@
 package dev.xkmc.curseofpandora.event;
 
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
+import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
+import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +24,7 @@ public class PandoraAttackListener implements AttackListener {
 
 	@Override
 	public void onAttack(AttackCache cache, ItemStack weapon) {
+
 		if (cache.getAttacker() instanceof Player player) {
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
@@ -71,6 +74,11 @@ public class PandoraAttackListener implements AttackListener {
 					token.onPlayerDamaged(player, cache);
 				}
 			}
+		}
+		var ins = cache.getAttackTarget().getAttribute(CoPMisc.ABSORB.get());
+		if (ins != null) {
+			float val = (float) ins.getValue();
+			cache.addDealtModifier(DamageModifier.nonlinearPre(943, e -> Math.max(0, e - val)));
 		}
 	}
 

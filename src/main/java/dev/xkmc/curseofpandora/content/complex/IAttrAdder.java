@@ -1,9 +1,9 @@
 package dev.xkmc.curseofpandora.content.complex;
 
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public interface IAttrAdder {
 
-	Component getTooltip();
+	MutableComponent getTooltip();
 
 }

@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.content.complex;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -37,12 +38,11 @@ public record SlotAdder(String name, String slotId, UUID slot, int slotCount) im
 		opt.get().removeModifier(slot);
 	}
 
-	public Component getTooltip() {
+	public MutableComponent getTooltip() {
 		return Component.translatable(
 						"attribute.modifier.plus." + AttributeModifier.Operation.ADDITION.toValue(),
 						ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(slotCount),
-						Component.translatable("curios.identifier." + slotId))
-				.withStyle(ChatFormatting.BLUE);
+						Component.translatable("curios.identifier." + slotId));
 	}
 
 }

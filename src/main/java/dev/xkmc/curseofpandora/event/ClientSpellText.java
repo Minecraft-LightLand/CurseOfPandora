@@ -14,6 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class ClientSpellText {
 		event.getToolTip().add(CoPLangData.IDS.CURSE_OF_SPELL_3.get(load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GRAY));
 	}
 
-	public static int getReality(Level level) {
+	public static int getReality(@Nullable Level level) {
+		if (level == null) return 0;
 		Player player = Proxy.getClientPlayer();
 		if (player == null) return 0;
 		var ins = player.getAttribute(CoPMisc.REALITY.get());
