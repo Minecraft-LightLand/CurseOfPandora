@@ -63,6 +63,10 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 			REDUCTION.removeImpl(player);
 		}
 
+		private static boolean check(Player player) {
+			return AngelicPunishment.check(player, getIndexReq());
+		}
+
 		@Override
 		protected void tickImpl(Player player) {
 			if (player.level().isClientSide()) return;
@@ -71,10 +75,6 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 			} else {
 				REDUCTION.removeImpl(player);
 			}
-		}
-
-		private static boolean check(Player player) {
-			return player.level().canSeeSky(player.blockPosition()) && player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq();
 		}
 
 		@Override

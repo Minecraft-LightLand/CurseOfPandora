@@ -84,8 +84,7 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 		}
 
 		private boolean check(Player player) {
-			int reality = getIndexReq();
-			return player.level().canSeeSky(player.blockPosition()) && player.getAttributeValue(CoPMisc.REALITY.get()) >= reality;
+			return AngelicPunishment.check(player, getIndexReq());
 		}
 
 	}

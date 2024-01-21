@@ -5,14 +5,13 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
-import dev.xkmc.curseofpandora.content.sets.angle.AngelicBless;
-import dev.xkmc.curseofpandora.content.sets.angle.AngelicDescent;
-import dev.xkmc.curseofpandora.content.sets.angle.AngelicWing;
+import dev.xkmc.curseofpandora.content.sets.angle.*;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.content.feature.CurioFeaturePredicate;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.content.item.curios.DescCurioItem;
+import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.L2Registrate;
@@ -50,6 +49,8 @@ public class CoPItems {
 	public static final ItemEntry<AngelicWing> ANGELIC_WING;
 	public static final ItemEntry<AngelicBless> ANGELIC_BLESS;
 	public static final ItemEntry<AngelicDescent> ANGELIC_DESCENT;
+	public static final ItemEntry<AngelicProtection> ANGELIC_PROTECTION;
+	public static final ItemEntry<AngelicPunishment> ANGELIC_PUNISHMENT;
 
 
 	static {
@@ -248,6 +249,10 @@ public class CoPItems {
 			ANGELIC_BLESS = item("angelic_bless", AngelicBless::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 			ANGELIC_DESCENT = item("angelic_descent", AngelicDescent::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			ANGELIC_PROTECTION = item("angelic_protection", AngelicProtection::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE, TagGen.TOTEM).register();
+			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 		}
 

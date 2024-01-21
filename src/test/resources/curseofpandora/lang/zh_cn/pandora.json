@@ -39,7 +39,9 @@
 	"curse_of_spell": "现实第七诅咒：咒缚",
 	"angelic_wing": "天使之翼",
 	"angelic_bless": "天使祝福",
-	"angelic_descent": "天使神降"
+	"angelic_descent": "天使神降",
+	"angelic_protection": "天使加护",
+	"angelic_punishment": "神罚之印"
   },
   "curseofpandora.tooltip": {
 	"misc": {
@@ -66,7 +68,11 @@
 	  "check": "只有玩家在天空下时生效",
 	  "bless": "所有受到的伤害降低%s%%",
 	  "descent": "对亡灵生物造成的伤害上升%s%%",
-	  "wing": "鞘翅飞行时提供额外动力"
+	  "wing": "鞘翅飞行时提供额外动力",
+	  "wing_immune": "玩家不受到摔落和鞘翅动能伤害",
+	  "protection": "作为存在%s秒冷却的无法破坏不死图腾使用",
+	  "punishment_1": "所有天使系潘多拉饰品不需要在天空下也能生效",
+	  "punishment_2": "对目标造成的伤害不会低于对方当前血量的%s%%。这个效果%s秒最多触发一次。"
 	}
   },
   "effect.curseofpandora": {

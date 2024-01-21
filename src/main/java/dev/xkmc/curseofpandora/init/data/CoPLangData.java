@@ -26,11 +26,15 @@ public class CoPLangData {
 		CURSE_OF_SPELL_1("tooltip.curse.spell_1", "Enchantments on your weapons and armors will put a burden on you, increase damage you take and reduce damage you dealt. Use equipments with high enchantment affinity and gain spell tolerance to mitigate that.", 0),
 		CURSE_OF_SPELL_2("tooltip.curse.spell_2", "Current total spell overload: %s%%", 1),
 		CURSE_OF_SPELL_3("tooltip.curse.spell_3", "Item spell load: %s%%", 1),
-		
-		ANGELIC_CHECK("tooltip.angel.check","Effective only when player is under sky", 0),
+
+		ANGELIC_CHECK("tooltip.angel.check", "Effective only when player is under sky", 0),
 		ANGELIC_WING("tooltip.angel.wing", "When player is elytra flying, gives player a velocity boost.", 0),
+		ANGELIC_WING_IMMUNE("tooltip.angel.wing_immune", "Player takes no damage for falling and flying into wall.", 0),
 		ANGELIC_BLESS("tooltip.angel.bless", "All damage taken is reduced by %s%%.", 1),
 		ANGELIC_DESCENT("tooltip.angel.descent", "All damage against undead mobs is increased by %s%%.", 1),
+		ANGELIC_PROTECTION("tooltip.angel.protection", "Works as an unbreakable totem of undying with a cool down of %s seconds.", 1),
+		ANGELIC_PUNISHMENT_1("tooltip.angel.punishment_1", "All Angelic pandora charms triggers when not under sky as well.", 0),
+		ANGELIC_PUNISHMENT_2("tooltip.angel.punishment_2", "Damage dealt to target will be at least %s%% of their current health. This effect can trigger at most once every %s second.", 2),
 
 
 		;

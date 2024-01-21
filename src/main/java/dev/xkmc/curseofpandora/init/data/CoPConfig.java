@@ -55,6 +55,11 @@ public class CoPConfig {
 		public final ForgeConfigSpec.IntValue angelicDescentRealityIndex;
 		public final ForgeConfigSpec.DoubleValue angelicDescentMeleeBonus;
 		public final ForgeConfigSpec.DoubleValue angelicDescentUndeadBonus;
+		public final ForgeConfigSpec.IntValue angelicProtectionRealityIndex;
+		public final ForgeConfigSpec.IntValue angelicProtectionCoolDown;
+		public final ForgeConfigSpec.IntValue angelicPunishmentRealityIndex;
+		public final ForgeConfigSpec.IntValue angelicPunishmentCoolDown;
+		public final ForgeConfigSpec.DoubleValue angelicPunishmentDamageBase;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("Reality");
@@ -137,6 +142,16 @@ public class CoPConfig {
 						.defineInRange("angelicDescentMeleeBonus", 0.5, 0, 10);
 				angelicDescentUndeadBonus = builder.comment("Angelic Descent damage bonus against undead")
 						.defineInRange("angelicDescentUndeadBonus", 0.5, 0, 10);
+				angelicProtectionRealityIndex = builder.comment("Requirement of Reality Index of Angelic Protection")
+						.defineInRange("angelicProtectionRealityIndex", 6, 0, 7);
+				angelicProtectionCoolDown = builder.comment("Angelic Protection cool down in ticks")
+						.defineInRange("angelicProtectionCoolDown", 600, 0, 1000000);
+				angelicPunishmentRealityIndex = builder.comment("Requirement of Reality Index of Angelic Punishment")
+						.defineInRange("angelicPunishmentRealityIndex", 7, 0, 7);
+				angelicPunishmentCoolDown = builder.comment("Angelic Punishment cool down in ticks")
+						.defineInRange("angelicPunishmentCoolDown", 20, 0, 6000);
+				angelicPunishmentDamageBase = builder.comment("Angelic Punishment minimum damage in percentage of target current health")
+						.defineInRange("angelicPunishmentDamageBase", 0.05, 0, 1);
 			}
 			builder.pop();
 		}
