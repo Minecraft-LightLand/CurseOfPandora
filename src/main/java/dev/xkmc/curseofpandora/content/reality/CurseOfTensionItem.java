@@ -1,9 +1,11 @@
 package dev.xkmc.curseofpandora.content.reality;
 
+import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
@@ -32,33 +34,34 @@ import java.util.UUID;
 public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker> {
 
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_tension");
+	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	public static int getPenaltyDuration() {
-		return 60;
+		return CoPConfig.COMMON.curseOfTensionPenaltyDuration.get();
 	}
 
 	public static double getDamageThreshold() {
-		return 0.1;
+		return CoPConfig.COMMON.curseOfTensionPenaltyThreshold.get();
 	}
 
 	public static int getTokenMature() {
-		return 200;
+		return CoPConfig.COMMON.curseOfTensionTokenMatureTime.get();
 	}
 
 	public static int getTokenLife() {
-		return 200;
+		return CoPConfig.COMMON.curseOfTensionTokenEffectiveTime.get();
 	}
 
 	public static float getDamageBonus() {
-		return 0.2f;
+		return (float) (double) CoPConfig.COMMON.curseOfTensionDamageBonus.get();
 	}
 
 	public static int getMaxLevel() {
-		return 5;
+		return CoPConfig.COMMON.curseOfTensionMaxLevel.get();
 	}
 
 	public CurseOfTensionItem(Properties properties) {
-		super(properties, KEY, Ticker::new, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
+		super(properties, Ticker::new, R, S);
 	}
 
 	@Override
@@ -86,7 +89,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 		private boolean sync = false;
 
 		public Ticker() {
-			super(List.of(CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+			super(List.of(R, S));
 		}
 
 		@Override

@@ -1,11 +1,9 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
-import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
-import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
-import dev.xkmc.curseofpandora.content.complex.SlotAdder;
+import dev.xkmc.curseofpandora.content.complex.*;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -27,14 +25,15 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
 	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", "hostility_curse", 1);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_spell");
+	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	public static double getItemSpellPenalty(double base, ItemStack stack) {
 		double level = 0;
 		for (var i : stack.getAllEnchantments().values()) {
 			level += Math.pow(2, i);
 		}
-		double val = base + stack.getEnchantmentValue();
-		return level / val / base;
+		double val = (base + stack.getEnchantmentValue());
+		return level / val / base * CoPConfig.COMMON.curseOfSpellLoadFactor.get();
 	}
 
 	public static double getSpellPenalty(Player player) {
@@ -50,7 +49,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	}
 
 	public CurseOfSpellItem(Properties properties) {
-		super(properties, KEY, Ticker::new, ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
+		super(properties, Ticker::new, ADDER, R, S);
 	}
 
 	@Override
@@ -65,14 +64,15 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	public static class Ticker extends ListTickingToken implements IAttackListenerToken {
 
 		public Ticker() {
-			super(List.of(ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+			super(List.of(ADDER, R, S));
 		}
 
 		@Override
 		public void onPlayerDamaged(Player player, AttackCache cache) {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
-				cache.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty)));
+				double factor = CoPConfig.COMMON.curseOfSpellDamageFactor.get();
+				cache.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty * factor)));
 			}
 		}
 
@@ -80,7 +80,8 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		public void onPlayerDamageTarget(Player player, AttackCache cache) {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
-				cache.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty)));
+				double factor = CoPConfig.COMMON.curseOfSpellWeakenFactor.get();
+				cache.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty * factor)));
 			}
 		}
 

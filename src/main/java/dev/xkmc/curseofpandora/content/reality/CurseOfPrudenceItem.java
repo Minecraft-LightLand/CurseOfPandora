@@ -1,10 +1,8 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
-import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
-import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
-import dev.xkmc.curseofpandora.content.complex.SlotAdder;
+import dev.xkmc.curseofpandora.content.complex.*;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
@@ -30,27 +28,27 @@ import java.util.*;
 public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Ticker> {
 
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_prudence");
-
+	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 	public static final SlotAdder ADDER = SlotAdder.of("curse_of_prudence", "charm", 3);
 
 	public static int getMaxLevel() {
-		return 20;
+		return CoPConfig.COMMON.curseOfPrudenceMaxLevel.get();
 	}
 
 	public static double getDamageFactor() {
-		return 0.5;
+		return CoPConfig.COMMON.curseOfPrudenceDamageFactor.get();
 	}
 
 	public static int getDuration() {
-		return 40;
+		return CoPConfig.COMMON.curseOfPrudenceDuration.get();
 	}
 
 	public static double getMaxHurtDamage() {
-		return 0.3;
+		return CoPConfig.COMMON.curseOfPrudenceMaxDamage.get();
 	}
 
 	public CurseOfPrudenceItem(Properties properties) {
-		super(properties, KEY, Ticker::new, ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
+		super(properties, Ticker::new, ADDER, R, S);
 	}
 
 	@Override
@@ -72,7 +70,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		private boolean sync = false;
 
 		public Ticker() {
-			super(List.of(ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+			super(List.of(ADDER, R, S));
 		}
 
 		@Override

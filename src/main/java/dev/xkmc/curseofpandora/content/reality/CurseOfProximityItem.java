@@ -1,9 +1,11 @@
 package dev.xkmc.curseofpandora.content.reality;
 
+import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -25,21 +27,22 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 
 	private static final SlotAdder ADDER = SlotAdder.of("curse_of_proximity", "bracelet", 1);
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_proximity");
+	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getCap() {
-		return 6;
+		return (int) (double) CoPConfig.COMMON.curseOfProximityCap.get();
 	}
 
 	private static double getBase() {
-		return 2;
+		return CoPConfig.COMMON.curseOfProximityBase.get();
 	}
 
 	private static double getBonus() {
-		return 0.5;
+		return CoPConfig.COMMON.curseOfProximityBonus.get();
 	}
 
 	public CurseOfProximityItem(Properties properties) {
-		super(properties, KEY, Ticker::new, ADDER, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
+		super(properties, Ticker::new, ADDER, R, S);
 	}
 
 	@Override
@@ -51,7 +54,7 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 	public static class Ticker extends ListTickingToken {
 
 		public Ticker() {
-			super(List.of(ADDER, new Lim(), CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+			super(List.of(ADDER, new Lim(), R, S));
 		}
 
 	}

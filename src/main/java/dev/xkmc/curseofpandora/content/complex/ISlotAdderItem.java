@@ -8,8 +8,8 @@ public abstract class ISlotAdderItem<T extends BaseTickingToken> extends ITokenP
 
 	public final IAttrAdder[] adder;
 
-	public ISlotAdderItem(Properties properties, TokenKey<T> key, Supplier<T> sup, IAttrAdder... adder) {
-		super(properties, key, sup);
+	public ISlotAdderItem(Properties properties, Supplier<T> sup, IAttrAdder... adder) {
+		super(properties, sup);
 		this.adder = adder;
 	}
 

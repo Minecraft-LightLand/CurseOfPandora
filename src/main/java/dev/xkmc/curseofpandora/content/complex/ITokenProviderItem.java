@@ -8,19 +8,17 @@ import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2library.capability.conditionals.TokenProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Supplier;
 
 public abstract class ITokenProviderItem<R extends BaseTickingToken> extends CurioItem
 		implements ICapItem<BaseCurseCurio>, TokenProvider<R, ITokenProviderItem<R>>, Context {
 
-	private final TokenKey<R> key;
-
 	private final Supplier<R> sup;
 
-	public ITokenProviderItem(Properties properties, TokenKey<R> key, Supplier<R> sup) {
+	public ITokenProviderItem(Properties properties, Supplier<R> sup) {
 		super(properties);
-		this.key = key;
 		this.sup = sup;
 	}
 
@@ -38,8 +36,15 @@ public abstract class ITokenProviderItem<R extends BaseTickingToken> extends Cur
 		return new BaseCurseCurio(this, stack);
 	}
 
+	private TokenKey<R> key;
+
 	@Override
 	public final TokenKey<R> getKey() {
+		if (key == null) {
+			var id = ForgeRegistries.ITEMS.getKey(this);
+			assert id != null;
+			key = TokenKey.of(id);
+		}
 		return key;
 	}
 

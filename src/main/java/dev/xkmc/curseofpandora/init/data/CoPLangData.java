@@ -27,6 +27,8 @@ public class CoPLangData {
 		CURSE_OF_SPELL_2("tooltip.misc.curse_of_spell_2", "Current total spell overload: %s%%", 1),
 		CURSE_OF_SPELL_3("tooltip.misc.curse_of_spell_3", "Item spell load: %s%%", 1),
 
+		ANGELIC_WING("tooltip.misc.angelic_wing", "When player is elytra flying above world height limit, gives player a velocity boost.", 0),
+
 		;
 
 		final String id, def;
@@ -48,8 +50,6 @@ public class CoPLangData {
 
 	public static void addTranslations(RegistrateLangProvider pvd) {
 		for (IDS id : IDS.values()) {
-			String[] strs = id.id.split("\\.");
-			String str = strs[strs.length - 1];
 			pvd.add(CurseOfPandora.MODID + "." + id.id, id.def);
 		}
 	}

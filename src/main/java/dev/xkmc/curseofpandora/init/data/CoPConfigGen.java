@@ -20,7 +20,8 @@ public class CoPConfigGen extends ConfigDataProvider {
 		collector.add(L2Tabs.ATTRIBUTE_ENTRY, new ResourceLocation(CurseOfPandora.MODID, "pandora"),
 				new AttributeDisplayConfig()
 						.add(CoPMisc.SPELL.get(), 20000)
-						.add(CoPMisc.REALITY.get(), 21000));
+						.add(CoPMisc.REALITY.get(), 21000)
+						.add(CoPMisc.ABSORB.get(), 23000));
 	}
 
 }

@@ -1,8 +1,10 @@
 package dev.xkmc.curseofpandora.content.reality;
 
+import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -21,26 +23,27 @@ import java.util.Set;
 public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_flesh");
+	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getThreshold() {
-		return 10;
+		return CoPConfig.COMMON.curseOfFleshThreshold.get();
 	}
 
 	private static int getDuration() {
-		return 3;
+		return CoPConfig.COMMON.curseOfFleshDuration.get();
 	}
 
-	private static int getBonus() {
-		return 1;
+	private static double getBonus() {
+		return CoPConfig.COMMON.curseOfFleshBonus.get();
 	}
 
 	public CurseOfFleshItem(Properties properties) {
-		super(properties, KEY, Ticker::new, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
+		super(properties, Ticker::new, R, S);
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.CURSE_FLESH.get(getThreshold(), getDuration(), getBonus() * 100).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.IDS.CURSE_FLESH.get(getThreshold(), getDuration(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
 	}
 
 	@SerialClass
@@ -52,7 +55,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 		public int maintain = 0;
 
 		public Ticker() {
-			super(List.of(CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+			super(List.of(R, S));
 		}
 
 		@Override
@@ -66,8 +69,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 			if (player.getFoodData().getFoodLevel() >= getThreshold()) {
 				if (maintain < getDuration())
 					maintain++;
-				else maintain = 0;
-			}
+			} else maintain = 0;
 			super.tickImpl(player);
 			lim.tickImpl(player);
 		}

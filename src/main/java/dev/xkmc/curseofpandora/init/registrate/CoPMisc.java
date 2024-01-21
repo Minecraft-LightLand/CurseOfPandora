@@ -16,6 +16,8 @@ public class CoPMisc {
 	public static final RegistryEntry<Attribute> SPELL = reg("spell_tolerance", 1, 10000, "Spell Tolerance");
 	public static final RegistryEntry<Attribute> REALITY = reg("reality_index", 0, 10000, "Reality Index");
 
+	public static final RegistryEntry<Attribute> ABSORB = reg("damage_absorption", 0, 10000, "Damage Absorption");
+
 	static {
 		CurseOfPandora.REGISTRATE.defaultCreativeTab(LHBlocks.TAB.getKey());
 		TRAIT_REALITY = CurseOfPandora.REGISTRATE.regTrait("reality", () -> new RealityTrait(ChatFormatting.RED),

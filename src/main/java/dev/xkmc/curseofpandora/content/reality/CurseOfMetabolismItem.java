@@ -1,10 +1,12 @@
 package dev.xkmc.curseofpandora.content.reality;
 
+import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ISubToken;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
@@ -29,25 +31,26 @@ import java.util.function.Supplier;
 public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.Ticker> {
 
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_metabolism");
+	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getThreshold() {
-		return 16;
+		return CoPConfig.COMMON.curseOfMetabolismThreshold.get();
 	}
 
 	private static double getFactor() {
-		return 0.05;
+		return CoPConfig.COMMON.curseOfMetabolismFactor.get();
 	}
 
 	private static double getBonus() {
-		return 0.3;
+		return CoPConfig.COMMON.curseOfMetabolismBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return 5;
+		return CoPConfig.COMMON.curseOfMetabolismIndexReq.get();
 	}
 
 	public CurseOfMetabolismItem(Properties properties) {
-		super(properties, KEY, Ticker::new, CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY));
+		super(properties, Ticker::new, R, S);
 	}
 
 	@Override
@@ -71,7 +74,7 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 				"curse_of_metabolism_speed", true);
 
 		public Ticker() {
-			super(List.of(ATK, SPEED, new Lim(), CursePandoraUtil.reality(KEY), CursePandoraUtil.spell(KEY)));
+			super(List.of(ATK, SPEED, new Lim(), R, S));
 		}
 
 	}
