@@ -64,6 +64,7 @@ public class CoPConfig {
 		public final ForgeConfigSpec.IntValue hellfireSkullMinimumDuration;
 		public final ForgeConfigSpec.IntValue hellfireReformationRealityIndex;
 		public final ForgeConfigSpec.IntValue eyeOfCursedSoulRealityIndex;
+		public final ForgeConfigSpec.DoubleValue eyeOfCursedSoulRange;
 		public final ForgeConfigSpec.IntValue eyeOfCursedSoulCoolDown;
 		public final ForgeConfigSpec.IntValue cursedSoulCrystalRealityIndex;
 		public final ForgeConfigSpec.IntValue cursedSoulCrystalCoolDown;
@@ -175,6 +176,8 @@ public class CoPConfig {
 						.defineInRange("hellfireReformationRealityIndex", 4, 0, 7);
 				eyeOfCursedSoulRealityIndex = builder.comment("Reality Index requirement for Eye of Cursed Souls")
 						.defineInRange("eyeOfCursedSoulRealityIndex", 5, 0, 7);
+				eyeOfCursedSoulRange = builder.comment("Eye of Cursed Souls damage radius")
+						.defineInRange("eyeOfCursedSoulRange", 8d, 0, 64);
 				eyeOfCursedSoulCoolDown = builder.comment("Effect trigger cool down in ticks for Eye of Cursed Souls")
 						.defineInRange("eyeOfCursedSoulCoolDown", 200, 0, 1000000);
 				cursedSoulCrystalRealityIndex = builder.comment("Reality Index requirement for Cursed Soul Crystal")

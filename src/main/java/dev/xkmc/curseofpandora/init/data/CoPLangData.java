@@ -93,8 +93,11 @@ public class CoPLangData {
 	}
 
 	public enum Hell {
-		SKULL("When you damage to a target on Soul Flame effect with at least %s seconds duration, increase the effect level by 1, capped at your Reality Index.", 1),
-		REFORMATION("You are immune to Soul Flame damage, but not to the effect. When you deal damage to targets while you are one Soul Flame effect, inflict the target with same level and duration of Soul Flame", 0);
+		SKULL("When you damage a target on Soul Flame effect with at least %s seconds duration, increase the effect level by 1, capped at your Reality Index.", 1),
+		REFORMATION_1("You are immune to Soul Flame damage, but you are not immune to the effect even when you have Cleansed effect. ", 0),
+		REFORMATION_2("When you deal damage to targets while you are one Soul Flame effect, inflict the target with same level and duration of Soul Flame", 0),
+		EYE("When you damage a target, the target will deal a small magic damage to all monsters around it within %s blocks. Has a cool down of %s seconds.", 2),
+		;
 
 		final String id, def;
 		final int count;

@@ -4,34 +4,43 @@ import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
+import dev.xkmc.curseofpandora.event.ItemEffectHandlers;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
+import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
-import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
-import dev.xkmc.l2complements.init.data.DamageTypeGen;
-import dev.xkmc.l2complements.init.registrate.LCEffects;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HellfireReformation extends ITokenProviderItem<HellfireReformation.Data> implements EffectValidItem {
+public class EyeOfCursedSoul extends ITokenProviderItem<EyeOfCursedSoul.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.hellfireReformationRealityIndex.get();
+		return CoPConfig.COMMON.eyeOfCursedSoulRealityIndex.get();
 	}
 
-	public HellfireReformation(Properties properties) {
+	public static int getCoolDown() {
+		return CoPConfig.COMMON.eyeOfCursedSoulCoolDown.get();
+	}
+
+	public static double getRange() {
+		return CoPConfig.COMMON.eyeOfCursedSoulRange.get();
+	}
+
+	public EyeOfCursedSoul(Properties properties) {
 		super(properties, Data::new);
 	}
 
@@ -40,15 +49,10 @@ public class HellfireReformation extends ITokenProviderItem<HellfireReformation.
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.Hell.REFORMATION_1.get())
-				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.Hell.REFORMATION_2.get())
-				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
-	}
-
-	@Override
-	public boolean isEffectValid(MobEffectInstance ins, ItemStack itemStack, LivingEntity livingEntity) {
-		return ins.getEffect() == LCEffects.FLAME.get();
+		list.add(Component.literal("- ").append(CoPLangData.Hell.EYE.get(
+				Math.round(getRange()),
+				Math.round(getCoolDown() / 20d)
+		)).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
@@ -60,6 +64,9 @@ public class HellfireReformation extends ITokenProviderItem<HellfireReformation.
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
+		@SerialClass.SerialField
+		public int coolDown;
+
 		@Override
 		protected void removeImpl(Player player) {
 
@@ -67,24 +74,28 @@ public class HellfireReformation extends ITokenProviderItem<HellfireReformation.
 
 		@Override
 		protected void tickImpl(Player player) {
-
-		}
-
-		@Override
-		public void onPlayerAttacked(Player player, AttackCache cache) {
-			var event = cache.getLivingAttackEvent();
-			assert event != null;
-			if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
-				event.setCanceled(true);
+			if (coolDown > 0) {
+				coolDown--;
 			}
 		}
 
 		@Override
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
 			var target = cache.getAttackTarget();
-			var ins = player.getEffect(LCEffects.FLAME.get());
-			if (ins != null) {
-				EffectUtil.addEffect(target, new MobEffectInstance(ins), EffectUtil.AddReason.FORCE, player);
+			if (coolDown == 0) {
+				coolDown = getCoolDown();
+				for (var e : target.level().getEntities(EntityTypeTest.forClass(Mob.class), target.getBoundingBox().inflate(getRange()), e -> e != target)) {
+					if (!(e instanceof Enemy)) continue;
+					if (e.distanceTo(target) > getRange()) continue;
+					e.setTarget(null);
+					for (var x : e.targetSelector.getAvailableGoals()) {
+						if (x.getGoal() instanceof NearestAttackableTargetGoal<?> goal) {
+							goal.setTarget(null);
+						}
+					}
+					e.hurt(new DamageSource(CoPDamageTypeGen.forKey(target.level(), CoPDamageTypeGen.SOUL_CURSE), e), 1);
+				}
+				ItemEffectHandlers.EYE_OF_CURSED_SOUL.trigger(target);
 			}
 		}
 

@@ -4,7 +4,8 @@ import net.minecraft.world.entity.LivingEntity;
 
 public enum ItemEffectHandlers {
 	ANGELIC_PUNISHMENT,
-	HELLFIRE_SKULL;
+	HELLFIRE_SKULL,
+	EYE_OF_CURSED_SOUL;
 
 	public void trigger(LivingEntity target) {
 

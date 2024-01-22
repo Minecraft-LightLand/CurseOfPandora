@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
+import dev.xkmc.curseofpandora.content.sets.hell.EyeOfCursedSoul;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireReformation;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireSkull;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
@@ -56,6 +57,7 @@ public class CoPItems {
 	public static final ItemEntry<AngelicPunishment> ANGELIC_PUNISHMENT;
 	public static final ItemEntry<HellfireSkull> HELLFIRE_SKULL;
 	public static final ItemEntry<HellfireReformation> HELLFIRE_REFORMATION;
+	public static final ItemEntry<EyeOfCursedSoul> EYE_OF_CURSED_SOULS;
 
 
 	static {
@@ -273,10 +275,14 @@ public class CoPItems {
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE, TagGen.TOTEM).register();
 			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
 			HELLFIRE_SKULL = item("hellfire_skull", HellfireSkull::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 			HELLFIRE_REFORMATION = item("hellfire_reformation", HellfireReformation::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			EYE_OF_CURSED_SOULS = item("eye_of_cursed_souls", EyeOfCursedSoul::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE)
+					.lang("Eye of Cursed Souls").register();
 		}
 
 	}
