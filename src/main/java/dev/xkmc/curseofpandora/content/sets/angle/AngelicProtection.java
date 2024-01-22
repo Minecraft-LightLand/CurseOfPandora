@@ -3,7 +3,6 @@ package dev.xkmc.curseofpandora.content.sets.angle;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.misc.ILCTotem;
 import dev.xkmc.l2complements.init.L2Complements;
@@ -55,11 +54,11 @@ public class AngelicProtection extends CurioItem implements ILCTotem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.ANGELIC_CHECK.get().withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.Angelic.CHECK.get().withStyle(ChatFormatting.GRAY));
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.IDS.ANGELIC_PROTECTION.get(Math.round(getCoolDown() / 20f)))
+		list.add(Component.literal("- ").append(CoPLangData.Angelic.PROTECTION.get(Math.round(getCoolDown() / 20f)))
 				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 

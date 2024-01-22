@@ -4,6 +4,8 @@ import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
+import dev.xkmc.curseofpandora.event.ItemEffectHandlers;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
@@ -24,11 +26,11 @@ import java.util.List;
 public class HellfireSkull extends ITokenProviderItem<HellfireSkull.Data> {
 
 	public static int getIndexReq() {
-		return 3;
+		return CoPConfig.COMMON.hellfireSkullRealityIndex.get();
 	}
 
 	public static int getMinDuration() {
-		return 200;
+		return CoPConfig.COMMON.hellfireSkullMinimumDuration.get();
 	}
 
 	public HellfireSkull(Properties properties) {
@@ -63,12 +65,16 @@ public class HellfireSkull extends ITokenProviderItem<HellfireSkull.Data> {
 
 		@Override
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
-			var ins = cache.getAttackTarget().getEffect(LCEffects.FLAME.get());
+			var target = cache.getAttackTarget();
+			var ins = target.getEffect(LCEffects.FLAME.get());
 			if (ins != null && ins.getDuration() >= getMinDuration()) {
 				int reality = (int) Math.round(player.getAttributeValue(CoPMisc.REALITY.get()));
 				int amp = Math.min(ins.getAmplifier() + 1, reality);
-				EffectUtil.addEffect(cache.getAttackTarget(), new EffectBuilder(ins).setAmplifier(amp).ins,
-						EffectUtil.AddReason.FORCE, player);
+				if (amp > ins.getAmplifier()) {
+					ItemEffectHandlers.HELLFIRE_SKULL.trigger(target);
+					EffectUtil.addEffect(target, new EffectBuilder(ins).setAmplifier(amp).ins,
+							EffectUtil.AddReason.FORCE, player);
+				}
 			}
 		}
 

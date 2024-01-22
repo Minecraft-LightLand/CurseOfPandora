@@ -54,7 +54,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.CURSE_OF_SPELL_1.get().withStyle(ChatFormatting.RED));
+		list.add(CoPLangData.Reality.SPELL_1.get().withStyle(ChatFormatting.RED));
 		if (level != null && level.isClientSide()) {
 			ClientSpellText.addTotal(list);
 		}

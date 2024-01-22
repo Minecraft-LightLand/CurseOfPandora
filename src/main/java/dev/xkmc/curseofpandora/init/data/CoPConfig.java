@@ -60,6 +60,16 @@ public class CoPConfig {
 		public final ForgeConfigSpec.IntValue angelicPunishmentRealityIndex;
 		public final ForgeConfigSpec.IntValue angelicPunishmentCoolDown;
 		public final ForgeConfigSpec.DoubleValue angelicPunishmentDamageBase;
+		public final ForgeConfigSpec.IntValue hellfireSkullRealityIndex;
+		public final ForgeConfigSpec.IntValue hellfireSkullMinimumDuration;
+		public final ForgeConfigSpec.IntValue hellfireReformationRealityIndex;
+		public final ForgeConfigSpec.IntValue eyeOfCursedSoulRealityIndex;
+		public final ForgeConfigSpec.IntValue eyeOfCursedSoulCoolDown;
+		public final ForgeConfigSpec.IntValue cursedSoulCrystalRealityIndex;
+		public final ForgeConfigSpec.IntValue cursedSoulCrystalCoolDown;
+		public final ForgeConfigSpec.DoubleValue cursedSoulCrystalRange;
+		public final ForgeConfigSpec.IntValue crownOfDemonRealityIndex;
+		public final ForgeConfigSpec.IntValue crownOfDemonBaseHealthThreshold;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("Reality");
@@ -152,6 +162,31 @@ public class CoPConfig {
 						.defineInRange("angelicPunishmentCoolDown", 20, 0, 6000);
 				angelicPunishmentDamageBase = builder.comment("Angelic Punishment minimum damage in percentage of target current health")
 						.defineInRange("angelicPunishmentDamageBase", 0.05, 0, 1);
+			}
+			builder.pop();
+
+			builder.push("Hell");
+			{
+				hellfireSkullRealityIndex = builder.comment("Reality Index requirement for Hellfire Skull")
+						.defineInRange("hellfireSkullRealityIndex", 3, 0, 7);
+				hellfireSkullMinimumDuration = builder.comment("Minimum soul flame effect duration in ticks for Hellfire Skull to work")
+						.defineInRange("hellfireSkullMinimumDuration", 200, 1, 200000);
+				hellfireReformationRealityIndex = builder.comment("Reality Index requirement for Hellfire Reformation")
+						.defineInRange("hellfireReformationRealityIndex", 4, 0, 7);
+				eyeOfCursedSoulRealityIndex = builder.comment("Reality Index requirement for Eye of Cursed Souls")
+						.defineInRange("eyeOfCursedSoulRealityIndex", 5, 0, 7);
+				eyeOfCursedSoulCoolDown = builder.comment("Effect trigger cool down in ticks for Eye of Cursed Souls")
+						.defineInRange("eyeOfCursedSoulCoolDown", 200, 0, 1000000);
+				cursedSoulCrystalRealityIndex = builder.comment("Reality Index requirement for Cursed Soul Crystal")
+						.defineInRange("cursedSoulCrystalRealityIndex", 6, 0, 7);
+				cursedSoulCrystalCoolDown = builder.comment("Effect trigger cool down in ticks for Cursed Soul Crystal")
+						.defineInRange("cursedSoulCrystalCoolDown", 600, 0, 1000000);
+				cursedSoulCrystalRange = builder.comment("Max range to search undead mobs for Cursed Soul Crystal")
+						.defineInRange("cursedSoulCrystalRange", 8d, 0, 64);
+				crownOfDemonRealityIndex = builder.comment("Reality Index requirement for Crown of Demon")
+						.defineInRange("crownOfDemonRealityIndex", 7, 0, 7);
+				crownOfDemonBaseHealthThreshold = builder.comment("Crown of Demon can command undead mobs with base health lower than:")
+						.defineInRange("crownOfDemonBaseHealthThreshold", 50, 1, 1000000);
 			}
 			builder.pop();
 		}

@@ -4,6 +4,7 @@ import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
+import dev.xkmc.curseofpandora.event.ItemEffectHandlers;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
@@ -63,9 +64,9 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.IDS.ANGELIC_PUNISHMENT_1.get())
+		list.add(Component.literal("- ").append(CoPLangData.Angelic.PUNISHMENT_1.get())
 				.withStyle(pass ? ChatFormatting.GOLD : ChatFormatting.DARK_GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.IDS.ANGELIC_PUNISHMENT_2.get(
+		list.add(Component.literal("- ").append(CoPLangData.Angelic.PUNISHMENT_2.get(
 				Math.round(getDamageBase() * 100), Math.round(getCoolDown() / 20d)
 		)).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
@@ -101,7 +102,7 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 			float min = (float) (target.getHealth() * getDamageBase());
 			if (damage < min && cooldown == 0) {
 				cooldown = getCoolDown();
-				// TODO effect
+				ItemEffectHandlers.ANGELIC_PUNISHMENT.trigger(target);
 				return min;
 			}
 			return damage;

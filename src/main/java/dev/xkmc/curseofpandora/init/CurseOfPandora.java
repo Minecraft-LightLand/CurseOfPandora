@@ -57,6 +57,7 @@ public class CurseOfPandora {
 	public static void modifyAttributes(EntityAttributeModificationEvent event) {
 		event.add(EntityType.PLAYER, CoPMisc.SPELL.get());
 		event.add(EntityType.PLAYER, CoPMisc.REALITY.get());
+		event.add(EntityType.PLAYER, CoPMisc.REDUCTION.get());
 		event.add(EntityType.PLAYER, CoPMisc.ABSORB.get());
 	}
 

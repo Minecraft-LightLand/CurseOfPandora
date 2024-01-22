@@ -47,11 +47,11 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.ANGELIC_CHECK.get().withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.Angelic.CHECK.get().withStyle(ChatFormatting.GRAY));
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.IDS.ANGELIC_DESCENT.get(Math.round(getBonus() * 100)))
+		list.add(Component.literal("- ").append(CoPLangData.Angelic.DESCENT.get(Math.round(getBonus() * 100)))
 				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 		list.add(Component.literal("- ").append(ATTACK.getTooltip())
 				.withStyle(pass ? ChatFormatting.BLUE : ChatFormatting.DARK_GRAY));

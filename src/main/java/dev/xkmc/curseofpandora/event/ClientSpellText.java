@@ -25,7 +25,7 @@ public class ClientSpellText {
 		Player player = Proxy.getClientPlayer();
 		if (player == null) return;
 		int load = (int) Math.round(CurseOfSpellItem.getSpellPenalty(player) * 100);
-		list.add(CoPLangData.IDS.CURSE_OF_SPELL_2.get(load).withStyle(ChatFormatting.RED));
+		list.add(CoPLangData.Reality.SPELL_2.get(load).withStyle(ChatFormatting.RED));
 	}
 
 	@SubscribeEvent
@@ -37,7 +37,7 @@ public class ClientSpellText {
 		bonus = Math.max(1, bonus);
 		double penalty = CurseOfSpellItem.getItemSpellPenalty(bonus, event.getItemStack());
 		int load = (int) Math.round(penalty * 100);
-		event.getToolTip().add(CoPLangData.IDS.CURSE_OF_SPELL_3.get(load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GRAY));
+		event.getToolTip().add(CoPLangData.Reality.SPELL_3.get(load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GRAY));
 	}
 
 	public static int getReality(@Nullable Level level) {

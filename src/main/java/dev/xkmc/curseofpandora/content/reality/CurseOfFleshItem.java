@@ -43,7 +43,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.CURSE_FLESH.get(getThreshold(), getDuration(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.Reality.FLESH.get(getThreshold(), getDuration(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
 	}
 
 	@SerialClass

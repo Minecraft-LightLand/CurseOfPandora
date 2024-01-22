@@ -47,7 +47,7 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.CURSE_PROXIMITY.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.Reality.PROXIMITY.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
 	}
 
 	@SerialClass

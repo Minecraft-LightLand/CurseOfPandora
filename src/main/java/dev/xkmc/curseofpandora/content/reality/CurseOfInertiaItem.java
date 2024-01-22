@@ -46,7 +46,7 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.CURSE_INERTIA.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.Reality.INERTIA.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
 	}
 
 	@SerialClass

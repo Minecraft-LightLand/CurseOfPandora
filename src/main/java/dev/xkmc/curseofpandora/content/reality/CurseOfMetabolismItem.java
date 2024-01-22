@@ -59,10 +59,10 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 		int b = (int) Math.round(getBonus() * 100);
 		int t = getThreshold();
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
-		list.add(CoPLangData.IDS.CURSE_METABOLISM_2.get(f, t).withStyle(ChatFormatting.RED));
+		list.add(CoPLangData.Reality.METABOLISM_2.get(f, t).withStyle(ChatFormatting.RED));
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq()).withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(CoPLangData.IDS.CURSE_METABOLISM_1.get(f, t).withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
-		list.add(CoPLangData.IDS.CURSE_METABOLISM_3.get(b).withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
+		list.add(CoPLangData.Reality.METABOLISM_1.get(f, t).withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
+		list.add(CoPLangData.Reality.METABOLISM_3.get(b).withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
 	}
 
 	@SerialClass

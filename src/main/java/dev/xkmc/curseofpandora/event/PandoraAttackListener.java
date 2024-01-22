@@ -73,6 +73,17 @@ public class PandoraAttackListener implements AttackListener {
 	public void onDamage(AttackCache cache, ItemStack weapon) {
 		var event = cache.getLivingDamageEvent();
 		assert event != null;
+		var ins = cache.getAttackTarget().getAttribute(CoPMisc.REDUCTION.get());
+		if (ins != null) {
+			float val = (float) ins.getValue();
+			cache.addDealtModifier(DamageModifier.multAttr(val));
+		}
+		ins = cache.getAttackTarget().getAttribute(CoPMisc.ABSORB.get());
+		if (ins != null) {
+			float val = (float) ins.getValue();
+			cache.addDealtModifier(DamageModifier.add(-val));
+			cache.addDealtModifier(DamageModifier.nonlinearMiddle(943, e -> Math.max(0, e)));
+		}
 		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
 			return;
 		}
@@ -89,11 +100,6 @@ public class PandoraAttackListener implements AttackListener {
 					token.onPlayerDamaged(player, cache);
 				}
 			}
-		}
-		var ins = cache.getAttackTarget().getAttribute(CoPMisc.ABSORB.get());
-		if (ins != null) {
-			float val = (float) ins.getValue();
-			cache.addDealtModifier(DamageModifier.nonlinearPre(943, e -> Math.max(0, e - val)));
 		}
 	}
 

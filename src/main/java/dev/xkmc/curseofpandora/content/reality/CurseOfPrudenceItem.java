@@ -56,8 +56,8 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		int dur = getDuration();
 		int damage = (int) Math.round(getDamageFactor() * 100);
 		int hurt = (int) Math.round(getMaxHurtDamage() * 100);
-		list.add(CoPLangData.IDS.CURSE_PRUDENCE_1.get(dur / 20, damage).withStyle(ChatFormatting.RED));
-		list.add(CoPLangData.IDS.CURSE_PRUDENCE_2.get(hurt).withStyle(ChatFormatting.RED));
+		list.add(CoPLangData.Reality.PRUDENCE_1.get(dur / 20, damage).withStyle(ChatFormatting.RED));
+		list.add(CoPLangData.Reality.PRUDENCE_2.get(hurt).withStyle(ChatFormatting.RED));
 	}
 
 	@SerialClass

@@ -2,14 +2,11 @@ package dev.xkmc.curseofpandora.content.sets.angle;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
-import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -24,8 +21,10 @@ import java.util.List;
 
 public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
-	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", CoPMisc.ABSORB,
+	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", CoPMisc.ABSORB,
 			AttributeModifier.Operation.ADDITION, AngelicBless::getStat);
+	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", CoPMisc.REDUCTION,
+			AttributeModifier.Operation.MULTIPLY_TOTAL, AngelicBless::getFactor);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.angelicBlessAbsorption.get();
@@ -45,12 +44,12 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		list.add(CoPLangData.IDS.ANGELIC_CHECK.get().withStyle(ChatFormatting.GRAY));
+		list.add(CoPLangData.Angelic.CHECK.get().withStyle(ChatFormatting.GRAY));
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.IDS.ANGELIC_BLESS.get(Math.round(getFactor() * 100)))
-				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
+		list.add(Component.literal("- ").append(ABSORPTION.getTooltip())
+				.withStyle(pass ? ChatFormatting.BLUE : ChatFormatting.DARK_GRAY));
 		list.add(Component.literal("- ").append(REDUCTION.getTooltip())
 				.withStyle(pass ? ChatFormatting.BLUE : ChatFormatting.DARK_GRAY));
 	}
@@ -62,10 +61,11 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken implements IAttackListenerToken {
+	public static class Data extends BaseTickingToken {
 
 		@Override
 		protected void removeImpl(Player player) {
+			ABSORPTION.removeImpl(player);
 			REDUCTION.removeImpl(player);
 		}
 
@@ -77,17 +77,11 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 		protected void tickImpl(Player player) {
 			if (player.level().isClientSide()) return;
 			if (check(player)) {
+				ABSORPTION.tickImpl(player);
 				REDUCTION.tickImpl(player);
 			} else {
+				ABSORPTION.removeImpl(player);
 				REDUCTION.removeImpl(player);
-			}
-		}
-
-		@Override
-		public void onPlayerHurt(Player player, AttackCache cache) {
-			float factor = (float) (1 - getFactor());
-			if (check(player)) {
-				cache.addHurtModifier(DamageModifier.multTotal(factor));
 			}
 		}
 

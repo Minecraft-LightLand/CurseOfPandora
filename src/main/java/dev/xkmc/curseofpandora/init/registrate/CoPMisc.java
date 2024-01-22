@@ -15,8 +15,8 @@ public class CoPMisc {
 	public static final RegistryEntry<RealityTrait> TRAIT_REALITY;
 	public static final RegistryEntry<Attribute> SPELL = reg("spell_tolerance", 1, 10000, "Spell Tolerance");
 	public static final RegistryEntry<Attribute> REALITY = reg("reality_index", 0, 10000, "Reality Index");
-
 	public static final RegistryEntry<Attribute> ABSORB = reg("damage_absorption", 0, 10000, "Damage Absorption");
+	public static final RegistryEntry<Attribute> REDUCTION = reg("damage_reduction", 1, 10000, "Damage after Reduction");
 
 	static {
 		CurseOfPandora.REGISTRATE.defaultCreativeTab(LHBlocks.TAB.getKey());
