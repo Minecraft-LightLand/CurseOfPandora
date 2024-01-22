@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2hostility:shulker"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "C": {
+      "item": "l2hostility:grenade"
+    }
+  },
+  "pattern": [
+    "CAC",
+    "ABA",
+    "CAC"
+  ],
+  "result": {
+    "item": "curseofpandora:charm_of_explosion"
+  },
+  "show_notification": true
+}

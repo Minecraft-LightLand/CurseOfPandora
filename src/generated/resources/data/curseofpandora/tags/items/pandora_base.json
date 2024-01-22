@@ -27,10 +27,15 @@
     "curseofpandora:charm_of_archery",
     "curseofpandora:charm_of_heavy_weapon",
     "curseofpandora:charm_of_accuracy",
+    "curseofpandora:charm_of_protection",
+    "curseofpandora:charm_of_magic",
+    "curseofpandora:charm_of_explosion",
     "curseofpandora:angelic_wing",
     "curseofpandora:angelic_bless",
     "curseofpandora:angelic_descent",
     "curseofpandora:angelic_protection",
-    "curseofpandora:angelic_punishment"
+    "curseofpandora:angelic_punishment",
+    "curseofpandora:hellfire_skull",
+    "curseofpandora:hellfire_reformation"
   ]
 }

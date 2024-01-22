@@ -27,6 +27,15 @@ public class PandoraAttackListener implements AttackListener {
 	public void onAttack(AttackCache cache, ItemStack weapon) {
 		var event = cache.getLivingAttackEvent();
 		assert event != null;
+		if (cache.getAttackTarget() instanceof Player player) {
+			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+				if (e instanceof IAttackListenerToken token) {
+					token.onPlayerAttacked(player, cache);
+				}
+			}
+		}
+		if (event.isCanceled())
+			return;
 		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
 			return;
 		}
@@ -34,13 +43,6 @@ public class PandoraAttackListener implements AttackListener {
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
 					token.onPlayerAttackTarget(player, cache);
-				}
-			}
-		}
-		if (cache.getAttackTarget() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerAttacked(player, cache);
 				}
 			}
 		}

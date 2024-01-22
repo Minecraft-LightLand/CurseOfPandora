@@ -6,6 +6,8 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
+import dev.xkmc.curseofpandora.content.sets.hell.HellfireReformation;
+import dev.xkmc.curseofpandora.content.sets.hell.HellfireSkull;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.content.feature.CurioFeaturePredicate;
@@ -37,7 +39,8 @@ public class CoPItems {
 	public static final ItemEntry<SnowWalkerCharm> BLESS_SNOW_WALKER;
 	public static final ItemEntry<DescCurioItem> BLESS_LAVA_WALKER;
 	public static final ItemEntry<AttributeItem> CHARM_HEALTH, CHARM_ARMOR, CHARM_SPEED,
-			CHARM_DAMAGE, CHARM_HEAVY, CHARM_ACCURACY, CHARM_CRIT, CHARM_BOW;
+			CHARM_DAMAGE, CHARM_HEAVY, CHARM_ACCURACY, CHARM_CRIT, CHARM_BOW, CHARM_PROTECTION,
+			CHARM_MAGIC, CHARM_EXPLOSION;
 
 	public static final ItemEntry<CurseOfInertiaItem> CURSE_OF_INERTIA;
 	public static final ItemEntry<CurseOfProximityItem> CURSE_OF_PROXIMITY;
@@ -51,6 +54,8 @@ public class CoPItems {
 	public static final ItemEntry<AngelicDescent> ANGELIC_DESCENT;
 	public static final ItemEntry<AngelicProtection> ANGELIC_PROTECTION;
 	public static final ItemEntry<AngelicPunishment> ANGELIC_PUNISHMENT;
+	public static final ItemEntry<HellfireSkull> HELLFIRE_SKULL;
+	public static final ItemEntry<HellfireReformation> HELLFIRE_REFORMATION;
 
 
 	static {
@@ -212,6 +217,20 @@ public class CoPItems {
 							-0.5, AttributeModifier.Operation.ADDITION))
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
+			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
+					(uuid, map) -> map.put(CoPMisc.REDUCTION.get(), new AttributeModifier(uuid, "charm_of_protection",
+							-0.04, AttributeModifier.Operation.MULTIPLY_BASE))))
+					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+
+			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
+					(uuid, map) -> map.put(L2DamageTracker.MAGIC_FACTOR.get(), new AttributeModifier(uuid, "charm_of_magic",
+							0.1, AttributeModifier.Operation.ADDITION))))
+					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+
+			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
+					(uuid, map) -> map.put(L2DamageTracker.EXPLOSION_FACTOR.get(), new AttributeModifier(uuid, "charm_of_explosion",
+							0.1, AttributeModifier.Operation.ADDITION))))
+					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 		}
 
@@ -253,6 +272,10 @@ public class CoPItems {
 			ANGELIC_PROTECTION = item("angelic_protection", AngelicProtection::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE, TagGen.TOTEM).register();
 			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			HELLFIRE_SKULL = item("hellfire_skull", HellfireSkull::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			HELLFIRE_REFORMATION = item("hellfire_reformation", HellfireReformation::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 		}
 

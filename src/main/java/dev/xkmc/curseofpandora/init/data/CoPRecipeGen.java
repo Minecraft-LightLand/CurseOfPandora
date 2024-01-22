@@ -321,6 +321,27 @@ public class CoPRecipeGen {
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.REFLECT.get().asItem())
 						.save(pvd, getID(CoPItems.CHARM_ACCURACY.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_PROTECTION.get())::unlockedBy, CoPItems.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.ADAPTIVE.get().asItem())
+						.define('B', CoPItems.CHARM.get())
+						.define('C', LHTraits.PROTECTION.get().asItem())
+						.save(pvd, getID(CoPItems.CHARM_PROTECTION.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_MAGIC.get())::unlockedBy, CoPItems.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.KILLER_AURA.get().asItem())
+						.define('B', CoPItems.CHARM.get())
+						.define('C', LHTraits.DEMENTOR.get().asItem())
+						.save(pvd, getID(CoPItems.CHARM_MAGIC.get()));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_EXPLOSION.get())::unlockedBy, CoPItems.CHARM.get())
+						.pattern("CAC").pattern("ABA").pattern("CAC")
+						.define('A', LHTraits.SHULKER.get().asItem())
+						.define('B', CoPItems.CHARM.get())
+						.define('C', LHTraits.GRENADE.get().asItem())
+						.save(pvd, getID(CoPItems.CHARM_EXPLOSION.get()));
 			}
 		}
 
