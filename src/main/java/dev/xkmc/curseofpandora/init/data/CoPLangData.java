@@ -60,7 +60,7 @@ public class CoPLangData {
 		public MutableComponent get(Object... objs) {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + "." + id, objs);
+			return translate(CurseOfPandora.MODID + ".tooltip.curse." + id, objs);
 		}
 
 	}
@@ -87,14 +87,14 @@ public class CoPLangData {
 		public MutableComponent get(Object... objs) {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + "." + id, objs);
+			return translate(CurseOfPandora.MODID + ".tooltip.angel." + id, objs);
 		}
 
 	}
 
 	public enum Hell {
-		SKULL("When you damage to a target on Soul Flame effect with at least %s seconds duration, increase the effect level by 1, capped at your Reality Index.",1),
-		REFORMATION("You are immune to Soul Flame damage, but not to the effect. When you deal damage to targets while you are one Soul Flame effect, inflict the target with same level and duration of Soul Flame",0);
+		SKULL("When you damage to a target on Soul Flame effect with at least %s seconds duration, increase the effect level by 1, capped at your Reality Index.", 1),
+		REFORMATION("You are immune to Soul Flame damage, but not to the effect. When you deal damage to targets while you are one Soul Flame effect, inflict the target with same level and duration of Soul Flame", 0);
 
 		final String id, def;
 		final int count;
@@ -108,7 +108,7 @@ public class CoPLangData {
 		public MutableComponent get(Object... objs) {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + "." + id, objs);
+			return translate(CurseOfPandora.MODID + ".tooltip.hell." + id, objs);
 		}
 
 	}
@@ -128,7 +128,7 @@ public class CoPLangData {
 		public MutableComponent get(Object... objs) {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + "." + id, objs);
+			return translate(CurseOfPandora.MODID + ".tooltip.shadow." + id, objs);
 		}
 
 	}
@@ -148,7 +148,7 @@ public class CoPLangData {
 		public MutableComponent get(Object... objs) {
 			if (objs.length != count)
 				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + "." + id, objs);
+			return translate(CurseOfPandora.MODID + ".tooltip.elemental." + id, objs);
 		}
 
 	}
@@ -172,6 +172,10 @@ public class CoPLangData {
 		for (var id : Elemental.values()) {
 			pvd.add(CurseOfPandora.MODID + ".tooltip.elemental." + id.id, id.def);
 		}
+		pvd.add("death.attack.shadow_curse", "%s is cursed by shadow");
+		pvd.add("death.attack.shadow_curse.player", "%s is cursed by %s's shadow");
+		pvd.add("death.attack.void_curse", "%s is cursed by shadow");
+		pvd.add("death.attack.void_curse.player", "%s is cursed by %s's shadow");
 	}
 
 	public static String asId(String name) {

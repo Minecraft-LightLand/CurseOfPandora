@@ -68,6 +68,7 @@ public class CurseOfPandora {
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		event.getGenerator().addProvider(gen, new CoPConfigGen(event.getGenerator()));
+		new CoPDamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
 	}
 
 }
