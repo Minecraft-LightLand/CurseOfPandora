@@ -57,6 +57,12 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 				.withStyle(pass ? ChatFormatting.BLUE : ChatFormatting.DARK_GRAY));
 	}
 
+	@Override
+	public void tick(Player player) {
+		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+			super.tick(player);
+	}
+
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 

@@ -30,8 +30,7 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 	}
 
 	public static boolean check(Player player, int reality) {
-		if (ConditionalData.HOLDER.get(player).getData(item().getKey()) != null &&
-				player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (ConditionalData.HOLDER.get(player).getData(item().getKey()) != null)
 			return true;
 		return player.level().canSeeSky(player.blockPosition()) &&
 				player.getAttributeValue(CoPMisc.REALITY.get()) >= reality;
@@ -54,12 +53,18 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 	}
 
 	@Override
+	public void tick(Player player) {
+		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+			super.tick(player);
+	}
+
+	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(CoPLangData.IDS.ANGELIC_PUNISHMENT_1.get())
-				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
+				.withStyle(pass ? ChatFormatting.GOLD : ChatFormatting.DARK_GRAY));
 		list.add(Component.literal("- ").append(CoPLangData.IDS.ANGELIC_PUNISHMENT_2.get(
 				Math.round(getDamageBase() * 100), Math.round(getCoolDown() / 20d)
 		)).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));

@@ -2,6 +2,7 @@ package dev.xkmc.curseofpandora.event;
 
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -24,7 +25,11 @@ public class PandoraAttackListener implements AttackListener {
 
 	@Override
 	public void onAttack(AttackCache cache, ItemStack weapon) {
-
+		var event = cache.getLivingAttackEvent();
+		assert event != null;
+		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
+			return;
+		}
 		if (cache.getAttacker() instanceof Player player) {
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
@@ -43,6 +48,11 @@ public class PandoraAttackListener implements AttackListener {
 
 	@Override
 	public void onHurt(AttackCache cache, ItemStack weapon) {
+		var event = cache.getLivingHurtEvent();
+		assert event != null;
+		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
+			return;
+		}
 		if (cache.getAttacker() instanceof Player player) {
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
@@ -61,6 +71,11 @@ public class PandoraAttackListener implements AttackListener {
 
 	@Override
 	public void onDamage(AttackCache cache, ItemStack weapon) {
+		var event = cache.getLivingDamageEvent();
+		assert event != null;
+		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
+			return;
+		}
 		if (cache.getAttacker() instanceof Player player) {
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {

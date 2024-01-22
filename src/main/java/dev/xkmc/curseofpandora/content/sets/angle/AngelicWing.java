@@ -42,6 +42,12 @@ public class AngelicWing extends ITokenProviderItem<AngelicWing.Data> {
 				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
+	@Override
+	public void tick(Player player) {
+		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+			super.tick(player);
+	}
+
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 

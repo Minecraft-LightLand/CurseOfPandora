@@ -133,7 +133,7 @@ public class CoPConfig {
 				angelicBlessRealityIndex = builder.comment("Reality Index requirement for Angelic Bless")
 						.defineInRange("angelicBlessRealityIndex", 4, 0, 7);
 				angelicBlessDamageReduction = builder.comment("Angelic Bless total damage reduction")
-						.defineInRange("angelicBlessDamageReduction", 0.2, 0, 1);
+						.defineInRange("angelicBlessDamageReduction", 0.25, 0, 1);
 				angelicBlessAbsorption = builder.comment("Angelic Bless damage absorption")
 						.defineInRange("angelicBlessAbsorption", 1d, 0, 100);
 				angelicDescentRealityIndex = builder.comment("Reality Index requirement for Angelic Descent")
