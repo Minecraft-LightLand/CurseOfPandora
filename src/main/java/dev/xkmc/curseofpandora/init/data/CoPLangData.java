@@ -172,6 +172,8 @@ public class CoPLangData {
 		for (var id : Elemental.values()) {
 			pvd.add(CurseOfPandora.MODID + ".tooltip.elemental." + id.id, id.def);
 		}
+		pvd.add("death.attack.soul_curse", "%s is cursed by evil souls");
+		pvd.add("death.attack.soul_curse.player", "%s is cursed by %s's evil souls");
 		pvd.add("death.attack.shadow_curse", "%s is cursed by shadow");
 		pvd.add("death.attack.shadow_curse.player", "%s is cursed by %s's shadow");
 		pvd.add("death.attack.void_curse", "%s is cursed by shadow");

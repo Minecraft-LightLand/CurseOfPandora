@@ -30,6 +30,8 @@
   "curseofpandora.tooltip.misc.reality": "When you have at least %s Reality Index:",
   "death.attack.shadow_curse": "%s is cursed by shadow",
   "death.attack.shadow_curse.player": "%s is cursed by %s's shadow",
+  "death.attack.soul_curse": "%s is cursed by evil souls",
+  "death.attack.soul_curse.player": "%s is cursed by %s's evil souls",
   "death.attack.void_curse": "%s is cursed by shadow",
   "death.attack.void_curse.player": "%s is cursed by %s's shadow",
   "effect.curseofpandora.prudence": "Prudence",

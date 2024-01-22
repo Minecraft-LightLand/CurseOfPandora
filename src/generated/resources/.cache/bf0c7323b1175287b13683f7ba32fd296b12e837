@@ -1,6 +1,6 @@
-// 1.20.1	2024-01-23T06:33:31.626997	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-635c5daf90bc4328b293d0bb4693a377cbc459a7 assets/curseofpandora/lang/en_ud.json
-1a1c6a9e6c1cb5fa48d42e2c74271c81362896d4 assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-01-23T06:47:33.157836	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+5d0a95a22aebad0b33dbf7f8ac049ca620ab5361 assets/curseofpandora/lang/en_ud.json
+f0d5916797916c4eef27cf7cf7b6dee19f4b2978 assets/curseofpandora/lang/en_us.json
 ee44b4df5dd60e5aec209a4d4e49a54793c12dc2 assets/curseofpandora/models/item/angelic_bless.json
 c76acfeacfdb7dda82312c93fa6615b73832edb6 assets/curseofpandora/models/item/angelic_descent.json
 b8c82c4a6204cacd3a637a5fd9cc9487fc24a409 assets/curseofpandora/models/item/angelic_protection.json

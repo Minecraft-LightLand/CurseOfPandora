@@ -104,6 +104,8 @@
 	"reality.desc": "免疫现实指数低于词条等级的来源的伤害"
   },
   "death.attack": {
+	"soul_curse": "%s被怨魂咒死了",
+	"soul_curse.player": "%s被%s的怨魂咒死了",
 	"shadow_curse": "%s被阴影咒死了",
 	"shadow_curse.player": "%s被%s的阴影咒死了",
 	"void_curse": "%s被阴影咒死了",

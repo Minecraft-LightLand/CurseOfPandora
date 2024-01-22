@@ -18,11 +18,14 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import java.util.concurrent.CompletableFuture;
 
 public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
+	public static final ResourceKey<DamageType> SOUL_CURSE = create("soul_curse");
 	public static final ResourceKey<DamageType> SHADOW_CURSE = create("shadow_curse");
 	public static final ResourceKey<DamageType> VOID_CURSE = create("void_curse");
 
 	public CoPDamageTypeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, CurseOfPandora.MODID);
+		new DamageTypeHolder(SOUL_CURSE, new DamageType("soul_curse", DamageScaling.NEVER, 0.1F))
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 		new DamageTypeHolder(SHADOW_CURSE, new DamageType("shadow_curse", DamageScaling.NEVER, 0.1F))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 		new DamageTypeHolder(VOID_CURSE, new DamageType("void_curse", DamageScaling.NEVER, 0.1F))
