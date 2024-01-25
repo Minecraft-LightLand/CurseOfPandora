@@ -47,7 +47,19 @@
 	"angelic_punishment": "神罚之印",
 	"hellfire_skull": "燃魂颅骨",
 	"hellfire_reformation": "浴火塑形",
-	"eye_of_cursed_souls": "咒怨之眼"
+	"eye_of_cursed_souls": "咒怨之眼",
+	"cursed_soul_crystal": "死灵魂核",
+	"crown_of_demon": "巫妖之证",
+	"shadow_core": "虚影核心",
+	"shadow_convergence": "虚影汇聚",
+	"shadow_consolidation": "虚影化形",
+	"shadow_reformation": "虚影重塑",
+	"void_overflow.png": "虚空溢散",
+	"wind_thrust": "疾风刺",
+	"earth_crush": "磐岩坠",
+	"flaming_explosion": "烈炎爆",
+	"waving_spell": "涌潮咒",
+	"curse_redirection": "逆魔符"
   },
   "curseofpandora.tooltip": {
 	"misc": {
@@ -84,6 +96,12 @@
 	  "reformation_1": "你免疫魂火伤害，但是即使有净化也不免疫魂火效果",
 	  "reformation_2": "你对生物造成伤害时，那个生物获得和你相同等级和时长的魂火效果",
 	  "eye": "你对生物造成伤害时，那个生物对%s格内的怪物造成少量魔法伤害。触发间隔%s秒"
+	},
+	"shadow": {
+	},
+	"elemental": {
+	  "earth": "只当玩家攻击速度在%s及以下时生效",
+	  "waving": "只当玩家在水中或雨中时生效"
 	}
   },
   "effect.curseofpandora": {

@@ -10,6 +10,8 @@ import dev.xkmc.pandora.init.data.PandoraLangData;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
@@ -19,21 +21,24 @@ import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
 public class AttributeItem extends CurioItem implements ICapItem<AttributeItem.Data> {
 
-	public static AttributeEntry add(Supplier<Attribute> attr, String name, double val) {
+	public static AttributeEntry add(Supplier<Attribute> attr, String name, DoubleSupplier val) {
 		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.ADDITION);
 	}
 
-	public static AttributeEntry multBase(Supplier<Attribute> attr, String name, double val) {
+	public static AttributeEntry multBase(Supplier<Attribute> attr, String name, DoubleSupplier val) {
 		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.MULTIPLY_BASE);
 	}
 
-	public static AttributeEntry multTotal(Supplier<Attribute> attr, String name, double val) {
+	public static AttributeEntry multTotal(Supplier<Attribute> attr, String name, DoubleSupplier val) {
 		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	}
 
@@ -55,11 +60,11 @@ public class AttributeItem extends CurioItem implements ICapItem<AttributeItem.D
 		return new Data(this, stack);
 	}
 
-	public record AttributeEntry(Supplier<Attribute> attr, String name, double val,
+	public record AttributeEntry(Supplier<Attribute> attr, String name, DoubleSupplier val,
 								 AttributeModifier.Operation op) {
 
 		public void modify(UUID uuid, Multimap<Attribute, AttributeModifier> ans) {
-			ans.put(attr.get(), new AttributeModifier(uuid, name, val, op));
+			ans.put(attr.get(), new AttributeModifier(uuid, name, val.getAsDouble(), op));
 		}
 
 	}
@@ -82,15 +87,33 @@ public class AttributeItem extends CurioItem implements ICapItem<AttributeItem.D
 
 		@Override
 		public List<Component> getAttributesTooltip(List<Component> tooltips) {
+			Map<String, Integer> map = new HashMap<>();
+			for (int i = 0; i < tooltips.size(); i++) {
+				var txt = tooltips.get(i);
+				if (txt.getContents() instanceof TranslatableContents tr) {
+					var args = tr.getArgs();
+					if (args.length == 2  && args[1] instanceof MutableComponent comp) {
+						if (comp.getContents() instanceof TranslatableContents sub) {
+							map.put(sub.getKey(), i);
+						}
+					}
+				}
+			}
 			for (int i = 0; i < item.entries.length; i++) {
 				var ent = item.entries[i];
+				double val = ent.val.getAsDouble();
+				MutableComponent rep = null;
 				if (AttrAdder.isMult(ent.attr.get())) {
-					tooltips.set(i + 2, AttrAdder.getDesc(ent.attr.get(), ent.val(), ent.op())
-							.withStyle(ChatFormatting.BLUE));
+					rep = AttrAdder.getDesc(ent.attr.get(), val, ent.op());
 				}
 				if (ent.attr.get() == CoPMisc.REDUCTION.get()) {
-					tooltips.set(i + 2, AttrAdder.getDesc(ent.attr.get(), ent.val(), ent.op())
-							.withStyle(ChatFormatting.BLUE));
+					rep = AttrAdder.getDesc(ent.attr.get(), val, ent.op());
+				}
+				if (rep != null) {
+					Integer index = map.get(ent.attr.get().getDescriptionId());
+					if (index != null) {
+						tooltips.set(index, rep.withStyle(ChatFormatting.BLUE));
+					}
 				}
 			}
 			return tooltips;

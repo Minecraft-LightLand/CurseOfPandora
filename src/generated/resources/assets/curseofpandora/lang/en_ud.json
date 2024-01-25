@@ -23,6 +23,8 @@
   "curseofpandora.tooltip.curse.spell_3": "%s%% :pɐoן ןןǝds ɯǝʇI",
   "curseofpandora.tooltip.curse.tension_1": "˙sןǝʌǝן %s ʇsoɯ ʇɐ oʇ buıʞɔɐʇs 'spuoɔǝs %s ɹoɟ %s%% ʎq ʇı oʇ ǝbɐɯɐp ɹnoʎ ǝsɐǝɹɔuı uǝɥʇ 'ǝɹnʇɐɯ oʇ spuoɔǝs %s ǝʞɐʇ suǝʞo⟘ ˙ʇı uo uǝʞo⟘ ɹoɹɹǝ⟘ ɐ ǝɔɐןd 'ʇǝbɹɐʇ ɐ ʇıɥ noʎ uǝɥM",
   "curseofpandora.tooltip.curse.tension_2": "spuoɔǝs %s ɹoɟ ʇǝbɹɐʇ ʇɐɥʇ oʇ ǝbɐɯɐp ןɐǝp ʇouuɐɔ noʎ puɐ 'sʞɐǝɹq noʎ ɯoɹɟ uǝʞo⟘ ɹoɹɹǝ⟘ ןןɐ 'ɥʇןɐǝɥ ʇuǝɹɹnɔ ɹnoʎ ɟo %s%% uɐɥʇ ɹǝɥbıɥ ǝbɐɯɐp ɐ noʎ sןɐǝp qoɯ ɐ uǝɥM",
+  "curseofpandora.tooltip.elemental.earth": "ɹǝʍoן ɹo %s sı pǝǝds ʞɔɐʇʇɐ ɹǝʎɐןd uǝɥʍ ʎןuo ǝʌıʇɔǝɟɟƎ",
+  "curseofpandora.tooltip.elemental.waving": "uıɐɹ ɹo ɹǝʇɐʍ uı sı ɹǝʎɐןd uǝɥʍ ʎןuo ǝʌıʇɔǝɟɟƎ",
   "curseofpandora.tooltip.hell.eye": "˙spuoɔǝs %s ɟo uʍop ןooɔ ɐ sɐH ˙sʞɔoןq %s uıɥʇıʍ ʇı punoɹɐ sɹǝʇsuoɯ ןןɐ oʇ ǝbɐɯɐp ɔıbɐɯ ןןɐɯs ɐ ןɐǝp ןןıʍ ʇǝbɹɐʇ ǝɥʇ 'ʇǝbɹɐʇ ɐ ǝbɐɯɐp noʎ uǝɥM",
   "curseofpandora.tooltip.hell.reformation_1": " ˙ʇɔǝɟɟǝ pǝsuɐǝןƆ ǝʌɐɥ noʎ uǝɥʍ uǝʌǝ ʇɔǝɟɟǝ ǝɥʇ oʇ ǝunɯɯı ʇou ǝɹɐ noʎ ʇnq 'ǝbɐɯɐp ǝɯɐןℲ ןnoS oʇ ǝunɯɯı ǝɹɐ noʎ",
   "curseofpandora.tooltip.hell.reformation_2": "ǝɯɐןℲ ןnoS ɟo uoıʇɐɹnp puɐ ןǝʌǝן ǝɯɐs ɥʇıʍ ʇǝbɹɐʇ ǝɥʇ ʇɔıןɟuı 'ʇɔǝɟɟǝ ǝɯɐןℲ ןnoS ǝuo ǝɹɐ noʎ ǝןıɥʍ sʇǝbɹɐʇ oʇ ǝbɐɯɐp ןɐǝp noʎ uǝɥM",
@@ -72,7 +74,9 @@
   "item.curseofpandora.curse_of_prudence": "ǝɔuǝpnɹԀ ɟO ǝsɹnƆ",
   "item.curseofpandora.curse_of_spell": "ןןǝdS ɟO ǝsɹnƆ",
   "item.curseofpandora.curse_of_tension": "uoısuǝ⟘ ɟO ǝsɹnƆ",
+  "item.curseofpandora.earth_crush": "ɥsnɹƆ ɥʇɹɐƎ",
   "item.curseofpandora.eye_of_cursed_souls": "sןnoS pǝsɹnƆ ɟo ǝʎƎ",
+  "item.curseofpandora.flaming_explosion": "uoısoןdxƎ buıɯɐןℲ",
   "item.curseofpandora.golden_heart": "ʇɹɐǝH uǝpןo⅁",
   "item.curseofpandora.hellfire_reformation": "uoıʇɐɯɹoɟǝᴚ ǝɹıɟןןǝH",
   "item.curseofpandora.hellfire_skull": "ןןnʞS ǝɹıɟןןǝH",
@@ -92,6 +96,7 @@
   "item.curseofpandora.orb_of_projectile_rejection": "uoıʇɔǝظǝᴚ ǝןıʇɔǝظoɹԀ ɟo qɹO",
   "item.curseofpandora.orb_of_stability": "ʎʇıןıqɐʇS ɟo qɹO",
   "item.curseofpandora.plain_charm": "ɯɹɐɥƆ uıɐןԀ",
+  "item.curseofpandora.waving_spell": "ןןǝdS buıʌɐM",
   "trait.curseofpandora.reality": "ʎʇıןɐǝᴚ",
   "trait.curseofpandora.reality.desc": "˙ʇıɐɹʇ sıɥʇ ɟo ʞuɐɹ uɐɥʇ xǝpuı ʎʇıןɐǝɹ ssǝן ןןıʍ sǝıʇıʇuǝ ɯoɹɟ ǝbɐɯɐp oʇ ǝunɯɯI"
 }

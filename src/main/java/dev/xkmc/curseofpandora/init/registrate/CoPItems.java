@@ -6,10 +6,14 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
+import dev.xkmc.curseofpandora.content.sets.elemental.EarthCrush;
+import dev.xkmc.curseofpandora.content.sets.elemental.FlamingExplosion;
+import dev.xkmc.curseofpandora.content.sets.elemental.WavingSpell;
 import dev.xkmc.curseofpandora.content.sets.hell.EyeOfCursedSoul;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireReformation;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireSkull;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.content.feature.CurioFeaturePredicate;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
@@ -57,6 +61,9 @@ public class CoPItems {
 	public static final ItemEntry<HellfireSkull> HELLFIRE_SKULL;
 	public static final ItemEntry<HellfireReformation> HELLFIRE_REFORMATION;
 	public static final ItemEntry<EyeOfCursedSoul> EYE_OF_CURSED_SOULS;
+	public static final ItemEntry<EarthCrush> EARTH_CRUSH;
+	public static final ItemEntry<FlamingExplosion> FLAMING_EXPLOSION;
+	public static final ItemEntry<WavingSpell> WAVING_SPELL;
 
 
 	static {
@@ -173,50 +180,50 @@ public class CoPItems {
 
 		{
 			CHARM_HEALTH = item("charm_of_health", p -> new AttributeItem(p,
-					AttributeItem.add(() -> Attributes.MAX_HEALTH, "charm_of_health", 2)))
+					AttributeItem.add(() -> Attributes.MAX_HEALTH, "charm_of_health", CoPConfig.COMMON.attr.charmOfHealth::get)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_ARMOR = item("charm_of_armor", p -> new AttributeItem(p,
-					AttributeItem.add(() -> Attributes.ARMOR, "charm_of_armor", 2),
-					AttributeItem.add(() -> Attributes.ARMOR_TOUGHNESS, "charm_of_armor", 1)
+					AttributeItem.add(() -> Attributes.ARMOR, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmor::get),
+					AttributeItem.add(() -> Attributes.ARMOR_TOUGHNESS, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmorToughness::get)
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_SPEED = item("charm_of_speed", p -> new AttributeItem(p,
-					AttributeItem.multBase(() -> Attributes.MOVEMENT_SPEED, "charm_of_speed", 0.05)))
+					AttributeItem.multBase(() -> Attributes.MOVEMENT_SPEED, "charm_of_speed", CoPConfig.COMMON.attr.charmOfSpeed::get)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_DAMAGE = item("charm_of_damage", p -> new AttributeItem(p,
-					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_damage", 0.05)))
+					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_damage", CoPConfig.COMMON.attr.charmOfDamage::get)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_CRIT = item("charm_of_critical", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "charm_of_critical", 0.05)))
+					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "charm_of_critical", CoPConfig.COMMON.attr.charmOfCritical::get)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_BOW = item("charm_of_archery", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.BOW_STRENGTH::get, "charm_of_archery", 0.05)))
+					AttributeItem.add(L2DamageTracker.BOW_STRENGTH::get, "charm_of_archery", CoPConfig.COMMON.attr.charmOfArchery::get)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_HEAVY = item("charm_of_heavy_weapon", p -> new AttributeItem(p,
-					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_heavy_weapon", 1),
-					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_heavy_weapon", -2)
+					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_heavy_weapon", CoPConfig.COMMON.attr.charmOfHeavyWeapon::get),
+					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_heavy_weapon", () -> -CoPConfig.COMMON.attr.charmOfHeavyWeaponSlow.get())
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_ACCURACY = item("charm_of_accuracy", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", 0.2),
-					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", -0.5)
+					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", CoPConfig.COMMON.attr.charmOfAccuracy::get),
+					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", () -> -CoPConfig.COMMON.attr.charmOfAccuracySlow.get())
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
-					AttributeItem.multBase(CoPMisc.REDUCTION, "charm_of_protection", -0.04)))
+					AttributeItem.multBase(CoPMisc.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR::get, "charm_of_magic", 0.1)))
+					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR::get, "charm_of_magic", CoPConfig.COMMON.attr.charmOfMagic::get)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", 0.1)))
+					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", CoPConfig.COMMON.attr.charmOfExplosion::get)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 		}
@@ -268,6 +275,13 @@ public class CoPItems {
 			EYE_OF_CURSED_SOULS = item("eye_of_cursed_souls", EyeOfCursedSoul::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE)
 					.lang("Eye of Cursed Souls").register();
+
+			EARTH_CRUSH = item("earth_crush",EarthCrush::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			FLAMING_EXPLOSION = item("flaming_explosion", FlamingExplosion::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			WAVING_SPELL = item("waving_spell", WavingSpell::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 		}
 
 	}

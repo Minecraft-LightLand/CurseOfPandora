@@ -17,6 +17,44 @@ public class CoPConfig {
 
 	public static class Common {
 
+		public static class Attr {
+
+			public final ForgeConfigSpec.DoubleValue charmOfHealth;
+			public final ForgeConfigSpec.DoubleValue charmOfArmor;
+			public final ForgeConfigSpec.DoubleValue charmOfArmorToughness;
+			public final ForgeConfigSpec.DoubleValue charmOfSpeed;
+			public final ForgeConfigSpec.DoubleValue charmOfDamage;
+			public final ForgeConfigSpec.DoubleValue charmOfCritical;
+			public final ForgeConfigSpec.DoubleValue charmOfArchery;
+			public final ForgeConfigSpec.DoubleValue charmOfHeavyWeapon;
+			public final ForgeConfigSpec.DoubleValue charmOfHeavyWeaponSlow;
+			public final ForgeConfigSpec.DoubleValue charmOfAccuracy;
+			public final ForgeConfigSpec.DoubleValue charmOfAccuracySlow;
+			public final ForgeConfigSpec.DoubleValue charmOfProtection;
+			public final ForgeConfigSpec.DoubleValue charmOfMagic;
+			public final ForgeConfigSpec.DoubleValue charmOfExplosion;
+
+			private Attr(ForgeConfigSpec.Builder builder) {
+				builder.push("AttributeCharms");
+				charmOfHealth = builder.defineInRange("charmOfHealth", 2d, 0, 100);
+				charmOfArmor = builder.defineInRange("charmOfArmor", 2d, 0, 100);
+				charmOfArmorToughness = builder.defineInRange("charmOfArmorToughness", 1d, 0, 100);
+				charmOfSpeed = builder.defineInRange("charmOfSpeed", 0.05, 0, 10);
+				charmOfDamage = builder.defineInRange("charmOfDamage", 0.05, 0, 10);
+				charmOfCritical = builder.defineInRange("charmOfCritical", 0.05, 0, 10);
+				charmOfArchery = builder.defineInRange("charmOfArchery", 0.05, 0, 10);
+				charmOfHeavyWeapon = builder.defineInRange("charmOfHeavyWeapon", 1d, 0, 100);
+				charmOfHeavyWeaponSlow = builder.defineInRange("charmOfHeavyWeaponSlow", 2d, 0, 10);
+				charmOfAccuracy = builder.defineInRange("charmOfAccuracy", 0.2, 0, 10);
+				charmOfAccuracySlow = builder.defineInRange("charmOfAccuracySlow", 0.5, 0, 10);
+				charmOfProtection = builder.defineInRange("charmOfProtection", 0.04, 0, 1);
+				charmOfMagic = builder.defineInRange("charmOfMagic", 0.1, 0, 10);
+				charmOfExplosion = builder.defineInRange("charmOfExplosion", 0.1, 0, 10);
+				builder.pop();
+			}
+
+		}
+
 		public static class Curse {
 
 			// reality
@@ -208,26 +246,61 @@ public class CoPConfig {
 			}
 		}
 
+		public static class Shadow {
+
+			private Shadow(ForgeConfigSpec.Builder builder) {
+				builder.push("Shadow");
+				builder.pop();
+			}
+
+		}
+
+		public static class Elemental {
+
+			public final ForgeConfigSpec.IntValue earthCrushRealityIndex;
+			public final ForgeConfigSpec.DoubleValue earthCrushThreshold;
+			public final ForgeConfigSpec.DoubleValue earthCrushBonus;
+			public final ForgeConfigSpec.IntValue flamingExplosionRealityIndex;
+			public final ForgeConfigSpec.DoubleValue flamingExplosionBonus;
+
+			public final ForgeConfigSpec.IntValue wavingSpellRealityIndex;
+			public final ForgeConfigSpec.DoubleValue wavingSpellBonus;
+
+			private Elemental(ForgeConfigSpec.Builder builder) {
+				builder.push("Elemental");
+				earthCrushRealityIndex = builder.comment("Reality Index requirement for Earth Crush")
+						.defineInRange("earthCrushRealityIndex", 4, 0, 7);
+				earthCrushThreshold = builder.comment("Attack speed threshold for Earth Crush")
+						.defineInRange("earthCrushThreshold", 1d, 0, 4);
+				earthCrushBonus = builder.comment("Explosion damage bonus for Earth Crush")
+						.defineInRange("earthCrushBonus", 1d, 0, 100);
+				flamingExplosionRealityIndex = builder.comment("Reality Index requirement for Flaming Explosion")
+						.defineInRange("flamingExplosionRealityIndex", 4, 0, 7);
+				flamingExplosionBonus = builder.comment("Explosion damage bonus for Flaming Explosion")
+						.defineInRange("flamingExplosionBonus", 1d, 0, 100);
+				wavingSpellRealityIndex = builder.comment("Reality Index requirement for Waving Spell")
+						.defineInRange("wavingSpellRealityIndex", 4, 0, 7);
+				wavingSpellBonus = builder.comment("Explosion damage bonus for Waving Spell")
+						.defineInRange("wavingSpellBonus", 1d, 0, 100);
+				builder.pop();
+			}
+
+		}
+
+		public final Attr attr;
 		public final Curse curse;
 		public final Angelic angelic;
 		public final Hell hell;
+		public final Shadow shadow;
+		public final Elemental elemental;
 
 		Common(ForgeConfigSpec.Builder builder) {
+			this.attr = new Attr(builder);
 			this.curse = new Curse(builder);
 			this.angelic = new Angelic(builder);
 			this.hell = new Hell(builder);
-
-
-			builder.push("Shadow");
-			{
-
-			}
-			builder.pop();
-			{
-
-			}
-			builder.push("Elemental");
-
+			this.shadow = new Shadow(builder);
+			this.elemental = new Elemental(builder);
 		}
 
 	}
