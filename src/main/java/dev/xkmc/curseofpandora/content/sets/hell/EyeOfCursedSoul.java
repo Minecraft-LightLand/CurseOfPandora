@@ -29,15 +29,15 @@ import java.util.List;
 public class EyeOfCursedSoul extends ITokenProviderItem<EyeOfCursedSoul.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.eyeOfCursedSoulRealityIndex.get();
+		return CoPConfig.COMMON.hell.eyeOfCursedSoulRealityIndex.get();
 	}
 
 	public static int getCoolDown() {
-		return CoPConfig.COMMON.eyeOfCursedSoulCoolDown.get();
+		return CoPConfig.COMMON.hell.eyeOfCursedSoulCoolDown.get();
 	}
 
 	public static double getRange() {
-		return CoPConfig.COMMON.eyeOfCursedSoulRange.get();
+		return CoPConfig.COMMON.hell.eyeOfCursedSoulRange.get();
 	}
 
 	public EyeOfCursedSoul(Properties properties) {

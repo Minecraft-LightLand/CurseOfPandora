@@ -29,15 +29,15 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static double getCap() {
-		return CoPConfig.COMMON.curseOfInertiaCap.get();
+		return CoPConfig.COMMON.curse.curseOfInertiaCap.get();
 	}
 
 	private static double getBase() {
-		return CoPConfig.COMMON.curseOfInertiaBase.get();
+		return CoPConfig.COMMON.curse.curseOfInertiaBase.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curseOfFleshBonus.get();
+		return CoPConfig.COMMON.curse.curseOfFleshBonus.get();
 	}
 
 	public CurseOfInertiaItem(Properties properties) {

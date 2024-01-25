@@ -32,19 +32,19 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 	public static final SlotAdder ADDER = SlotAdder.of("curse_of_prudence", "charm", 3);
 
 	public static int getMaxLevel() {
-		return CoPConfig.COMMON.curseOfPrudenceMaxLevel.get();
+		return CoPConfig.COMMON.curse.curseOfPrudenceMaxLevel.get();
 	}
 
 	public static double getDamageFactor() {
-		return CoPConfig.COMMON.curseOfPrudenceDamageFactor.get();
+		return CoPConfig.COMMON.curse.curseOfPrudenceDamageFactor.get();
 	}
 
 	public static int getDuration() {
-		return CoPConfig.COMMON.curseOfPrudenceDuration.get();
+		return CoPConfig.COMMON.curse.curseOfPrudenceDuration.get();
 	}
 
 	public static double getMaxHurtDamage() {
-		return CoPConfig.COMMON.curseOfPrudenceMaxDamage.get();
+		return CoPConfig.COMMON.curse.curseOfPrudenceMaxDamage.get();
 	}
 
 	public CurseOfPrudenceItem(Properties properties) {

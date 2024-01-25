@@ -22,7 +22,6 @@ import dev.xkmc.pandora.init.data.PandoraTagGen;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 
@@ -174,64 +173,50 @@ public class CoPItems {
 
 		{
 			CHARM_HEALTH = item("charm_of_health", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, "charm_of_health",
-							2, AttributeModifier.Operation.ADDITION))))
+					AttributeItem.add(() -> Attributes.MAX_HEALTH, "charm_of_health", 2)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_ARMOR = item("charm_of_armor", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(Attributes.ARMOR, new AttributeModifier(uuid, "charm_of_armor",
-							2, AttributeModifier.Operation.ADDITION)),
-					(uuid, map) -> map.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "charm_of_armor",
-							1, AttributeModifier.Operation.ADDITION))
+					AttributeItem.add(() -> Attributes.ARMOR, "charm_of_armor", 2),
+					AttributeItem.add(() -> Attributes.ARMOR_TOUGHNESS, "charm_of_armor", 1)
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_SPEED = item("charm_of_speed", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, "charm_of_speed",
-							0.05, AttributeModifier.Operation.MULTIPLY_BASE))))
+					AttributeItem.multBase(() -> Attributes.MOVEMENT_SPEED, "charm_of_speed", 0.05)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_DAMAGE = item("charm_of_damage", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, "charm_of_damage",
-							0.05, AttributeModifier.Operation.MULTIPLY_BASE))))
+					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_damage", 0.05)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_CRIT = item("charm_of_critical", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(L2DamageTracker.CRIT_DMG.get(), new AttributeModifier(uuid, "charm_of_critical",
-							0.05, AttributeModifier.Operation.ADDITION))))
+					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "charm_of_critical", 0.05)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_BOW = item("charm_of_archery", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(L2DamageTracker.BOW_STRENGTH.get(), new AttributeModifier(uuid, "charm_of_archery",
-							0.05, AttributeModifier.Operation.ADDITION))))
+					AttributeItem.add(L2DamageTracker.BOW_STRENGTH::get, "charm_of_archery", 0.05)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_HEAVY = item("charm_of_heavy_weapon", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, "charm_of_heavy_weapon",
-							1, AttributeModifier.Operation.MULTIPLY_BASE)),
-					(uuid, map) -> map.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, "charm_of_heavy_weapon",
-							-2, AttributeModifier.Operation.ADDITION))
+					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_heavy_weapon", 1),
+					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_heavy_weapon", -2)
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_ACCURACY = item("charm_of_accuracy", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(L2DamageTracker.CRIT_RATE.get(), new AttributeModifier(uuid, "charm_of_accuracy",
-							0.2, AttributeModifier.Operation.ADDITION)),
-					(uuid, map) -> map.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, "charm_of_accuracy",
-							-0.5, AttributeModifier.Operation.ADDITION))
+					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", 0.2),
+					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", -0.5)
 			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(CoPMisc.REDUCTION.get(), new AttributeModifier(uuid, "charm_of_protection",
-							-0.04, AttributeModifier.Operation.MULTIPLY_BASE))))
+					AttributeItem.multBase(CoPMisc.REDUCTION, "charm_of_protection", -0.04)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(L2DamageTracker.MAGIC_FACTOR.get(), new AttributeModifier(uuid, "charm_of_magic",
-							0.1, AttributeModifier.Operation.ADDITION))))
+					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR::get, "charm_of_magic", 0.1)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
-					(uuid, map) -> map.put(L2DamageTracker.EXPLOSION_FACTOR.get(), new AttributeModifier(uuid, "charm_of_explosion",
-							0.1, AttributeModifier.Operation.ADDITION))))
+					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", 0.1)))
 					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
 
 		}

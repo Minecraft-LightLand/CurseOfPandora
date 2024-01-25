@@ -23,7 +23,7 @@ import java.util.List;
 public class AngelicWing extends ITokenProviderItem<AngelicWing.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.angelicWingRealityIndex.get();
+		return CoPConfig.COMMON.angelic.angelicWingRealityIndex.get();
 	}
 
 	public AngelicWing(Properties properties) {
@@ -76,8 +76,8 @@ public class AngelicWing extends ITokenProviderItem<AngelicWing.Data> {
 		@Override
 		protected void tickImpl(Player player) {
 			if (!check(player)) return;
-			double boost = CoPConfig.COMMON.angelicWingBoost.get();
-			double max = CoPConfig.COMMON.angelicWingMaxSpeed.get();
+			double boost = CoPConfig.COMMON.angelic.angelicWingBoost.get();
+			double max = CoPConfig.COMMON.angelic.angelicWingMaxSpeed.get();
 			int req = getIndexReq();
 			if (player.getAttributeValue(CoPMisc.REALITY.get()) < req) return;
 			if (player.isFallFlying()) {

@@ -17,64 +17,39 @@ public class CoPConfig {
 
 	public static class Common {
 
-		// reality
-		public final ForgeConfigSpec.DoubleValue curseOfInertiaCap;
-		public final ForgeConfigSpec.DoubleValue curseOfInertiaBase;
-		public final ForgeConfigSpec.DoubleValue curseOfInertiaBonus;
-		public final ForgeConfigSpec.DoubleValue curseOfProximityCap;
-		public final ForgeConfigSpec.DoubleValue curseOfProximityBase;
-		public final ForgeConfigSpec.DoubleValue curseOfProximityBonus;
-		public final ForgeConfigSpec.IntValue curseOfFleshThreshold;
-		public final ForgeConfigSpec.IntValue curseOfFleshDuration;
-		public final ForgeConfigSpec.DoubleValue curseOfFleshBonus;
-		public final ForgeConfigSpec.IntValue curseOfMetabolismThreshold;
-		public final ForgeConfigSpec.DoubleValue curseOfMetabolismFactor;
-		public final ForgeConfigSpec.DoubleValue curseOfMetabolismBonus;
-		public final ForgeConfigSpec.IntValue curseOfMetabolismIndexReq;
-		public final ForgeConfigSpec.IntValue curseOfTensionPenaltyDuration;
-		public final ForgeConfigSpec.DoubleValue curseOfTensionPenaltyThreshold;
-		public final ForgeConfigSpec.IntValue curseOfTensionTokenMatureTime;
-		public final ForgeConfigSpec.IntValue curseOfTensionTokenEffectiveTime;
-		public final ForgeConfigSpec.DoubleValue curseOfTensionDamageBonus;
-		public final ForgeConfigSpec.IntValue curseOfTensionMaxLevel;
-		public final ForgeConfigSpec.IntValue curseOfPrudenceMaxLevel;
-		public final ForgeConfigSpec.DoubleValue curseOfPrudenceDamageFactor;
-		public final ForgeConfigSpec.IntValue curseOfPrudenceDuration;
-		public final ForgeConfigSpec.DoubleValue curseOfPrudenceMaxDamage;
-		public final ForgeConfigSpec.DoubleValue curseOfSpellLoadFactor;
-		public final ForgeConfigSpec.DoubleValue curseOfSpellDamageFactor;
-		public final ForgeConfigSpec.DoubleValue curseOfSpellWeakenFactor;
+		public static class Curse {
 
-		// angelic
-		public final ForgeConfigSpec.IntValue angelicWingRealityIndex;
-		public final ForgeConfigSpec.DoubleValue angelicWingBoost;
-		public final ForgeConfigSpec.DoubleValue angelicWingMaxSpeed;
-		public final ForgeConfigSpec.IntValue angelicBlessRealityIndex;
-		public final ForgeConfigSpec.DoubleValue angelicBlessDamageReduction;
-		public final ForgeConfigSpec.DoubleValue angelicBlessAbsorption;
-		public final ForgeConfigSpec.IntValue angelicDescentRealityIndex;
-		public final ForgeConfigSpec.DoubleValue angelicDescentMeleeBonus;
-		public final ForgeConfigSpec.DoubleValue angelicDescentUndeadBonus;
-		public final ForgeConfigSpec.IntValue angelicProtectionRealityIndex;
-		public final ForgeConfigSpec.IntValue angelicProtectionCoolDown;
-		public final ForgeConfigSpec.IntValue angelicPunishmentRealityIndex;
-		public final ForgeConfigSpec.IntValue angelicPunishmentCoolDown;
-		public final ForgeConfigSpec.DoubleValue angelicPunishmentDamageBase;
-		public final ForgeConfigSpec.IntValue hellfireSkullRealityIndex;
-		public final ForgeConfigSpec.IntValue hellfireSkullMinimumDuration;
-		public final ForgeConfigSpec.IntValue hellfireReformationRealityIndex;
-		public final ForgeConfigSpec.IntValue eyeOfCursedSoulRealityIndex;
-		public final ForgeConfigSpec.DoubleValue eyeOfCursedSoulRange;
-		public final ForgeConfigSpec.IntValue eyeOfCursedSoulCoolDown;
-		public final ForgeConfigSpec.IntValue cursedSoulCrystalRealityIndex;
-		public final ForgeConfigSpec.IntValue cursedSoulCrystalCoolDown;
-		public final ForgeConfigSpec.DoubleValue cursedSoulCrystalRange;
-		public final ForgeConfigSpec.IntValue crownOfDemonRealityIndex;
-		public final ForgeConfigSpec.IntValue crownOfDemonBaseHealthThreshold;
+			// reality
+			public final ForgeConfigSpec.DoubleValue curseOfInertiaCap;
+			public final ForgeConfigSpec.DoubleValue curseOfInertiaBase;
+			public final ForgeConfigSpec.DoubleValue curseOfInertiaBonus;
+			public final ForgeConfigSpec.DoubleValue curseOfProximityCap;
+			public final ForgeConfigSpec.DoubleValue curseOfProximityBase;
+			public final ForgeConfigSpec.DoubleValue curseOfProximityBonus;
+			public final ForgeConfigSpec.IntValue curseOfFleshThreshold;
+			public final ForgeConfigSpec.IntValue curseOfFleshDuration;
+			public final ForgeConfigSpec.DoubleValue curseOfFleshBonus;
+			public final ForgeConfigSpec.IntValue curseOfMetabolismThreshold;
+			public final ForgeConfigSpec.DoubleValue curseOfMetabolismFactor;
+			public final ForgeConfigSpec.DoubleValue curseOfMetabolismBonus;
+			public final ForgeConfigSpec.IntValue curseOfMetabolismIndexReq;
+			public final ForgeConfigSpec.IntValue curseOfTensionPenaltyDuration;
+			public final ForgeConfigSpec.DoubleValue curseOfTensionPenaltyThreshold;
+			public final ForgeConfigSpec.IntValue curseOfTensionTokenMatureTime;
+			public final ForgeConfigSpec.IntValue curseOfTensionTokenEffectiveTime;
+			public final ForgeConfigSpec.DoubleValue curseOfTensionDamageBonus;
+			public final ForgeConfigSpec.IntValue curseOfTensionMaxLevel;
+			public final ForgeConfigSpec.IntValue curseOfPrudenceMaxLevel;
+			public final ForgeConfigSpec.DoubleValue curseOfPrudenceDamageFactor;
+			public final ForgeConfigSpec.IntValue curseOfPrudenceDuration;
+			public final ForgeConfigSpec.DoubleValue curseOfPrudenceMaxDamage;
+			public final ForgeConfigSpec.DoubleValue curseOfSpellLoadFactor;
+			public final ForgeConfigSpec.DoubleValue curseOfSpellDamageFactor;
+			public final ForgeConfigSpec.DoubleValue curseOfSpellWeakenFactor;
 
-		Common(ForgeConfigSpec.Builder builder) {
-			builder.push("Reality");
-			{
+			private Curse(ForgeConfigSpec.Builder builder) {
+				builder.push("Reality");
+
 				curseOfInertiaCap = builder.comment("Curse of Inertia max attack speed for weapon allowed")
 						.defineInRange("curseOfInertiaCap", 3d, 0, 20);
 				curseOfInertiaBase = builder.comment("Curse of Inertia attack speed threshold for bonus")
@@ -130,11 +105,32 @@ public class CoPConfig {
 				curseOfSpellWeakenFactor = builder.comment("Curse of Spell: player will deal less damage when having spell overload")
 						.comment("Higher number means mob takes less damage")
 						.defineInRange("curseOfSpellWeakenFactor", 1d, 0, 100);
-			}
-			builder.pop();
 
-			builder.push("Angelic");
-			{
+				builder.pop();
+			}
+		}
+
+		public static class Angelic {
+
+			// angelic
+			public final ForgeConfigSpec.IntValue angelicWingRealityIndex;
+			public final ForgeConfigSpec.DoubleValue angelicWingBoost;
+			public final ForgeConfigSpec.DoubleValue angelicWingMaxSpeed;
+			public final ForgeConfigSpec.IntValue angelicBlessRealityIndex;
+			public final ForgeConfigSpec.DoubleValue angelicBlessDamageReduction;
+			public final ForgeConfigSpec.DoubleValue angelicBlessAbsorption;
+			public final ForgeConfigSpec.IntValue angelicDescentRealityIndex;
+			public final ForgeConfigSpec.DoubleValue angelicDescentMeleeBonus;
+			public final ForgeConfigSpec.DoubleValue angelicDescentUndeadBonus;
+			public final ForgeConfigSpec.IntValue angelicProtectionRealityIndex;
+			public final ForgeConfigSpec.IntValue angelicProtectionCoolDown;
+			public final ForgeConfigSpec.IntValue angelicPunishmentRealityIndex;
+			public final ForgeConfigSpec.IntValue angelicPunishmentCoolDown;
+			public final ForgeConfigSpec.DoubleValue angelicPunishmentDamageBase;
+
+			private Angelic(ForgeConfigSpec.Builder builder) {
+				builder.push("Angelic");
+
 				angelicWingRealityIndex = builder.comment("Reality Index requirement for Angelic Wing")
 						.defineInRange("angelicWingRealityIndex", 3, 0, 7);
 				angelicWingBoost = builder.comment("Angelic Wing speed boost in block per tick")
@@ -163,11 +159,28 @@ public class CoPConfig {
 						.defineInRange("angelicPunishmentCoolDown", 20, 0, 6000);
 				angelicPunishmentDamageBase = builder.comment("Angelic Punishment minimum damage in percentage of target current health")
 						.defineInRange("angelicPunishmentDamageBase", 0.05, 0, 1);
-			}
-			builder.pop();
 
-			builder.push("Hell");
-			{
+				builder.pop();
+			}
+		}
+
+		public static class Hell {
+
+			public final ForgeConfigSpec.IntValue hellfireSkullRealityIndex;
+			public final ForgeConfigSpec.IntValue hellfireSkullMinimumDuration;
+			public final ForgeConfigSpec.IntValue hellfireReformationRealityIndex;
+			public final ForgeConfigSpec.IntValue eyeOfCursedSoulRealityIndex;
+			public final ForgeConfigSpec.DoubleValue eyeOfCursedSoulRange;
+			public final ForgeConfigSpec.IntValue eyeOfCursedSoulCoolDown;
+			public final ForgeConfigSpec.IntValue cursedSoulCrystalRealityIndex;
+			public final ForgeConfigSpec.IntValue cursedSoulCrystalCoolDown;
+			public final ForgeConfigSpec.DoubleValue cursedSoulCrystalRange;
+			public final ForgeConfigSpec.IntValue crownOfDemonRealityIndex;
+			public final ForgeConfigSpec.IntValue crownOfDemonBaseHealthThreshold;
+
+			private Hell(ForgeConfigSpec.Builder builder) {
+				builder.push("Hell");
+
 				hellfireSkullRealityIndex = builder.comment("Reality Index requirement for Hellfire Skull")
 						.defineInRange("hellfireSkullRealityIndex", 3, 0, 7);
 				hellfireSkullMinimumDuration = builder.comment("Minimum soul flame effect duration in ticks for Hellfire Skull to work")
@@ -190,8 +203,31 @@ public class CoPConfig {
 						.defineInRange("crownOfDemonRealityIndex", 7, 0, 7);
 				crownOfDemonBaseHealthThreshold = builder.comment("Crown of Demon can command undead mobs with base health lower than:")
 						.defineInRange("crownOfDemonBaseHealthThreshold", 50, 1, 1000000);
+
+				builder.pop();
+			}
+		}
+
+		public final Curse curse;
+		public final Angelic angelic;
+		public final Hell hell;
+
+		Common(ForgeConfigSpec.Builder builder) {
+			this.curse = new Curse(builder);
+			this.angelic = new Angelic(builder);
+			this.hell = new Hell(builder);
+
+
+			builder.push("Shadow");
+			{
+
 			}
 			builder.pop();
+			{
+
+			}
+			builder.push("Elemental");
+
 		}
 
 	}

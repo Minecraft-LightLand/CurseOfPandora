@@ -26,15 +26,15 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getThreshold() {
-		return CoPConfig.COMMON.curseOfFleshThreshold.get();
+		return CoPConfig.COMMON.curse.curseOfFleshThreshold.get();
 	}
 
 	private static int getDuration() {
-		return CoPConfig.COMMON.curseOfFleshDuration.get();
+		return CoPConfig.COMMON.curse.curseOfFleshDuration.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curseOfFleshBonus.get();
+		return CoPConfig.COMMON.curse.curseOfFleshBonus.get();
 	}
 
 	public CurseOfFleshItem(Properties properties) {

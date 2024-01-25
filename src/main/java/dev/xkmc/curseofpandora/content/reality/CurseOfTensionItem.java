@@ -37,27 +37,27 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	public static int getPenaltyDuration() {
-		return CoPConfig.COMMON.curseOfTensionPenaltyDuration.get();
+		return CoPConfig.COMMON.curse.curseOfTensionPenaltyDuration.get();
 	}
 
 	public static double getDamageThreshold() {
-		return CoPConfig.COMMON.curseOfTensionPenaltyThreshold.get();
+		return CoPConfig.COMMON.curse.curseOfTensionPenaltyThreshold.get();
 	}
 
 	public static int getTokenMature() {
-		return CoPConfig.COMMON.curseOfTensionTokenMatureTime.get();
+		return CoPConfig.COMMON.curse.curseOfTensionTokenMatureTime.get();
 	}
 
 	public static int getTokenLife() {
-		return CoPConfig.COMMON.curseOfTensionTokenEffectiveTime.get();
+		return CoPConfig.COMMON.curse.curseOfTensionTokenEffectiveTime.get();
 	}
 
 	public static float getDamageBonus() {
-		return (float) (double) CoPConfig.COMMON.curseOfTensionDamageBonus.get();
+		return (float) (double) CoPConfig.COMMON.curse.curseOfTensionDamageBonus.get();
 	}
 
 	public static int getMaxLevel() {
-		return CoPConfig.COMMON.curseOfTensionMaxLevel.get();
+		return CoPConfig.COMMON.curse.curseOfTensionMaxLevel.get();
 	}
 
 	public CurseOfTensionItem(Properties properties) {

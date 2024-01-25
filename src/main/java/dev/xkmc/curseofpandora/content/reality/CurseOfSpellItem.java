@@ -33,7 +33,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 			level += Math.pow(2, i);
 		}
 		double val = (base + stack.getEnchantmentValue());
-		return level / val / base * CoPConfig.COMMON.curseOfSpellLoadFactor.get();
+		return level / val / base * CoPConfig.COMMON.curse.curseOfSpellLoadFactor.get();
 	}
 
 	public static double getSpellPenalty(Player player) {
@@ -71,7 +71,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		public void onPlayerDamaged(Player player, AttackCache cache) {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
-				double factor = CoPConfig.COMMON.curseOfSpellDamageFactor.get();
+				double factor = CoPConfig.COMMON.curse.curseOfSpellDamageFactor.get();
 				cache.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty * factor)));
 			}
 		}
@@ -80,7 +80,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		public void onPlayerDamageTarget(Player player, AttackCache cache) {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
-				double factor = CoPConfig.COMMON.curseOfSpellWeakenFactor.get();
+				double factor = CoPConfig.COMMON.curse.curseOfSpellWeakenFactor.get();
 				cache.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty * factor)));
 			}
 		}

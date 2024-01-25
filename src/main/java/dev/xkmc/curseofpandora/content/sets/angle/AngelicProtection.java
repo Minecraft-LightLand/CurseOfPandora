@@ -27,11 +27,11 @@ public class AngelicProtection extends CurioItem implements ILCTotem {
 	}
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.angelicProtectionRealityIndex.get();
+		return CoPConfig.COMMON.angelic.angelicProtectionRealityIndex.get();
 	}
 
 	public static int getCoolDown() {
-		return CoPConfig.COMMON.angelicProtectionCoolDown.get();
+		return CoPConfig.COMMON.angelic.angelicProtectionCoolDown.get();
 	}
 
 	@Override

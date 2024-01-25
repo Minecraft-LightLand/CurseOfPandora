@@ -30,15 +30,15 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getCap() {
-		return (int) (double) CoPConfig.COMMON.curseOfProximityCap.get();
+		return (int) (double) CoPConfig.COMMON.curse.curseOfProximityCap.get();
 	}
 
 	private static double getBase() {
-		return CoPConfig.COMMON.curseOfProximityBase.get();
+		return CoPConfig.COMMON.curse.curseOfProximityBase.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curseOfProximityBonus.get();
+		return CoPConfig.COMMON.curse.curseOfProximityBonus.get();
 	}
 
 	public CurseOfProximityItem(Properties properties) {

@@ -1,11 +1,13 @@
 package dev.xkmc.curseofpandora.content.complex;
 
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.UUID;
 import java.util.function.DoubleSupplier;
@@ -45,14 +47,40 @@ public record AttrAdder(String name, Supplier<Attribute> attr, UUID uuid,
 	}
 
 	public MutableComponent getTooltip() {
-		double val = value.getAsDouble();
-		if (op != AttributeModifier.Operation.ADDITION) {
-			val *= 100;
+		return getDesc(attr.get(), value.getAsDouble(), op());
+	}
+
+	public static MutableComponent getDesc(Attribute attr, double val, AttributeModifier.Operation op) {
+		var text = Component.translatable(attr.getDescriptionId());
+		MutableComponent base;
+		if (isMult(attr)) {
+			if (op == AttributeModifier.Operation.ADDITION) {
+				base = Component.literal(val < 0 ? "-" : "+");
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
+				base.append("%");
+
+			} else {
+				base = Component.literal("x");
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(val + 1));
+			}
+		} else {
+			base = Component.literal(val < 0 ? "-" : "+");
+			if (op == AttributeModifier.Operation.ADDITION) {
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val)));
+			} else {
+				base.append(ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(val * 100)));
+				base.append("%");
+			}
 		}
-		return Component.translatable(
-				"attribute.modifier.plus." + op.toValue(),
-				ATTRIBUTE_MODIFIER_FORMAT.format(val),
-				Component.translatable(attr.get().getDescriptionId()));
+		base.append(" ");
+		base.append(text);
+		return base;
+	}
+
+	public static boolean isMult(Attribute attr) {
+		var rl = ForgeRegistries.ATTRIBUTES.getKey(attr);
+		assert rl != null;
+		return rl.getNamespace().equals(L2DamageTracker.MODID);
 	}
 
 }

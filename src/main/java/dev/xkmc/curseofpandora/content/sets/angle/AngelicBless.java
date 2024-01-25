@@ -27,15 +27,15 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 			AttributeModifier.Operation.MULTIPLY_TOTAL, AngelicBless::getFactor);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.angelicBlessAbsorption.get();
+		return CoPConfig.COMMON.angelic.angelicBlessAbsorption.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.angelicBlessRealityIndex.get();
+		return CoPConfig.COMMON.angelic.angelicBlessRealityIndex.get();
 	}
 
 	private static double getFactor() {
-		return CoPConfig.COMMON.angelicBlessDamageReduction.get();
+		return -CoPConfig.COMMON.angelic.angelicBlessDamageReduction.get();
 	}
 
 	public AngelicBless(Properties properties) {
