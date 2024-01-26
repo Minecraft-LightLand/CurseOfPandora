@@ -58,7 +58,7 @@ public class AngelicProtection extends CurioItem implements ILCTotem {
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.Angelic.PROTECTION.get(Math.round(getCoolDown() / 20f)))
+		list.add(CoPLangData.Angelic.PROTECTION.get(Math.round(getCoolDown() / 20f))
 				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 

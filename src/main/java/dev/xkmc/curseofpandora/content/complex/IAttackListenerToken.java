@@ -32,4 +32,8 @@ public interface IAttackListenerToken {
 
 	}
 
+	default void onPlayerDamageTargetFinal(Player player, AttackCache cache){
+
+	}
+
 }

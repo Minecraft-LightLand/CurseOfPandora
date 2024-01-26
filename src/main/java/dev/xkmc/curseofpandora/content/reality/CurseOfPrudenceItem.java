@@ -16,6 +16,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -107,8 +108,12 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 			Set<Long> list = fear.get(target.getUUID());
 			int count = list == null ? 0 : list.size();
 			if (count > 0) {
-				count = Math.min(count, getMaxLevel());
-				cache.addDealtModifier(DamageModifier.multTotal((float) Math.pow(getDamageFactor(), count)));
+				var event = cache.getLivingDamageEvent();
+				assert event != null;
+				if (!event.getSource().is(DamageTypeTags.BYPASSES_COOLDOWN)) {
+					count = Math.min(count, getMaxLevel());
+					cache.addDealtModifier(DamageModifier.multTotal((float) Math.pow(getDamageFactor(), count)));
+				}
 			}
 			fear.computeIfAbsent(target.getUUID(), k -> new HashSet<>()).add(time);
 			sync(sp);

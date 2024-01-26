@@ -248,8 +248,51 @@ public class CoPConfig {
 
 		public static class Shadow {
 
+			public final ForgeConfigSpec.IntValue shadowCoreRealityIndex;
+			public final ForgeConfigSpec.IntValue shadowCoreDurationPerIndex;
+			public final ForgeConfigSpec.DoubleValue damageReduction;
+			public final ForgeConfigSpec.IntValue shadowConvergenceRealityIndex;
+			public final ForgeConfigSpec.DoubleValue shadowConvergenceHealFactor;
+			public final ForgeConfigSpec.IntValue shadowConsolidationRealityIndex;
+			public final ForgeConfigSpec.DoubleValue shadowConsolidationRange;
+			public final ForgeConfigSpec.DoubleValue shadowConsolidationFactor;
+			public final ForgeConfigSpec.IntValue shadowConsolidationDelay;
+			public final ForgeConfigSpec.IntValue shadowConsolidationCoolDown;
+			public final ForgeConfigSpec.IntValue shadowReformationRealityIndex;
+			public final ForgeConfigSpec.DoubleValue shadowReformationBonus;
+			public final ForgeConfigSpec.DoubleValue shadowReformationReduction;
+			public final ForgeConfigSpec.IntValue voidOverflowRealityIndex;
+
 			private Shadow(ForgeConfigSpec.Builder builder) {
 				builder.push("Shadow");
+				shadowCoreRealityIndex = builder.comment("Reality Index requirement for Shadow Core")
+						.defineInRange("shadowCoreRealityIndex", 3, 0, 7);
+				shadowCoreDurationPerIndex = builder.comment("Shadow effect duration per reality index")
+						.defineInRange("shadowCoreDurationPerIndex", 100, 0, 60000);
+				damageReduction = builder.comment("Damage reduction for shadow effect")
+						.defineInRange("damageReduction", 0.2, 0, 1);
+				shadowConvergenceRealityIndex = builder.comment("Reality Index requirement for Shadow Convergence")
+						.defineInRange("shadowConvergenceRealityIndex", 4, 0, 7);
+				shadowConvergenceHealFactor = builder.comment("Shadow Convergence healing factor")
+						.defineInRange("shadowConvergenceHealFactor", 0.5d, 0, 100d);
+				shadowConsolidationRealityIndex = builder.comment("Reality Index requirement for Shadow Consolidation")
+						.defineInRange("shadowConsolidationRealityIndex", 5, 0, 7);
+				shadowConsolidationRange = builder.comment("Shadow Consolidation scatter range")
+						.defineInRange("shadowConsolidationRange", 8d, 0, 64);
+				shadowConsolidationFactor = builder.comment("Shadow Consolidation damage factor")
+						.defineInRange("shadowConsolidationFactor", 1d, 0, 100);
+				shadowConsolidationDelay = builder.comment("Shadow Consolidation damage delay")
+						.defineInRange("shadowConsolidationDelay", 20, 0, 100);
+				shadowConsolidationCoolDown = builder.comment("Shadow Consolidation trigger cool down")
+						.defineInRange("shadowConsolidationCoolDown", 60, 0, 10000);
+				shadowReformationRealityIndex = builder.comment("Reality Index requirement for Shadow Reformation")
+						.defineInRange("shadowReformationRealityIndex", 6, 0, 7);
+				shadowReformationBonus = builder.comment("Shadow Reformation magic damage bonus")
+						.defineInRange("shadowReformationBonus", 0.5, 0, 100);
+				shadowReformationReduction = builder.comment("Shadow Reformation damage reduction")
+						.defineInRange("shadowReformationReduction", 0.5, 0, 1);
+				voidOverflowRealityIndex = builder.comment("Reality Index requirement for Void Reformation")
+						.defineInRange("voidOverflowRealityIndex", 7, 0, 7);
 				builder.pop();
 			}
 

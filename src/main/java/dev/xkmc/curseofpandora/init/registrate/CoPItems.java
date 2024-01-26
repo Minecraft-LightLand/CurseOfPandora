@@ -13,6 +13,7 @@ import dev.xkmc.curseofpandora.content.sets.elemental.WindThrust;
 import dev.xkmc.curseofpandora.content.sets.hell.EyeOfCursedSoul;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireReformation;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireSkull;
+import dev.xkmc.curseofpandora.content.sets.shadow.*;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
@@ -62,6 +63,11 @@ public class CoPItems {
 	public static final ItemEntry<HellfireSkull> HELLFIRE_SKULL;
 	public static final ItemEntry<HellfireReformation> HELLFIRE_REFORMATION;
 	public static final ItemEntry<EyeOfCursedSoul> EYE_OF_CURSED_SOULS;
+	public static final ItemEntry<ShadowCore> SHADOW_CORE;
+	public static final ItemEntry<ShadowConvergence> SHADOW_CONVERGENCE;
+	public static final ItemEntry<ShadowConsolidation> SHADOW_CONSOLIDATION;
+	public static final ItemEntry<ShadowReformation> SHADOW_REFORMATION;
+	public static final ItemEntry<VoidOverflow> VOID_OVERFLOW;
 	public static final ItemEntry<WindThrust> WIND_THRUST;
 	public static final ItemEntry<EarthCrush> EARTH_CRUSH;
 	public static final ItemEntry<FlamingExplosion> FLAMING_EXPLOSION;
@@ -277,6 +283,17 @@ public class CoPItems {
 			EYE_OF_CURSED_SOULS = item("eye_of_cursed_souls", EyeOfCursedSoul::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE)
 					.lang("Eye of Cursed Souls").register();
+
+			SHADOW_CORE = item("shadow_core", ShadowCore::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			SHADOW_CONVERGENCE = item("shadow_convergence", ShadowConvergence::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			SHADOW_CONSOLIDATION = item("shadow_consolidation", ShadowConsolidation::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			SHADOW_REFORMATION = item("shadow_reformation", ShadowReformation::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			VOID_OVERFLOW = item("void_overflow", VoidOverflow::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
 			WIND_THRUST = item("wind_thrust", WindThrust::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();

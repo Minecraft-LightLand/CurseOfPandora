@@ -54,7 +54,7 @@
 	"shadow_convergence": "虚影汇聚",
 	"shadow_consolidation": "虚影化形",
 	"shadow_reformation": "虚影重塑",
-	"void_overflow.png": "虚空溢散",
+	"void_overflow": "虚空溢散",
 	"wind_thrust": "疾风刺",
 	"earth_crush": "磐岩坠",
 	"flaming_explosion": "烈炎爆",
@@ -98,6 +98,13 @@
 	  "eye": "你对生物造成伤害时，那个生物对%s格内的怪物造成少量魔法伤害。触发间隔%s秒"
 	},
 	"shadow": {
+	  "core_1": "对攻击目标施加虚影标记。你的每点现实指数提供%s秒时长",
+	  "core_2": "持有虚影标记的单位造成的伤害下降%s%%",
+	  "convergence": "你对持有虚影标记的单位造成伤害时，回复那个伤害%s%%的血量",
+	  "consolidation": "你对持有虚影标记的单位造成伤害时，%3$s秒后对那些单位%1$s格内的敌对单位造成那个伤害%2$s%%的虚影伤害。这效果存在%4$s秒的冷却",
+	  "reformation_1": "你对持有虚影标记的单位造成的魔法伤害+%s%%",
+	  "reformation_2": "持有虚影标记的单位对你造成的物理伤害-%s%%",
+	  "void": "你造成的虚影伤害变为虚空虚影伤害"
 	},
 	"elemental": {
 	  "wind_1": "只当玩家疾跑时生效",
@@ -114,7 +121,9 @@
 	"terror_token_pre": "未成熟的恐惧标记",
 	"terror_token_pre.description": "只用于渲染。显示目标身上是否有未成熟的恐惧标记",
 	"terrorized": "恐惧指示物",
-	"terrorized.description": "只用于渲染。显示你是否因为现实第五诅咒的效果无法对该目标造成伤害"
+	"terrorized.description": "只用于渲染。显示你是否因为现实第五诅咒的效果无法对该目标造成伤害",
+	"shadow": "虚影",
+	"shadow.description": "虚影标记"
   },
   "attribute.name": {
 	"reality_index": "现实指数",

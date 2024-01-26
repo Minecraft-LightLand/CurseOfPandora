@@ -49,10 +49,10 @@ public class EyeOfCursedSoul extends ITokenProviderItem<EyeOfCursedSoul.Data> {
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.Hell.EYE.get(
+		list.add(CoPLangData.Hell.EYE.get(
 				Math.round(getRange()),
 				Math.round(getCoolDown() / 20d)
-		)).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
+		).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
