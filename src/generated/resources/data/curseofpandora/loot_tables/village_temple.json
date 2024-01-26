@@ -58,15 +58,10 @@
           "type": "minecraft:item",
           "name": "curseofpandora:charm_of_explosion",
           "weight": 100
-        },
-        {
-          "type": "minecraft:item",
-          "name": "curseofpandora:bless_of_snow_walker",
-          "weight": 400
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "curseofpandora:igloo_chest"
+  "random_sequence": "curseofpandora:village_temple"
 }

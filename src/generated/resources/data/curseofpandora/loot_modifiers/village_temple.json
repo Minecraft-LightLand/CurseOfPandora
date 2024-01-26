@@ -5,8 +5,8 @@
   "conditions": [
     {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:chests/simple_dungeon"
+      "loot_table_id": "minecraft:chests/village/village_temple"
     }
   ],
-  "table": "curseofpandora:simple_dungeon"
+  "table": "curseofpandora:village_temple"
 }

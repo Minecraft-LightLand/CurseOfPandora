@@ -5,8 +5,8 @@
   "conditions": [
     {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:chests/village/village_cartographer"
+      "loot_table_id": "minecraft:chests/bastion_other"
     }
   ],
-  "table": "curseofpandora:village_cartographer"
+  "table": "curseofpandora:bastion_other"
 }

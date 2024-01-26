@@ -139,100 +139,103 @@ public class CoPItems {
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
 			BLESS_LAVA_WALKER = descItem("bless_of_lava_walker", "Bless of Lava Walker",
-					"Allows you to walk on lava");
+					"Allows you to walk on lava")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+		}
 
+		// beacon
+		{
 			MINI_BEACON_SPEED = item("mini_beacon_speed",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
 							MobEffects.MOVEMENT_SPEED, 40, 1, true, true)))
 					.lang("Mini Beacon: Speed")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.BEACON).register();
 
 			MINI_BEACON_HASTE = item("mini_beacon_haste",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
 							MobEffects.DIG_SPEED, 40, 1, true, true)))
 					.lang("Mini Beacon: Haste")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.BEACON).register();
 
 			MINI_BEACON_ATTACK = item("mini_beacon_strength",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
 							MobEffects.DAMAGE_BOOST, 40, 1, true, true)))
 					.lang("Mini Beacon: Strength")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.BEACON).register();
 
 			MINI_BEACON_JUMP = item("mini_beacon_jump",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
 							MobEffects.JUMP, 40, 1, true, true)))
 					.lang("Mini Beacon: Jump Boost")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.BEACON).register();
 
 			MINI_BEACON_RESISTANCE = item("mini_beacon_resistance",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
 							MobEffects.DAMAGE_RESISTANCE, 40, 1, true, true)))
 					.lang("Mini Beacon: Resistance")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.BEACON).register();
 
 			MINI_BEACON_REGEN = item("mini_beacon_regen",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
 							MobEffects.REGENERATION, 60, 1, true, true)))
 					.lang("Mini Beacon: Regeneration")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.BEACON).register();
 
 			NIGHT_VISION_CHARM = item("charm_of_night_vision",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
 							MobEffects.NIGHT_VISION, 440, 0, true, true)))
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.BEACON).register();
 
 		}
 
 		// attributes
-
 		{
 			CHARM_HEALTH = item("charm_of_health", p -> new AttributeItem(p,
 					AttributeItem.add(() -> Attributes.MAX_HEALTH, "charm_of_health", CoPConfig.COMMON.attr.charmOfHealth::get)))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 			CHARM_ARMOR = item("charm_of_armor", p -> new AttributeItem(p,
 					AttributeItem.add(() -> Attributes.ARMOR, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmor::get),
 					AttributeItem.add(() -> Attributes.ARMOR_TOUGHNESS, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmorToughness::get)
-			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+			)).tag(CoPTagGen.ATTR).register();
 
 			CHARM_SPEED = item("charm_of_speed", p -> new AttributeItem(p,
 					AttributeItem.multBase(() -> Attributes.MOVEMENT_SPEED, "charm_of_speed", CoPConfig.COMMON.attr.charmOfSpeed::get)))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 			CHARM_DAMAGE = item("charm_of_damage", p -> new AttributeItem(p,
 					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_damage", CoPConfig.COMMON.attr.charmOfDamage::get)))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 			CHARM_CRIT = item("charm_of_critical", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "charm_of_critical", CoPConfig.COMMON.attr.charmOfCritical::get)))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 			CHARM_BOW = item("charm_of_archery", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.BOW_STRENGTH::get, "charm_of_archery", CoPConfig.COMMON.attr.charmOfArchery::get)))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 			CHARM_HEAVY = item("charm_of_heavy_weapon", p -> new AttributeItem(p,
 					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_heavy_weapon", CoPConfig.COMMON.attr.charmOfHeavyWeapon::get),
 					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_heavy_weapon", () -> -CoPConfig.COMMON.attr.charmOfHeavyWeaponSlow.get())
-			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+			)).tag(CoPTagGen.ATTR).register();
 
 			CHARM_ACCURACY = item("charm_of_accuracy", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", CoPConfig.COMMON.attr.charmOfAccuracy::get),
 					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", () -> -CoPConfig.COMMON.attr.charmOfAccuracySlow.get())
-			)).tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+			)).tag(CoPTagGen.ATTR).register();
 
 			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
 					AttributeItem.multBase(CoPMisc.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR::get, "charm_of_magic", CoPConfig.COMMON.attr.charmOfMagic::get)))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", CoPConfig.COMMON.attr.charmOfExplosion::get)))
-					.tag(PandoraTagGen.PANDORA_SLOT, PandoraTagGen.ALLOW_DUPLICATE, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ATTR).register();
 
 		}
 
@@ -240,69 +243,68 @@ public class CoPItems {
 		{
 
 			CURSE_OF_INERTIA = item("curse_of_inertia", CurseOfInertiaItem::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+					.tag(CoPTagGen.CURSE).register();
 
 			CURSE_OF_PROXIMITY = item("curse_of_proximity", CurseOfProximityItem::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+					.tag(CoPTagGen.CURSE).register();
 
 			CURSE_OF_FLESH = item("curse_of_flesh", CurseOfFleshItem::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+					.tag(CoPTagGen.CURSE).register();
 
 			CURSE_OF_METABOLISM = item("curse_of_metabolism", CurseOfMetabolismItem::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+					.tag(CoPTagGen.CURSE).register();
 
 			CURSE_OF_TENSION = item("curse_of_tension", CurseOfTensionItem::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+					.tag(CoPTagGen.CURSE).register();
 
 			CURSE_OF_PRUDENCE = item("curse_of_prudence", CurseOfPrudenceItem::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+					.tag(CoPTagGen.CURSE).register();
 
 			CURSE_OF_SPELL = item("curse_of_spell", CurseOfSpellItem::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.CURSE).register();
+					.tag(CoPTagGen.CURSE).register();
 
 		}
 
 		//sets
-
 		{
 			ANGELIC_WING = item("angelic_wing", AngelicWing::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ANGELIC).register();
 			ANGELIC_BLESS = item("angelic_bless", AngelicBless::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ANGELIC).register();
 			ANGELIC_DESCENT = item("angelic_descent", AngelicDescent::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ANGELIC).register();
 			ANGELIC_PROTECTION = item("angelic_protection", AngelicProtection::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE, TagGen.TOTEM).register();
+					.tag(CoPTagGen.ANGELIC, TagGen.TOTEM).register();
 			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ANGELIC).register();
 
 			HELLFIRE_SKULL = item("hellfire_skull", HellfireSkull::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.HELL).register();
 			HELLFIRE_REFORMATION = item("hellfire_reformation", HellfireReformation::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.HELL).register();
 			EYE_OF_CURSED_SOULS = item("eye_of_cursed_souls", EyeOfCursedSoul::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE)
+					.tag(CoPTagGen.HELL)
 					.lang("Eye of Cursed Souls").register();
 
 			SHADOW_CORE = item("shadow_core", ShadowCore::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.SHADOW).register();
 			SHADOW_CONVERGENCE = item("shadow_convergence", ShadowConvergence::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.SHADOW).register();
 			SHADOW_CONSOLIDATION = item("shadow_consolidation", ShadowConsolidation::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.SHADOW).register();
 			SHADOW_REFORMATION = item("shadow_reformation", ShadowReformation::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.SHADOW).register();
 			VOID_OVERFLOW = item("void_overflow", VoidOverflow::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.SHADOW).register();
 
 			WIND_THRUST = item("wind_thrust", WindThrust::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ELEMENTAL).register();
 			EARTH_CRUSH = item("earth_crush", EarthCrush::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ELEMENTAL).register();
 			FLAMING_EXPLOSION = item("flaming_explosion", FlamingExplosion::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ELEMENTAL).register();
 			WAVING_SPELL = item("waving_spell", WavingSpell::new)
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+					.tag(CoPTagGen.ELEMENTAL).register();
 		}
 
 	}
@@ -312,10 +314,10 @@ public class CoPItems {
 				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/pandora/" + id)));
 	}
 
-	public static ItemEntry<DescCurioItem> descItem(String id, String name, String desc) {
+	public static ItemBuilder<DescCurioItem, L2Registrate> descItem(String id, String name, String desc) {
 		REGISTRATE.addRawLang("item." + CurseOfPandora.MODID + "." + id + ".desc", desc);
 		return item(id, DescCurioItem::new)
-				.lang(name).tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+				.lang(name);
 	}
 
 	public static void register() {

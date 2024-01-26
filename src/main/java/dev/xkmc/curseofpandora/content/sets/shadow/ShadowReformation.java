@@ -76,7 +76,7 @@ public class ShadowReformation extends ITokenProviderItem<ShadowReformation.Data
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
 			if (!cache.getAttackTarget().hasEffect(CoPEffects.SHADOW.get()))
 				return;
-			var event = cache.getLivingDamageEvent();
+			var event = cache.getLivingHurtEvent();
 			assert event != null;
 			if (event.getSource().is(L2DamageTypes.MAGIC)) {
 				cache.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus())));

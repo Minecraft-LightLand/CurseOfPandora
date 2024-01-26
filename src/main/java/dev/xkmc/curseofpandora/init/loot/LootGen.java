@@ -1,60 +1,145 @@
 package dev.xkmc.curseofpandora.init.loot;
 
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
+import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
-import dev.xkmc.l2library.util.data.LootTableTemplate;
-import dev.xkmc.l2library.util.math.MathHelper;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
+import java.util.Arrays;
 import java.util.Locale;
-import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
+import static dev.xkmc.curseofpandora.init.registrate.CoPItems.*;
+
 public class LootGen {
 
-	private static LootTable.Builder buildEndCityExtraLoot() {//TODO
-		return LootTable.lootTable().withPool(LootTableTemplate.getPool(1, 0)
-						.add(LootTableTemplate.getItem(Items.ELYTRA, 1)))
-				.withPool(LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.ENCHANTED_GOLDEN_APPLE, 2, 4))
-						.add(LootTableTemplate.getItem(Items.NETHERITE_INGOT, 2, 4))
-						.add(LootTableTemplate.getItem(Items.NETHER_STAR, 1)))
-				.withPool(LootTableTemplate.getPool(5, 2)
-						.add(LootTableTemplate.getItem(Items.GLOWSTONE_DUST, 16, 32))
-						.add(LootTableTemplate.getItem(Items.REDSTONE, 16, 32))
-						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 16, 32))
-						.add(LootTableTemplate.getItem(Items.AMETHYST_SHARD, 16, 32))
-						.add(LootTableTemplate.getItem(Items.QUARTZ, 16, 32))
-						.add(LootTableTemplate.getItem(Items.EMERALD, 16, 32)));
+	private record LootEntry(int weight, Item... items) {
+
 	}
 
-	private static LootTable.Builder buildPlaceholderLoot() {//TODO
-		return LootTable.lootTable().withPool(LootTableTemplate.getPool(1, 0)
-				.add(LootTableTemplate.getItem(Items.COAL, 1, 16)));
+	private static class PoolBuilder {
+
+		private final LootPool.Builder pool = LootPool.lootPool()
+				.setRolls(ConstantValue.exactly(1))
+				.setBonusRolls(ConstantValue.exactly(0));
+
+		private PoolBuilder addItems(LootEntry entry) {
+			for (var e : entry.items) {
+				pool.add(getItem(e, entry.weight));
+			}
+			return this;
+		}
+
+		private PoolBuilder addItem(int weight, Item item) {
+			pool.add(getItem(item, weight));
+			return this;
+		}
+
+		private PoolBuilder fromTag(int weight, ItemEntry<?>[] tag) {
+			return addItems(new LootEntry(weight, Arrays.stream(tag).map(RegistryEntry::get).toArray(Item[]::new)));
+		}
+
+		private LootTable.Builder build() {
+			return LootTable.lootTable().withPool(pool);
+		}
+
+	}
+
+	private static LootPoolSingletonContainer.Builder<?> getItem(Item item, int weight) {
+		return LootItem.lootTableItem(item).setWeight(weight);
+	}
+
+	private static ItemEntry<?>[] attr() {
+		return new ItemEntry<?>[]{
+				CHARM_HEALTH, CHARM_ARMOR, CHARM_SPEED,
+				CHARM_DAMAGE, CHARM_HEAVY, CHARM_ACCURACY, CHARM_CRIT, CHARM_BOW, CHARM_PROTECTION,
+				CHARM_MAGIC, CHARM_EXPLOSION
+		};
+	}
+
+	private static ItemEntry<?>[] angelic() {
+		return new ItemEntry<?>[]{ANGELIC_WING, ANGELIC_BLESS, ANGELIC_DESCENT, ANGELIC_PROTECTION, ANGELIC_PUNISHMENT};
+	}
+
+	private static ItemEntry<?>[] hell() {
+		return new ItemEntry<?>[]{HELLFIRE_SKULL, HELLFIRE_REFORMATION, EYE_OF_CURSED_SOULS};
+	}
+
+	private static ItemEntry<?>[] shadow() {
+		return new ItemEntry<?>[]{SHADOW_CORE, SHADOW_CONVERGENCE, SHADOW_CONSOLIDATION, SHADOW_REFORMATION, VOID_OVERFLOW};
+	}
+
+	private static ItemEntry<?>[] elemental() {
+		return new ItemEntry<?>[]{WIND_THRUST, EARTH_CRUSH, FLAMING_EXPLOSION, WAVING_SPELL};
+	}
+
+
+	private static LootTable.Builder buildPlaceholderLoot() {
+		return new PoolBuilder().fromTag(100, attr()).build();
 	}
 
 	public enum LootDefinition {
-		END_CITY_TREASURE(0.2, 0.1, BuiltInLootTables.END_CITY_TREASURE, LootGen::buildEndCityExtraLoot),
-		BASTION_TREASURE(0.2, 0.1, BuiltInLootTables.BASTION_TREASURE, LootGen::buildPlaceholderLoot),
-		DESERT_PYRAMID(0.2, 0.1, BuiltInLootTables.DESERT_PYRAMID, LootGen::buildPlaceholderLoot),
-		ANCIENT_CITY(0.2, 0.1, BuiltInLootTables.ANCIENT_CITY, LootGen::buildPlaceholderLoot),
-		SHIPWRECK_TREASURE(0.2, 0.1, BuiltInLootTables.SHIPWRECK_TREASURE, LootGen::buildPlaceholderLoot),
-		UNDERWATER_RUIN_BIG(0.2, 0.1, BuiltInLootTables.UNDERWATER_RUIN_BIG, LootGen::buildPlaceholderLoot),
-		VILLAGE_CARTOGRAPHER(0.2, 0.1, BuiltInLootTables.VILLAGE_CARTOGRAPHER, LootGen::buildPlaceholderLoot),
-		IGLOO_CHEST(0.2, 0.1, BuiltInLootTables.IGLOO_CHEST, LootGen::buildPlaceholderLoot),
-		STRONGHOLD_CORRIDOR(0.2, 0.1, BuiltInLootTables.STRONGHOLD_CORRIDOR, LootGen::buildPlaceholderLoot),
-		WOODLAND_MANSION(0.2, 0.1, BuiltInLootTables.WOODLAND_MANSION, LootGen::buildPlaceholderLoot),
-		NETHER_BRIDGE(0.2, 0.1, BuiltInLootTables.NETHER_BRIDGE, LootGen::buildPlaceholderLoot),
-		PILLAGER_OUTPOST(0.2, 0.1, BuiltInLootTables.PILLAGER_OUTPOST, LootGen::buildPlaceholderLoot),
-		RUINED_PORTAL(0.2, 0.1, BuiltInLootTables.RUINED_PORTAL, LootGen::buildPlaceholderLoot),
-		ABANDONED_MINESHAFT(0.2, 0.1, BuiltInLootTables.ABANDONED_MINESHAFT, LootGen::buildPlaceholderLoot),
-		JUNGLE_TEMPLE(0.2, 0.1, BuiltInLootTables.JUNGLE_TEMPLE, LootGen::buildPlaceholderLoot),
-		SIMPLE_DUNGEON(0.2, 0.1, BuiltInLootTables.SIMPLE_DUNGEON, LootGen::buildPlaceholderLoot),
+		// end
+		END_CITY_TREASURE(0.2, 0.1, BuiltInLootTables.END_CITY_TREASURE,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, shadow())
+						.addItem(400, CoPItems.ENDER_CHARM.get()).build()),
+		// nethers
+		NETHER_BRIDGE(0.2, 0.1, BuiltInLootTables.NETHER_BRIDGE,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
+						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get()).build()),
+		RUINED_PORTAL(0.2, 0.1, BuiltInLootTables.RUINED_PORTAL,
+				() -> new PoolBuilder().fromTag(100, attr())
+						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(400, CoPItems.GOLDEN_HEART.get()).build()),
+		BASTION_TREASURE(1, 0.2, BuiltInLootTables.BASTION_TREASURE,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
+						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(400, CoPItems.GOLDEN_HEART.get())
+						.addItem(400, CoPItems.STABLE_BODY.get()).build()),
+		BASTION_OTHER(0.2, 0.1, BuiltInLootTables.BASTION_OTHER,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
+						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(400, CoPItems.GOLDEN_HEART.get())
+						.addItem(400, CoPItems.STABLE_BODY.get()).build()),
+		BASTION_BRIDGE(0.2, 0.1, BuiltInLootTables.BASTION_BRIDGE,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
+						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(400, CoPItems.GOLDEN_HEART.get())
+						.addItem(400, CoPItems.STABLE_BODY.get()).build()),
+		// overworld
+		IGLOO_CHEST(0.2, 0.1, BuiltInLootTables.IGLOO_CHEST,
+				() -> new PoolBuilder().fromTag(100, attr())
+						.addItem(400, CoPItems.BLESS_SNOW_WALKER.get()).build()),
+		ANCIENT_CITY(0.4, 0.2, BuiltInLootTables.ANCIENT_CITY,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+		WOODLAND_MANSION(0.4, 0.2, BuiltInLootTables.WOODLAND_MANSION,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+		DESERT_PYRAMID(0.2, 0.1, BuiltInLootTables.DESERT_PYRAMID,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+		SHIPWRECK_TREASURE(0.2, 0.1, BuiltInLootTables.SHIPWRECK_TREASURE,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+		UNDERWATER_RUIN_BIG(0.2, 0.1, BuiltInLootTables.UNDERWATER_RUIN_BIG,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+		STRONGHOLD_CORRIDOR(0.2, 0.1, BuiltInLootTables.STRONGHOLD_CORRIDOR,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+		PILLAGER_OUTPOST(0.2, 0.1, BuiltInLootTables.PILLAGER_OUTPOST,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+		JUNGLE_TEMPLE(0.2, 0.1, BuiltInLootTables.JUNGLE_TEMPLE,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+		ABANDONED_MINESHAFT(0.1, 0.05, BuiltInLootTables.ABANDONED_MINESHAFT, LootGen::buildPlaceholderLoot),
+		SIMPLE_DUNGEON(0.1, 0.05, BuiltInLootTables.SIMPLE_DUNGEON, LootGen::buildPlaceholderLoot),
+		VILLAGE_TEMPLE(0.1, 0.05, BuiltInLootTables.VILLAGE_TEMPLE, LootGen::buildPlaceholderLoot),
 		;
 
 		public final String id;

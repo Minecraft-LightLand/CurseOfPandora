@@ -6,18 +6,88 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 16.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:coal"
+          "name": "curseofpandora:charm_of_health",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_armor",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_speed",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_damage",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_heavy_weapon",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_accuracy",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_critical",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_archery",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_protection",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_magic",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_explosion",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:hellfire_skull",
+          "weight": 200
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:hellfire_reformation",
+          "weight": 200
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:eye_of_cursed_souls",
+          "weight": 200
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:bless_of_lava_walker",
+          "weight": 400
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:golden_heart",
+          "weight": 400
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:orb_of_stability",
+          "weight": 400
         }
       ],
       "rolls": 1.0
