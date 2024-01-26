@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-26T16:06:49.087476	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2024-01-26T16:52:14.87995	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 3030b823197f349fd372822a49ea6df9f409f9ea assets/curseofpandora/lang/en_ud.json
 ae1912fa66acc87b488cd4bd3774e2eb72c3a91e assets/curseofpandora/lang/en_us.json
 ee44b4df5dd60e5aec209a4d4e49a54793c12dc2 assets/curseofpandora/models/item/angelic_bless.json
@@ -102,7 +102,23 @@ f9b02de0934be6a4fd8aa8f05852793007ae845f data/curseofpandora/advancements/recipe
 c4d1727c6b2fa0641705677bf752399f926125b8 data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_craft.json
 7675957ec2994381b77ad0178b2aabeac633b7b3 data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_renew.json
 ba4396d98ac0e1297c062f8c19fa56e946596d9f data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_smelt.json
+1f868833843dafdab4949fc9d8aed5c2fc9e311b data/curseofpandora/loot_tables/abandoned_mineshaft.json
+576fbfa3a3b296878d751512422251cacb268533 data/curseofpandora/loot_tables/ancient_city.json
+68ac8b6c7137ee197e02ec0c94fdb2d7bfe28fd8 data/curseofpandora/loot_tables/bastion_treasure.json
+7d8b3806c27c111199ecf96e476b2d7226f8a029 data/curseofpandora/loot_tables/desert_pyramid.json
+c63e1c9b8a19339c873222ae376455c1c36c6f4e data/curseofpandora/loot_tables/end_city_treasure.json
+a336cf512d7435f08e6e92a6000f32cd89729c35 data/curseofpandora/loot_tables/igloo_chest.json
+2cad9c14a0d3b65abe8f77275f7c1210196c3193 data/curseofpandora/loot_tables/jungle_temple.json
+51cfc24eb558c76ea197216f09869611d08c6099 data/curseofpandora/loot_tables/nether_bridge.json
 b03a33b3cc9efa28fc9967a28dab0ff7e8ee3662 data/curseofpandora/loot_tables/pandora_initial.json
+8cd495405fcb13f1bae0ec6ff24b2e75f8cbf337 data/curseofpandora/loot_tables/pillager_outpost.json
+2089febd44f3bb42f6c888e1b6b9d958013acdcb data/curseofpandora/loot_tables/ruined_portal.json
+33f05da5ed3e7d3dfbcce1e33a1c8e3d7d1aaf62 data/curseofpandora/loot_tables/shipwreck_treasure.json
+8a07c417574ab69b9074526c9d88988baf009443 data/curseofpandora/loot_tables/simple_dungeon.json
+7f06e8a19074484afa4806176e1069db47b1fbc8 data/curseofpandora/loot_tables/stronghold_corridor.json
+81fc54298404285f5fa55f4890ef33a6d0ca2660 data/curseofpandora/loot_tables/underwater_ruin_big.json
+daf1b4a3f17704ef0d851d802e37d42238c83b9f data/curseofpandora/loot_tables/village_cartographer.json
+46a05fb83b1f6170580745da7854a8fef699dd06 data/curseofpandora/loot_tables/woodland_mansion.json
 1d82211200634491defe2d72691d3ce63c2633ff data/curseofpandora/recipes/burnt/mini_beacon_base_block.json
 cea64d7fe20036215ce0ec22f8b13a48d3a4a51f data/curseofpandora/recipes/burnt/mini_beacon_base_ingot.json
 cbedd4bf10828a12e376eb3dd3d3fd689278b9e3 data/curseofpandora/recipes/pandora/bless_of_lava_walker.json

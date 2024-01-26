@@ -3,7 +3,9 @@ package dev.xkmc.curseofpandora.init;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
 import dev.xkmc.curseofpandora.init.data.*;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.loot.CoPGLMProvider;
+import dev.xkmc.curseofpandora.init.loot.LootGen;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
@@ -36,14 +38,16 @@ public class CurseOfPandora {
 
 	public CurseOfPandora() {
 		CoPItems.register();
-		CoPFakeEffects.register();
+		CoPEffects.register();
 		CoPMisc.register();
+		CoPGLMProvider.register();
 		CoPConfig.init();
 		AttackEventHandler.register(5200, new PandoraAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);
 	}
 
 	@SubscribeEvent
@@ -69,6 +73,7 @@ public class CurseOfPandora {
 		var helper = event.getExistingFileHelper();
 		event.getGenerator().addProvider(gen, new CoPConfigGen(event.getGenerator()));
 		new CoPDamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
+		event.getGenerator().addProvider(gen, new CoPGLMProvider(output));
 	}
 
 }

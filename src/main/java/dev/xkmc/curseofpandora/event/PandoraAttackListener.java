@@ -2,7 +2,7 @@ package dev.xkmc.curseofpandora.event;
 
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -103,7 +103,7 @@ public class PandoraAttackListener implements AttackListener {
 				cache.addDealtModifier(DamageModifier.nonlinearMiddle(943, e -> Math.max(0, e)));
 			}
 			if (!event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS)) {
-				if (cache.getAttacker() != null && cache.getAttacker().hasEffect(CoPFakeEffects.SHADOW.get())) {
+				if (cache.getAttacker() != null && cache.getAttacker().hasEffect(CoPEffects.SHADOW.get())) {
 					cache.addDealtModifier(DamageModifier.multTotal((float) (1 - CoPConfig.COMMON.shadow.damageReduction.get())));
 				}
 			}

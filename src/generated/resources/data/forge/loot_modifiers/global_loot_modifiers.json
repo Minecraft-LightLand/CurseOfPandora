@@ -1,0 +1,21 @@
+{
+  "entries": [
+    "curseofpandora:woodland_mansion",
+    "curseofpandora:abandoned_mineshaft",
+    "curseofpandora:underwater_ruin_big",
+    "curseofpandora:desert_pyramid",
+    "curseofpandora:bastion_treasure",
+    "curseofpandora:end_city_treasure",
+    "curseofpandora:nether_bridge",
+    "curseofpandora:jungle_temple",
+    "curseofpandora:pillager_outpost",
+    "curseofpandora:stronghold_corridor",
+    "curseofpandora:village_cartographer",
+    "curseofpandora:shipwreck_treasure",
+    "curseofpandora:simple_dungeon",
+    "curseofpandora:ancient_city",
+    "curseofpandora:igloo_chest",
+    "curseofpandora:ruined_portal"
+  ],
+  "replace": false
+}

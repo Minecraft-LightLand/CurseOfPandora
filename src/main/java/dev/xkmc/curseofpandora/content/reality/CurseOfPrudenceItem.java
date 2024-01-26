@@ -4,7 +4,7 @@ import dev.xkmc.curseofpandora.content.complex.*;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -138,7 +138,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
 					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.remove(CoPFakeEffects.PRUDENCE.get());
+					cap.map.remove(CoPEffects.PRUDENCE.get());
 				}
 			}
 		}
@@ -149,7 +149,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
 				if (ent instanceof LivingEntity le) {
 					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.put(CoPFakeEffects.PRUDENCE.get(), 0);
+					cap.map.put(CoPEffects.PRUDENCE.get(), 0);
 				}
 			}
 		}

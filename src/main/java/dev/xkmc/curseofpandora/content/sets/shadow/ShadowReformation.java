@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -74,7 +74,7 @@ public class ShadowReformation extends ITokenProviderItem<ShadowReformation.Data
 
 		@Override
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
-			if (!cache.getAttackTarget().hasEffect(CoPFakeEffects.SHADOW.get()))
+			if (!cache.getAttackTarget().hasEffect(CoPEffects.SHADOW.get()))
 				return;
 			var event = cache.getLivingDamageEvent();
 			assert event != null;
@@ -85,7 +85,7 @@ public class ShadowReformation extends ITokenProviderItem<ShadowReformation.Data
 
 		@Override
 		public void onPlayerDamaged(Player player, AttackCache cache) {
-			if (cache.getAttacker() == null || !cache.getAttacker().hasEffect(CoPFakeEffects.SHADOW.get()))
+			if (cache.getAttacker() == null || !cache.getAttacker().hasEffect(CoPEffects.SHADOW.get()))
 				return;
 			var event = cache.getLivingDamageEvent();
 			assert event != null;

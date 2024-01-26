@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -70,7 +70,7 @@ public class ShadowConvergence extends ITokenProviderItem<ShadowConvergence.Data
 		@Override
 		public void onPlayerDamageTargetFinal(Player player, AttackCache cache) {
 			var target = cache.getAttackTarget();
-			if (target.hasEffect(CoPFakeEffects.SHADOW.get())) {
+			if (target.hasEffect(CoPEffects.SHADOW.get())) {
 				heal += cache.getDamageDealt() * getFactor();
 			}
 		}

@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -77,7 +77,7 @@ public class ShadowCore extends ITokenProviderItem<ShadowCore.Data> {
 			int index = (int) Math.round(player.getAttributeValue(CoPMisc.REALITY.get()));
 			int time = getDuration() * index;
 			MagicEventHandler.schedule(() ->
-					EffectUtil.addEffect(target, new MobEffectInstance(CoPFakeEffects.SHADOW.get(), time),
+					EffectUtil.addEffect(target, new MobEffectInstance(CoPEffects.SHADOW.get(), time),
 							EffectUtil.AddReason.FORCE, player));
 		}
 

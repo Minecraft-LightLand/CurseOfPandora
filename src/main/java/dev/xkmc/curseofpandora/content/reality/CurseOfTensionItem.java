@@ -7,7 +7,7 @@ import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPFakeEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -185,9 +185,9 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
 					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.remove(CoPFakeEffects.FAKE_TERROR_PRE.get());
-					cap.map.remove(CoPFakeEffects.FAKE_TERROR.get());
-					cap.map.remove(CoPFakeEffects.FAKE_TERRORIZED.get());
+					cap.map.remove(CoPEffects.FAKE_TERROR_PRE.get());
+					cap.map.remove(CoPEffects.FAKE_TERROR.get());
+					cap.map.remove(CoPEffects.FAKE_TERRORIZED.get());
 				}
 			}
 		}
@@ -199,8 +199,8 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
 				if (ent instanceof LivingEntity le) {
 					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.remove(CoPFakeEffects.FAKE_TERROR_PRE.get());
-					cap.map.remove(CoPFakeEffects.FAKE_TERROR.get());
+					cap.map.remove(CoPEffects.FAKE_TERROR_PRE.get());
+					cap.map.remove(CoPEffects.FAKE_TERROR.get());
 					int pre = 0;
 					int lost = 0;
 					for (long t : pair.getValue()) {
@@ -211,10 +211,10 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 						}
 					}
 					if (pre > 0) {
-						cap.map.put(CoPFakeEffects.FAKE_TERROR_PRE.get(), pre - 1);
+						cap.map.put(CoPEffects.FAKE_TERROR_PRE.get(), pre - 1);
 					}
 					if (lost > 0) {
-						cap.map.put(CoPFakeEffects.FAKE_TERROR.get(), lost - 1);
+						cap.map.put(CoPEffects.FAKE_TERROR.get(), lost - 1);
 					}
 				}
 			}
@@ -222,7 +222,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
 				if (ent instanceof LivingEntity le) {
 					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.put(CoPFakeEffects.FAKE_TERRORIZED.get(), 0);
+					cap.map.put(CoPEffects.FAKE_TERRORIZED.get(), 0);
 				}
 			}
 		}

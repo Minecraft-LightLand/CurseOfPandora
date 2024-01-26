@@ -24,7 +24,7 @@ import java.util.List;
 public class EarthCrush extends ITokenProviderItem<EarthCrush.Data> {
 
 	private static final AttrAdder CRIT_DMG = AttrAdder.of("earth_crush", L2DamageTracker.CRIT_DMG::get,
-			AttributeModifier.Operation.MULTIPLY_BASE, EarthCrush::getStat);
+			AttributeModifier.Operation.ADDITION, EarthCrush::getStat);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.elemental.earthCrushBonus.get();

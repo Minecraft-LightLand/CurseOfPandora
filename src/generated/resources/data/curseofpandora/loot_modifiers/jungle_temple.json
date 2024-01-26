@@ -1,0 +1,12 @@
+{
+  "type": "curseofpandora:append_table",
+  "bonus": 0.1,
+  "chance": 0.2,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/jungle_temple"
+    }
+  ],
+  "table": "curseofpandora:jungle_temple"
+}

@@ -8,7 +8,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 
 import static dev.xkmc.curseofpandora.init.CurseOfPandora.REGISTRATE;
 
-public class CoPFakeEffects {
+public class CoPEffects {
 
 	public static final RegistryEntry<FakeRenderEffect> FAKE_TERROR_PRE = REGISTRATE
 			.effect("terror_token_pre", () -> new FakeRenderEffect(4),
