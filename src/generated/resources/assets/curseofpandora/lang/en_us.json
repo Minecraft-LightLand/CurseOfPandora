@@ -25,6 +25,8 @@
   "curseofpandora.tooltip.curse.tension_2": "When a mob deals you a damage higher than %s%% of your current health, all Terror Token from you breaks, and you cannot deal damage to that target for %s seconds",
   "curseofpandora.tooltip.elemental.earth": "Effective only when player attack speed is %s or lower",
   "curseofpandora.tooltip.elemental.waving": "Effective only when player is in water or rain",
+  "curseofpandora.tooltip.elemental.wind_1": "Effective only when player is sprinting",
+  "curseofpandora.tooltip.elemental.wind_2": "Automatically attack aimed targets",
   "curseofpandora.tooltip.hell.eye": "When you damage a target, the target will deal a small magic damage to all monsters around it within %s blocks. Has a cool down of %s seconds.",
   "curseofpandora.tooltip.hell.reformation_1": "You are immune to Soul Flame damage, but you are not immune to the effect even when you have Cleansed effect. ",
   "curseofpandora.tooltip.hell.reformation_2": "When you deal damage to targets while you are one Soul Flame effect, inflict the target with same level and duration of Soul Flame",
@@ -97,6 +99,7 @@
   "item.curseofpandora.orb_of_stability": "Orb of Stability",
   "item.curseofpandora.plain_charm": "Plain Charm",
   "item.curseofpandora.waving_spell": "Waving Spell",
+  "item.curseofpandora.wind_thrust": "Wind Thrust",
   "trait.curseofpandora.reality": "Reality",
   "trait.curseofpandora.reality.desc": "Immune to damage from entities will less reality index than rank of this trait."
 }

@@ -25,6 +25,8 @@
   "curseofpandora.tooltip.curse.tension_2": "spuoɔǝs %s ɹoɟ ʇǝbɹɐʇ ʇɐɥʇ oʇ ǝbɐɯɐp ןɐǝp ʇouuɐɔ noʎ puɐ 'sʞɐǝɹq noʎ ɯoɹɟ uǝʞo⟘ ɹoɹɹǝ⟘ ןןɐ 'ɥʇןɐǝɥ ʇuǝɹɹnɔ ɹnoʎ ɟo %s%% uɐɥʇ ɹǝɥbıɥ ǝbɐɯɐp ɐ noʎ sןɐǝp qoɯ ɐ uǝɥM",
   "curseofpandora.tooltip.elemental.earth": "ɹǝʍoן ɹo %s sı pǝǝds ʞɔɐʇʇɐ ɹǝʎɐןd uǝɥʍ ʎןuo ǝʌıʇɔǝɟɟƎ",
   "curseofpandora.tooltip.elemental.waving": "uıɐɹ ɹo ɹǝʇɐʍ uı sı ɹǝʎɐןd uǝɥʍ ʎןuo ǝʌıʇɔǝɟɟƎ",
+  "curseofpandora.tooltip.elemental.wind_1": "buıʇuıɹds sı ɹǝʎɐןd uǝɥʍ ʎןuo ǝʌıʇɔǝɟɟƎ",
+  "curseofpandora.tooltip.elemental.wind_2": "sʇǝbɹɐʇ pǝɯıɐ ʞɔɐʇʇɐ ʎןןɐɔıʇɐɯoʇnⱯ",
   "curseofpandora.tooltip.hell.eye": "˙spuoɔǝs %s ɟo uʍop ןooɔ ɐ sɐH ˙sʞɔoןq %s uıɥʇıʍ ʇı punoɹɐ sɹǝʇsuoɯ ןןɐ oʇ ǝbɐɯɐp ɔıbɐɯ ןןɐɯs ɐ ןɐǝp ןןıʍ ʇǝbɹɐʇ ǝɥʇ 'ʇǝbɹɐʇ ɐ ǝbɐɯɐp noʎ uǝɥM",
   "curseofpandora.tooltip.hell.reformation_1": " ˙ʇɔǝɟɟǝ pǝsuɐǝןƆ ǝʌɐɥ noʎ uǝɥʍ uǝʌǝ ʇɔǝɟɟǝ ǝɥʇ oʇ ǝunɯɯı ʇou ǝɹɐ noʎ ʇnq 'ǝbɐɯɐp ǝɯɐןℲ ןnoS oʇ ǝunɯɯı ǝɹɐ noʎ",
   "curseofpandora.tooltip.hell.reformation_2": "ǝɯɐןℲ ןnoS ɟo uoıʇɐɹnp puɐ ןǝʌǝן ǝɯɐs ɥʇıʍ ʇǝbɹɐʇ ǝɥʇ ʇɔıןɟuı 'ʇɔǝɟɟǝ ǝɯɐןℲ ןnoS ǝuo ǝɹɐ noʎ ǝןıɥʍ sʇǝbɹɐʇ oʇ ǝbɐɯɐp ןɐǝp noʎ uǝɥM",
@@ -97,6 +99,7 @@
   "item.curseofpandora.orb_of_stability": "ʎʇıןıqɐʇS ɟo qɹO",
   "item.curseofpandora.plain_charm": "ɯɹɐɥƆ uıɐןԀ",
   "item.curseofpandora.waving_spell": "ןןǝdS buıʌɐM",
+  "item.curseofpandora.wind_thrust": "ʇsnɹɥ⟘ puıM",
   "trait.curseofpandora.reality": "ʎʇıןɐǝᴚ",
   "trait.curseofpandora.reality.desc": "˙ʇıɐɹʇ sıɥʇ ɟo ʞuɐɹ uɐɥʇ xǝpuı ʎʇıןɐǝɹ ssǝן ןןıʍ sǝıʇıʇuǝ ɯoɹɟ ǝbɐɯɐp oʇ ǝunɯɯI"
 }

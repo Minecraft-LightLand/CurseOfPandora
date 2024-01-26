@@ -9,6 +9,7 @@ import dev.xkmc.curseofpandora.content.sets.angle.*;
 import dev.xkmc.curseofpandora.content.sets.elemental.EarthCrush;
 import dev.xkmc.curseofpandora.content.sets.elemental.FlamingExplosion;
 import dev.xkmc.curseofpandora.content.sets.elemental.WavingSpell;
+import dev.xkmc.curseofpandora.content.sets.elemental.WindThrust;
 import dev.xkmc.curseofpandora.content.sets.hell.EyeOfCursedSoul;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireReformation;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireSkull;
@@ -61,6 +62,7 @@ public class CoPItems {
 	public static final ItemEntry<HellfireSkull> HELLFIRE_SKULL;
 	public static final ItemEntry<HellfireReformation> HELLFIRE_REFORMATION;
 	public static final ItemEntry<EyeOfCursedSoul> EYE_OF_CURSED_SOULS;
+	public static final ItemEntry<WindThrust> WIND_THRUST;
 	public static final ItemEntry<EarthCrush> EARTH_CRUSH;
 	public static final ItemEntry<FlamingExplosion> FLAMING_EXPLOSION;
 	public static final ItemEntry<WavingSpell> WAVING_SPELL;
@@ -276,7 +278,9 @@ public class CoPItems {
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE)
 					.lang("Eye of Cursed Souls").register();
 
-			EARTH_CRUSH = item("earth_crush",EarthCrush::new)
+			WIND_THRUST = item("wind_thrust", WindThrust::new)
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			EARTH_CRUSH = item("earth_crush", EarthCrush::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 			FLAMING_EXPLOSION = item("flaming_explosion", FlamingExplosion::new)
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();

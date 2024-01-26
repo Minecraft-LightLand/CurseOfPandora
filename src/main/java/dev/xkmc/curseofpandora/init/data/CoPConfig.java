@@ -257,6 +257,10 @@ public class CoPConfig {
 
 		public static class Elemental {
 
+
+			public final ForgeConfigSpec.IntValue windThrustRealityIndex;
+			public final ForgeConfigSpec.DoubleValue windThrustSpeed;
+			public final ForgeConfigSpec.DoubleValue windThrustDamage;
 			public final ForgeConfigSpec.IntValue earthCrushRealityIndex;
 			public final ForgeConfigSpec.DoubleValue earthCrushThreshold;
 			public final ForgeConfigSpec.DoubleValue earthCrushBonus;
@@ -268,6 +272,12 @@ public class CoPConfig {
 
 			private Elemental(ForgeConfigSpec.Builder builder) {
 				builder.push("Elemental");
+				windThrustRealityIndex = builder.comment("Reality Index requirement for Wind Thrust")
+						.defineInRange("windThrustRealityIndex", 4, 0, 7);
+				windThrustSpeed = builder.comment("Speed bonus for Wind Thrust")
+						.defineInRange("windThrustSpeed", 0.5, 0, 10);
+				windThrustDamage = builder.comment("Melee damage bonus for Wind Thrust")
+						.defineInRange("windThrustDamage", 1d, 0, 10);
 				earthCrushRealityIndex = builder.comment("Reality Index requirement for Earth Crush")
 						.defineInRange("earthCrushRealityIndex", 4, 0, 7);
 				earthCrushThreshold = builder.comment("Attack speed threshold for Earth Crush")

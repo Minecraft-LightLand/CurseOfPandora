@@ -137,8 +137,10 @@ public class CoPLangData {
 	}
 
 	public enum Elemental {
-		WAVING("Effective only when player is in water or rain", 0),
+		WIND_1("Effective only when player is sprinting", 0),
+		WIND_2("Automatically attack aimed targets", 0),
 		EARTH("Effective only when player attack speed is %s or lower", 1),
+		WAVING("Effective only when player is in water or rain", 0),
 		;
 
 		final String id, def;

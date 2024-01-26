@@ -86,6 +86,8 @@
   "curseofpandora.tooltip.hell.reformation_1": "你免疫魂火伤害，但是即使有净化也不免疫魂火效果",
   "curseofpandora.tooltip.hell.reformation_2": "你对生物造成伤害时，那个生物获得和你相同等级和时长的魂火效果",
   "curseofpandora.tooltip.hell.eye": "你对生物造成伤害时，那个生物对%s格内的怪物造成少量魔法伤害。触发间隔%s秒",
+  "curseofpandora.tooltip.elemental.wind_1": "只当玩家疾跑时生效",
+  "curseofpandora.tooltip.elemental.wind_2": "玩家自动攻击指向的实体",
   "curseofpandora.tooltip.elemental.earth": "只当玩家攻击速度在%s及以下时生效",
   "curseofpandora.tooltip.elemental.waving": "只当玩家在水中或雨中时生效",
   "effect.curseofpandora.prudence": "碎魂指示物",

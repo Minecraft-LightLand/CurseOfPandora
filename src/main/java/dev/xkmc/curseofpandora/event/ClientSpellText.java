@@ -6,9 +6,15 @@ import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.util.Proxy;
+import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -47,4 +53,21 @@ public class ClientSpellText {
 		var ins = player.getAttribute(CoPMisc.REALITY.get());
 		return ins == null ? 0 : (int) Math.round(ins.getValue());
 	}
+
+
+	public static void onClientAutoAttack(Player player) {
+		if (!player.isLocalPlayer()) return;
+		var mode = Minecraft.getInstance().gameMode;
+		if (mode == null) return;
+		var cd = player.getAttackStrengthScale(1);
+		if (cd < 1) return;
+		var hit = RayTraceUtil.rayTraceEntity(player, player.getEntityReach(), e -> true);
+		if (hit == null) return;
+		var entity = hit.getEntity();
+		if (!entity.isAlive()) return;
+		if (!(entity instanceof ItemEntity) && !(entity instanceof ExperienceOrb) && !(entity instanceof AbstractArrow)) {
+			mode.attack(player, hit.getEntity());
+		}
+	}
+
 }
