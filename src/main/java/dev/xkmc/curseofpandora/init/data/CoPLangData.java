@@ -120,7 +120,7 @@ public class CoPLangData {
 		CORE_1("Inflict shadow effect on attack target with duration of %s seconds per your Reality Index.", 1),
 		CORE_2("Shadow effect will reduce damage mobs dealt by %s%%", 1),
 		CONVERGENCE("Heal %s%% of the damage you dealt to target with Shadow effect", 1),
-		CONSOLIDATION("When you hit targets with shadow effect, after %3$s second, their shadow will scatter and attack surrounding mobs within %1$s blocks, dealing %2$s%% of original damage dealt. This effect can trigger once every %4$s seconds.",4),
+		CONSOLIDATION("When you hit targets with shadow effect, after %3$s second, their shadow will scatter and attack surrounding mobs within %1$s blocks, dealing %2$s%% of original damage dealt. This effect can trigger once every %4$s seconds.", 4),
 		REFORMATION_1("+%s%% magic damage against target with Shadow effect", 1),
 		REFORMATION_2("-%s%% physical damage from mobs with Shadow effect", 1),
 		VOID("Shadow damage you dealt becomes void shadow damage.", 0);
@@ -147,6 +147,8 @@ public class CoPLangData {
 		WIND_2("Automatically attack aimed targets", 0),
 		EARTH("Effective only when player attack speed is %s or lower", 1),
 		WAVING("Effective only when player is in water or rain", 0),
+		CURSE_1("Gain 1 Spell Tolerance for every armors with curse enchantment.", 0),
+		CURSE_2("+%s%% magic damage for every curse enchantment on your armors.", 1),
 		;
 
 		final String id, def;

@@ -11,6 +11,7 @@ import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -20,31 +21,63 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class WavingSpell extends ITokenProviderItem<WavingSpell.Data> {
-
-	private static final AttrAdder MAGIC = AttrAdder.of("waving_spell", L2DamageTracker.MAGIC_FACTOR::get,
-			AttributeModifier.Operation.MULTIPLY_TOTAL, WavingSpell::getStat);
+public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> {
 
 	private static double getStat() {
-		return CoPConfig.COMMON.elemental.wavingSpellBonus.get();
+		return CoPConfig.COMMON.elemental.curseRedirectionBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.elemental.wavingSpellRealityIndex.get();
+		return CoPConfig.COMMON.elemental.curseRedirectionRealityIndex.get();
 	}
 
-	public WavingSpell(Properties properties) {
+	private static AttrAdder magic(Player player) {
+		int count = 0;
+		for (var e : EquipmentSlot.values()) {
+			if (e.isArmor()) {
+				ItemStack stack = player.getItemBySlot(e);
+				for (var ent : stack.getAllEnchantments().keySet()) {
+					if (ent.isCurse()) count++;
+				}
+			}
+		}
+		double bonus = count * getStat();
+		return AttrAdder.of("curse_redirection", L2DamageTracker.MAGIC_FACTOR::get,
+				AttributeModifier.Operation.MULTIPLY_TOTAL, () -> bonus);
+	}
+
+	private static AttrAdder spell(Player player) {
+		int count = 0;
+		for (var e : EquipmentSlot.values()) {
+			if (e.isArmor()) {
+				ItemStack stack = player.getItemBySlot(e);
+				for (var ent : stack.getAllEnchantments().keySet()) {
+					if (ent.isCurse()) {
+						count++;
+						break;
+					}
+				}
+			}
+		}
+		double bonus = count;
+		return AttrAdder.of("curse_redirection", CoPMisc.SPELL,
+				AttributeModifier.Operation.ADDITION, () -> bonus);
+	}
+
+	public CurseRedirection(Properties properties) {
 		super(properties, Data::new);
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
-		list.add(CoPLangData.Elemental.WAVING.get().withStyle(ChatFormatting.GRAY));
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(MAGIC.getTooltip())
-				.withStyle(pass ? ChatFormatting.BLUE : ChatFormatting.DARK_GRAY));
+		list.add(Component.literal("- ").append(CoPLangData.Elemental.CURSE_1.get())
+				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
+		list.add(Component.literal("- ").append(CoPLangData.Elemental.CURSE_2.get(
+				Math.round(getStat() * 100)
+		)).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
@@ -58,14 +91,15 @@ public class WavingSpell extends ITokenProviderItem<WavingSpell.Data> {
 
 		@Override
 		protected void removeImpl(Player player) {
-			MAGIC.removeImpl(player);
+			magic(player).removeImpl(player);
+			spell(player).removeImpl(player);
 		}
 
 		@Override
 		protected void tickImpl(Player player) {
 			if (player.level().isClientSide()) return;
-			if (player.isInWaterRainOrBubble()) MAGIC.tickImpl(player);
-			else MAGIC.removeImpl(player);
+			magic(player).tickImpl(player);
+			spell(player).tickImpl(player);
 		}
 
 	}

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "minecraft:nether_star"
+    },
+    "F": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:vanishing_curse",
+      "min_level": 1
+    },
+    "S": {
+      "type": "l2library:enchantment",
+      "enchantment": "minecraft:binding_curse",
+      "min_level": 1
+    }
+  },
+  "pattern": [
+    "SCF",
+    "CDC",
+    "SCF"
+  ],
+  "result": {
+    "item": "curseofpandora:curse_redirection"
+  },
+  "show_notification": true
+}

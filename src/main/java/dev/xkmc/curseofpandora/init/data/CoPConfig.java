@@ -309,9 +309,10 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue earthCrushBonus;
 			public final ForgeConfigSpec.IntValue flamingExplosionRealityIndex;
 			public final ForgeConfigSpec.DoubleValue flamingExplosionBonus;
-
 			public final ForgeConfigSpec.IntValue wavingSpellRealityIndex;
 			public final ForgeConfigSpec.DoubleValue wavingSpellBonus;
+			public final ForgeConfigSpec.IntValue curseRedirectionRealityIndex;
+			public final ForgeConfigSpec.DoubleValue curseRedirectionBonus;
 
 			private Elemental(ForgeConfigSpec.Builder builder) {
 				builder.push("Elemental");
@@ -333,8 +334,12 @@ public class CoPConfig {
 						.defineInRange("flamingExplosionBonus", 1d, 0, 100);
 				wavingSpellRealityIndex = builder.comment("Reality Index requirement for Waving Spell")
 						.defineInRange("wavingSpellRealityIndex", 4, 0, 7);
-				wavingSpellBonus = builder.comment("Explosion damage bonus for Waving Spell")
+				wavingSpellBonus = builder.comment("Magic damage bonus for Waving Spell")
 						.defineInRange("wavingSpellBonus", 1d, 0, 100);
+				curseRedirectionRealityIndex = builder.comment("Reality Index requirement for Curse Redirection")
+						.defineInRange("curseRedirectionRealityIndex", 4, 0, 7);
+				curseRedirectionBonus = builder.comment("Magic damage bonus per curse enchantment for Curse Redirection")
+						.defineInRange("curseRedirectionBonus", 0.5d, 0, 10);
 				builder.pop();
 			}
 

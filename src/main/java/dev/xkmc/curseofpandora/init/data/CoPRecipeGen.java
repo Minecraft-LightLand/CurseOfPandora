@@ -354,6 +354,14 @@ public class CoPRecipeGen {
 					.define('F', Items.PRISMARINE_SHARD)
 					.define('D', Items.CONDUIT)
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CURSE_REDIRECTION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+					.pattern("SCF").pattern("CDC").pattern("SCF")
+					.define('C', CoPItems.CHARM)
+					.define('S', new EnchantmentIngredient(Enchantments.BINDING_CURSE, 1))
+					.define('F', new EnchantmentIngredient(Enchantments.VANISHING_CURSE, 1))
+					.define('D', Items.NETHER_STAR)
+					.save(pvd);
 		}
 
 		if (ModList.get().isLoaded(L2Hostility.MODID)) {

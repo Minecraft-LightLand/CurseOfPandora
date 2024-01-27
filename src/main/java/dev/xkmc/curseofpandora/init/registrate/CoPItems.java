@@ -6,10 +6,7 @@ import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
-import dev.xkmc.curseofpandora.content.sets.elemental.EarthCrush;
-import dev.xkmc.curseofpandora.content.sets.elemental.FlamingExplosion;
-import dev.xkmc.curseofpandora.content.sets.elemental.WavingSpell;
-import dev.xkmc.curseofpandora.content.sets.elemental.WindThrust;
+import dev.xkmc.curseofpandora.content.sets.elemental.*;
 import dev.xkmc.curseofpandora.content.sets.hell.EyeOfCursedSoul;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireReformation;
 import dev.xkmc.curseofpandora.content.sets.hell.HellfireSkull;
@@ -72,6 +69,7 @@ public class CoPItems {
 	public static final ItemEntry<EarthCrush> EARTH_CRUSH;
 	public static final ItemEntry<FlamingExplosion> FLAMING_EXPLOSION;
 	public static final ItemEntry<WavingSpell> WAVING_SPELL;
+	public static final ItemEntry<CurseRedirection> CURSE_REDIRECTION;
 
 
 	static {
@@ -310,6 +308,8 @@ public class CoPItems {
 			FLAMING_EXPLOSION = item("flaming_explosion", FlamingExplosion::new)
 					.tag(CoPTagGen.ELEMENTAL).register();
 			WAVING_SPELL = item("waving_spell", WavingSpell::new)
+					.tag(CoPTagGen.ELEMENTAL).register();
+			CURSE_REDIRECTION = item("curse_redirection", CurseRedirection::new)
 					.tag(CoPTagGen.ELEMENTAL).register();
 		}
 

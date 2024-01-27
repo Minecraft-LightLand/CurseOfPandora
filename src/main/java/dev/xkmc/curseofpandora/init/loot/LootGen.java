@@ -81,7 +81,7 @@ public class LootGen {
 	}
 
 	private static ItemEntry<?>[] elemental() {
-		return new ItemEntry<?>[]{WIND_THRUST, EARTH_CRUSH, FLAMING_EXPLOSION, WAVING_SPELL};
+		return new ItemEntry<?>[]{WIND_THRUST, EARTH_CRUSH, FLAMING_EXPLOSION, WAVING_SPELL, CURSE_REDIRECTION};
 	}
 
 

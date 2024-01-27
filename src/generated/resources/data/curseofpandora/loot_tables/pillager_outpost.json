@@ -78,6 +78,11 @@
           "type": "minecraft:item",
           "name": "curseofpandora:waving_spell",
           "weight": 50
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:curse_redirection",
+          "weight": 50
         }
       ],
       "rolls": 1.0
