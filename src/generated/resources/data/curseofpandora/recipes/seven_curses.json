@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "C": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "item": "pandora:pandora_necklace",
+    "nbt": "{PandoraCharms:[{Count:1b,id:\"curseofpandora:curse_of_inertia\"},{Count:1b,id:\"curseofpandora:curse_of_proximity\"},{Count:1b,id:\"curseofpandora:curse_of_flesh\"},{Count:1b,id:\"curseofpandora:curse_of_metabolism\"},{Count:1b,id:\"curseofpandora:curse_of_tension\"},{Count:1b,id:\"curseofpandora:curse_of_prudence\"},{Count:1b,id:\"curseofpandora:curse_of_spell\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"}]}"
+  },
+  "show_notification": true
+}

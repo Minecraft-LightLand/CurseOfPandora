@@ -212,7 +212,7 @@ public class CoPRecipeGen {
 					.define('C', Items.NETHER_STAR)
 					.define('B', CoPItems.CHARM.get())
 					.define('A', Items.GOLD_INGOT)
-					.save(e -> new NBTRecipe(e, stack), new ResourceLocation(CurseOfPandora.MODID, "seven_curses"));
+					.save(e -> pvd.accept(new NBTRecipe(e, stack)), new ResourceLocation(CurseOfPandora.MODID, "seven_curses"));
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_FEATHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
 					.pattern("ABA").pattern("FCF").pattern("MBM")

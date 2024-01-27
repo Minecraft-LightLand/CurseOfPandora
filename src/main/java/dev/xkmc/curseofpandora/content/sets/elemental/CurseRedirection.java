@@ -43,7 +43,7 @@ public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> 
 		}
 		double bonus = count * getStat();
 		return AttrAdder.of("curse_redirection", L2DamageTracker.MAGIC_FACTOR::get,
-				AttributeModifier.Operation.MULTIPLY_TOTAL, () -> bonus);
+				AttributeModifier.Operation.ADDITION, () -> bonus);
 	}
 
 	private static AttrAdder spell(Player player) {

@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-27T22:12:47.440344	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2024-01-28T00:39:43.979621	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 531a7ed51c5507980ba780c20e6ae4aa1865e37a assets/curseofpandora/lang/en_ud.json
 b5067638c874192093a464e86a6c6457c87ff0b2 assets/curseofpandora/lang/en_us.json
 ee44b4df5dd60e5aec209a4d4e49a54793c12dc2 assets/curseofpandora/models/item/angelic_bless.json
@@ -112,6 +112,7 @@ f9b02de0934be6a4fd8aa8f05852793007ae845f data/curseofpandora/advancements/recipe
 c4d1727c6b2fa0641705677bf752399f926125b8 data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_craft.json
 7675957ec2994381b77ad0178b2aabeac633b7b3 data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_renew.json
 ba4396d98ac0e1297c062f8c19fa56e946596d9f data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_smelt.json
+c81c8a76ba363e0edcaf7b006a90385428384db0 data/curseofpandora/advancements/recipes/misc/seven_curses.json
 82b5ed398bcc7a5d3fbd226e582a46d35502ffdd data/curseofpandora/advancements/recipes/misc/shadow_consolidation.json
 90ec80e9f9bd1de63171ca2ccdd560bdf0b08ae3 data/curseofpandora/advancements/recipes/misc/shadow_convergence.json
 7307c33f56504e04f40ab7de30b2e0bfffa72a81 data/curseofpandora/advancements/recipes/misc/shadow_core.json
@@ -187,6 +188,7 @@ a49134e54b6aa4119a0e6c385b91533dbe39d558 data/curseofpandora/recipes/pandora/orb
 38428c1561e6f6fe8852426222f1964c49a189d8 data/curseofpandora/recipes/pandora/plain_charm_craft.json
 0bc793ff63fcec5e2057217b4d3f8ed84875e9ff data/curseofpandora/recipes/pandora/plain_charm_renew.json
 b9f76d2f1816e9a9dac4eabbd421a66052d8d2c7 data/curseofpandora/recipes/pandora/plain_charm_smelt.json
+4988e2d75848dcb388c43d062eafdf68331995f4 data/curseofpandora/recipes/seven_curses.json
 393aa4928a8d6ca9770adbdafd84d251a7d3fde8 data/curseofpandora/recipes/shadow_consolidation.json
 9a3157714a7961a50ca22bedee3ee0f6d9d291fb data/curseofpandora/recipes/shadow_convergence.json
 5732223b3580d917131fd34ed4ef79b146bf6e16 data/curseofpandora/recipes/shadow_core.json

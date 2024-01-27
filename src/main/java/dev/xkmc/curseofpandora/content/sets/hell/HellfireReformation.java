@@ -40,9 +40,9 @@ public class HellfireReformation extends ITokenProviderItem<HellfireReformation.
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.Hell.REFORMATION_1.get())
-				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
-		list.add(Component.literal("- ").append(CoPLangData.Hell.REFORMATION_2.get())
+		list.add(CoPLangData.Hell.REFORMATION_1.get()
+				.withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
+		list.add(CoPLangData.Hell.REFORMATION_2.get()
 				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 

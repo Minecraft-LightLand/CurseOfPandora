@@ -23,7 +23,7 @@ import java.util.List;
 public class FlamingExplosion extends ITokenProviderItem<FlamingExplosion.Data> {
 
 	private static final AttrAdder EXPLOSION = AttrAdder.of("flaming_explosion", L2DamageTracker.EXPLOSION_FACTOR::get,
-			AttributeModifier.Operation.MULTIPLY_TOTAL, FlamingExplosion::getStat);
+			AttributeModifier.Operation.ADDITION, FlamingExplosion::getStat);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.elemental.flamingExplosionBonus.get();

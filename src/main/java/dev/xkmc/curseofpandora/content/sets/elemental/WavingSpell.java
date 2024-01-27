@@ -23,7 +23,7 @@ import java.util.List;
 public class WavingSpell extends ITokenProviderItem<WavingSpell.Data> {
 
 	private static final AttrAdder MAGIC = AttrAdder.of("waving_spell", L2DamageTracker.MAGIC_FACTOR::get,
-			AttributeModifier.Operation.MULTIPLY_TOTAL, WavingSpell::getStat);
+			AttributeModifier.Operation.ADDITION, WavingSpell::getStat);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.elemental.wavingSpellBonus.get();
