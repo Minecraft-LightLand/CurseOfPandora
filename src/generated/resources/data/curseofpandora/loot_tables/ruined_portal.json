@@ -62,12 +62,12 @@
         {
           "type": "minecraft:item",
           "name": "curseofpandora:bless_of_lava_walker",
-          "weight": 400
+          "weight": 200
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:golden_heart",
-          "weight": 400
+          "weight": 200
         }
       ],
       "rolls": 1.0

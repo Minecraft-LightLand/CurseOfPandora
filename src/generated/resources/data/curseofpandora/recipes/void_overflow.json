@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "curseofpandora:shadow_fragment"
+    },
+    "S": {
+      "item": "l2complements:resonant_feather"
+    }
+  },
+  "pattern": [
+    "DSD",
+    "DCD",
+    "DSD"
+  ],
+  "result": {
+    "item": "curseofpandora:void_overflow"
+  },
+  "show_notification": true
+}

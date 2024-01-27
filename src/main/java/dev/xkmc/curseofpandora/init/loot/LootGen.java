@@ -92,51 +92,51 @@ public class LootGen {
 	public enum LootDefinition {
 		// end
 		END_CITY_TREASURE(0.2, 0.1, BuiltInLootTables.END_CITY_TREASURE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, shadow())
-						.addItem(400, CoPItems.ENDER_CHARM.get()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, shadow())
+						.addItem(200, CoPItems.ENDER_CHARM.get()).build()),
 		// nethers
 		NETHER_BRIDGE(0.2, 0.1, BuiltInLootTables.NETHER_BRIDGE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
-						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, hell())
+						.addItem(200, CoPItems.BLESS_LAVA_WALKER.get()).build()),
 		RUINED_PORTAL(0.2, 0.1, BuiltInLootTables.RUINED_PORTAL,
 				() -> new PoolBuilder().fromTag(100, attr())
-						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
-						.addItem(400, CoPItems.GOLDEN_HEART.get()).build()),
+						.addItem(200, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(200, CoPItems.GOLDEN_HEART.get()).build()),
 		BASTION_TREASURE(1, 0.2, BuiltInLootTables.BASTION_TREASURE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
-						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
-						.addItem(400, CoPItems.GOLDEN_HEART.get())
-						.addItem(400, CoPItems.STABLE_BODY.get()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, hell())
+						.addItem(200, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(200, CoPItems.GOLDEN_HEART.get())
+						.addItem(200, CoPItems.STABLE_BODY.get()).build()),
 		BASTION_OTHER(0.2, 0.1, BuiltInLootTables.BASTION_OTHER,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
-						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
-						.addItem(400, CoPItems.GOLDEN_HEART.get())
-						.addItem(400, CoPItems.STABLE_BODY.get()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, hell())
+						.addItem(200, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(200, CoPItems.GOLDEN_HEART.get())
+						.addItem(200, CoPItems.STABLE_BODY.get()).build()),
 		BASTION_BRIDGE(0.2, 0.1, BuiltInLootTables.BASTION_BRIDGE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, hell())
-						.addItem(400, CoPItems.BLESS_LAVA_WALKER.get())
-						.addItem(400, CoPItems.GOLDEN_HEART.get())
-						.addItem(400, CoPItems.STABLE_BODY.get()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, hell())
+						.addItem(200, CoPItems.BLESS_LAVA_WALKER.get())
+						.addItem(200, CoPItems.GOLDEN_HEART.get())
+						.addItem(200, CoPItems.STABLE_BODY.get()).build()),
 		// overworld
 		IGLOO_CHEST(0.2, 0.1, BuiltInLootTables.IGLOO_CHEST,
 				() -> new PoolBuilder().fromTag(100, attr())
 						.addItem(400, CoPItems.BLESS_SNOW_WALKER.get()).build()),
 		ANCIENT_CITY(0.4, 0.2, BuiltInLootTables.ANCIENT_CITY,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
 		WOODLAND_MANSION(0.4, 0.2, BuiltInLootTables.WOODLAND_MANSION,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
 		DESERT_PYRAMID(0.2, 0.1, BuiltInLootTables.DESERT_PYRAMID,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
 		SHIPWRECK_TREASURE(0.2, 0.1, BuiltInLootTables.SHIPWRECK_TREASURE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
 		UNDERWATER_RUIN_BIG(0.2, 0.1, BuiltInLootTables.UNDERWATER_RUIN_BIG,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
 		STRONGHOLD_CORRIDOR(0.2, 0.1, BuiltInLootTables.STRONGHOLD_CORRIDOR,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
 		PILLAGER_OUTPOST(0.2, 0.1, BuiltInLootTables.PILLAGER_OUTPOST,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, elemental()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
 		JUNGLE_TEMPLE(0.2, 0.1, BuiltInLootTables.JUNGLE_TEMPLE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(200, angelic()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
 		ABANDONED_MINESHAFT(0.1, 0.05, BuiltInLootTables.ABANDONED_MINESHAFT, LootGen::buildPlaceholderLoot),
 		SIMPLE_DUNGEON(0.1, 0.05, BuiltInLootTables.SIMPLE_DUNGEON, LootGen::buildPlaceholderLoot),
 		VILLAGE_TEMPLE(0.1, 0.05, BuiltInLootTables.VILLAGE_TEMPLE, LootGen::buildPlaceholderLoot),

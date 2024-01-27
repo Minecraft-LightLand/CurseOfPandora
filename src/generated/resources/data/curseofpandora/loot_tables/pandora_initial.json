@@ -11,128 +11,13 @@
               "add": false,
               "count": 1.0,
               "function": "minecraft:set_count"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{PandoraCharms:[{Count:1b,id:\"curseofpandora:curse_of_inertia\"},{Count:1b,id:\"curseofpandora:curse_of_proximity\"},{Count:1b,id:\"curseofpandora:curse_of_flesh\"},{Count:1b,id:\"curseofpandora:curse_of_metabolism\"},{Count:1b,id:\"curseofpandora:curse_of_tension\"},{Count:1b,id:\"curseofpandora:curse_of_prudence\"},{Count:1b,id:\"curseofpandora:curse_of_spell\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"},{Count:0b,id:\"minecraft:air\"}]}"
             }
           ],
           "name": "pandora:pandora_necklace"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "curseofpandora:curse_of_inertia"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "curseofpandora:curse_of_proximity"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "curseofpandora:curse_of_flesh"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "curseofpandora:curse_of_metabolism"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "curseofpandora:curse_of_tension"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "curseofpandora:curse_of_prudence"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "curseofpandora:curse_of_spell"
         }
       ],
       "rolls": 1.0

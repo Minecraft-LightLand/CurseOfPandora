@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_plain_charm": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "curseofpandora:plain_charm"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "curseofpandora:flaming_explosion"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_plain_charm",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "curseofpandora:flaming_explosion"
+    ]
+  },
+  "sends_telemetry_event": false
+}

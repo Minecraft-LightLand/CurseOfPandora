@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "curseofpandora:shadow_fragment"
+    },
+    "T": {
+      "item": "l2complements:totemic_gold_ingot"
+    }
+  },
+  "pattern": [
+    " D ",
+    "ACA",
+    "DTD"
+  ],
+  "result": {
+    "item": "curseofpandora:shadow_convergence"
+  },
+  "show_notification": true
+}

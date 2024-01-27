@@ -35,7 +35,7 @@ import static dev.xkmc.curseofpandora.init.CurseOfPandora.REGISTRATE;
 
 public class CoPItems {
 
-	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE;
+	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE, ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT;
 	public static final ItemEntry<EnchDescItem> FIRE_REJECT, EXPLOSION_REJECT, MAGIC_REJECT,
 			ENVIRONMENTAL_REJECT, PROJECTILE_REJECT, OWNER_PROTECTION, STABLE_BODY;
 	public static final ItemEntry<EffectRefreshItem> MINI_BEACON_SPEED, MINI_BEACON_HASTE, MINI_BEACON_JUMP,
@@ -267,6 +267,8 @@ public class CoPItems {
 
 		//sets
 		{
+			ANGELIC_FEATHER = item("angelic_feather", Item::new).register();
+
 			ANGELIC_WING = item("angelic_wing", AngelicWing::new)
 					.tag(CoPTagGen.ANGELIC).register();
 			ANGELIC_BLESS = item("angelic_bless", AngelicBless::new)
@@ -278,6 +280,8 @@ public class CoPItems {
 			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
 					.tag(CoPTagGen.ANGELIC).register();
 
+			HELLFIRE_RUNE = item("hellfire_rune", Item::new).register();
+
 			HELLFIRE_SKULL = item("hellfire_skull", HellfireSkull::new)
 					.tag(CoPTagGen.HELL).register();
 			HELLFIRE_REFORMATION = item("hellfire_reformation", HellfireReformation::new)
@@ -285,6 +289,8 @@ public class CoPItems {
 			EYE_OF_CURSED_SOULS = item("eye_of_cursed_souls", EyeOfCursedSoul::new)
 					.tag(CoPTagGen.HELL)
 					.lang("Eye of Cursed Souls").register();
+
+			SHADOW_FRAGMENT = item("shadow_fragment", Item::new).register();
 
 			SHADOW_CORE = item("shadow_core", ShadowCore::new)
 					.tag(CoPTagGen.SHADOW).register();

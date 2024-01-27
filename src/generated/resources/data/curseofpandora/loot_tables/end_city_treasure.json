@@ -62,32 +62,32 @@
         {
           "type": "minecraft:item",
           "name": "curseofpandora:shadow_core",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:shadow_convergence",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:shadow_consolidation",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:shadow_reformation",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:void_overflow",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:charm_of_calmness",
-          "weight": 400
+          "weight": 200
         }
       ],
       "rolls": 1.0

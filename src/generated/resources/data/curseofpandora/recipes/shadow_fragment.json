@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:hard_ice"
+    },
+    "B": {
+      "item": "l2complements:warden_bone_shard"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:void_eye"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "ACA",
+    "ABA"
+  ],
+  "result": {
+    "item": "curseofpandora:shadow_fragment"
+  },
+  "show_notification": true
+}

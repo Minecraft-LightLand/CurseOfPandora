@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:enchanted_totemic_apple"
+    },
+    "B": {
+      "item": "curseofpandora:angelic_feather"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BCB",
+    "BAB"
+  ],
+  "result": {
+    "item": "curseofpandora:angelic_protection"
+  },
+  "show_notification": true
+}

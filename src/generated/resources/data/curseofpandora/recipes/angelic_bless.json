@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:feather"
+    },
+    "B": {
+      "item": "curseofpandora:angelic_feather"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:totemic_gold_ingot"
+    }
+  },
+  "pattern": [
+    "DBD",
+    "BCB",
+    "AAA"
+  ],
+  "result": {
+    "item": "curseofpandora:angelic_bless"
+  },
+  "show_notification": true
+}

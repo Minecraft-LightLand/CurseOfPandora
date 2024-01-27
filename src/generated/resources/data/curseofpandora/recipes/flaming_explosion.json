@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:storm_core"
+    },
+    "F": {
+      "item": "l2complements:soul_flame"
+    }
+  },
+  "pattern": [
+    "CFC",
+    "FDF",
+    "CFC"
+  ],
+  "result": {
+    "item": "curseofpandora:flaming_explosion"
+  },
+  "show_notification": true
+}

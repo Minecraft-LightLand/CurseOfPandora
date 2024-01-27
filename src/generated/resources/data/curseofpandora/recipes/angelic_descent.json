@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:angelic_feather"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:warden_bone_shard"
+    }
+  },
+  "pattern": [
+    " D ",
+    "BCB",
+    "B B"
+  ],
+  "result": {
+    "item": "curseofpandora:angelic_descent"
+  },
+  "show_notification": true
+}

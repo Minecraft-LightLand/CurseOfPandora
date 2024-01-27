@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:captured_wind"
+    },
+    "B": {
+      "item": "l2complements:storm_core"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "M": {
+      "item": "minecraft:phantom_membrane"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "FCF",
+    "MBM"
+  ],
+  "result": {
+    "item": "curseofpandora:angelic_feather"
+  },
+  "show_notification": true
+}

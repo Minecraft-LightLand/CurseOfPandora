@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "curseofpandora:shadow_fragment"
+    },
+    "S": {
+      "item": "l2complements:heirophant_green"
+    },
+    "T": {
+      "item": "l2complements:storm_core"
+    }
+  },
+  "pattern": [
+    "DSD",
+    "ACA",
+    "DTD"
+  ],
+  "result": {
+    "item": "curseofpandora:shadow_consolidation"
+  },
+  "show_notification": true
+}

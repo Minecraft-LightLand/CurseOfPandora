@@ -3,22 +3,22 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "l2hostility:nausea"
+      "item": "minecraft:feather"
     },
     "B": {
-      "item": "l2hostility:chaos_ingot"
+      "item": "curseofpandora:angelic_feather"
     },
     "C": {
-      "item": "l2hostility:weakness"
+      "item": "curseofpandora:plain_charm"
     }
   },
   "pattern": [
-    " C ",
     "ABA",
-    " C "
+    "ACA",
+    "ABA"
   ],
   "result": {
-    "item": "curseofpandora:curse_of_tension"
+    "item": "curseofpandora:angelic_wing"
   },
   "show_notification": true
 }

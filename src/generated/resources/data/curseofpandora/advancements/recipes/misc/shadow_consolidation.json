@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chaos_ingot": {
+    "has_plain_charm": {
       "conditions": {
         "items": [
           {
             "items": [
-              "l2hostility:chaos_ingot"
+              "curseofpandora:plain_charm"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "curseofpandora:pandora/curse_of_tension"
+        "recipe": "curseofpandora:shadow_consolidation"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_chaos_ingot",
+      "has_plain_charm",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "curseofpandora:pandora/curse_of_tension"
+      "curseofpandora:shadow_consolidation"
     ]
   },
   "sends_telemetry_event": false

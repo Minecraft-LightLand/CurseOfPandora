@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:captured_wind"
+    }
+  },
+  "pattern": [
+    "DDC",
+    "CCD",
+    "DCD"
+  ],
+  "result": {
+    "item": "curseofpandora:wind_thrust"
+  },
+  "show_notification": true
+}

@@ -62,27 +62,27 @@
         {
           "type": "minecraft:item",
           "name": "curseofpandora:angelic_wing",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:angelic_bless",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:angelic_descent",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:angelic_protection",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:angelic_punishment",
-          "weight": 200
+          "weight": 50
         }
       ],
       "rolls": 1.0

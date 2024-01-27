@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:storm_core"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "curseofpandora:shadow_fragment"
+    }
+  },
+  "pattern": [
+    " D ",
+    "ACA",
+    " D "
+  ],
+  "result": {
+    "item": "curseofpandora:shadow_core"
+  },
+  "show_notification": true
+}

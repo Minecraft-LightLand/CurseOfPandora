@@ -62,22 +62,22 @@
         {
           "type": "minecraft:item",
           "name": "curseofpandora:wind_thrust",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:earth_crush",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:flaming_explosion",
-          "weight": 200
+          "weight": 50
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:waving_spell",
-          "weight": 200
+          "weight": 50
         }
       ],
       "rolls": 1.0

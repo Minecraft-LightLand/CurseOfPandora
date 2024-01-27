@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": [
+      {
+        "item": "l2complements:explosion_shard"
+      },
+      {
+        "item": "minecraft:netherite_scrap"
+      }
+    ],
+    "B": {
+      "item": "l2complements:soul_flame"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": [
+      {
+        "item": "l2complements:blackstone_core"
+      },
+      {
+        "item": "minecraft:nether_star"
+      }
+    ],
+    "E": {
+      "item": "l2complements:explosion_shard"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ECE",
+    "ADA"
+  ],
+  "result": {
+    "item": "curseofpandora:hellfire_rune"
+  },
+  "show_notification": true
+}

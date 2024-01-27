@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:resonant_feather"
+    },
+    "B": {
+      "item": "curseofpandora:angelic_feather"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:sun_membrane"
+    }
+  },
+  "pattern": [
+    "BDB",
+    "BCB",
+    "BAB"
+  ],
+  "result": {
+    "item": "curseofpandora:angelic_punishment"
+  },
+  "show_notification": true
+}

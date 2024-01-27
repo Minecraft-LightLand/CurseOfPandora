@@ -1,15 +1,39 @@
 package dev.xkmc.curseofpandora.content.reality;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
+import dev.xkmc.pandora.content.base.IPandoraHolder;
+import dev.xkmc.pandora.content.base.PandoraHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 public class CursePandoraUtil {
+
+	public static ItemStack allCurses(PandoraHolder holder) {
+		ItemStack stack = holder.getDefaultInstance();
+		List<ItemStack> list = new ArrayList<>();
+		list.add(CoPItems.CURSE_OF_INERTIA.asStack());
+		list.add(CoPItems.CURSE_OF_PROXIMITY.asStack());
+		list.add(CoPItems.CURSE_OF_FLESH.asStack());
+		list.add(CoPItems.CURSE_OF_METABOLISM.asStack());
+		list.add(CoPItems.CURSE_OF_TENSION.asStack());
+		list.add(CoPItems.CURSE_OF_PRUDENCE.asStack());
+		list.add(CoPItems.CURSE_OF_SPELL.asStack());
+		int n = holder.getSlots(stack);
+		for (int i = 7; i < n; i++) {
+			list.add(ItemStack.EMPTY);
+		}
+		IPandoraHolder.setItems(stack, list);
+		return stack;
+	}
 
 	public static AttrAdder spell(TokenKey<?> key) {
 		return AttrAdder.of(key.id(), CoPMisc.SPELL, AttributeModifier.Operation.ADDITION, 1);

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:hellfire_rune"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "F": {
+      "item": "l2complements:soul_flame"
+    },
+    "X": {
+      "item": "l2complements:guardian_eye"
+    }
+  },
+  "pattern": [
+    "BXB",
+    "FCF",
+    "BFB"
+  ],
+  "result": {
+    "item": "curseofpandora:eye_of_cursed_souls"
+  },
+  "show_notification": true
+}
