@@ -1,6 +1,6 @@
 package dev.xkmc.curseofpandora.content.trait;
 
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2hostility.content.traits.base.MobTrait;
 import net.minecraft.ChatFormatting;
 import net.minecraft.tags.DamageTypeTags;
@@ -18,7 +18,7 @@ public class RealityTrait extends MobTrait {
 		if (event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return;
 		if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-			var ins = attacker.getAttribute(CoPMisc.REALITY.get());
+			var ins = attacker.getAttribute(CoPAttrs.REALITY.get());
 			if (ins != null) {
 				int val = (int) Math.round(ins.getValue());
 				if (val >= level) {

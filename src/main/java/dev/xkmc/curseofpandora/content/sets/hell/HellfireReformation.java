@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.content.item.curios.EffectValidItem;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
@@ -53,7 +53,7 @@ public class HellfireReformation extends ITokenProviderItem<HellfireReformation.
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 

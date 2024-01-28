@@ -3,7 +3,7 @@ package dev.xkmc.curseofpandora.content.pandora;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.curios.ICapItem;
 import dev.xkmc.pandora.init.data.PandoraLangData;
@@ -106,7 +106,7 @@ public class AttributeItem extends CurioItem implements ICapItem<AttributeItem.D
 				if (AttrAdder.isMult(ent.attr.get())) {
 					rep = AttrAdder.getDesc(ent.attr.get(), val, ent.op());
 				}
-				if (ent.attr.get() == CoPMisc.REDUCTION.get()) {
+				if (ent.attr.get() == CoPAttrs.REDUCTION.get()) {
 					rep = AttrAdder.getDesc(ent.attr.get(), val, ent.op());
 				}
 				if (rep != null) {

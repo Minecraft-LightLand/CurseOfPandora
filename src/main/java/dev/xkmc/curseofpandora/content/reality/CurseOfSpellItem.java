@@ -5,7 +5,7 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
@@ -23,7 +23,7 @@ import java.util.List;
 
 public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", "hostility_curse", 1);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", "hands", 1);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_spell");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
@@ -37,7 +37,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	}
 
 	public static double getSpellPenalty(Player player) {
-		double bonus = player.getAttributeValue(CoPMisc.SPELL.get());
+		double bonus = player.getAttributeValue(CoPAttrs.SPELL.get());
 		bonus = Math.max(1, bonus);
 		double penalty = 0;
 		for (var e : EquipmentSlot.values()) {
