@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.event.ItemEffectHandlers;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
@@ -34,7 +34,7 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 		if (ConditionalData.HOLDER.get(player).getData(item().getKey()) != null)
 			return true;
 		return player.level().canSeeSky(player.blockPosition()) &&
-				player.getAttributeValue(CoPMisc.REALITY.get()) >= reality;
+				player.getAttributeValue(CoPAttrs.REALITY.get()) >= reality;
 	}
 
 	public static int getCoolDown() {
@@ -55,7 +55,7 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 

@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.init.data;
 
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2library.serial.config.ConfigDataProvider;
 import dev.xkmc.l2tabs.init.L2Tabs;
 import dev.xkmc.l2tabs.init.data.AttributeDisplayConfig;
@@ -19,9 +19,9 @@ public class CoPConfigGen extends ConfigDataProvider {
 		CurseOfPandora.REGISTRATE.CONFIGS.forEach(e -> e.accept(collector));
 		collector.add(L2Tabs.ATTRIBUTE_ENTRY, new ResourceLocation(CurseOfPandora.MODID, "pandora"),
 				new AttributeDisplayConfig()
-						.add(CoPMisc.SPELL.get(), 20000)
-						.add(CoPMisc.REALITY.get(), 21000)
-						.add(CoPMisc.ABSORB.get(), 23000));
+						.add(CoPAttrs.SPELL.get(), 20000)
+						.add(CoPAttrs.REALITY.get(), 21000)
+						.add(CoPAttrs.ABSORB.get(), 23000));
 	}
 
 }

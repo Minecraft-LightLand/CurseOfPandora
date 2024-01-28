@@ -7,7 +7,7 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2library.base.effects.EffectUtil;
@@ -54,7 +54,7 @@ public class ShadowCore extends ITokenProviderItem<ShadowCore.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -74,7 +74,7 @@ public class ShadowCore extends ITokenProviderItem<ShadowCore.Data> {
 		@Override
 		public void onPlayerHurtTarget(Player player, AttackCache cache) {
 			var target = cache.getAttackTarget();
-			int index = (int) Math.round(player.getAttributeValue(CoPMisc.REALITY.get()));
+			int index = (int) Math.round(player.getAttributeValue(CoPAttrs.REALITY.get()));
 			int time = getDuration() * index;
 			MagicEventHandler.schedule(() ->
 					EffectUtil.addEffect(target, new MobEffectInstance(CoPEffects.SHADOW.get(), time),

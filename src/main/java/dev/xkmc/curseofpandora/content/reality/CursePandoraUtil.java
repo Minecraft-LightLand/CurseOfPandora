@@ -2,7 +2,7 @@ package dev.xkmc.curseofpandora.content.reality;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.pandora.content.base.IPandoraHolder;
 import dev.xkmc.pandora.content.base.PandoraHolder;
@@ -36,11 +36,11 @@ public class CursePandoraUtil {
 	}
 
 	public static AttrAdder spell(TokenKey<?> key) {
-		return AttrAdder.of(key.id(), CoPMisc.SPELL, AttributeModifier.Operation.ADDITION, 1);
+		return AttrAdder.of(key.id(), CoPAttrs.SPELL, AttributeModifier.Operation.ADDITION, 1);
 	}
 
 	public static AttrAdder reality(TokenKey<?> key) {
-		return AttrAdder.of(key.id(), CoPMisc.REALITY, AttributeModifier.Operation.ADDITION, 1);
+		return AttrAdder.of(key.id(), CoPAttrs.REALITY, AttributeModifier.Operation.ADDITION, 1);
 	}
 
 	public static void remove(AttributeInstance attr, AttributeModifier.Operation op, UUID negId, String negName,

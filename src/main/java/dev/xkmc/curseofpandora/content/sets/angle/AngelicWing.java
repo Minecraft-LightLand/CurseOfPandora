@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -44,7 +44,7 @@ public class AngelicWing extends ITokenProviderItem<AngelicWing.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -79,7 +79,7 @@ public class AngelicWing extends ITokenProviderItem<AngelicWing.Data> {
 			double boost = CoPConfig.COMMON.angelic.angelicWingBoost.get();
 			double max = CoPConfig.COMMON.angelic.angelicWingMaxSpeed.get();
 			int req = getIndexReq();
-			if (player.getAttributeValue(CoPMisc.REALITY.get()) < req) return;
+			if (player.getAttributeValue(CoPAttrs.REALITY.get()) < req) return;
 			if (player.isFallFlying()) {
 				var vec = player.getDeltaMovement();
 				double len = vec.length();

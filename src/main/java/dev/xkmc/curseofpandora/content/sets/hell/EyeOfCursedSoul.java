@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.event.ItemEffectHandlers;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -57,7 +57,7 @@ public class EyeOfCursedSoul extends ITokenProviderItem<EyeOfCursedSoul.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 

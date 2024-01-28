@@ -3,18 +3,18 @@ package dev.xkmc.curseofpandora.event;
 import dev.xkmc.curseofpandora.content.reality.CurseOfSpellItem;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -39,7 +39,7 @@ public class ClientSpellText {
 		if (event.getEntity() == null) return;
 		if (ConditionalData.HOLDER.get(event.getEntity()).getData(CurseOfSpellItem.KEY) == null) return;
 		if (!event.getItemStack().isEnchanted()) return;
-		double bonus = event.getEntity().getAttributeValue(CoPMisc.SPELL.get());
+		double bonus = event.getEntity().getAttributeValue(CoPAttrs.SPELL.get());
 		bonus = Math.max(1, bonus);
 		double penalty = CurseOfSpellItem.getItemSpellPenalty(bonus, event.getItemStack());
 		int load = (int) Math.round(penalty * 100);
@@ -50,7 +50,7 @@ public class ClientSpellText {
 		if (level == null) return 0;
 		Player player = Proxy.getClientPlayer();
 		if (player == null) return 0;
-		var ins = player.getAttribute(CoPMisc.REALITY.get());
+		var ins = player.getAttribute(CoPAttrs.REALITY.get());
 		return ins == null ? 0 : (int) Math.round(ins.getValue());
 	}
 
@@ -67,6 +67,7 @@ public class ClientSpellText {
 		if (!entity.isAlive()) return;
 		if (!(entity instanceof ItemEntity) && !(entity instanceof ExperienceOrb) && !(entity instanceof AbstractArrow)) {
 			mode.attack(player, hit.getEntity());
+			player.swing(InteractionHand.MAIN_HAND);
 		}
 	}
 

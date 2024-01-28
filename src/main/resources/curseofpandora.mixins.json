@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "curseofpandora.refmap.json",
   "mixins": [
-	"LivingEntityMixin"
+	"LivingEntityMixin",
+	"PlayerMixin"
   ],
   "client": [
   ],

@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -21,9 +21,9 @@ import java.util.List;
 
 public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
-	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", CoPMisc.ABSORB,
+	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", CoPAttrs.ABSORB,
 			AttributeModifier.Operation.ADDITION, AngelicBless::getStat);
-	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", CoPMisc.REDUCTION,
+	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", CoPAttrs.REDUCTION,
 			AttributeModifier.Operation.MULTIPLY_TOTAL, AngelicBless::getFactor);
 
 	private static double getStat() {
@@ -56,7 +56,7 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 

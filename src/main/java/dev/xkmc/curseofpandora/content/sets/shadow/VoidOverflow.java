@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -42,7 +42,7 @@ public class VoidOverflow extends ITokenProviderItem<VoidOverflow.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 
