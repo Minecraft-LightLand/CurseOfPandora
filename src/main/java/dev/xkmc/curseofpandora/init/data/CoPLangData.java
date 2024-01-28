@@ -97,6 +97,8 @@ public class CoPLangData {
 		REFORMATION_1("You are immune to Soul Flame damage, but you are not immune to the effect even when you have Cleansed effect. ", 0),
 		REFORMATION_2("When you deal damage to targets while you are one Soul Flame effect, inflict the target with same level and duration of Soul Flame", 0),
 		EYE("When you damage a target, the target will deal a small magic damage to all monsters around it within %s blocks. Has a cool down of %s seconds.", 2),
+		CRYSTAL("When you are attacked by non-undead mobs, redirect the attack to a random undead mob within %s blocks. Cool down: %s seconds.", 2),
+		CROWN("All weak undead mobs around you will listen to your command.", 0),
 		;
 
 		final String id, def;

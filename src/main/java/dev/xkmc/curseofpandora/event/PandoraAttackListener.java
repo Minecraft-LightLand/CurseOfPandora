@@ -46,11 +46,11 @@ public class PandoraAttackListener implements AttackListener {
 			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
 					token.onPlayerAttacked(player, cache);
+					if (event.isCanceled())
+						return;
 				}
 			}
 		}
-		if (event.isCanceled())
-			return;
 		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
 			return;
 		}

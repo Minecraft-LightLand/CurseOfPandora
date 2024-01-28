@@ -7,9 +7,7 @@ import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
 import dev.xkmc.curseofpandora.content.sets.elemental.*;
-import dev.xkmc.curseofpandora.content.sets.hell.EyeOfCursedSoul;
-import dev.xkmc.curseofpandora.content.sets.hell.HellfireReformation;
-import dev.xkmc.curseofpandora.content.sets.hell.HellfireSkull;
+import dev.xkmc.curseofpandora.content.sets.hell.*;
 import dev.xkmc.curseofpandora.content.sets.shadow.*;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
@@ -60,6 +58,8 @@ public class CoPItems {
 	public static final ItemEntry<HellfireSkull> HELLFIRE_SKULL;
 	public static final ItemEntry<HellfireReformation> HELLFIRE_REFORMATION;
 	public static final ItemEntry<EyeOfCursedSoul> EYE_OF_CURSED_SOULS;
+	public static final ItemEntry<CursedSoulCrystal> CURSED_SOUL_CRYSTAL;
+	public static final ItemEntry<CrownOfDemon> CROWN_OF_DEMON;
 	public static final ItemEntry<ShadowCore> SHADOW_CORE;
 	public static final ItemEntry<ShadowConvergence> SHADOW_CONVERGENCE;
 	public static final ItemEntry<ShadowConsolidation> SHADOW_CONSOLIDATION;
@@ -285,8 +285,11 @@ public class CoPItems {
 			HELLFIRE_REFORMATION = item("hellfire_reformation", HellfireReformation::new)
 					.tag(CoPTagGen.HELL).register();
 			EYE_OF_CURSED_SOULS = item("eye_of_cursed_souls", EyeOfCursedSoul::new)
-					.tag(CoPTagGen.HELL)
-					.lang("Eye of Cursed Souls").register();
+					.tag(CoPTagGen.HELL).lang("Eye of Cursed Souls").register();
+			CURSED_SOUL_CRYSTAL = item("cursed_soul_crystal", CursedSoulCrystal::new)
+					.tag(CoPTagGen.HELL).register();
+			CROWN_OF_DEMON = item("crown_of_demon", CrownOfDemon::new)
+					.tag(CoPTagGen.HELL).lang("Crown of Demon").register();
 
 			SHADOW_FRAGMENT = item("shadow_fragment", Item::new).register();
 

@@ -215,6 +215,7 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue cursedSoulCrystalRange;
 			public final ForgeConfigSpec.IntValue crownOfDemonRealityIndex;
 			public final ForgeConfigSpec.IntValue crownOfDemonBaseHealthThreshold;
+			public final ForgeConfigSpec.IntValue crownOfDemonRange;
 
 			private Hell(ForgeConfigSpec.Builder builder) {
 				builder.push("Hell");
@@ -241,6 +242,8 @@ public class CoPConfig {
 						.defineInRange("crownOfDemonRealityIndex", 7, 0, 7);
 				crownOfDemonBaseHealthThreshold = builder.comment("Crown of Demon can command undead mobs with base health lower than:")
 						.defineInRange("crownOfDemonBaseHealthThreshold", 50, 1, 1000000);
+				crownOfDemonRange = builder.comment("Crown of Demon range of detection")
+						.defineInRange("crownOfDemonRange", 24, 0, 128);
 
 				builder.pop();
 			}
