@@ -77,13 +77,13 @@ public class CoPItems {
 
 		{
 
-			CHARM = item("plain_charm", Item::new)
+			CHARM = ingredient("plain_charm", Item::new)
 					.register();
 
-			MINI_BEACON_BASE = item("mini_beacon_base", p -> new Item(p.fireResistant()))
+			MINI_BEACON_BASE = ingredient("mini_beacon_base", p -> new Item(p.fireResistant()))
 					.register();
 
-			MINI_BEACON = item("mini_beacon", Item::new)
+			MINI_BEACON = ingredient("mini_beacon", Item::new)
 					.tag(CoPTagGen.PANDORA_BASE)
 					.register();
 
@@ -265,7 +265,7 @@ public class CoPItems {
 
 		//sets
 		{
-			ANGELIC_FEATHER = item("angelic_feather", Item::new).register();
+			ANGELIC_FEATHER = ingredient("angelic_feather", Item::new).register();
 
 			ANGELIC_WING = item("angelic_wing", AngelicWing::new)
 					.tag(CoPTagGen.ANGELIC).register();
@@ -278,7 +278,7 @@ public class CoPItems {
 			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
 					.tag(CoPTagGen.ANGELIC).register();
 
-			HELLFIRE_RUNE = item("hellfire_rune", Item::new).register();
+			HELLFIRE_RUNE = ingredient("hellfire_rune", Item::new).register();
 
 			HELLFIRE_SKULL = item("hellfire_skull", HellfireSkull::new)
 					.tag(CoPTagGen.HELL).register();
@@ -290,7 +290,7 @@ public class CoPItems {
 
 			SHADOW_FRAGMENT = item("shadow_fragment", Item::new).register();
 
-			SHADOW_CORE = item("shadow_core", ShadowCore::new)
+			SHADOW_CORE = ingredient("shadow_core", ShadowCore::new)
 					.tag(CoPTagGen.SHADOW).register();
 			SHADOW_CONVERGENCE = item("shadow_convergence", ShadowConvergence::new)
 					.tag(CoPTagGen.SHADOW).register();
@@ -313,6 +313,12 @@ public class CoPItems {
 					.tag(CoPTagGen.ELEMENTAL).register();
 		}
 
+	}
+
+
+	public static <T extends Item> ItemBuilder<T, L2Registrate> ingredient(String id, NonNullFunction<Item.Properties, T> factory) {
+		return REGISTRATE.item(id, factory)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/pandora/" + id)));
 	}
 
 	public static <T extends Item> ItemBuilder<T, L2Registrate> item(String id, NonNullFunction<Item.Properties, T> factory) {
