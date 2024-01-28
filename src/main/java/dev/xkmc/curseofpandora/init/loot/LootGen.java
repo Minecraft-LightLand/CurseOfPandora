@@ -73,7 +73,7 @@ public class LootGen {
 	}
 
 	private static ItemEntry<?>[] hell() {
-		return new ItemEntry<?>[]{HELLFIRE_SKULL, HELLFIRE_REFORMATION, EYE_OF_CURSED_SOULS};
+		return new ItemEntry<?>[]{HELLFIRE_SKULL, HELLFIRE_REFORMATION, EYE_OF_CURSED_SOULS, CURSED_SOUL_CRYSTAL, CROWN_OF_DEMON};
 	}
 
 	private static ItemEntry<?>[] shadow() {

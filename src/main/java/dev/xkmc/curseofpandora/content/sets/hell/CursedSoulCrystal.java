@@ -7,8 +7,8 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.event.ItemEffectHandlers;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -35,7 +35,7 @@ public class CursedSoulCrystal extends ITokenProviderItem<CursedSoulCrystal.Data
 	}
 
 	public static int getCoolDown() {
-		return CoPConfig.COMMON.hell.cursedSoulCrystalCoolDown.get();
+		return CoPConfig.COMMON.hell.cursedSoulCrystalTriggerCoolDown.get();
 	}
 
 	public static double getRange() {
@@ -59,7 +59,7 @@ public class CursedSoulCrystal extends ITokenProviderItem<CursedSoulCrystal.Data
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:hellfire_rune"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "F": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "X": {
+      "item": "l2complements:guardian_eye"
+    }
+  },
+  "pattern": [
+    "BXB",
+    "BCB",
+    "BFB"
+  ],
+  "result": {
+    "item": "curseofpandora:crown_of_demon"
+  },
+  "show_notification": true
+}

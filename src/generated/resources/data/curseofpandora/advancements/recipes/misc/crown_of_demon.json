@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hellfire_rune": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "curseofpandora:hellfire_rune"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "curseofpandora:crown_of_demon"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_hellfire_rune",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "curseofpandora:crown_of_demon"
+    ]
+  },
+  "sends_telemetry_event": false
+}

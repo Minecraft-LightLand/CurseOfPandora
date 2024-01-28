@@ -6,8 +6,8 @@ import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.curseofpandora.init.registrate.CoPMisc;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2serial.serialization.SerialClass;
@@ -60,13 +60,12 @@ public class CrownOfDemon extends ITokenProviderItem<CrownOfDemon.Data> {
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq()).withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Hell.CROWN.get(
-				//TODO
 		).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPMisc.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -117,14 +116,13 @@ public class CrownOfDemon extends ITokenProviderItem<CrownOfDemon.Data> {
 		@Override
 		public void onPlayerAttackTarget(Player player, AttackCache cache) {
 			refresh(player);
-			//TODO
+			for (var e : peon) {
+				if (e.getTarget() == null) {
+					e.setLastHurtByMob(cache.getAttackTarget());
+				}
+			}
 		}
 
-		@Override
-		public void onPlayerAttacked(Player player, AttackCache cache) {
-			refresh(player);
-			//TODO
-		}
 	}
 
 }

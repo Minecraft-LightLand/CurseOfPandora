@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:hellfire_rune"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "F": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "X": {
+      "item": "l2complements:force_field"
+    }
+  },
+  "pattern": [
+    "BXB",
+    "BCB",
+    "FBF"
+  ],
+  "result": {
+    "item": "curseofpandora:cursed_soul_crystal"
+  },
+  "show_notification": true
+}

@@ -76,6 +76,16 @@
         },
         {
           "type": "minecraft:item",
+          "name": "curseofpandora:cursed_soul_crystal",
+          "weight": 50
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:crown_of_demon",
+          "weight": 50
+        },
+        {
+          "type": "minecraft:item",
           "name": "curseofpandora:bless_of_lava_walker",
           "weight": 200
         }

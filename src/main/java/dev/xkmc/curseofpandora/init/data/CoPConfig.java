@@ -211,7 +211,7 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue eyeOfCursedSoulRange;
 			public final ForgeConfigSpec.IntValue eyeOfCursedSoulCoolDown;
 			public final ForgeConfigSpec.IntValue cursedSoulCrystalRealityIndex;
-			public final ForgeConfigSpec.IntValue cursedSoulCrystalCoolDown;
+			public final ForgeConfigSpec.IntValue cursedSoulCrystalTriggerCoolDown;
 			public final ForgeConfigSpec.DoubleValue cursedSoulCrystalRange;
 			public final ForgeConfigSpec.IntValue crownOfDemonRealityIndex;
 			public final ForgeConfigSpec.IntValue crownOfDemonBaseHealthThreshold;
@@ -234,8 +234,8 @@ public class CoPConfig {
 						.defineInRange("eyeOfCursedSoulCoolDown", 200, 0, 1000000);
 				cursedSoulCrystalRealityIndex = builder.comment("Reality Index requirement for Cursed Soul Crystal")
 						.defineInRange("cursedSoulCrystalRealityIndex", 6, 0, 7);
-				cursedSoulCrystalCoolDown = builder.comment("Effect trigger cool down in ticks for Cursed Soul Crystal")
-						.defineInRange("cursedSoulCrystalCoolDown", 600, 0, 1000000);
+				cursedSoulCrystalTriggerCoolDown = builder.comment("Effect trigger cool down in ticks for Cursed Soul Crystal")
+						.defineInRange("cursedSoulCrystalTriggerCoolDown", 200, 0, 1000000);
 				cursedSoulCrystalRange = builder.comment("Max range to search undead mobs for Cursed Soul Crystal")
 						.defineInRange("cursedSoulCrystalRange", 8d, 0, 64);
 				crownOfDemonRealityIndex = builder.comment("Reality Index requirement for Crown of Demon")

@@ -277,11 +277,28 @@ public class CoPRecipeGen {
 					.define('F', LCItems.SOUL_FLAME)
 					.define('X', Items.NETHER_STAR)
 					.save(pvd);
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EYE_OF_CURSED_SOULS.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
 					.pattern("BXB").pattern("FCF").pattern("BFB")
 					.define('C', CoPItems.CHARM)
 					.define('B', CoPItems.HELLFIRE_RUNE)
 					.define('F', LCItems.SOUL_FLAME)
+					.define('X', LCItems.GUARDIAN_EYE)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CURSED_SOUL_CRYSTAL.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+					.pattern("BXB").pattern("BCB").pattern("FBF")
+					.define('C', CoPItems.CHARM)
+					.define('B', CoPItems.HELLFIRE_RUNE)
+					.define('F', LCItems.CURSED_DROPLET)
+					.define('X', LCItems.FORCE_FIELD)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CROWN_OF_DEMON.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+					.pattern("BXB").pattern("BCB").pattern("BFB")
+					.define('C', CoPItems.CHARM)
+					.define('B', CoPItems.HELLFIRE_RUNE)
+					.define('F', LCItems.CURSED_DROPLET)
 					.define('X', LCItems.GUARDIAN_EYE)
 					.save(pvd);
 
