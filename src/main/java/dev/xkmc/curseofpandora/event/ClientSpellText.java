@@ -10,6 +10,7 @@ import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -66,6 +67,7 @@ public class ClientSpellText {
 		if (!entity.isAlive()) return;
 		if (!(entity instanceof ItemEntity) && !(entity instanceof ExperienceOrb) && !(entity instanceof AbstractArrow)) {
 			mode.attack(player, hit.getEntity());
+			player.swing(InteractionHand.MAIN_HAND);
 		}
 	}
 

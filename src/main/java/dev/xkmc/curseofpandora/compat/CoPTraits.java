@@ -1,5 +1,12 @@
 package dev.xkmc.curseofpandora.compat;
 
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.xkmc.curseofpandora.content.trait.RealityTrait;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.l2hostility.content.config.TraitConfig;
+import dev.xkmc.l2hostility.init.registrate.LHBlocks;
+import net.minecraft.ChatFormatting;
+
 public class CoPTraits {
 
 	public static final RegistryEntry<RealityTrait> TRAIT_REALITY;

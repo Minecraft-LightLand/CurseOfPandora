@@ -7,6 +7,8 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
+import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -26,6 +28,10 @@ public class WindThrust extends ITokenProviderItem<WindThrust.Data> {
 			AttributeModifier.Operation.MULTIPLY_BASE, WindThrust::getSpeed);
 	private static final AttrAdder DAMAGE = AttrAdder.of("wind_thrust", () -> Attributes.ATTACK_DAMAGE,
 			AttributeModifier.Operation.MULTIPLY_BASE, WindThrust::getDamage);
+
+	public static boolean check(Player player) {
+		return ConditionalData.HOLDER.get(player).hasData(CoPItems.WIND_THRUST.get().getKey());
+	}
 
 	private static double getSpeed() {
 		return CoPConfig.COMMON.elemental.windThrustSpeed.get();
