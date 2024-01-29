@@ -51,7 +51,7 @@ public class LuckAppendTableLootModifier extends LootModifier {
 	private void add(ObjectArrayList<ItemStack> list, LootContext context) {
 		var lootTable = context.getLevel().getServer().getLootData().getLootTable(table);
 		ObjectArrayList<ItemStack> objectarraylist = new ObjectArrayList<>();
-		lootTable.getRandomItems(context, objectarraylist::add);
+		lootTable.getRandomItemsRaw(context, objectarraylist::add);
 		list.addAll(objectarraylist);
 	}
 

@@ -75,116 +75,34 @@ public class CoPItems {
 	static {
 		REGISTRATE.defaultCreativeTab(PandoraItems.TAB.getKey());
 
+		// curse
 		{
 
-			CHARM = ingredient("plain_charm", Item::new)
-					.register();
+			CURSE_OF_INERTIA = item("curse_of_inertia", CurseOfInertiaItem::new)
+					.tag(CoPTagGen.CURSE).register();
 
-			MINI_BEACON_BASE = ingredient("mini_beacon_base", p -> new Item(p.fireResistant()))
-					.register();
+			CURSE_OF_PROXIMITY = item("curse_of_proximity", CurseOfProximityItem::new)
+					.tag(CoPTagGen.CURSE).register();
 
-			MINI_BEACON = ingredient("mini_beacon", Item::new)
-					.tag(CoPTagGen.PANDORA_BASE)
-					.register();
+			CURSE_OF_FLESH = item("curse_of_flesh", CurseOfFleshItem::new)
+					.tag(CoPTagGen.CURSE).register();
 
-			FIRE_REJECT = item("orb_of_fire_rejection",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_FIRE::get))
-					.lang("Orb of Fire Rejection")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			CURSE_OF_METABOLISM = item("curse_of_metabolism", CurseOfMetabolismItem::new)
+					.tag(CoPTagGen.CURSE).register();
 
-			EXPLOSION_REJECT = item("orb_of_explosion_rejection",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_EXPLOSION::get))
-					.lang("Orb of Explosion Rejection")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			CURSE_OF_TENSION = item("curse_of_tension", CurseOfTensionItem::new)
+					.tag(CoPTagGen.CURSE).register();
 
-			MAGIC_REJECT = item("orb_of_magic_rejection",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_MAGIC::get))
-					.lang("Orb of Magic Rejection")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+			CURSE_OF_PRUDENCE = item("curse_of_prudence", CurseOfPrudenceItem::new)
+					.tag(CoPTagGen.CURSE).register();
 
-			PROJECTILE_REJECT = item("orb_of_projectile_rejection",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_PROJECTILE::get))
-					.lang("Orb of Projectile Rejection")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-
-			ENVIRONMENTAL_REJECT = item("orb_of_nature",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_ENVIRONMENT::get))
-					.lang("Orb of Nature")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-
-			OWNER_PROTECTION = item("orb_of_master",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_MATES::get))
-					.lang("Orb of Master")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-
-			STABLE_BODY = item("orb_of_stability",
-					p -> new EnchDescItem(p, LCEnchantments.STABLE_BODY::get))
-					.lang("Orb of Stability")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-
-			GOLDEN_HEART = item("golden_heart",
-					p -> new PiglinShinnyCharm(p, LCEnchantments.SHINNY::get))
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-
-			ENDER_CHARM = item("charm_of_calmness",
-					p -> new EnderMaskCharm(p, LCEnchantments.ENDER_MASK::get))
-					.lang("Charm of Calmness")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-
-			BLESS_SNOW_WALKER = item("bless_of_snow_walker",
-					p -> new SnowWalkerCharm(p, LCEnchantments.SNOW_WALKER::get))
-					.lang("Bless of Snow Walker")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-
-			BLESS_LAVA_WALKER = descItem("bless_of_lava_walker", "Bless of Lava Walker",
-					"Allows you to walk on lava")
-					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
-		}
-
-		// beacon
-		{
-			MINI_BEACON_SPEED = item("mini_beacon_speed",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.MOVEMENT_SPEED, 40, 1, true, true)))
-					.lang("Mini Beacon: Speed")
-					.tag(CoPTagGen.BEACON).register();
-
-			MINI_BEACON_HASTE = item("mini_beacon_haste",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.DIG_SPEED, 40, 1, true, true)))
-					.lang("Mini Beacon: Haste")
-					.tag(CoPTagGen.BEACON).register();
-
-			MINI_BEACON_ATTACK = item("mini_beacon_strength",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.DAMAGE_BOOST, 40, 1, true, true)))
-					.lang("Mini Beacon: Strength")
-					.tag(CoPTagGen.BEACON).register();
-
-			MINI_BEACON_JUMP = item("mini_beacon_jump",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.JUMP, 40, 1, true, true)))
-					.lang("Mini Beacon: Jump Boost")
-					.tag(CoPTagGen.BEACON).register();
-
-			MINI_BEACON_RESISTANCE = item("mini_beacon_resistance",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.DAMAGE_RESISTANCE, 40, 1, true, true)))
-					.lang("Mini Beacon: Resistance")
-					.tag(CoPTagGen.BEACON).register();
-
-			MINI_BEACON_REGEN = item("mini_beacon_regen",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.REGENERATION, 60, 1, true, true)))
-					.lang("Mini Beacon: Regeneration")
-					.tag(CoPTagGen.BEACON).register();
-
-			NIGHT_VISION_CHARM = item("charm_of_night_vision",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.NIGHT_VISION, 440, 0, true, true)))
-					.tag(CoPTagGen.BEACON).register();
+			CURSE_OF_SPELL = item("curse_of_spell", CurseOfSpellItem::new)
+					.tag(CoPTagGen.CURSE).register();
 
 		}
+
+		CHARM = ingredient("plain_charm", Item::new)
+				.register();
 
 		// attributes
 		{
@@ -234,32 +152,6 @@ public class CoPItems {
 			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", CoPConfig.COMMON.attr.charmOfExplosion::get)))
 					.tag(CoPTagGen.ATTR).register();
-
-		}
-
-		// curse
-		{
-
-			CURSE_OF_INERTIA = item("curse_of_inertia", CurseOfInertiaItem::new)
-					.tag(CoPTagGen.CURSE).register();
-
-			CURSE_OF_PROXIMITY = item("curse_of_proximity", CurseOfProximityItem::new)
-					.tag(CoPTagGen.CURSE).register();
-
-			CURSE_OF_FLESH = item("curse_of_flesh", CurseOfFleshItem::new)
-					.tag(CoPTagGen.CURSE).register();
-
-			CURSE_OF_METABOLISM = item("curse_of_metabolism", CurseOfMetabolismItem::new)
-					.tag(CoPTagGen.CURSE).register();
-
-			CURSE_OF_TENSION = item("curse_of_tension", CurseOfTensionItem::new)
-					.tag(CoPTagGen.CURSE).register();
-
-			CURSE_OF_PRUDENCE = item("curse_of_prudence", CurseOfPrudenceItem::new)
-					.tag(CoPTagGen.CURSE).register();
-
-			CURSE_OF_SPELL = item("curse_of_spell", CurseOfSpellItem::new)
-					.tag(CoPTagGen.CURSE).register();
 
 		}
 
@@ -314,6 +206,116 @@ public class CoPItems {
 					.tag(CoPTagGen.ELEMENTAL).register();
 			CURSE_REDIRECTION = item("curse_redirection", CurseRedirection::new)
 					.tag(CoPTagGen.ELEMENTAL).register();
+		}
+
+		// enchs
+		{
+
+			STABLE_BODY = item("orb_of_stability",
+					p -> new EnchDescItem(p, LCEnchantments.STABLE_BODY::get))
+					.lang("Orb of Stability")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			GOLDEN_HEART = item("golden_heart",
+					p -> new PiglinShinnyCharm(p, LCEnchantments.SHINNY::get))
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			ENDER_CHARM = item("charm_of_calmness",
+					p -> new EnderMaskCharm(p, LCEnchantments.ENDER_MASK::get))
+					.lang("Charm of Calmness")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			BLESS_SNOW_WALKER = item("bless_of_snow_walker",
+					p -> new SnowWalkerCharm(p, LCEnchantments.SNOW_WALKER::get))
+					.lang("Bless of Snow Walker")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			BLESS_LAVA_WALKER = descItem("bless_of_lava_walker", "Bless of Lava Walker",
+					"Allows you to walk on lava")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			OWNER_PROTECTION = item("orb_of_master",
+					p -> new EnchDescItem(p, LCEnchantments.ENCH_MATES::get))
+					.lang("Orb of Master")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			FIRE_REJECT = item("orb_of_fire_rejection",
+					p -> new EnchDescItem(p, LCEnchantments.ENCH_FIRE::get))
+					.lang("Orb of Fire Rejection")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			ENVIRONMENTAL_REJECT = item("orb_of_nature",
+					p -> new EnchDescItem(p, LCEnchantments.ENCH_ENVIRONMENT::get))
+					.lang("Orb of Nature")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			EXPLOSION_REJECT = item("orb_of_explosion_rejection",
+					p -> new EnchDescItem(p, LCEnchantments.ENCH_EXPLOSION::get))
+					.lang("Orb of Explosion Rejection")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			PROJECTILE_REJECT = item("orb_of_projectile_rejection",
+					p -> new EnchDescItem(p, LCEnchantments.ENCH_PROJECTILE::get))
+					.lang("Orb of Projectile Rejection")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			MAGIC_REJECT = item("orb_of_magic_rejection",
+					p -> new EnchDescItem(p, LCEnchantments.ENCH_MAGIC::get))
+					.lang("Orb of Magic Rejection")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+		}
+
+		// beacon
+		{
+
+			MINI_BEACON_BASE = ingredient("mini_beacon_base", p -> new Item(p.fireResistant()))
+					.register();
+
+			MINI_BEACON = ingredient("mini_beacon", Item::new)
+					.tag(CoPTagGen.PANDORA_BASE)
+					.register();
+
+			MINI_BEACON_SPEED = item("mini_beacon_speed",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.MOVEMENT_SPEED, 40, 1, true, true)))
+					.lang("Mini Beacon: Speed")
+					.tag(CoPTagGen.BEACON).register();
+
+			MINI_BEACON_HASTE = item("mini_beacon_haste",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.DIG_SPEED, 40, 1, true, true)))
+					.lang("Mini Beacon: Haste")
+					.tag(CoPTagGen.BEACON).register();
+
+			MINI_BEACON_ATTACK = item("mini_beacon_strength",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.DAMAGE_BOOST, 40, 1, true, true)))
+					.lang("Mini Beacon: Strength")
+					.tag(CoPTagGen.BEACON).register();
+
+			MINI_BEACON_JUMP = item("mini_beacon_jump",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.JUMP, 40, 1, true, true)))
+					.lang("Mini Beacon: Jump Boost")
+					.tag(CoPTagGen.BEACON).register();
+
+			MINI_BEACON_RESISTANCE = item("mini_beacon_resistance",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.DAMAGE_RESISTANCE, 40, 1, true, true)))
+					.lang("Mini Beacon: Resistance")
+					.tag(CoPTagGen.BEACON).register();
+
+			MINI_BEACON_REGEN = item("mini_beacon_regen",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.REGENERATION, 60, 1, true, true)))
+					.lang("Mini Beacon: Regeneration")
+					.tag(CoPTagGen.BEACON).register();
+
+			NIGHT_VISION_CHARM = item("charm_of_night_vision",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.NIGHT_VISION, 440, 0, true, true)))
+					.tag(CoPTagGen.BEACON).register();
+
 		}
 
 	}
