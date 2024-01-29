@@ -9,6 +9,7 @@ import dev.xkmc.curseofpandora.init.loot.LootGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.entries.LHRegistrate;
@@ -52,6 +53,7 @@ public class CurseOfPandora {
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, CoPTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);
 	}

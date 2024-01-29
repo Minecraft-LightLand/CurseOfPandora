@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-28T22:57:24.204629	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2024-01-29T10:19:39.466199	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (enchantments), Tags (mob_effects), Tags (traits), Patchouli Provider]
 119dffc570bde736441dc70f4d323cc82c48517a assets/curseofpandora/lang/en_ud.json
 51c62689585c75f18fe37c53f63cdca8ccae3825 assets/curseofpandora/lang/en_us.json
 ee44b4df5dd60e5aec209a4d4e49a54793c12dc2 assets/curseofpandora/models/item/angelic_bless.json
@@ -64,7 +64,7 @@ d4dbbcce45fa7a7a26ff539b53d0993d78f2d6d7 assets/curseofpandora/models/item/shado
 6f2b2be6d226f3ed125067c68dcbd0056e5c0256 assets/curseofpandora/models/item/void_overflow.json
 7b17ab803f8883c0027ddea9a7943756df37e582 assets/curseofpandora/models/item/waving_spell.json
 a072819ac02fd15455b1842e8bd1375cf21bf191 assets/curseofpandora/models/item/wind_thrust.json
-54fc46f11fef580149ac864bfa1c8ff450eab41b data/curios/tags/items/pandora_charm.json
+8669b7b2b532498b3299151c9a7a32f9cbf1fa13 data/curios/tags/items/pandora_charm.json
 996ce41e49808183206928826a92d5bb4197be7f data/curseofpandora/advancements/pandora/pandora_box.json
 f2916a01345c26938623dd1154cf6ffccd1b09b8 data/curseofpandora/advancements/recipes/burnt/burnt/mini_beacon_base_block.json
 724f9c10bf3ccb56cf13fbe6012854af97a77f37 data/curseofpandora/advancements/recipes/burnt/burnt/mini_beacon_base_ingot.json
@@ -208,10 +208,12 @@ a5bdd5f24200e1959e0544ec4418315e5d4f101e data/curseofpandora/tags/items/angelic_
 7f8ef9f795189759fbebbdfa0e8ecd9326af01a6 data/curseofpandora/tags/items/elemental_charms.json
 fe3abf1d1a72768c5a5c0293eb90db02e0c9f3d4 data/curseofpandora/tags/items/hell_charms.json
 9d0987fab5d4b7cca20258d4a04df8981139217d data/curseofpandora/tags/items/mini_beacons.json
-d28ea1a8a09628075e813fb6249ae66d95d412eb data/curseofpandora/tags/items/pandora_base.json
+bc16fe11092aaefcc93025282c019b4d891909dc data/curseofpandora/tags/items/pandora_base.json
 6cccdb86989ad373511ab81c763dcda36b015d6b data/curseofpandora/tags/items/pandora_curse.json
 820085379e993b51412672387354b732f01645eb data/curseofpandora/tags/items/reality_charms.json
 cd1f4cb4aebdd3628132fc39f6d408992d961f85 data/curseofpandora/tags/items/shadow_charms.json
+88c5635dfa58e2155062017721841168d167afbe data/jeed/tags/mob_effect/hidden.json
 b98e6c0329fa696c7dae18bab0da520023b41308 data/l2complements/tags/items/l2c_totems.json
+cc841ee80a5520e5daf59f47d9c60ec50d799b89 data/l2complements/tags/mob_effect/skill_effect.json
 54dbeb697e82ab8c4a9505b47395450dd78cbcdf data/l2hostility/tags/items/trait_item.json
 e30d832e26f3e9bc2040ac71e62f5f3bb0a7edc4 data/pandora/tags/items/allow_duplicates.json
