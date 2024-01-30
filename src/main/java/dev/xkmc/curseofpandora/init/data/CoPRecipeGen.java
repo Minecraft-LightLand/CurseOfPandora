@@ -13,6 +13,7 @@ import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
+import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.l2library.serial.recipe.NBTRecipe;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -387,92 +388,92 @@ public class CoPRecipeGen {
 						.pattern("AAA").pattern("ABA").pattern("AAA")
 						.define('A', LHItems.MIRACLE_POWDER.get())
 						.define('B', CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.CHARM.get(), "_renew"));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM.get(), "_renew"));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM.get(), 2)::unlockedBy, CoPItems.CHARM.get())
 						.pattern("AAA").pattern("ABA").pattern("AAA")
 						.define('A', LHItems.MIRACLE_POWDER.get())
 						.define('B', LHItems.MIRACLE_INGOT.get())
-						.save(pvd, getID(CoPItems.CHARM.get(), "_craft"));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM.get(), "_craft"));
 
 				unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(CoPTagGen.PANDORA_BASE),
 						RecipeCategory.MISC, CoPItems.CHARM.get(), 1, 200)::unlockedBy, CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.CHARM.get(), "_smelt"));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM.get(), "_smelt"));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_HEALTH.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("AAA").pattern("ABA").pattern("AAA")
 						.define('A', LHTraits.TANK.get().asItem())
 						.define('B', CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.CHARM_HEALTH.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_HEALTH.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_ARMOR.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.TANK.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.PROTECTION.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_ARMOR.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_ARMOR.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_SPEED.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("AAA").pattern("ABA").pattern("AAA")
 						.define('A', LHTraits.SPEEDY.get().asItem())
 						.define('B', CoPItems.CHARM.get())
-						.save(pvd, getID(CoPItems.CHARM_SPEED.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_SPEED.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_DAMAGE.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.FIERY.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.STRIKE.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_DAMAGE.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_DAMAGE.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_HEAVY.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.GRAVITY.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.SLOWNESS.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_HEAVY.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_HEAVY.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_BOW.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.WEAKNESS.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.SHULKER.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_BOW.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_BOW.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_CRIT.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.MOONWALK.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.LEVITATION.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_CRIT.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_CRIT.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_ACCURACY.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.FREEZING.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.REFLECT.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_ACCURACY.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_ACCURACY.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_PROTECTION.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.ADAPTIVE.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.PROTECTION.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_PROTECTION.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_PROTECTION.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_MAGIC.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.KILLER_AURA.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.DEMENTOR.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_MAGIC.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_MAGIC.get()));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_EXPLOSION.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("CAC").pattern("ABA").pattern("CAC")
 						.define('A', LHTraits.SHULKER.get().asItem())
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.GRENADE.get().asItem())
-						.save(pvd, getID(CoPItems.CHARM_EXPLOSION.get()));
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_EXPLOSION.get()));
 			}
 		}
 

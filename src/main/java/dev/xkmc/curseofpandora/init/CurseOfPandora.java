@@ -1,18 +1,19 @@
 package dev.xkmc.curseofpandora.init;
 
 import com.tterrag.registrate.providers.ProviderType;
+import dev.xkmc.curseofpandora.compat.CoPLoader;
 import dev.xkmc.curseofpandora.compat.CoPTraits;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
 import dev.xkmc.curseofpandora.init.data.*;
 import dev.xkmc.curseofpandora.init.loot.CoPGLMProvider;
 import dev.xkmc.curseofpandora.init.loot.LootGen;
+import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2hostility.init.L2Hostility;
-import dev.xkmc.l2hostility.init.entries.LHRegistrate;
+import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.init.events.EffectSyncEvents;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
 import net.minecraft.data.PackOutput;
@@ -35,11 +36,19 @@ public class CurseOfPandora {
 	public static final String MODID = "curseofpandora";
 
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final LHRegistrate REGISTRATE = new LHRegistrate(MODID);
+	public static final L2Registrate REGISTRATE;
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
 			new ResourceLocation(MODID, "main"), 2
 	);
+
+	static {
+		if (ModList.get().isLoaded(L2Hostility.MODID)) {
+			REGISTRATE = CoPLoader.getLHRegistrate(MODID);
+		} else {
+			REGISTRATE = new L2Registrate(MODID);
+		}
+	}
 
 	public CurseOfPandora() {
 		CoPItems.register();

@@ -6,9 +6,12 @@ modId="curseofpandora"
 version="${file.jarVersion}" #mandatory
 displayName="Curse of Pandora" #mandatory
 logoFile="curseofpandora.png" #optional
-credits="Thanks for this example mod goes to Java" #optional
-authors="Love, Cheese and small house plants" #optional
+credits="LightLand Team" #optional
+authors="lcy0x1" #optional
 description='''
+This mod is a curios/trinket focused mod that adds a lot of items to strengthen the player and improve game experience.
+Player can equip Pandora Necklace and Pandora Bracelet, which can hold 18/9 pandora charms.
+The charms will can be edited in the item, or when the holder items are equipped, in the pandora tab.
 '''
 [[dependencies.curseofpandora]]
     modId="forge"
@@ -36,8 +39,8 @@ description='''
     side="BOTH"
 [[dependencies.curseofpandora]]
     modId="l2hostility"
-    mandatory=true
-    versionRange="[2.4.12,)"
+    mandatory=false
+    versionRange="[2.4.14,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.curseofpandora]]

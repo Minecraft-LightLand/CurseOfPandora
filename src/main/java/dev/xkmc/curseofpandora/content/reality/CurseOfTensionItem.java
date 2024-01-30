@@ -73,7 +73,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 		int damage = Math.round(getDamageBonus() * 100);
 		int th = (int) Math.round(getDamageThreshold() * 100);
 		list.add(CoPLangData.Reality.TENSION_1.get(tkMat / 20, damage, tkLife / 20, max).withStyle(ChatFormatting.GRAY));
-		list.add(CoPLangData.Reality.TENSION_2.get(th, dur).withStyle(ChatFormatting.RED));
+		list.add(CoPLangData.Reality.TENSION_2.get(th, dur / 20).withStyle(ChatFormatting.RED));
 	}
 
 	@SerialClass

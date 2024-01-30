@@ -1,6 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "l2hostility"
+    }
+  ],
   "key": {
     "A": {
       "item": "l2hostility:killer_aura"
