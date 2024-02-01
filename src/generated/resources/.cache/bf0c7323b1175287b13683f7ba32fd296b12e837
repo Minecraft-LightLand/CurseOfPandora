@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-01T15:32:43.580821	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2024-02-01T15:50:20.422334	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 5c69331a441c79bd19bc5e47dc456cdd8c86653b assets/curseofpandora/lang/en_ud.json
 dc3f7711c16aa2d0accec0ee97fa090b903ae2d6 assets/curseofpandora/lang/en_us.json
 ee44b4df5dd60e5aec209a4d4e49a54793c12dc2 assets/curseofpandora/models/item/angelic_bless.json
@@ -163,7 +163,7 @@ b031d7367f505980b13113b2de36112c1ef52b24 data/curseofpandora/recipes/hellfire_re
 e52f2cb6a55561bf761d4f8c32e35c9c53da2c38 data/curseofpandora/recipes/hellfire_rune.json
 0e36352fbc9aa4c10b5765ac9775325cd1f610ef data/curseofpandora/recipes/hellfire_skull.json
 cbedd4bf10828a12e376eb3dd3d3fd689278b9e3 data/curseofpandora/recipes/pandora/bless_of_lava_walker.json
-5f3f714bb4725770ebaa10f42ca1f718e8767fa8 data/curseofpandora/recipes/pandora/bless_of_snow_walker.json
+155d192eaf4999925ffd59629fcb110a7abe6100 data/curseofpandora/recipes/pandora/bless_of_snow_walker.json
 1baafe10ba28c3b4ff1499dce23c63f1af9d35e9 data/curseofpandora/recipes/pandora/charm_of_accuracy.json
 63ecaa2d0e782eb401ebab97a07bdf7801eabee1 data/curseofpandora/recipes/pandora/charm_of_archery.json
 f188b86624b1c0dcf858e016fcf46f2eb00e7da3 data/curseofpandora/recipes/pandora/charm_of_armor.json

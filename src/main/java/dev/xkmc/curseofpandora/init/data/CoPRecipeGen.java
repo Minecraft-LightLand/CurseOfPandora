@@ -190,7 +190,7 @@ public class CoPRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.BLESS_SNOW_WALKER.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern(" C ").pattern("ABA").pattern(" C ")
 					.define('A', Items.LEATHER)
-					.define('C', LCItems.HARD_ICE)
+					.define('C', Items.SNOWBALL)
 					.define('B', CoPItems.CHARM.get())
 					.save(pvd, getID(CoPItems.BLESS_SNOW_WALKER.get()));
 
