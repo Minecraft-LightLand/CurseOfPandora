@@ -31,13 +31,15 @@ import static dev.xkmc.curseofpandora.init.CurseOfPandora.REGISTRATE;
 public class CoPItems {
 
 	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE, ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT;
-	public static final ItemEntry<EnchDescItem> FIRE_REJECT, EXPLOSION_REJECT, MAGIC_REJECT,
-			ENVIRONMENTAL_REJECT, PROJECTILE_REJECT, OWNER_PROTECTION, STABLE_BODY;
+	public static final ItemEntry<EnchDescItem> EXPLOSION_REJECT, MAGIC_REJECT,
+			ENVIRONMENTAL_REJECT, PROJECTILE_REJECT, OWNER_PROTECTION;
 	public static final ItemEntry<EffectRefreshItem> MINI_BEACON_SPEED, MINI_BEACON_HASTE, MINI_BEACON_JUMP,
 			MINI_BEACON_ATTACK, MINI_BEACON_RESISTANCE, MINI_BEACON_REGEN, NIGHT_VISION_CHARM;
 	public static final ItemEntry<PiglinShinnyCharm> GOLDEN_HEART;
+	public static final ItemEntry<FireRejectItem> FIRE_REJECT;
 	public static final ItemEntry<EnderMaskCharm> ENDER_CHARM;
 	public static final ItemEntry<SnowWalkerCharm> BLESS_SNOW_WALKER;
+	public static final ItemEntry<StabilityCharm> STABLE_BODY;
 	public static final ItemEntry<DescCurioItem> BLESS_LAVA_WALKER;
 	public static final ItemEntry<AttributeItem> CHARM_HEALTH, CHARM_ARMOR, CHARM_SPEED,
 			CHARM_DAMAGE, CHARM_HEAVY, CHARM_ACCURACY, CHARM_CRIT, CHARM_BOW, CHARM_PROTECTION,
@@ -108,28 +110,40 @@ public class CoPItems {
 		{
 			CHARM_HEALTH = item("charm_of_health", p -> new AttributeItem(p,
 					AttributeItem.add(() -> Attributes.MAX_HEALTH, "charm_of_health", CoPConfig.COMMON.attr.charmOfHealth::get)))
-					.tag(CoPTagGen.ATTR).register();
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_ARMOR = item("charm_of_armor", p -> new AttributeItem(p,
 					AttributeItem.add(() -> Attributes.ARMOR, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmor::get),
 					AttributeItem.add(() -> Attributes.ARMOR_TOUGHNESS, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmorToughness::get)
-			)).tag(CoPTagGen.ATTR).register();
+			)).tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_SPEED = item("charm_of_speed", p -> new AttributeItem(p,
 					AttributeItem.multBase(() -> Attributes.MOVEMENT_SPEED, "charm_of_speed", CoPConfig.COMMON.attr.charmOfSpeed::get)))
-					.tag(CoPTagGen.ATTR).register();
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_DAMAGE = item("charm_of_damage", p -> new AttributeItem(p,
 					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_damage", CoPConfig.COMMON.attr.charmOfDamage::get)))
-					.tag(CoPTagGen.ATTR).register();
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_CRIT = item("charm_of_critical", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "charm_of_critical", CoPConfig.COMMON.attr.charmOfCritical::get)))
-					.tag(CoPTagGen.ATTR).register();
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_BOW = item("charm_of_archery", p -> new AttributeItem(p,
 					AttributeItem.add(L2DamageTracker.BOW_STRENGTH::get, "charm_of_archery", CoPConfig.COMMON.attr.charmOfArchery::get)))
-					.tag(CoPTagGen.ATTR).register();
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
+
+			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
+					AttributeItem.multBase(CoPAttrs.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
+
+			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
+					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR::get, "charm_of_magic", CoPConfig.COMMON.attr.charmOfMagic::get)))
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
+
+			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
+					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", CoPConfig.COMMON.attr.charmOfExplosion::get)))
+					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_HEAVY = item("charm_of_heavy_weapon", p -> new AttributeItem(p,
 					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_heavy_weapon", CoPConfig.COMMON.attr.charmOfHeavyWeapon::get),
@@ -140,18 +154,6 @@ public class CoPItems {
 					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", CoPConfig.COMMON.attr.charmOfAccuracy::get),
 					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", () -> -CoPConfig.COMMON.attr.charmOfAccuracySlow.get())
 			)).tag(CoPTagGen.ATTR).register();
-
-			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
-					AttributeItem.multBase(CoPAttrs.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
-					.tag(CoPTagGen.ATTR).register();
-
-			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR::get, "charm_of_magic", CoPConfig.COMMON.attr.charmOfMagic::get)))
-					.tag(CoPTagGen.ATTR).register();
-
-			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", CoPConfig.COMMON.attr.charmOfExplosion::get)))
-					.tag(CoPTagGen.ATTR).register();
 
 		}
 
@@ -211,9 +213,8 @@ public class CoPItems {
 		// enchs
 		{
 
-			STABLE_BODY = item("orb_of_stability",
-					p -> new EnchDescItem(p, LCEnchantments.STABLE_BODY::get))
-					.lang("Orb of Stability")
+			STABLE_BODY = descItem("orb_of_stability", "Orb of Stability", StabilityCharm::new,
+					"When attacked, you won't be knocked back, and your screen won't shake")
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
 			GOLDEN_HEART = item("golden_heart",
@@ -234,14 +235,19 @@ public class CoPItems {
 					"Allows you to walk on lava")
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
-			OWNER_PROTECTION = item("orb_of_master",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_MATES::get))
-					.lang("Orb of Master")
+			NIGHT_VISION_CHARM = item("charm_of_night_vision",
+					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
+							MobEffects.NIGHT_VISION, 440, 0, true, true)))
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
 			FIRE_REJECT = item("orb_of_fire_rejection",
-					p -> new EnchDescItem(p, LCEnchantments.ENCH_FIRE::get))
+					p -> new FireRejectItem(p))
 					.lang("Orb of Fire Rejection")
+					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
+
+			OWNER_PROTECTION = item("orb_of_master",
+					p -> new EnchDescItem(p, LCEnchantments.ENCH_MATES::get))
+					.lang("Orb of Master")
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
 			ENVIRONMENTAL_REJECT = item("orb_of_nature",
@@ -311,11 +317,6 @@ public class CoPItems {
 					.lang("Mini Beacon: Regeneration")
 					.tag(CoPTagGen.BEACON).register();
 
-			NIGHT_VISION_CHARM = item("charm_of_night_vision",
-					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
-							MobEffects.NIGHT_VISION, 440, 0, true, true)))
-					.tag(CoPTagGen.BEACON).register();
-
 		}
 
 	}
@@ -335,6 +336,11 @@ public class CoPItems {
 		REGISTRATE.addRawLang("item." + CurseOfPandora.MODID + "." + id + ".desc", desc);
 		return item(id, DescCurioItem::new)
 				.lang(name);
+	}
+
+	public static <T extends Item> ItemBuilder<T, L2Registrate> descItem(String id, String name, NonNullFunction<Item.Properties, T> sup, String desc) {
+		REGISTRATE.addRawLang("item." + CurseOfPandora.MODID + "." + id + ".desc", desc);
+		return item(id, sup).lang(name);
 	}
 
 	public static void register() {

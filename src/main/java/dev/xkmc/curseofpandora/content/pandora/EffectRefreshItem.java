@@ -46,6 +46,10 @@ public class EffectRefreshItem extends CurioItem implements EffectValidItem, ICa
 		list.add(CoPLangData.IDS.EFFECT_REFRESH_CURIO.get().withStyle(ChatFormatting.GRAY).append(ans));
 	}
 
+	public void curioTick(LivingEntity entity) {
+		EffectUtil.refreshEffect(entity, sup.get(), EffectUtil.AddReason.SELF, entity);
+	}
+
 	@Override
 	public Data create(ItemStack stack) {
 		return new Data(this, stack);
@@ -60,8 +64,7 @@ public class EffectRefreshItem extends CurioItem implements EffectValidItem, ICa
 
 		@Override
 		public void curioTick(SlotContext slotContext) {
-			EffectUtil.refreshEffect(slotContext.entity(), item.sup.get(),
-					EffectUtil.AddReason.SELF, slotContext.entity());
+			item.curioTick(slotContext.entity());
 		}
 
 	}

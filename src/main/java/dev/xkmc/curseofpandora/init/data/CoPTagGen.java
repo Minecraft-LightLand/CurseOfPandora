@@ -28,13 +28,11 @@ public class CoPTagGen {
 	public static final TagKey<MobEffect> HIDDEN = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
 			new ResourceLocation("jeed", "hidden"));
 
-
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		pvd.addTag(REALITY).addTags(ANGELIC, HELL, SHADOW, ELEMENTAL);
-		pvd.addTag(PandoraTagGen.ALLOW_DUPLICATE).addTag(ATTR);
 		pvd.addTag(PandoraTagGen.PANDORA_SLOT).addTags(ATTR, BEACON, CURSE, REALITY);
-		pvd.addTag(PANDORA_BASE).addTags(ATTR, BEACON, REALITY);
+		pvd.addTag(PANDORA_BASE).addTags(ATTR, REALITY);
 	}
 
 	public static void onEffectTagGen(RegistrateTagsProvider.IntrinsicImpl<MobEffect> pvd) {

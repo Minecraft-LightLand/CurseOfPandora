@@ -1,5 +1,13 @@
 {
   "values": [
-    "#curseofpandora:attribute_charms"
+    "curseofpandora:charm_of_health",
+    "curseofpandora:charm_of_armor",
+    "curseofpandora:charm_of_speed",
+    "curseofpandora:charm_of_damage",
+    "curseofpandora:charm_of_critical",
+    "curseofpandora:charm_of_archery",
+    "curseofpandora:charm_of_protection",
+    "curseofpandora:charm_of_magic",
+    "curseofpandora:charm_of_explosion"
   ]
 }

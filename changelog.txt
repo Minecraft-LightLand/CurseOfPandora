@@ -1,0 +1,10 @@
+
+
+2.4.3
+- Fix language
+- Recipe adjustment
+- Fix toml dependency check
+- Incorporate L2Complement immunity config for immunity orbs
+
+2.4.2
+- Fix L2Hostility code dependency, fix bugs

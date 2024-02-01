@@ -1,11 +1,5 @@
 {
   "parent": "minecraft:recipes/root",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "l2hostility"
-    }
-  ],
   "criteria": {
     "has_plain_charm": {
       "conditions": {

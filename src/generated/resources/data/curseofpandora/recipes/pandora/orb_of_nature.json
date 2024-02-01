@@ -1,6 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "conditions": [
+    {
+      "type": "l2library:boolean_config",
+      "expected": true,
+      "line": [
+        "materials",
+        "enableImmunityEnchantments"
+      ],
+      "path": "l2_configs/l2complements-common.toml"
+    }
+  ],
   "key": {
     "1": {
       "item": "l2complements:sun_membrane"

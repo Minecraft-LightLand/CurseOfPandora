@@ -1,23 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
-  "conditions": [
-    {
-      "type": "l2library:boolean_config",
-      "expected": true,
-      "line": [
-        "materials",
-        "enableImmunityEnchantments"
-      ],
-      "path": "l2_configs/l2complements-common.toml"
-    }
-  ],
   "criteria": {
-    "has_plain_charm": {
+    "has_mini_beacon": {
       "conditions": {
         "items": [
           {
             "items": [
-              "curseofpandora:plain_charm"
+              "curseofpandora:mini_beacon"
             ]
           }
         ]
@@ -26,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "curseofpandora:pandora/orb_of_nature"
+        "recipe": "curseofpandora:pandora/mini_beacon_smelt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_plain_charm",
+      "has_mini_beacon",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "curseofpandora:pandora/orb_of_nature"
+      "curseofpandora:pandora/mini_beacon_smelt"
     ]
   },
   "sends_telemetry_event": false

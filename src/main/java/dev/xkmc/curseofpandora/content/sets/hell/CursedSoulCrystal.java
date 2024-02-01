@@ -11,6 +11,7 @@ import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -90,7 +91,7 @@ public class CursedSoulCrystal extends ITokenProviderItem<CursedSoulCrystal.Data
 						return;
 					Mob target = redirect(player);
 					if (target != null) {
-						MagicEventHandler.schedule(() -> {
+						GeneralEventHandler.schedule(() -> {
 							target.hurt(event.getSource(), event.getAmount());
 							player.getCooldowns().addCooldown(item, getCoolDown());
 							ItemEffectHandlers.CURSED_SOUL_CRYSTAL.trigger(target);

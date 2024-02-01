@@ -11,6 +11,7 @@ import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.events.MagicEventHandler;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2library.base.effects.EffectUtil;
+import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -76,7 +77,7 @@ public class ShadowCore extends ITokenProviderItem<ShadowCore.Data> {
 			var target = cache.getAttackTarget();
 			int index = (int) Math.round(player.getAttributeValue(CoPAttrs.REALITY.get()));
 			int time = getDuration() * index;
-			MagicEventHandler.schedule(() ->
+			GeneralEventHandler.schedule(() ->
 					EffectUtil.addEffect(target, new MobEffectInstance(CoPEffects.SHADOW.get(), time),
 							EffectUtil.AddReason.FORCE, player));
 		}

@@ -2,27 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "1": {
-      "type": "l2library:enchantment",
-      "enchantment": "minecraft:fire_protection",
-      "min_level": 4
-    },
-    "2": {
-      "type": "l2library:enchantment",
-      "enchantment": "minecraft:protection",
-      "min_level": 4
+    "A": {
+      "item": "l2complements:hard_ice"
     },
     "B": {
-      "item": "l2complements:soul_flame"
+      "item": "minecraft:magma_cream"
     },
     "C": {
       "item": "curseofpandora:plain_charm"
     }
   },
   "pattern": [
-    "1B1",
+    " A ",
     "BCB",
-    "2B2"
+    " A "
   ],
   "result": {
     "item": "curseofpandora:orb_of_fire_rejection"

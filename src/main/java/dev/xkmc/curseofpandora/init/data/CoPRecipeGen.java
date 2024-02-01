@@ -6,11 +6,13 @@ import dev.xkmc.curseofpandora.content.reality.CursePandoraUtil;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
+import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
+import dev.xkmc.l2library.serial.conditions.BooleanValueCondition;
 import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
@@ -46,6 +48,15 @@ public class CoPRecipeGen {
 		}
 
 		currentFolder = "pandora/";
+
+		unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(CoPTagGen.PANDORA_BASE),
+				RecipeCategory.MISC, CoPItems.CHARM.get(), 1, 200)::unlockedBy, CoPItems.CHARM.get())
+				.save(pvd, getID(CoPItems.CHARM.get(), "_smelt"));
+
+		unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(CoPTagGen.BEACON),
+				RecipeCategory.MISC, CoPItems.MINI_BEACON.get(), 1, 200)::unlockedBy, CoPItems.MINI_BEACON.get())
+				.save(pvd, getID(CoPItems.MINI_BEACON.get(), "_smelt"));
+
 
 		// beacons
 		{
@@ -111,6 +122,7 @@ public class CoPRecipeGen {
 
 		// reject
 		{
+			BooleanValueCondition cond = BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableImmunityEnchantments, true);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.PROJECTILE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -118,7 +130,7 @@ public class CoPRecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LCItems.FORCE_FIELD.get())
 					.define('C', CoPItems.CHARM.get())
-					.save(pvd, getID(CoPItems.PROJECTILE_REJECT.get()));
+					.save(ConditionalRecipeWrapper.of(pvd, cond), getID(CoPItems.PROJECTILE_REJECT.get()));
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EXPLOSION_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -126,15 +138,7 @@ public class CoPRecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LCItems.EXPLOSION_SHARD.get())
 					.define('C', CoPItems.CHARM.get())
-					.save(pvd, getID(CoPItems.EXPLOSION_REJECT.get()));
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.FIRE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
-					.pattern("1B1").pattern("BCB").pattern("2B2")
-					.define('1', new EnchantmentIngredient(Enchantments.FIRE_PROTECTION, 4))
-					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
-					.define('B', LCItems.SOUL_FLAME.get())
-					.define('C', CoPItems.CHARM.get())
-					.save(pvd, getID(CoPItems.FIRE_REJECT.get()));
+					.save(ConditionalRecipeWrapper.of(pvd, cond), getID(CoPItems.EXPLOSION_REJECT.get()));
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ENVIRONMENTAL_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -142,7 +146,7 @@ public class CoPRecipeGen {
 					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
 					.define('B', LCItems.VOID_EYE.get())
 					.define('C', CoPItems.CHARM.get())
-					.save(pvd, getID(CoPItems.ENVIRONMENTAL_REJECT.get()));
+					.save(ConditionalRecipeWrapper.of(pvd, cond), getID(CoPItems.ENVIRONMENTAL_REJECT.get()));
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MAGIC_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -150,7 +154,7 @@ public class CoPRecipeGen {
 					.define('C', CoPItems.CHARM.get())
 					.define('B', LCItems.RESONANT_FEATHER.get())
 					.define('2', LCItems.FORCE_FIELD.get())
-					.save(pvd, getID(CoPItems.MAGIC_REJECT.get()));
+					.save(ConditionalRecipeWrapper.of(pvd, cond), getID(CoPItems.MAGIC_REJECT.get()));
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.OWNER_PROTECTION.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("BAB").pattern("B1B").pattern("BAB")
@@ -184,8 +188,9 @@ public class CoPRecipeGen {
 					.save(pvd, getID(CoPItems.GOLDEN_HEART.get()));
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.BLESS_SNOW_WALKER.get())::unlockedBy, CoPItems.CHARM.get())
-					.pattern(" A ").pattern("ABA").pattern(" A ")
+					.pattern(" C ").pattern("ABA").pattern(" C ")
 					.define('A', Items.LEATHER)
+					.define('C', LCItems.HARD_ICE)
 					.define('B', CoPItems.CHARM.get())
 					.save(pvd, getID(CoPItems.BLESS_SNOW_WALKER.get()));
 
@@ -202,6 +207,13 @@ public class CoPRecipeGen {
 					.define('C', LCItems.SOUL_FLAME)
 					.define('B', CoPItems.CHARM.get())
 					.save(pvd, getID(CoPItems.NIGHT_VISION_CHARM.get()));
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.FIRE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
+					.pattern(" A ").pattern("BCB").pattern(" A ")
+					.define('A', LCItems.HARD_ICE.get())
+					.define('B', Items.MAGMA_CREAM)
+					.define('C', CoPItems.CHARM.get())
+					.save(pvd, getID(CoPItems.FIRE_REJECT.get()));
 
 		}
 
@@ -395,10 +407,6 @@ public class CoPRecipeGen {
 						.define('A', LHItems.MIRACLE_POWDER.get())
 						.define('B', LHItems.MIRACLE_INGOT.get())
 						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM.get(), "_craft"));
-
-				unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(CoPTagGen.PANDORA_BASE),
-						RecipeCategory.MISC, CoPItems.CHARM.get(), 1, 200)::unlockedBy, CoPItems.CHARM.get())
-						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM.get(), "_smelt"));
 
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_HEALTH.get())::unlockedBy, CoPItems.CHARM.get())
 						.pattern("AAA").pattern("ABA").pattern("AAA")

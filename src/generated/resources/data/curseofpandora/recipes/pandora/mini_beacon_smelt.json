@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "ingredient": {
-    "tag": "curseofpandora:pandora_base"
+    "tag": "curseofpandora:mini_beacons"
   },
-  "result": "curseofpandora:plain_charm"
+  "result": "curseofpandora:mini_beacon"
 }

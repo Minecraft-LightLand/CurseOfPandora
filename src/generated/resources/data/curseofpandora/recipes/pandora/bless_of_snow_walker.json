@@ -7,12 +7,15 @@
     },
     "B": {
       "item": "curseofpandora:plain_charm"
+    },
+    "C": {
+      "item": "l2complements:hard_ice"
     }
   },
   "pattern": [
-    " A ",
+    " C ",
     "ABA",
-    " A "
+    " C "
   ],
   "result": {
     "item": "curseofpandora:bless_of_snow_walker"
