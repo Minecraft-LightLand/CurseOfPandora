@@ -80,6 +80,10 @@ public class LootGen {
 		return new ItemEntry<?>[]{SHADOW_CORE, SHADOW_CONVERGENCE, SHADOW_CONSOLIDATION, SHADOW_REFORMATION, VOID_OVERFLOW};
 	}
 
+	private static ItemEntry<?>[] abyssal() {
+		return new ItemEntry<?>[]{ABYSSAL_TREASURE, ABYSSAL_WATCHER, ABYSSAL_SHELL, ABYSSAL_CROWN, ABYSSAL_WILL};
+	}
+
 	private static ItemEntry<?>[] elemental() {
 		return new ItemEntry<?>[]{WIND_THRUST, EARTH_CRUSH, FLAMING_EXPLOSION, WAVING_SPELL, CURSE_REDIRECTION};
 	}
@@ -122,7 +126,7 @@ public class LootGen {
 				() -> new PoolBuilder().fromTag(100, attr())
 						.addItem(400, CoPItems.BLESS_SNOW_WALKER.get()).build()),
 		ANCIENT_CITY(0.4, 0.2, BuiltInLootTables.ANCIENT_CITY,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, abyssal()).build()),
 		WOODLAND_MANSION(0.4, 0.2, BuiltInLootTables.WOODLAND_MANSION,
 				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
 		DESERT_PYRAMID(0.2, 0.1, BuiltInLootTables.DESERT_PYRAMID,

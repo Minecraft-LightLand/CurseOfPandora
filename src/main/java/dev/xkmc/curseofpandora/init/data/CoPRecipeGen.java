@@ -409,6 +409,42 @@ public class CoPRecipeGen {
 						.define('B', LCItems.RESONANT_FEATHER)
 						.define('C', Items.ECHO_SHARD)
 						.define('A', CoPItems.SCULK_CRYSTAL).save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ABYSSAL_TREASURE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern(" B ").pattern("DOD").pattern(" B ")
+						.define('O', CoPItems.CHARM)
+						.define('D', CoPItems.ABYSS_CRYSTAL)
+						.define('B', Items.EMERALD)
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ABYSSAL_WATCHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern(" B ").pattern("DOD").pattern("XDX")
+						.define('O', CoPItems.CHARM)
+						.define('D', CoPItems.ABYSS_CRYSTAL)
+						.define('B', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('X', Items.SPIDER_EYE)
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ABYSSAL_SHELL.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("XDX").pattern("DOD").pattern("XDX")
+						.define('O', CoPItems.CHARM)
+						.define('D', CoPItems.ABYSS_CRYSTAL)
+						.define('X', Items.NAUTILUS_SHELL)
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ABYSSAL_CROWN.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("XDX").pattern("DOD").pattern("DXD")
+						.define('O', CoPItems.CHARM)
+						.define('D', CoPItems.ABYSS_CRYSTAL)
+						.define('X', LCItems.VOID_EYE)
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ABYSSAL_WILL.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("DXD").pattern("DOD").pattern("DXD")
+						.define('O', CoPItems.CHARM)
+						.define('D', CoPItems.ABYSS_CRYSTAL)
+						.define('X', CoPItems.BARBARIC_EDGE)
+						.save(pvd);
 			}
 		}
 

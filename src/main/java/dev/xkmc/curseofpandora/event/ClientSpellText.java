@@ -2,8 +2,10 @@ package dev.xkmc.curseofpandora.event;
 
 import dev.xkmc.curseofpandora.content.reality.CurseOfSpellItem;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
@@ -69,6 +71,20 @@ public class ClientSpellText {
 			mode.attack(player, hit.getEntity());
 			player.swing(InteractionHand.MAIN_HAND);
 		}
+	}
+
+	public static Component getDepth(Level level) {
+		int def = CoPConfig.COMMON.abyssal.abyssalDepthRequirement.get();
+		if (level != null) {
+			Player player = Proxy.getClientPlayer();
+			if (player != null) {
+				if (ConditionalData.HOLDER.get(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey())) {
+					int val = CoPConfig.COMMON.abyssal.abyssalWillDepthRequirement.get();
+					return Component.literal(val + "").withStyle(ChatFormatting.YELLOW);
+				}
+			}
+		}
+		return Component.literal(def + "").withStyle(ChatFormatting.GRAY);
 	}
 
 }

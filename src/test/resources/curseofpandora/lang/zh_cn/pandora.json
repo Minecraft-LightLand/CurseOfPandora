@@ -63,7 +63,17 @@
 	"earth_crush": "磐岩坠",
 	"flaming_explosion": "烈炎爆",
 	"waving_spell": "涌潮咒",
-	"curse_redirection": "逆魔符"
+	"curse_redirection": "逆魔符",
+	"abyss_crystal": "深渊结晶",
+	"abyssal_crown": "深渊王冠",
+	"abyssal_shell": "深渊甲壳",
+	"abyssal_treasure": "深渊秘藏",
+	"abyssal_watcher": "深渊活体",
+	"abyssal_will": "深渊意志",
+	"angelic_judgement": "裁决",
+	"barbaric_edge": "蛮荒之锋",
+	"sculk_crystal": "幽匿结晶",
+	"spellbound_orb": "咒魔舍利"
   },
   "curseofpandora.tooltip": {
 	"misc": {
@@ -112,6 +122,13 @@
 	  "reformation_2": "持有虚影标记的单位对你造成的物理伤害-%s%%",
 	  "void": "你造成的虚影伤害变为虚空虚影伤害"
 	},
+	"abyssal": {
+	  "crown": "纵坐标0以下每%s格，你的近战伤害有%s%%概率穿透魔法防御",
+	  "shell": "纵坐标0以下每%s格，获得+%s%%护甲和护甲韧性",
+	  "treasure": "纵坐标0以下每%s格，获得+1幸运",
+	  "watcher": "纵坐标0以下每%s格，获得+%s%%每秒生命回复",
+	  "will": "深渊饰品的深度要求减少"
+	},
 	"elemental": {
 	  "wind_1": "只当玩家疾跑时生效",
 	  "wind_2": "玩家自动攻击指向的实体",
@@ -150,5 +167,6 @@
 	"shadow_curse.player": "%s被%s的阴影咒死了",
 	"void_curse": "%s被阴影咒死了",
 	"void_curse.player": "%s被%s的阴影咒死了"
-  }
+  },
+  "entity.curseofpandora.wind_blade": "剑气"
 }

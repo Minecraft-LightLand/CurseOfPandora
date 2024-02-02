@@ -170,6 +170,31 @@ public class CoPLangData {
 
 	}
 
+	public enum Abyssal {
+		TREASURE("For every %s blocks below 0, you gain 1 Luck", 1),
+		WATCHER("For every %s blocks below 0, you gain %s%% regeneration per second", 2),
+		SHELL("For every %s blocks below 0, you gain +%s%% Armor and Armor Toughness", 2),
+		CROWN("For every %s blocks below 0, you gain +%s%% chance for melee damage to bypass magic", 2),
+		WILL("Reduce depth requirement for Abyssal pandora charms", 0),
+		;
+
+		final String id, def;
+		final int count;
+
+		Abyssal(String def, int count) {
+			this.id = name().toLowerCase(Locale.ROOT);
+			this.def = def;
+			this.count = count;
+		}
+
+		public MutableComponent get(Object... objs) {
+			if (objs.length != count)
+				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
+			return translate(CurseOfPandora.MODID + ".tooltip.abyssal." + id, objs);
+		}
+
+	}
+
 	public static void addTranslations(RegistrateLangProvider pvd) {
 		for (var id : IDS.values()) {
 			pvd.add(CurseOfPandora.MODID + "." + id.id, id.def);
@@ -188,6 +213,9 @@ public class CoPLangData {
 		}
 		for (var id : Elemental.values()) {
 			pvd.add(CurseOfPandora.MODID + ".tooltip.elemental." + id.id, id.def);
+		}
+		for (var id : Abyssal.values()) {
+			pvd.add(CurseOfPandora.MODID + ".tooltip.abyssal." + id.id, id.def);
 		}
 		pvd.add("death.attack.soul_curse", "%s is cursed by evil souls");
 		pvd.add("death.attack.soul_curse.player", "%s is cursed by %s's evil souls");

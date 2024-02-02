@@ -2,18 +2,33 @@ package dev.xkmc.curseofpandora.event;
 
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
-import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
+import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public class PandoraAttackListener implements AttackListener {
+
+	@Override
+	public void onCreateSource(CreateSourceEvent event) {
+		if (event.getResult().toRoot() == L2DamageTypes.PLAYER_ATTACK) {
+			if (event.getAttacker() instanceof Player player){
+				for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+					if (e instanceof IAttackListenerToken token) {
+						token.onCreateSource(player, event);
+					}
+				}
+			}
+		}
+	}
 
 	@Override
 	public void onDamageFinalized(AttackCache cache, ItemStack weapon) {

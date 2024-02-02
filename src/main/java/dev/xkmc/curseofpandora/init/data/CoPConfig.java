@@ -303,7 +303,6 @@ public class CoPConfig {
 
 		public static class Elemental {
 
-
 			public final ForgeConfigSpec.IntValue windThrustRealityIndex;
 			public final ForgeConfigSpec.DoubleValue windThrustSpeed;
 			public final ForgeConfigSpec.DoubleValue windThrustDamage;
@@ -348,12 +347,55 @@ public class CoPConfig {
 
 		}
 
+
+		public static class Abyssal {
+
+			public final ForgeConfigSpec.IntValue abyssalTreasureRealityIndex;
+			public final ForgeConfigSpec.IntValue abyssalWatcherRealityIndex;
+			public final ForgeConfigSpec.IntValue abyssalShellRealityIndex;
+			public final ForgeConfigSpec.IntValue abyssalCrownRealityIndex;
+			public final ForgeConfigSpec.IntValue abyssalWillRealityIndex;
+			public final ForgeConfigSpec.IntValue abyssalDepthRequirement;
+			public final ForgeConfigSpec.IntValue abyssalWillDepthRequirement;
+			public final ForgeConfigSpec.DoubleValue abyssalWatcherRegen;
+			public final ForgeConfigSpec.DoubleValue abyssalShellBonus;
+			public final ForgeConfigSpec.DoubleValue abyssalCrownChance;
+
+			private Abyssal(ForgeConfigSpec.Builder builder) {
+				builder.push("Abyssal");
+				abyssalDepthRequirement = builder.comment("Depth requirement for Abyssal charms")
+						.defineInRange("abyssalDepthRequirement", 12, 0, 64);
+				abyssalWillDepthRequirement = builder.comment("Depth requirement for Abyssal charms with Abyssal Will")
+						.defineInRange("abyssalDepthRequirement", 8, 0, 64);
+				abyssalTreasureRealityIndex = builder.comment("Reality Index requirement for Abyssal Treasure")
+						.defineInRange("abyssalTreasureRealityIndex", 3, 0, 7);
+				abyssalWatcherRealityIndex = builder.comment("Reality Index requirement for Abyssal Watcher")
+						.defineInRange("abyssalWatcherRealityIndex", 4, 0, 7);
+				abyssalShellRealityIndex = builder.comment("Reality Index requirement for Abyssal Shell")
+						.defineInRange("abyssalShellRealityIndex", 5, 0, 7);
+				abyssalCrownRealityIndex = builder.comment("Reality Index requirement for Abyssal Crown")
+						.defineInRange("abyssalCrownRealityIndex", 6, 0, 7);
+				abyssalWillRealityIndex = builder.comment("Reality Index requirement for Abyssal Will")
+						.defineInRange("abyssalWillRealityIndex", 7, 0, 7);
+				abyssalWatcherRegen = builder.comment("Abyssal Watcher regen per depth step")
+						.defineInRange("abyssalWatcherRegen", 0.01, 0, 1);
+				abyssalShellBonus = builder.comment("Abyssal Shell armor and toughness bonus per depth step")
+						.defineInRange("abyssalShellBonus", 0.2, 0, 1);
+				abyssalCrownChance = builder.comment("Abyssal Crown magic bypassing chance per depth step")
+						.defineInRange("abyssalCrownChance", 0.05, 0, 1);
+				builder.pop();
+			}
+
+		}
+
+
 		public final Attr attr;
 		public final Curse curse;
 		public final Angelic angelic;
 		public final Hell hell;
 		public final Shadow shadow;
 		public final Elemental elemental;
+		public final Abyssal abyssal;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			this.attr = new Attr(builder);
@@ -362,6 +404,7 @@ public class CoPConfig {
 			this.hell = new Hell(builder);
 			this.shadow = new Shadow(builder);
 			this.elemental = new Elemental(builder);
+			this.abyssal = new Abyssal(builder);
 		}
 
 	}

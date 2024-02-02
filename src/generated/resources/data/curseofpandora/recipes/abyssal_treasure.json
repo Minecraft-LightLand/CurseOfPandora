@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:emerald"
+    },
+    "D": {
+      "item": "curseofpandora:abyss_crystal"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    " B ",
+    "DOD",
+    " B "
+  ],
+  "result": {
+    "item": "curseofpandora:abyssal_treasure"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "l2complements:totemic_gold_ingot"
+    },
+    "D": {
+      "item": "curseofpandora:abyss_crystal"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "X": {
+      "item": "minecraft:spider_eye"
+    }
+  },
+  "pattern": [
+    " B ",
+    "DOD",
+    "XDX"
+  ],
+  "result": {
+    "item": "curseofpandora:abyssal_watcher"
+  },
+  "show_notification": true
+}

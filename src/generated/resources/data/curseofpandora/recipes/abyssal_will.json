@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "curseofpandora:abyss_crystal"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "X": {
+      "item": "curseofpandora:barbaric_edge"
+    }
+  },
+  "pattern": [
+    "DXD",
+    "DOD",
+    "DXD"
+  ],
+  "result": {
+    "item": "curseofpandora:abyssal_will"
+  },
+  "show_notification": true
+}

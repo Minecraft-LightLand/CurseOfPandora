@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
+import dev.xkmc.curseofpandora.content.sets.abyss.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
 import dev.xkmc.curseofpandora.content.sets.elemental.*;
 import dev.xkmc.curseofpandora.content.sets.hell.*;
@@ -71,6 +72,11 @@ public class CoPItems {
 	public static final ItemEntry<ShadowConsolidation> SHADOW_CONSOLIDATION;
 	public static final ItemEntry<ShadowReformation> SHADOW_REFORMATION;
 	public static final ItemEntry<VoidOverflow> VOID_OVERFLOW;
+	public static final ItemEntry<AbyssalTreasure> ABYSSAL_TREASURE;
+	public static final ItemEntry<AbyssalWatcher> ABYSSAL_WATCHER;
+	public static final ItemEntry<AbyssalShell> ABYSSAL_SHELL;
+	public static final ItemEntry<AbyssalCrown> ABYSSAL_CROWN;
+	public static final ItemEntry<AbyssalWill> ABYSSAL_WILL;
 	public static final ItemEntry<WindThrust> WIND_THRUST;
 	public static final ItemEntry<EarthCrush> EARTH_CRUSH;
 	public static final ItemEntry<FlamingExplosion> FLAMING_EXPLOSION;
@@ -208,6 +214,18 @@ public class CoPItems {
 					.tag(CoPTagGen.SHADOW).register();
 			VOID_OVERFLOW = item("void_overflow", VoidOverflow::new)
 					.tag(CoPTagGen.SHADOW).register();
+
+			ABYSSAL_TREASURE = item("abyssal_treasure", AbyssalTreasure::new)
+					.tag(CoPTagGen.ABYSSAL).register();
+			ABYSSAL_WATCHER = item("abyssal_watcher", AbyssalWatcher::new)
+					.tag(CoPTagGen.ABYSSAL).register();
+			ABYSSAL_SHELL = item("abyssal_shell", AbyssalShell::new)
+					.tag(CoPTagGen.ABYSSAL).register();
+			ABYSSAL_CROWN = item("abyssal_crown", AbyssalCrown::new)
+					.tag(CoPTagGen.ABYSSAL).register();
+			ABYSSAL_WILL = item("abyssal_will", AbyssalWill::new)
+					.tag(CoPTagGen.ABYSSAL).register();
+
 
 			WIND_THRUST = item("wind_thrust", WindThrust::new)
 					.tag(CoPTagGen.ELEMENTAL).register();

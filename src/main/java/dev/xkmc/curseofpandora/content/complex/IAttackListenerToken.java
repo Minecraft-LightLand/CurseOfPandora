@@ -1,6 +1,7 @@
 package dev.xkmc.curseofpandora.content.complex;
 
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
 import net.minecraft.world.entity.player.Player;
 
 public interface IAttackListenerToken {
@@ -32,7 +33,11 @@ public interface IAttackListenerToken {
 
 	}
 
-	default void onPlayerDamageTargetFinal(Player player, AttackCache cache){
+	default void onPlayerDamageTargetFinal(Player player, AttackCache cache) {
+
+	}
+
+	default void onCreateSource(Player player, CreateSourceEvent event) {
 
 	}
 

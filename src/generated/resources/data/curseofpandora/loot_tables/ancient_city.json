@@ -61,27 +61,27 @@
         },
         {
           "type": "minecraft:item",
-          "name": "curseofpandora:angelic_wing",
+          "name": "curseofpandora:abyssal_treasure",
           "weight": 50
         },
         {
           "type": "minecraft:item",
-          "name": "curseofpandora:angelic_bless",
+          "name": "curseofpandora:abyssal_watcher",
           "weight": 50
         },
         {
           "type": "minecraft:item",
-          "name": "curseofpandora:angelic_descent",
+          "name": "curseofpandora:abyssal_shell",
           "weight": 50
         },
         {
           "type": "minecraft:item",
-          "name": "curseofpandora:angelic_protection",
+          "name": "curseofpandora:abyssal_crown",
           "weight": 50
         },
         {
           "type": "minecraft:item",
-          "name": "curseofpandora:angelic_punishment",
+          "name": "curseofpandora:abyssal_will",
           "weight": 50
         }
       ],
