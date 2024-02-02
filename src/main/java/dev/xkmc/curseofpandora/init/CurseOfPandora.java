@@ -3,28 +3,38 @@ package dev.xkmc.curseofpandora.init;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.curseofpandora.compat.CoPLoader;
 import dev.xkmc.curseofpandora.compat.CoPTraits;
+import dev.xkmc.curseofpandora.event.ItemClickListener;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
 import dev.xkmc.curseofpandora.init.data.*;
 import dev.xkmc.curseofpandora.init.loot.CoPGLMProvider;
 import dev.xkmc.curseofpandora.init.loot.LootGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
+import dev.xkmc.l2complements.events.ItemUseEventHandler;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.init.events.EffectSyncEvents;
+import dev.xkmc.l2library.serial.conditions.*;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
+import dev.xkmc.l2library.serial.ingredients.MobEffectIngredient;
+import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -54,6 +64,7 @@ public class CurseOfPandora {
 		CoPItems.register();
 		CoPEffects.register();
 		CoPAttrs.register();
+		CoPEntities.register();
 		CoPGLMProvider.register();
 		CoPConfig.init();
 		if (ModList.get().isLoaded(L2Hostility.MODID))
@@ -70,6 +81,8 @@ public class CurseOfPandora {
 	@SubscribeEvent
 	public static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
+			ItemUseEventHandler.LIST.add(new ItemClickListener());
+
 			EffectSyncEvents.TRACKED.add(CoPEffects.SHADOW.get());
 		});
 	}
@@ -91,6 +104,13 @@ public class CurseOfPandora {
 		event.getGenerator().addProvider(gen, new CoPConfigGen(event.getGenerator()));
 		new CoPDamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
 		event.getGenerator().addProvider(gen, new CoPGLMProvider(output));
+	}
+
+	@SubscribeEvent
+	public static void registerRecipeSerializers(RegisterEvent event) {
+		if (event.getRegistryKey().equals(ForgeRegistries.Keys.RECIPE_SERIALIZERS)) {
+			CraftingHelper.register(CurseIngredient.INSTANCE.id(), CurseIngredient.INSTANCE);
+		}
 	}
 
 }

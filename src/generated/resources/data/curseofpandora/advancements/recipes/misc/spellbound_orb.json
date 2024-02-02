@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spellbound_orb": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "curseofpandora:spellbound_orb"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "curseofpandora:spellbound_orb"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_spellbound_orb",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "curseofpandora:spellbound_orb"
+    ]
+  },
+  "sends_telemetry_event": false
+}

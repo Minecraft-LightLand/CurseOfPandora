@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "curseofpandora:item/pandora/shadow_fragment"
+    "layer0": "curseofpandora:item/mat/shadow_fragment"
   }
 }

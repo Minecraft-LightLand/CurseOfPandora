@@ -45,6 +45,8 @@ public class CoPRecipeGen {
 			convert(pvd, Ingredient.of(ItemTags.BEACON_PAYMENT_ITEMS), CoPItems.MINI_BEACON_BASE.get(), 164 * 9, "_ingot");
 			convert(pvd, Ingredient.of(Items.IRON_BLOCK, Items.GOLD_BLOCK, Items.EMERALD_BLOCK,
 					Items.DIAMOND_BLOCK, Items.NETHERITE_BLOCK), CoPItems.MINI_BEACON_BASE.get(), 164, "_block");
+			convert(pvd, Items.FLINT, CoPItems.BARBARIC_EDGE.get(), 1024);
+			convert(pvd, Items.SCULK, CoPItems.SCULK_CRYSTAL.get(), 1024);
 		}
 
 		currentFolder = "pandora/";
@@ -56,6 +58,10 @@ public class CoPRecipeGen {
 		unlock(pvd, SimpleCookingRecipeBuilder.blasting(Ingredient.of(CoPTagGen.BEACON),
 				RecipeCategory.MISC, CoPItems.MINI_BEACON.get(), 1, 200)::unlockedBy, CoPItems.MINI_BEACON.get())
 				.save(pvd, getID(CoPItems.MINI_BEACON.get(), "_smelt"));
+
+		unlock(pvd, SimpleCookingRecipeBuilder.blasting(new CurseIngredient(),
+				RecipeCategory.MISC, CoPItems.SPELLBOUND_ORB.get(), 1, 200)::unlockedBy, CoPItems.SPELLBOUND_ORB.get())
+				.save(pvd);
 
 
 		// beacons
@@ -226,172 +232,184 @@ public class CoPRecipeGen {
 					.define('B', CoPItems.CHARM.get())
 					.define('A', Items.GOLD_INGOT)
 					.save(e -> pvd.accept(new NBTRecipe(e, stack)), new ResourceLocation(CurseOfPandora.MODID, "seven_curses"));
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_FEATHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("ABA").pattern("FCF").pattern("MBM")
+						.define('C', CoPItems.CHARM.get())
+						.define('B', LCItems.STORM_CORE)
+						.define('A', LCItems.CAPTURED_WIND)
+						.define('F', Items.FEATHER)
+						.define('M', Items.PHANTOM_MEMBRANE)
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_FEATHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("ABA").pattern("FCF").pattern("MBM")
-					.define('C', CoPItems.CHARM.get())
-					.define('B', LCItems.STORM_CORE)
-					.define('A', LCItems.CAPTURED_WIND)
-					.define('F', Items.FEATHER)
-					.define('M', Items.PHANTOM_MEMBRANE)
-					.save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_WING.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
+						.pattern("ABA").pattern("ACA").pattern("ABA")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.ANGELIC_FEATHER)
+						.define('A', Items.FEATHER).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_WING.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
-					.pattern("ABA").pattern("ACA").pattern("ABA")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.ANGELIC_FEATHER)
-					.define('A', Items.FEATHER).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_BLESS.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
+						.pattern("DBD").pattern("BCB").pattern("AAA")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.ANGELIC_FEATHER)
+						.define('D', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('A', Items.FEATHER).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_BLESS.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
-					.pattern("DBD").pattern("BCB").pattern("AAA")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.ANGELIC_FEATHER)
-					.define('D', LCMats.TOTEMIC_GOLD.getIngot())
-					.define('A', Items.FEATHER).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_DESCENT.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
+						.pattern(" D ").pattern("BCB").pattern("B B")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.ANGELIC_FEATHER)
+						.define('D', LCItems.WARDEN_BONE_SHARD).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_DESCENT.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
-					.pattern(" D ").pattern("BCB").pattern("B B")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.ANGELIC_FEATHER)
-					.define('D', LCItems.WARDEN_BONE_SHARD).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_PROTECTION.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
+						.pattern(" B ").pattern("BCB").pattern("BAB")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.ANGELIC_FEATHER)
+						.define('A', LCItems.ENCHANTED_TOTEMIC_APPLE).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_PROTECTION.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
-					.pattern(" B ").pattern("BCB").pattern("BAB")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.ANGELIC_FEATHER)
-					.define('A', LCItems.ENCHANTED_TOTEMIC_APPLE).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_PUNISHMENT.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
+						.pattern("BDB").pattern("BCB").pattern("BAB")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.ANGELIC_FEATHER)
+						.define('D', LCItems.SUN_MEMBRANE)
+						.define('A', LCItems.RESONANT_FEATHER).save(pvd);
+			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.HELLFIRE_RUNE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("ABA").pattern("ECE").pattern("ADA")
+						.define('C', CoPItems.CHARM)
+						.define('D', Ingredient.of(LCItems.BLACKSTONE_CORE, Items.NETHER_STAR))
+						.define('B', LCItems.SOUL_FLAME)
+						.define('E', LCItems.EXPLOSION_SHARD)
+						.define('A', Ingredient.of(LCItems.EXPLOSION_SHARD, Items.NETHERITE_SCRAP)).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_PUNISHMENT.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
-					.pattern("BDB").pattern("BCB").pattern("BAB")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.ANGELIC_FEATHER)
-					.define('D', LCItems.SUN_MEMBRANE)
-					.define('A', LCItems.RESONANT_FEATHER).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.HELLFIRE_SKULL.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+						.pattern(" F ").pattern("BCB").pattern(" S ")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.HELLFIRE_RUNE)
+						.define('S', Ingredient.of(Items.WITHER_SKELETON_SKULL, Items.SKELETON_SKULL))
+						.define('F', LCItems.SOUL_FLAME).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.HELLFIRE_RUNE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("ABA").pattern("ECE").pattern("ADA")
-					.define('C', CoPItems.CHARM)
-					.define('D', Ingredient.of(LCItems.BLACKSTONE_CORE, Items.NETHER_STAR))
-					.define('B', LCItems.SOUL_FLAME)
-					.define('E', LCItems.EXPLOSION_SHARD)
-					.define('A', Ingredient.of(LCItems.EXPLOSION_SHARD, Items.NETHERITE_SCRAP)).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.HELLFIRE_REFORMATION.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+						.pattern("FXF").pattern("BCB").pattern("FBF")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.HELLFIRE_RUNE)
+						.define('F', LCItems.SOUL_FLAME)
+						.define('X', Items.NETHER_STAR)
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.HELLFIRE_SKULL.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
-					.pattern(" F ").pattern("BCB").pattern(" S ")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.HELLFIRE_RUNE)
-					.define('S', Ingredient.of(Items.WITHER_SKELETON_SKULL, Items.SKELETON_SKULL))
-					.define('F', LCItems.SOUL_FLAME).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EYE_OF_CURSED_SOULS.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+						.pattern("BXB").pattern("FCF").pattern("BFB")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.HELLFIRE_RUNE)
+						.define('F', LCItems.SOUL_FLAME)
+						.define('X', CoPItems.SPELLBOUND_ORB)
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.HELLFIRE_REFORMATION.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
-					.pattern("FXF").pattern("BCB").pattern("FBF")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.HELLFIRE_RUNE)
-					.define('F', LCItems.SOUL_FLAME)
-					.define('X', Items.NETHER_STAR)
-					.save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CURSED_SOUL_CRYSTAL.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+						.pattern("BXB").pattern("BCB").pattern("FBF")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.HELLFIRE_RUNE)
+						.define('F', LCItems.CURSED_DROPLET)
+						.define('X', LCItems.FORCE_FIELD)
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EYE_OF_CURSED_SOULS.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
-					.pattern("BXB").pattern("FCF").pattern("BFB")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.HELLFIRE_RUNE)
-					.define('F', LCItems.SOUL_FLAME)
-					.define('X', LCItems.GUARDIAN_EYE)
-					.save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CROWN_OF_DEMON.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+						.pattern("BXB").pattern("BCB").pattern("BFB")
+						.define('C', CoPItems.CHARM)
+						.define('B', CoPItems.HELLFIRE_RUNE)
+						.define('F', LCItems.CURSED_DROPLET)
+						.define('X', LCItems.GUARDIAN_EYE)
+						.save(pvd);
+			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_FRAGMENT.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("ADA").pattern("ACA").pattern("ABA")
+						.define('C', CoPItems.CHARM)
+						.define('D', LCItems.VOID_EYE)
+						.define('B', LCItems.WARDEN_BONE_SHARD)
+						.define('A', LCItems.HARD_ICE).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CURSED_SOUL_CRYSTAL.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
-					.pattern("BXB").pattern("BCB").pattern("FBF")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.HELLFIRE_RUNE)
-					.define('F', LCItems.CURSED_DROPLET)
-					.define('X', LCItems.FORCE_FIELD)
-					.save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_CORE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern(" D ").pattern("ACA").pattern(" D ")
+						.define('C', CoPItems.CHARM)
+						.define('D', CoPItems.SHADOW_FRAGMENT)
+						.define('A', LCItems.STORM_CORE).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CROWN_OF_DEMON.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
-					.pattern("BXB").pattern("BCB").pattern("BFB")
-					.define('C', CoPItems.CHARM)
-					.define('B', CoPItems.HELLFIRE_RUNE)
-					.define('F', LCItems.CURSED_DROPLET)
-					.define('X', LCItems.GUARDIAN_EYE)
-					.save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_CONVERGENCE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern(" D ").pattern("ACA").pattern("DTD")
+						.define('C', CoPItems.CHARM)
+						.define('D', CoPItems.SHADOW_FRAGMENT)
+						.define('T', LCMats.TOTEMIC_GOLD.getIngot())
+						.define('A', LCItems.CURSED_DROPLET).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_FRAGMENT.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("ADA").pattern("ACA").pattern("ABA")
-					.define('C', CoPItems.CHARM)
-					.define('D', LCItems.VOID_EYE)
-					.define('B', LCItems.WARDEN_BONE_SHARD)
-					.define('A', LCItems.HARD_ICE).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_CONSOLIDATION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("DSD").pattern("ACA").pattern("DTD")
+						.define('C', CoPItems.CHARM)
+						.define('D', CoPItems.SHADOW_FRAGMENT)
+						.define('S', CoPItems.SPELLBOUND_ORB)
+						.define('T', LCItems.STORM_CORE)
+						.define('A', LCItems.CURSED_DROPLET).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_CORE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern(" D ").pattern("ACA").pattern(" D ")
-					.define('C', CoPItems.CHARM)
-					.define('D', CoPItems.SHADOW_FRAGMENT)
-					.define('A', LCItems.STORM_CORE).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_REFORMATION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("TDT").pattern("DCD").pattern("DSD")
+						.define('C', CoPItems.CHARM)
+						.define('D', CoPItems.SHADOW_FRAGMENT)
+						.define('S', LCItems.FORCE_FIELD)
+						.define('T', LCItems.STORM_CORE).save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_CONVERGENCE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern(" D ").pattern("ACA").pattern("DTD")
-					.define('C', CoPItems.CHARM)
-					.define('D', CoPItems.SHADOW_FRAGMENT)
-					.define('T', LCMats.TOTEMIC_GOLD.getIngot())
-					.define('A', LCItems.CURSED_DROPLET).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.VOID_OVERFLOW.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("DSD").pattern("DCD").pattern("DSD")
+						.define('C', CoPItems.CHARM)
+						.define('D', CoPItems.SHADOW_FRAGMENT)
+						.define('S', LCItems.RESONANT_FEATHER).save(pvd);
+			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.WIND_THRUST.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("DDC").pattern("CCD").pattern("DCD")
+						.define('C', CoPItems.CHARM)
+						.define('D', LCItems.CAPTURED_WIND)
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_CONSOLIDATION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("DSD").pattern("ACA").pattern("DTD")
-					.define('C', CoPItems.CHARM)
-					.define('D', CoPItems.SHADOW_FRAGMENT)
-					.define('S', LCItems.EMERALD)
-					.define('T', LCItems.STORM_CORE)
-					.define('A', LCItems.CURSED_DROPLET).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EARTH_CRUSH.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("XIX").pattern("CDC").pattern("CXC")
+						.define('C', CoPItems.CHARM)
+						.define('D', LCItems.BLACKSTONE_CORE)
+						.define('I', Items.ANVIL)
+						.define('X', Ingredient.of(LCItems.EXPLOSION_SHARD, Items.NETHERITE_SCRAP))
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.SHADOW_REFORMATION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("TDT").pattern("DCD").pattern("DSD")
-					.define('C', CoPItems.CHARM)
-					.define('D', CoPItems.SHADOW_FRAGMENT)
-					.define('S', LCItems.FORCE_FIELD)
-					.define('T', LCItems.STORM_CORE).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.FLAMING_EXPLOSION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("CFC").pattern("FDF").pattern("CFC")
+						.define('C', CoPItems.CHARM)
+						.define('F', LCItems.SOUL_FLAME)
+						.define('D', LCItems.STORM_CORE)
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.VOID_OVERFLOW.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("DSD").pattern("DCD").pattern("DSD")
-					.define('C', CoPItems.CHARM)
-					.define('D', CoPItems.SHADOW_FRAGMENT)
-					.define('S', LCItems.RESONANT_FEATHER).save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.WAVING_SPELL.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("SCS").pattern("CDC").pattern("FCF")
+						.define('C', CoPItems.CHARM)
+						.define('S', Items.PRISMARINE_CRYSTALS)
+						.define('F', Items.PRISMARINE_SHARD)
+						.define('D', Items.CONDUIT)
+						.save(pvd);
 
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.WIND_THRUST.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("DDC").pattern("CCD").pattern("DCD")
-					.define('C', CoPItems.CHARM)
-					.define('D', LCItems.CAPTURED_WIND)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EARTH_CRUSH.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("XIX").pattern("CDC").pattern("CXC")
-					.define('C', CoPItems.CHARM)
-					.define('D', LCItems.BLACKSTONE_CORE)
-					.define('I', Items.ANVIL)
-					.define('X', Ingredient.of(LCItems.EXPLOSION_SHARD, Items.NETHERITE_SCRAP))
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.FLAMING_EXPLOSION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("CFC").pattern("FDF").pattern("CFC")
-					.define('C', CoPItems.CHARM)
-					.define('F', LCItems.SOUL_FLAME)
-					.define('D', LCItems.STORM_CORE)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.WAVING_SPELL.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("SCS").pattern("CDC").pattern("FCF")
-					.define('C', CoPItems.CHARM)
-					.define('S', Items.PRISMARINE_CRYSTALS)
-					.define('F', Items.PRISMARINE_SHARD)
-					.define('D', Items.CONDUIT)
-					.save(pvd);
-
-			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CURSE_REDIRECTION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
-					.pattern("SCF").pattern("CDC").pattern("SCF")
-					.define('C', CoPItems.CHARM)
-					.define('S', new EnchantmentIngredient(Enchantments.BINDING_CURSE, 1))
-					.define('F', new EnchantmentIngredient(Enchantments.VANISHING_CURSE, 1))
-					.define('D', Items.NETHER_STAR)
-					.save(pvd);
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CURSE_REDIRECTION.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("SCS").pattern("CDC").pattern("SCS")
+						.define('C', CoPItems.CHARM)
+						.define('S', CoPItems.SPELLBOUND_ORB)
+						.define('D', Items.NETHER_STAR)
+						.save(pvd);
+			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ABYSS_CRYSTAL.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("ABC").pattern("DOD").pattern("CBA")
+						.define('O', CoPItems.CHARM)
+						.define('D', LCItems.WARDEN_BONE_SHARD)
+						.define('B', LCItems.RESONANT_FEATHER)
+						.define('C', Items.ECHO_SHARD)
+						.define('A', CoPItems.SCULK_CRYSTAL).save(pvd);
+			}
 		}
 
 		if (ModList.get().isLoaded(L2Hostility.MODID)) {

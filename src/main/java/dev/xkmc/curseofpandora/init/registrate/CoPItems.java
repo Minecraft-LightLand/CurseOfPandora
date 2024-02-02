@@ -9,6 +9,7 @@ import dev.xkmc.curseofpandora.content.sets.angle.*;
 import dev.xkmc.curseofpandora.content.sets.elemental.*;
 import dev.xkmc.curseofpandora.content.sets.hell.*;
 import dev.xkmc.curseofpandora.content.sets.shadow.*;
+import dev.xkmc.curseofpandora.content.weapon.AngelicJudgement;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
@@ -21,6 +22,7 @@ import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -30,7 +32,9 @@ import static dev.xkmc.curseofpandora.init.CurseOfPandora.REGISTRATE;
 
 public class CoPItems {
 
-	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE, ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT;
+	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE,
+			ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT,
+			BARBARIC_EDGE, SPELLBOUND_ORB, ABYSS_CRYSTAL, SCULK_CRYSTAL;
 	public static final ItemEntry<EnchDescItem> EXPLOSION_REJECT, MAGIC_REJECT,
 			ENVIRONMENTAL_REJECT, PROJECTILE_REJECT, OWNER_PROTECTION;
 	public static final ItemEntry<EffectRefreshItem> MINI_BEACON_SPEED, MINI_BEACON_HASTE, MINI_BEACON_JUMP,
@@ -73,6 +77,7 @@ public class CoPItems {
 	public static final ItemEntry<WavingSpell> WAVING_SPELL;
 	public static final ItemEntry<CurseRedirection> CURSE_REDIRECTION;
 
+	public static final ItemEntry<AngelicJudgement> ANGELIC_JUDGEMENT;
 
 	static {
 		REGISTRATE.defaultCreativeTab(PandoraItems.TAB.getKey());
@@ -103,8 +108,19 @@ public class CoPItems {
 
 		}
 
-		CHARM = ingredient("plain_charm", Item::new)
-				.register();
+		// ingredient
+		{
+			CHARM = ingredient("plain_charm", Item::new).register();
+			MINI_BEACON_BASE = ingredient("mini_beacon_base", p -> new Item(p.fireResistant())).register();
+			MINI_BEACON = ingredient("mini_beacon", Item::new).tag(CoPTagGen.PANDORA_BASE).register();
+			SPELLBOUND_ORB = ingredient("spellbound_orb", Item::new).register();
+			BARBARIC_EDGE = ingredient("barbaric_edge", Item::new).register();
+			SCULK_CRYSTAL = ingredient("sculk_crystal", Item::new).register();
+			ANGELIC_FEATHER = ingredient("angelic_feather", Item::new).register();
+			HELLFIRE_RUNE = ingredient("hellfire_rune", Item::new).register();
+			SHADOW_FRAGMENT = ingredient("shadow_fragment", Item::new).register();
+			ABYSS_CRYSTAL = ingredient("abyss_crystal", Item::new).register();
+		}
 
 		// attributes
 		{
@@ -159,7 +175,6 @@ public class CoPItems {
 
 		//sets
 		{
-			ANGELIC_FEATHER = ingredient("angelic_feather", Item::new).register();
 
 			ANGELIC_WING = item("angelic_wing", AngelicWing::new)
 					.tag(CoPTagGen.ANGELIC).register();
@@ -172,8 +187,6 @@ public class CoPItems {
 			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
 					.tag(CoPTagGen.ANGELIC).register();
 
-			HELLFIRE_RUNE = ingredient("hellfire_rune", Item::new).register();
-
 			HELLFIRE_SKULL = item("hellfire_skull", HellfireSkull::new)
 					.tag(CoPTagGen.HELL).register();
 			HELLFIRE_REFORMATION = item("hellfire_reformation", HellfireReformation::new)
@@ -185,9 +198,7 @@ public class CoPItems {
 			CROWN_OF_DEMON = item("crown_of_demon", CrownOfDemon::new)
 					.tag(CoPTagGen.HELL).lang("Crown of Demon").register();
 
-			SHADOW_FRAGMENT = item("shadow_fragment", Item::new).register();
-
-			SHADOW_CORE = ingredient("shadow_core", ShadowCore::new)
+			SHADOW_CORE = item("shadow_core", ShadowCore::new)
 					.tag(CoPTagGen.SHADOW).register();
 			SHADOW_CONVERGENCE = item("shadow_convergence", ShadowConvergence::new)
 					.tag(CoPTagGen.SHADOW).register();
@@ -274,12 +285,6 @@ public class CoPItems {
 		// beacon
 		{
 
-			MINI_BEACON_BASE = ingredient("mini_beacon_base", p -> new Item(p.fireResistant()))
-					.register();
-
-			MINI_BEACON = ingredient("mini_beacon", Item::new)
-					.tag(CoPTagGen.PANDORA_BASE)
-					.register();
 
 			MINI_BEACON_SPEED = item("mini_beacon_speed",
 					p -> new EffectRefreshItem(p, () -> new MobEffectInstance(
@@ -319,12 +324,23 @@ public class CoPItems {
 
 		}
 
+		// sword
+		{
+			ANGELIC_JUDGEMENT = weapon("angelic_judgement", p -> new AngelicJudgement(p.fireResistant()))
+					.tag(ItemTags.SWORDS).register();
+		}
+
 	}
 
 
 	public static <T extends Item> ItemBuilder<T, L2Registrate> ingredient(String id, NonNullFunction<Item.Properties, T> factory) {
 		return REGISTRATE.item(id, factory)
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/pandora/" + id)));
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/mat/" + id)));
+	}
+
+	public static <T extends Item> ItemBuilder<T, L2Registrate> weapon(String id, NonNullFunction<Item.Properties, T> factory) {
+		return REGISTRATE.item(id, factory)
+				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/weapon/" + id)));
 	}
 
 	public static <T extends Item> ItemBuilder<T, L2Registrate> item(String id, NonNullFunction<Item.Properties, T> factory) {

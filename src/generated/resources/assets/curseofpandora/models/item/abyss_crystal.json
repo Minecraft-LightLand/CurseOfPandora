@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "curseofpandora:item/mat/plain_charm"
+    "layer0": "curseofpandora:item/mat/abyss_crystal"
   }
 }

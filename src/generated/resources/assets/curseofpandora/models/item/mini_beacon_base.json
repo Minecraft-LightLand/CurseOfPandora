@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "curseofpandora:item/pandora/mini_beacon_base"
+    "layer0": "curseofpandora:item/mat/mini_beacon_base"
   }
 }

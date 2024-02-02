@@ -22,20 +22,23 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 	public static final ResourceKey<DamageType> SOUL_CURSE = create("soul_curse");
 	public static final ResourceKey<DamageType> SHADOW_CURSE = create("shadow_curse");
 	public static final ResourceKey<DamageType> VOID_CURSE = create("void_curse");
+	public static final ResourceKey<DamageType> WIND_BLADE = create("wind_blade");
 
 	public static final TagKey<DamageType> SHADOW = TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(CurseOfPandora.MODID, "shadow"));
 
 	public CoPDamageTypeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, CurseOfPandora.MODID);
+		new DamageTypeHolder(WIND_BLADE, new DamageType("wind_blade", DamageScaling.NEVER, 0.1F))
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 		new DamageTypeHolder(SOUL_CURSE, new DamageType("soul_curse", DamageScaling.NEVER, 0.1F))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 		new DamageTypeHolder(SHADOW_CURSE, new DamageType("shadow_curse", DamageScaling.NEVER, 0.1F))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
 						DamageTypeTags.BYPASSES_COOLDOWN, SHADOW);
 		new DamageTypeHolder(VOID_CURSE, new DamageType("void_curse", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_ENCHANTMENTS, SHADOW,
-						DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE,
-						DamageTypeTags.BYPASSES_COOLDOWN, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
+						DamageTypeTags.BYPASSES_COOLDOWN, SHADOW,
+						DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE);
 	}
 
 	public static Holder<DamageType> forKey(Level level, ResourceKey<DamageType> key) {

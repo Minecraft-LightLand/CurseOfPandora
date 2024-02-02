@@ -1,0 +1,10 @@
+{
+  "type": "l2complements:burnt",
+  "chance": 1024,
+  "ingredient": {
+    "item": "minecraft:sculk"
+  },
+  "result": {
+    "item": "curseofpandora:sculk_crystal"
+  }
+}

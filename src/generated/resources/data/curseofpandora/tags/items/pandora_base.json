@@ -1,5 +1,6 @@
 {
   "values": [
+    "curseofpandora:mini_beacon",
     "curseofpandora:orb_of_stability",
     "curseofpandora:golden_heart",
     "curseofpandora:charm_of_calmness",
@@ -12,7 +13,6 @@
     "curseofpandora:orb_of_explosion_rejection",
     "curseofpandora:orb_of_projectile_rejection",
     "curseofpandora:orb_of_magic_rejection",
-    "curseofpandora:mini_beacon",
     "#curseofpandora:attribute_charms",
     "#curseofpandora:reality_charms"
   ]

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "curseofpandora:sculk_crystal"
+    },
+    "B": {
+      "item": "l2complements:resonant_feather"
+    },
+    "C": {
+      "item": "minecraft:echo_shard"
+    },
+    "D": {
+      "item": "l2complements:warden_bone_shard"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DOD",
+    "CBA"
+  ],
+  "result": {
+    "item": "curseofpandora:abyss_crystal"
+  },
+  "show_notification": true
+}
