@@ -120,6 +120,7 @@
   "curseofpandora.tooltip.elemental.waving": "只当玩家在水中或雨中时生效",
   "curseofpandora.tooltip.elemental.curse_1": "对于每件带有诅咒附魔的护甲，+1魔力耐性",
   "curseofpandora.tooltip.elemental.curse_2": "对于护甲每条诅咒附魔，+%s%%魔法伤害",
+  "curseofpandora.tooltip.weapon.angelic_judgement": "空挥发射剑气",
   "effect.curseofpandora.prudence": "碎魂指示物",
   "effect.curseofpandora.prudence.description": "只用于渲染。显示你对该目标的伤害是否因为现实第六诅咒的效果而下降",
   "effect.curseofpandora.terror_token": "恐惧标记",

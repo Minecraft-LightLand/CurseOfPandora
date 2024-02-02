@@ -136,6 +136,9 @@
 	  "waving": "只当玩家在水中或雨中时生效",
 	  "curse_1": "对于每件带有诅咒附魔的护甲，+1魔力耐性",
 	  "curse_2": "对于护甲每条诅咒附魔，+%s%%魔法伤害"
+	},
+	"weapon": {
+	  "angelic_judgement": "空挥发射剑气"
 	}
   },
   "effect.curseofpandora": {

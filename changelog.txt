@@ -1,4 +1,9 @@
+18 / 11 / 7 / 20+5 / 0+1
 
+2.4.4
+- Add Abyssal series
+- Add crafting ingredients, tweak recipes
+-
 
 2.4.3
 - Fix language

@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-02T20:01:14.601946	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-ce417429f2e98248056b5f16bdbeb7c7668b8a29 assets/curseofpandora/lang/en_ud.json
-52681ef89ba4eb862e9d1e84ab9e6b305fc42273 assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-02-02T21:35:58.646701	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+e9cd2ba665448cdd0605e2dc029e80d258510f7f assets/curseofpandora/lang/en_ud.json
+f28e25169d09d6a87aad794a2f1b4c5041dfe128 assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 336673d07ccb3b4c6ec815da2c764bfec78dbf2e assets/curseofpandora/models/item/abyssal_shell.json
@@ -10,7 +10,7 @@ af30f282d295b869773818a6eaf14da6e9f25d52 assets/curseofpandora/models/item/abyss
 ee44b4df5dd60e5aec209a4d4e49a54793c12dc2 assets/curseofpandora/models/item/angelic_bless.json
 c76acfeacfdb7dda82312c93fa6615b73832edb6 assets/curseofpandora/models/item/angelic_descent.json
 7b660ae3c6e6169761bb9afdb38f9a571ab1121b assets/curseofpandora/models/item/angelic_feather.json
-42500cc6de9443089a17d254db2699a47e82583e assets/curseofpandora/models/item/angelic_judgement.json
+39ee4f6f379e1becbc41bccddbfde80f78ca6de8 assets/curseofpandora/models/item/angelic_judgement.json
 b8c82c4a6204cacd3a637a5fd9cc9487fc24a409 assets/curseofpandora/models/item/angelic_protection.json
 b2a9cdc1bec6db8effde389a8c73ee2f40ae92c5 assets/curseofpandora/models/item/angelic_punishment.json
 d716bfddcefcd58e41cfd8660c49f82fe57df05e assets/curseofpandora/models/item/angelic_wing.json
@@ -80,6 +80,7 @@ e53d9e2a287d53b543ab3e36a8579a7c6b1d1003 data/curseofpandora/advancements/recipe
 f2916a01345c26938623dd1154cf6ffccd1b09b8 data/curseofpandora/advancements/recipes/burnt/burnt/mini_beacon_base_block.json
 724f9c10bf3ccb56cf13fbe6012854af97a77f37 data/curseofpandora/advancements/recipes/burnt/burnt/mini_beacon_base_ingot.json
 84b488f0c18c5379c5cce4a10548784d82dd556f data/curseofpandora/advancements/recipes/burnt/burnt/sculk.json
+b525c558f6985ee221911f6d8a2980d41e15d699 data/curseofpandora/advancements/recipes/combat/angelic_judgement.json
 84c4f4ef23c79d3565fcfbecfa12bfd01604dc13 data/curseofpandora/advancements/recipes/misc/abyss_crystal.json
 0359cc929a6fbc4d123eeaf101fc57e4535b9e4b data/curseofpandora/advancements/recipes/misc/abyssal_crown.json
 b786ca88ea500978e79954d3eb614cf7a36d2265 data/curseofpandora/advancements/recipes/misc/abyssal_shell.json
@@ -173,6 +174,7 @@ bb5b1806f61820d47388c1c54c04840accc41a68 data/curseofpandora/recipes/abyssal_wil
 817053f9f953de1c812ee280a5f808b0df1df338 data/curseofpandora/recipes/angelic_bless.json
 3e153d7259334983e35879946bce0d2d047b1507 data/curseofpandora/recipes/angelic_descent.json
 702a22441c6fab34fc9ea913aaa86be2c11d4db0 data/curseofpandora/recipes/angelic_feather.json
+0d50823be3301d70d436a18f7dba4eb98931bba2 data/curseofpandora/recipes/angelic_judgement.json
 ad3f58b8b3c753a1e629a8eb2ff1bec1b077d16a data/curseofpandora/recipes/angelic_protection.json
 c6ad34a81dbeafb301ef4b3660cb312e32b2683a data/curseofpandora/recipes/angelic_punishment.json
 6165e6f38f6aa9440ab4807e3bcc744e7645a9c1 data/curseofpandora/recipes/angelic_wing.json

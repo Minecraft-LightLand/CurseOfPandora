@@ -358,7 +358,7 @@ public class CoPItems {
 
 	public static <T extends Item> ItemBuilder<T, L2Registrate> weapon(String id, NonNullFunction<Item.Properties, T> factory) {
 		return REGISTRATE.item(id, factory)
-				.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("item/weapon/" + id)));
+				.model((ctx, pvd) -> pvd.handheld(ctx, pvd.modLoc("item/weapon/" + id)));
 	}
 
 	public static <T extends Item> ItemBuilder<T, L2Registrate> item(String id, NonNullFunction<Item.Properties, T> factory) {

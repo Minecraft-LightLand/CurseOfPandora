@@ -9,6 +9,7 @@ import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2damagetracker.contents.materials.vanilla.Tools;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
@@ -447,6 +448,21 @@ public class CoPRecipeGen {
 						.save(pvd);
 			}
 		}
+
+		// weapons
+		{
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CoPItems.ANGELIC_JUDGEMENT.get(), 1)::unlockedBy, CoPItems.ANGELIC_FEATHER.get())
+					.pattern("WSD").pattern("XTS").pattern("PXW")
+					.define('S', LCItems.SUN_MEMBRANE)
+					.define('D', CoPItems.ANGELIC_DESCENT)
+					.define('T', LCMats.TOTEMIC_GOLD.getTool(Tools.SWORD))
+					.define('W', CoPItems.ANGELIC_WING)
+					.define('P', CoPItems.ANGELIC_PROTECTION)
+					.define('X', LCItems.STORM_CORE)
+					.save(pvd);
+		}
+
 
 		if (ModList.get().isLoaded(L2Hostility.MODID)) {
 			{

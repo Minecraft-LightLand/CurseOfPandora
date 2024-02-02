@@ -50,6 +50,7 @@
   "curseofpandora.tooltip.shadow.reformation_1": "+%s%% magic damage against target with Shadow effect",
   "curseofpandora.tooltip.shadow.reformation_2": "-%s%% physical damage from mobs with Shadow effect",
   "curseofpandora.tooltip.shadow.void": "Shadow damage you dealt becomes void shadow damage.",
+  "curseofpandora.tooltip.weapon.angelic_judgement": "Empty slash shoots magic blade",
   "death.attack.shadow_curse": "%s is cursed by shadow",
   "death.attack.shadow_curse.player": "%s is cursed by %s's shadow",
   "death.attack.soul_curse": "%s is cursed by evil souls",

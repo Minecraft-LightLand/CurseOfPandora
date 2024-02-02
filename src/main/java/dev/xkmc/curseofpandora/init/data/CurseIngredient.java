@@ -7,6 +7,7 @@ import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -36,7 +37,7 @@ public class CurseIngredient extends BaseIngredient<CurseIngredient> {
 	}
 
 	public boolean test(ItemStack stack) {
-		return EnchantmentHelper.getEnchantments(stack).entrySet().stream().anyMatch(e -> e.getKey().isCurse());
+		return stack.is(Items.ENCHANTED_BOOK) && EnchantmentHelper.getEnchantments(stack).entrySet().stream().anyMatch(e -> e.getKey().isCurse());
 	}
 
 	public BaseIngredient.Serializer<CurseIngredient> getSerializer() {

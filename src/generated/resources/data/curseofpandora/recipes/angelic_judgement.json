@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "curseofpandora:angelic_descent"
+    },
+    "P": {
+      "item": "curseofpandora:angelic_protection"
+    },
+    "S": {
+      "item": "l2complements:sun_membrane"
+    },
+    "T": {
+      "item": "l2complements:totemic_gold_sword"
+    },
+    "W": {
+      "item": "curseofpandora:angelic_wing"
+    },
+    "X": {
+      "item": "l2complements:storm_core"
+    }
+  },
+  "pattern": [
+    "WSD",
+    "XTS",
+    "PXW"
+  ],
+  "result": {
+    "item": "curseofpandora:angelic_judgement"
+  },
+  "show_notification": true
+}

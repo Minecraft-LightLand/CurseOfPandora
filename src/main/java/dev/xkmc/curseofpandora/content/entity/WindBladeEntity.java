@@ -2,6 +2,8 @@ package dev.xkmc.curseofpandora.content.entity;
 
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
+import dev.xkmc.l2damagetracker.contents.attributes.WrappedAttribute;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.core.particles.ParticleTypes;
@@ -13,6 +15,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -57,6 +60,7 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 		this.setYRot((float) (Mth.atan2(vector3d.x, vector3d.z) * (double) (180F / (float) Math.PI)));
 		this.xRotO = this.getXRot();
 		this.yRotO = this.getYRot();
+
 	}
 
 	@Override
@@ -94,7 +98,17 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 			Entity entity = result.getEntity();
 			Entity owner = this.getOwner();
 			DamageSource source = new DamageSource(CoPDamageTypeGen.forKey(level(), CoPDamageTypeGen.WIND_BLADE), entity, owner);
-			entity.hurt(source, damage);
+			float dmg = damage;
+			if (getOwner() instanceof Player player) {
+				double cr = ((WrappedAttribute) L2DamageTracker.CRIT_RATE.get()).getWrappedValue(player);
+				double cd = ((WrappedAttribute) L2DamageTracker.CRIT_DMG.get()).getWrappedValue(player);
+				double strength = ((WrappedAttribute) L2DamageTracker.BOW_STRENGTH.get()).getWrappedValue(player);
+				if (player.getRandom().nextDouble() < cr) {
+					strength *= 1.0 + cd;
+				}
+				dmg *= strength;
+			}
+			entity.hurt(source, dmg);
 			if (owner instanceof LivingEntity) {
 				doEnchantDamageEffects((LivingEntity) owner, entity);
 			}
@@ -125,4 +139,9 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 	public void readSpawnData(FriendlyByteBuf additionalData) {
 		zrot = additionalData.readFloat();
 	}
+
+	public ItemStack getStack() {
+		return issuer;
+	}
+
 }

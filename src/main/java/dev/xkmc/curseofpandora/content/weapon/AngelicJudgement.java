@@ -1,16 +1,28 @@
 package dev.xkmc.curseofpandora.content.weapon;
 
 import dev.xkmc.curseofpandora.content.entity.WindBladeEntity;
+import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class AngelicJudgement extends SwordItem implements EmptyClickListener {
 
 	public AngelicJudgement(Properties props) {
 		super(WeaponTier.ANGELIC_JUDGEMENT, 10, -2.4f, props);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+		list.add(CoPLangData.Weapon.ANGELIC_JUDGEMENT.get().withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override
