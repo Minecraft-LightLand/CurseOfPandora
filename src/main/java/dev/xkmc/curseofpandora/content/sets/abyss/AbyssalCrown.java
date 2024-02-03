@@ -26,7 +26,7 @@ public class AbyssalCrown extends ITokenProviderItem<AbyssalCrown.Data> {
 		return CoPConfig.COMMON.abyssal.abyssalCrownRealityIndex.get();
 	}
 
-	private static double getChance() {
+	public static double getChance() {
 		return CoPConfig.COMMON.abyssal.abyssalCrownChance.get();
 	}
 

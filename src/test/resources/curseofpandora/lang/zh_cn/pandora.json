@@ -73,6 +73,7 @@
 	"angelic_judgement": "裁决",
 	"cursed_karma": "罪业",
 	"doom_star": "黑星",
+	"abyssal_edge": "深渊之锋",
 	"barbaric_edge": "蛮荒之锋",
 	"sculk_crystal": "幽匿结晶",
 	"spellbound_orb": "咒魔舍利"
@@ -140,9 +141,10 @@
 	  "curse_2": "对于护甲每条诅咒附魔，+%s%%魔法伤害"
 	},
 	"weapon": {
-	  "angelic_judgement": "空挥发射5道穿刺魔法剑气。蹲下发射时剑气更集中",
+	  "angelic_judgement": "空挥发射5道穿刺魔法剑气。潜行发射时剑气更集中",
 	  "doom_star": "空挥发射虚影剑气",
-	  "cursed_karma": "空挥发射诅咒燃魂爆炸剑气"
+	  "cursed_karma": "空挥发射诅咒燃魂爆炸剑气",
+	  "abyssal_edge": "斩击召唤深渊之牙。潜行时斩击在自身周围召唤。"
 	}
   },
   "effect.curseofpandora": {
@@ -173,7 +175,12 @@
 	"shadow_curse": "%s被阴影咒死了",
 	"shadow_curse.player": "%s被%s的阴影咒死了",
 	"void_curse": "%s被阴影咒死了",
-	"void_curse.player": "%s被%s的阴影咒死了"
+	"void_curse.player": "%s被%s的阴影咒死了",
+	"abyssal_fangs": "%s被深渊之牙杀死了",
+	"abyssal_fangs.player": "%ss被%s的深渊之牙杀死了",
+	"echo_abyssal_fangs": "%ss被深渊之牙杀死了",
+	"echo_abyssal_fangs.player": "%ss被%s的深渊之牙杀死了"
   },
-  "entity.curseofpandora.wind_blade": "剑气"
+  "entity.curseofpandora.wind_blade": "剑气",
+  "entity.curseofpandora.abyssal_fangs": "深渊之牙"
 }

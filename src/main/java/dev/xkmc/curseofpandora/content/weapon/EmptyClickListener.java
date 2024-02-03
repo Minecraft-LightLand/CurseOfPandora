@@ -7,4 +7,12 @@ public interface EmptyClickListener {
 
 	void clickEmpty(ItemStack stack, Player entity);
 
+	default void clickBlock(ItemStack stack, Player entity) {
+
+	}
+
+	default void clickEntity(ItemStack stack, Player entity) {
+
+	}
+
 }

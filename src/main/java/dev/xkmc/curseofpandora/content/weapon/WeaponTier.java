@@ -4,7 +4,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum WeaponTier implements Tier {
-	ANGELIC_JUDGEMENT, DOOM_STAR, CURSED_KARMA;
+	ANGELIC_JUDGEMENT, DOOM_STAR, CURSED_KARMA, ABYSSAL_EDGE;
 
 	@Override
 	public int getUses() {

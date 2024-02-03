@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "curseofpandora:abyssal_shell"
+    },
+    "P": {
+      "item": "curseofpandora:abyssal_will"
+    },
+    "S": {
+      "item": "curseofpandora:barbaric_edge"
+    },
+    "T": {
+      "item": "l2complements:sculkium_sword"
+    },
+    "W": {
+      "item": "curseofpandora:abyssal_watcher"
+    },
+    "X": {
+      "item": "curseofpandora:spellbound_orb"
+    }
+  },
+  "pattern": [
+    "WSD",
+    "XTS",
+    "PXW"
+  ],
+  "result": {
+    "item": "curseofpandora:abyssal_edge"
+  },
+  "show_notification": true
+}

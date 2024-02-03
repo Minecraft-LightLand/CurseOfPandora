@@ -10,6 +10,7 @@ import dev.xkmc.curseofpandora.content.sets.angle.*;
 import dev.xkmc.curseofpandora.content.sets.elemental.*;
 import dev.xkmc.curseofpandora.content.sets.hell.*;
 import dev.xkmc.curseofpandora.content.sets.shadow.*;
+import dev.xkmc.curseofpandora.content.weapon.AbyssalEdge;
 import dev.xkmc.curseofpandora.content.weapon.AngelicJudgement;
 import dev.xkmc.curseofpandora.content.weapon.CursedKarma;
 import dev.xkmc.curseofpandora.content.weapon.DoomStar;
@@ -88,6 +89,7 @@ public class CoPItems {
 	public static final ItemEntry<AngelicJudgement> ANGELIC_JUDGEMENT;
 	public static final ItemEntry<DoomStar> DOOM_STAR;
 	public static final ItemEntry<CursedKarma> CURSED_KARMA;
+	public static final ItemEntry<AbyssalEdge> ABYSSAL_EDGE;
 
 	static {
 		REGISTRATE.defaultCreativeTab(PandoraItems.TAB.getKey());
@@ -273,8 +275,7 @@ public class CoPItems {
 							MobEffects.NIGHT_VISION, 440, 0, true, true)))
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
-			FIRE_REJECT = item("orb_of_fire_rejection",
-					p -> new FireRejectItem(p))
+			FIRE_REJECT = item("orb_of_fire_rejection", FireRejectItem::new)
 					.lang("Orb of Fire Rejection")
 					.tag(PandoraTagGen.PANDORA_SLOT, CoPTagGen.PANDORA_BASE).register();
 
@@ -355,6 +356,9 @@ public class CoPItems {
 					.tag(ItemTags.SWORDS).register();
 
 			CURSED_KARMA = weapon("cursed_karma", p -> new CursedKarma(p.fireResistant()))
+					.tag(ItemTags.SWORDS).register();
+
+			ABYSSAL_EDGE = weapon("abyssal_edge", p -> new AbyssalEdge(p.fireResistant()))
 					.tag(ItemTags.SWORDS).register();
 		}
 

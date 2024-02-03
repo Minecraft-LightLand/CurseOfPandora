@@ -199,6 +199,7 @@ public class CoPLangData {
 		ANGELIC_JUDGEMENT("Empty slash shoots 5 piercing magic blades. When sneaking, blades are more concentrated.", 0),
 		DOOM_STAR("Empty slash shoots shadow blade", 0),
 		CURSED_KARMA("Empty slash shoots explosive cursed flaming blade", 0),
+		ABYSSAL_EDGE("Slash summons abyssal fangs. Sneak slash summons them around you ", 0),
 		;
 
 		final String id, def;
@@ -249,6 +250,10 @@ public class CoPLangData {
 		pvd.add("death.attack.shadow_curse.player", "%s is cursed by %s's shadow");
 		pvd.add("death.attack.void_curse", "%s is cursed by shadow");
 		pvd.add("death.attack.void_curse.player", "%s is cursed by %s's shadow");
+		pvd.add("death.attack.abyssal_fangs", "%s is killed by abyssal fangs");
+		pvd.add("death.attack.abyssal_fangs.player", "%s is killed by %s's abyssal fangs");
+		pvd.add("death.attack.echo_abyssal_fangs", "%s is killed by abyssal fangs");
+		pvd.add("death.attack.echo_abyssal_fangs.player", "%s is killed by %s's abyssal fangs");
 	}
 
 	public static String asId(String name) {

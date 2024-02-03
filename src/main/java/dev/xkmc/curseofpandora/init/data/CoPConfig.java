@@ -395,6 +395,7 @@ public class CoPConfig {
 			public final ForgeConfigSpec.IntValue cursedKarmaRealityIndex;
 			public final ForgeConfigSpec.IntValue cursedKarmaExplosionRadius;
 			public final ForgeConfigSpec.IntValue cursedKarmaEffectDuration;
+			public final ForgeConfigSpec.IntValue abyssalEdgeRealityIndex;
 
 			private Weapon(ForgeConfigSpec.Builder builder) {
 				builder.push("Weapon");
@@ -408,6 +409,8 @@ public class CoPConfig {
 						.defineInRange("cursedKarmaExplosionRadius", 3, 0, 8);
 				cursedKarmaEffectDuration = builder.comment("Cursed Karma effect duration")
 						.defineInRange("cursedKarmaEffectDuration", 300, 0, 1000000);
+				abyssalEdgeRealityIndex = builder.comment("Reality Index requirement for Abyssal Edge")
+						.defineInRange("abyssalEdgeRealityIndex", 5, 0, 7);
 				builder.pop();
 			}
 

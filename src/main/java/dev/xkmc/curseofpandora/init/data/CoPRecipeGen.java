@@ -481,6 +481,16 @@ public class CoPRecipeGen {
 					.define('P', CoPItems.EYE_OF_CURSED_SOULS)
 					.define('X', LCItems.STORM_CORE)
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CoPItems.ABYSSAL_EDGE.get(), 1)::unlockedBy, CoPItems.ABYSS_CRYSTAL.get())
+					.pattern("WSD").pattern("XTS").pattern("PXW")
+					.define('S', CoPItems.BARBARIC_EDGE)
+					.define('D', CoPItems.ABYSSAL_SHELL)
+					.define('T', LCMats.SCULKIUM.getTool(Tools.SWORD))
+					.define('W', CoPItems.ABYSSAL_WATCHER)
+					.define('P', CoPItems.ABYSSAL_WILL)
+					.define('X', CoPItems.SPELLBOUND_ORB)
+					.save(pvd);
 		}
 
 

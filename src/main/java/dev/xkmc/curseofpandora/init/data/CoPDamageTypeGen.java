@@ -23,6 +23,8 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 	public static final ResourceKey<DamageType> SHADOW_CURSE = create("shadow_curse");
 	public static final ResourceKey<DamageType> VOID_CURSE = create("void_curse");
 	public static final ResourceKey<DamageType> WIND_BLADE = create("wind_blade");
+	public static final ResourceKey<DamageType> ABYSSAL_FANG = create("abyssal_fang");
+	public static final ResourceKey<DamageType> ECHO_ABYSSAL_FANG = create("echo_abyssal_fang");
 
 	public static final TagKey<DamageType> SHADOW = TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(CurseOfPandora.MODID, "shadow"));
 
@@ -38,6 +40,11 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 		new DamageTypeHolder(VOID_CURSE, new DamageType("void_curse", DamageScaling.NEVER, 0.1F))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
 						DamageTypeTags.BYPASSES_COOLDOWN, SHADOW,
+						DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE);
+		new DamageTypeHolder(ABYSSAL_FANG, new DamageType("abyssal_fang", DamageScaling.NEVER, 0.1F))
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
+		new DamageTypeHolder(ECHO_ABYSSAL_FANG, new DamageType("echo_abyssal_fang", DamageScaling.NEVER, 0.1F))
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
 						DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE);
 	}
 

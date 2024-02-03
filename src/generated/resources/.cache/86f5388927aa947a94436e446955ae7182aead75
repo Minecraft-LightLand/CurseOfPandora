@@ -1,9 +1,9 @@
-// 1.20.1	2024-02-02T13:16:11.098789	Tags for minecraft:damage_type mod id curseofpandora
+// 1.20.1	2024-02-03T15:56:03.650635	Tags for minecraft:damage_type mod id curseofpandora
 94f7b7d2740d4079d12c57dce356cb9f4a075cd0 data/curseofpandora/tags/damage_type/shadow.json
-455c82b5761c28661b21a4b20cae802309f41c82 data/forge/tags/damage_type/is_magic.json
-455c82b5761c28661b21a4b20cae802309f41c82 data/minecraft/tags/damage_type/avoids_guardian_thorns.json
-314cc1cb0a7cb26426c38424e1e41e8f7cc27159 data/minecraft/tags/damage_type/bypasses_armor.json
+b3889f4a1dda2621953b567a5481e1d8bc6deead data/forge/tags/damage_type/is_magic.json
+b3889f4a1dda2621953b567a5481e1d8bc6deead data/minecraft/tags/damage_type/avoids_guardian_thorns.json
+44d328db3fbb8708cee6e40280c3edc39db5212b data/minecraft/tags/damage_type/bypasses_armor.json
 94f7b7d2740d4079d12c57dce356cb9f4a075cd0 data/minecraft/tags/damage_type/bypasses_cooldown.json
-ff78c756c8c77058ab83351b39cc6bc023f5cd21 data/minecraft/tags/damage_type/bypasses_effects.json
-ff78c756c8c77058ab83351b39cc6bc023f5cd21 data/minecraft/tags/damage_type/bypasses_enchantments.json
-ff78c756c8c77058ab83351b39cc6bc023f5cd21 data/minecraft/tags/damage_type/bypasses_resistance.json
+efa7625fcad46b1a7e56839d22aa75486e0d7de0 data/minecraft/tags/damage_type/bypasses_effects.json
+efa7625fcad46b1a7e56839d22aa75486e0d7de0 data/minecraft/tags/damage_type/bypasses_enchantments.json
+efa7625fcad46b1a7e56839d22aa75486e0d7de0 data/minecraft/tags/damage_type/bypasses_resistance.json

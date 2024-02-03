@@ -72,6 +72,7 @@
   "item.curseofpandora.angelic_judgement": "裁决",
   "item.curseofpandora.cursed_karma": "罪业",
   "item.curseofpandora.doom_star": "黑星",
+  "item.curseofpandora.abyssal_edge": "深渊之锋",
   "item.curseofpandora.barbaric_edge": "蛮荒之锋",
   "item.curseofpandora.sculk_crystal": "幽匿结晶",
   "item.curseofpandora.spellbound_orb": "咒魔舍利",
@@ -122,9 +123,10 @@
   "curseofpandora.tooltip.elemental.waving": "只当玩家在水中或雨中时生效",
   "curseofpandora.tooltip.elemental.curse_1": "对于每件带有诅咒附魔的护甲，+1魔力耐性",
   "curseofpandora.tooltip.elemental.curse_2": "对于护甲每条诅咒附魔，+%s%%魔法伤害",
-  "curseofpandora.tooltip.weapon.angelic_judgement": "空挥发射5道穿刺魔法剑气。蹲下发射时剑气更集中",
+  "curseofpandora.tooltip.weapon.angelic_judgement": "空挥发射5道穿刺魔法剑气。潜行发射时剑气更集中",
   "curseofpandora.tooltip.weapon.doom_star": "空挥发射虚影剑气",
   "curseofpandora.tooltip.weapon.cursed_karma": "空挥发射诅咒燃魂爆炸剑气",
+  "curseofpandora.tooltip.weapon.abyssal_edge": "斩击召唤深渊之牙。潜行时斩击在自身周围召唤。",
   "effect.curseofpandora.prudence": "碎魂指示物",
   "effect.curseofpandora.prudence.description": "只用于渲染。显示你对该目标的伤害是否因为现实第六诅咒的效果而下降",
   "effect.curseofpandora.terror_token": "恐惧标记",
@@ -147,5 +149,10 @@
   "death.attack.shadow_curse.player": "%s被%s的阴影咒死了",
   "death.attack.void_curse": "%s被阴影咒死了",
   "death.attack.void_curse.player": "%s被%s的阴影咒死了",
-  "entity.curseofpandora.wind_blade": "剑气"
+  "death.attack.abyssal_fangs": "%s被深渊之牙杀死了",
+  "death.attack.abyssal_fangs.player": "%ss被%s的深渊之牙杀死了",
+  "death.attack.echo_abyssal_fangs": "%ss被深渊之牙杀死了",
+  "death.attack.echo_abyssal_fangs.player": "%ss被%s的深渊之牙杀死了",
+  "entity.curseofpandora.wind_blade": "剑气",
+  "entity.curseofpandora.abyssal_fangs": "深渊之牙"
 }
