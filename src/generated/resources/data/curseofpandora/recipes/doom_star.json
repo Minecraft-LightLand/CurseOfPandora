@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "curseofpandora:shadow_consolidation"
+    },
+    "P": {
+      "item": "curseofpandora:shadow_reformation"
+    },
+    "S": {
+      "item": "l2complements:resonant_feather"
+    },
+    "T": {
+      "item": "l2complements:shulkerate_sword"
+    },
+    "W": {
+      "item": "curseofpandora:shadow_core"
+    },
+    "X": {
+      "item": "l2complements:storm_core"
+    }
+  },
+  "pattern": [
+    "WSD",
+    "XTS",
+    "PXW"
+  ],
+  "result": {
+    "item": "curseofpandora:doom_star"
+  },
+  "show_notification": true
+}

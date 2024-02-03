@@ -3,7 +3,6 @@ package dev.xkmc.curseofpandora.event;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.entity.WindBladeEntity;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
-import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
@@ -24,15 +23,16 @@ public class PandoraAttackListener implements AttackListener {
 
 	@Override
 	public void onCreateSource(CreateSourceEvent event) {
-		if (event.getResult().toRoot() == L2DamageTypes.PLAYER_ATTACK) {
-			if (event.getAttacker() instanceof Player player) {
-				for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-					if (e instanceof IAttackListenerToken token) {
-						token.onCreateSource(player, event);
+		if (event.getResult() != null)
+			if (event.getResult().toRoot() == L2DamageTypes.PLAYER_ATTACK) {
+				if (event.getAttacker() instanceof Player player) {
+					for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+						if (e instanceof IAttackListenerToken token) {
+							token.onCreateSource(player, event);
+						}
 					}
 				}
 			}
-		}
 	}
 
 	@Override

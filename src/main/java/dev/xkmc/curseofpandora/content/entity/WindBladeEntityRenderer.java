@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -27,6 +28,9 @@ public class WindBladeEntityRenderer extends EntityRenderer<WindBladeEntity> {
 
 	@Override
 	public void render(WindBladeEntity entity, float yRot, float partial, PoseStack matrix, MultiBufferSource buffer, int light) {
+		if(entity.getStack().getItem() instanceof WindBladeWeapon weapon && weapon.glow()){
+			light = LightTexture.FULL_BRIGHT;
+		}
 		matrix.pushPose();
 		matrix.translate(0, entity.getBbHeight() / 2f, 0);
 		matrix.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partial, entity.yRotO, entity.getYRot()) - 90));

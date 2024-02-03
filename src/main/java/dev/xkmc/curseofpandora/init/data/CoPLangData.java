@@ -196,7 +196,9 @@ public class CoPLangData {
 	}
 
 	public enum Weapon {
-		ANGELIC_JUDGEMENT("Empty slash shoots magic blade", 0),
+		ANGELIC_JUDGEMENT("Empty slash shoots 5 piercing magic blades. When sneaking, blades are more concentrated.", 0),
+		DOOM_STAR("Empty slash shoots shadow blade", 0),
+		CURSED_KARMA("Empty slash shoots explosive cursed flaming blade", 0),
 		;
 
 		final String id, def;

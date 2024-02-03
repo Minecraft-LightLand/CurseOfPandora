@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "curseofpandora:hellfire_reformation"
+    },
+    "P": {
+      "item": "curseofpandora:eye_of_cursed_souls"
+    },
+    "S": {
+      "item": "l2complements:soul_flame"
+    },
+    "T": {
+      "item": "minecraft:netherite_sword"
+    },
+    "W": {
+      "item": "curseofpandora:hellfire_skull"
+    },
+    "X": {
+      "item": "l2complements:storm_core"
+    }
+  },
+  "pattern": [
+    "WSD",
+    "XTS",
+    "PXW"
+  ],
+  "result": {
+    "item": "curseofpandora:cursed_karma"
+  },
+  "show_notification": true
+}

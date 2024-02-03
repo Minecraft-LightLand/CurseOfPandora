@@ -11,6 +11,8 @@ import dev.xkmc.curseofpandora.content.sets.elemental.*;
 import dev.xkmc.curseofpandora.content.sets.hell.*;
 import dev.xkmc.curseofpandora.content.sets.shadow.*;
 import dev.xkmc.curseofpandora.content.weapon.AngelicJudgement;
+import dev.xkmc.curseofpandora.content.weapon.CursedKarma;
+import dev.xkmc.curseofpandora.content.weapon.DoomStar;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
@@ -84,6 +86,8 @@ public class CoPItems {
 	public static final ItemEntry<CurseRedirection> CURSE_REDIRECTION;
 
 	public static final ItemEntry<AngelicJudgement> ANGELIC_JUDGEMENT;
+	public static final ItemEntry<DoomStar> DOOM_STAR;
+	public static final ItemEntry<CursedKarma> CURSED_KARMA;
 
 	static {
 		REGISTRATE.defaultCreativeTab(PandoraItems.TAB.getKey());
@@ -345,6 +349,12 @@ public class CoPItems {
 		// sword
 		{
 			ANGELIC_JUDGEMENT = weapon("angelic_judgement", p -> new AngelicJudgement(p.fireResistant()))
+					.tag(ItemTags.SWORDS).register();
+
+			DOOM_STAR = weapon("doom_star", p -> new DoomStar(p.fireResistant()))
+					.tag(ItemTags.SWORDS).register();
+
+			CURSED_KARMA = weapon("cursed_karma", p -> new CursedKarma(p.fireResistant()))
 					.tag(ItemTags.SWORDS).register();
 		}
 

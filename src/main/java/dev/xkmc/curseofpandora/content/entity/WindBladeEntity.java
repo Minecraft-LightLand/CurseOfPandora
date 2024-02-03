@@ -19,6 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -87,9 +88,6 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 
 	protected void onHit(HitResult result) {
 		super.onHit(result);
-		if (!level().isClientSide) {
-			discard();
-		}
 	}
 
 	protected void onHitEntity(EntityHitResult result) {
@@ -97,7 +95,12 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 		if (!level().isClientSide) {
 			Entity entity = result.getEntity();
 			Entity owner = this.getOwner();
-			DamageSource source = new DamageSource(CoPDamageTypeGen.forKey(level(), CoPDamageTypeGen.WIND_BLADE), entity, owner);
+			DamageSource source;
+			if (issuer.getItem() instanceof WindBladeWeapon weapon) {
+				source = weapon.getSource(this, owner);
+			} else {
+				source = new DamageSource(CoPDamageTypeGen.forKey(level(), CoPDamageTypeGen.WIND_BLADE), entity, owner);
+			}
 			float dmg = damage;
 			if (getOwner() instanceof Player player) {
 				double cr = ((WrappedAttribute) L2DamageTracker.CRIT_RATE.get()).getWrappedValue(player);
@@ -111,6 +114,21 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 			entity.hurt(source, dmg);
 			if (owner instanceof LivingEntity) {
 				doEnchantDamageEffects((LivingEntity) owner, entity);
+			}
+			if (issuer.getItem() instanceof WindBladeWeapon weapon) {
+				weapon.onHit(this);
+			} else {
+				discard();
+			}
+		}
+	}
+
+	@Override
+	protected void onHitBlock(BlockHitResult hit) {
+		super.onHitBlock(hit);
+		if (!level().isClientSide) {
+			if (issuer.getItem() instanceof WindBladeWeapon weapon) {
+				weapon.onHit(this);
 			}
 			discard();
 		}

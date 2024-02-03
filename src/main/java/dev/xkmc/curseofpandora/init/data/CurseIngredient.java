@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 public class CurseIngredient extends BaseIngredient<CurseIngredient> {
 
 	public static final BaseIngredient.Serializer<CurseIngredient> INSTANCE =
-			new BaseIngredient.Serializer(CurseIngredient.class, new ResourceLocation(CurseOfPandora.MODID, "cursed_enchantments"));
+			new BaseIngredient.Serializer<>(CurseIngredient.class, new ResourceLocation(CurseOfPandora.MODID, "cursed_enchantments"));
 
 	public CurseIngredient() {
 		super();
@@ -33,7 +33,7 @@ public class CurseIngredient extends BaseIngredient<CurseIngredient> {
 	}
 
 	protected CurseIngredient validate() {
-		return new CurseIngredient(ForgeRegistries.ENCHANTMENTS.getValues().stream().filter(e -> e.isCurse()).map(e -> new EnchValue(e, 1)));
+		return new CurseIngredient(ForgeRegistries.ENCHANTMENTS.getValues().stream().filter(Enchantment::isCurse).map(e -> new EnchValue(e, 1)));
 	}
 
 	public boolean test(ItemStack stack) {

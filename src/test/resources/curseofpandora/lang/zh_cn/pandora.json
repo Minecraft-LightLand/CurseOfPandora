@@ -71,6 +71,8 @@
 	"abyssal_watcher": "深渊活体",
 	"abyssal_will": "深渊意志",
 	"angelic_judgement": "裁决",
+	"cursed_karma": "罪业",
+	"doom_star": "黑星",
 	"barbaric_edge": "蛮荒之锋",
 	"sculk_crystal": "幽匿结晶",
 	"spellbound_orb": "咒魔舍利"
@@ -138,7 +140,9 @@
 	  "curse_2": "对于护甲每条诅咒附魔，+%s%%魔法伤害"
 	},
 	"weapon": {
-	  "angelic_judgement": "空挥发射剑气"
+	  "angelic_judgement": "空挥发射5道穿刺魔法剑气。蹲下发射时剑气更集中",
+	  "doom_star": "空挥发射虚影剑气",
+	  "cursed_karma": "空挥发射诅咒燃魂爆炸剑气"
 	}
   },
   "effect.curseofpandora": {

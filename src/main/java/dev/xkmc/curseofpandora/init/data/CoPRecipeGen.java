@@ -461,6 +461,26 @@ public class CoPRecipeGen {
 					.define('P', CoPItems.ANGELIC_PROTECTION)
 					.define('X', LCItems.STORM_CORE)
 					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CoPItems.DOOM_STAR.get(), 1)::unlockedBy, CoPItems.SHADOW_FRAGMENT.get())
+					.pattern("WSD").pattern("XTS").pattern("PXW")
+					.define('S', LCItems.RESONANT_FEATHER)
+					.define('D', CoPItems.SHADOW_CONSOLIDATION)
+					.define('T', LCMats.SHULKERATE.getTool(Tools.SWORD))
+					.define('W', CoPItems.SHADOW_CORE)
+					.define('P', CoPItems.SHADOW_REFORMATION)
+					.define('X', LCItems.STORM_CORE)
+					.save(pvd);
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CoPItems.CURSED_KARMA.get(), 1)::unlockedBy, CoPItems.HELLFIRE_RUNE.get())
+					.pattern("WSD").pattern("XTS").pattern("PXW")
+					.define('S', LCItems.SOUL_FLAME)
+					.define('D', CoPItems.HELLFIRE_REFORMATION)
+					.define('T', Items.NETHERITE_SWORD)
+					.define('W', CoPItems.HELLFIRE_SKULL)
+					.define('P', CoPItems.EYE_OF_CURSED_SOULS)
+					.define('X', LCItems.STORM_CORE)
+					.save(pvd);
 		}
 
 

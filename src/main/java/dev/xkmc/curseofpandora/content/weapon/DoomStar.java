@@ -2,6 +2,7 @@ package dev.xkmc.curseofpandora.content.weapon;
 
 import dev.xkmc.curseofpandora.content.entity.WindBladeEntity;
 import dev.xkmc.curseofpandora.content.entity.WindBladeWeapon;
+import dev.xkmc.curseofpandora.content.sets.shadow.VoidOverflow;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
@@ -21,14 +22,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AngelicJudgement extends SwordItem implements EmptyClickListener, WindBladeWeapon {
+public class DoomStar extends SwordItem implements EmptyClickListener, WindBladeWeapon {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.weapon.angelicJudgementRealityIndex.get();
+		return CoPConfig.COMMON.weapon.doomStarRealityIndex.get();
 	}
 
-	public AngelicJudgement(Properties props) {
-		super(WeaponTier.ANGELIC_JUDGEMENT, 10, -2.4f, props);
+	public DoomStar(Properties props) {
+		super(WeaponTier.DOOM_STAR, 10, -2.4f, props);
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class AngelicJudgement extends SwordItem implements EmptyClickListener, W
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(CoPLangData.Weapon.ANGELIC_JUDGEMENT.get()
+		list.add(CoPLangData.Weapon.DOOM_STAR.get()
 				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
@@ -50,36 +51,25 @@ public class AngelicJudgement extends SwordItem implements EmptyClickListener, W
 			return;
 		player.resetAttackStrengthTicker();
 		Level level = player.level();
-		float velocity = 1;
+		float velocity = 3;
 		float dist = 64;
 		float dmg = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-		int deg = player.isShiftKeyDown() ? 5 : 20;
+		float f = (float) (player.getRandom().nextDouble() * 360f);
 		if (!level.isClientSide()) {
-			for (int i = -2; i <= 2; i++) {
-				float y = player.getYRot() + i * deg;
-				float f = 90;
-				WindBladeEntity e = new WindBladeEntity(level);
-				e.setOwner(player);
-				e.setPos(player.getX(), player.getEyeY() - 0.5f, player.getZ());
-				e.shootFromRotation(player, player.getXRot(), y, 0, velocity, 1);
-				e.setProperties(dmg, Math.round(dist / velocity), f, stack);
-				level.addFreshEntity(e);
-			}
+			WindBladeEntity e = new WindBladeEntity(level);
+			e.setOwner(player);
+			e.setPos(player.getX(), player.getEyeY() - 0.5f, player.getZ());
+			e.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, velocity, 0);
+			e.setProperties(dmg, Math.round(dist / velocity), f, stack);
+			level.addFreshEntity(e);
 		}
 	}
 
 	@Override
 	public DamageSource getSource(WindBladeEntity entity, @Nullable Entity owner) {
-		return new DamageSource(CoPDamageTypeGen.forKey(entity.level(), CoPDamageTypeGen.WIND_BLADE), entity, owner);
-	}
-
-	@Override
-	public void onHit(WindBladeEntity entity) {
-	}
-
-	@Override
-	public boolean glow() {
-		return true;
+		var type = owner instanceof Player player && VoidOverflow.check(player) ?
+				CoPDamageTypeGen.VOID_CURSE : CoPDamageTypeGen.SHADOW_CURSE;
+		return new DamageSource(CoPDamageTypeGen.forKey(entity.level(), type), entity, owner);
 	}
 
 }

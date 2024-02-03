@@ -388,6 +388,31 @@ public class CoPConfig {
 
 		}
 
+		public static class Weapon {
+
+			public final ForgeConfigSpec.IntValue angelicJudgementRealityIndex;
+			public final ForgeConfigSpec.IntValue doomStarRealityIndex;
+			public final ForgeConfigSpec.IntValue cursedKarmaRealityIndex;
+			public final ForgeConfigSpec.IntValue cursedKarmaExplosionRadius;
+			public final ForgeConfigSpec.IntValue cursedKarmaEffectDuration;
+
+			private Weapon(ForgeConfigSpec.Builder builder) {
+				builder.push("Weapon");
+				angelicJudgementRealityIndex = builder.comment("Reality Index requirement for Angelic Judgement")
+						.defineInRange("angelicJudgementRealityIndex", 5, 0, 7);
+				doomStarRealityIndex = builder.comment("Reality Index requirement for Doom Star")
+						.defineInRange("doomStarRealityIndex", 5, 0, 7);
+				cursedKarmaRealityIndex = builder.comment("Reality Index requirement for Cursed Karma")
+						.defineInRange("cursedKarmaRealityIndex", 5, 0, 7);
+				cursedKarmaExplosionRadius = builder.comment("Cursed Karma explosion radius")
+						.defineInRange("cursedKarmaExplosionRadius", 3, 0, 8);
+				cursedKarmaEffectDuration = builder.comment("Cursed Karma effect duration")
+						.defineInRange("cursedKarmaEffectDuration", 300, 0, 1000000);
+				builder.pop();
+			}
+
+		}
+
 
 		public final Attr attr;
 		public final Curse curse;
@@ -396,6 +421,7 @@ public class CoPConfig {
 		public final Shadow shadow;
 		public final Elemental elemental;
 		public final Abyssal abyssal;
+		public final Weapon weapon;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			this.attr = new Attr(builder);
@@ -405,6 +431,7 @@ public class CoPConfig {
 			this.shadow = new Shadow(builder);
 			this.elemental = new Elemental(builder);
 			this.abyssal = new Abyssal(builder);
+			this.weapon = new Weapon(builder);
 		}
 
 	}
