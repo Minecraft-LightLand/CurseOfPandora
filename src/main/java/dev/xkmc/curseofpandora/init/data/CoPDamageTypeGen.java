@@ -42,7 +42,8 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 						DamageTypeTags.BYPASSES_COOLDOWN, SHADOW,
 						DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE);
 		new DamageTypeHolder(ABYSSAL_FANG, new DamageType("abyssal_fang", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
+				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
+						DamageTypeTags.BYPASSES_ENCHANTMENTS);
 		new DamageTypeHolder(ECHO_ABYSSAL_FANG, new DamageType("echo_abyssal_fang", DamageScaling.NEVER, 0.1F))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
 						DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE);

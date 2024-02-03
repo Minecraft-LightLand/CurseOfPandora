@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
@@ -145,22 +146,19 @@ public class AbyssalFangs extends Entity implements TraceableEntity {
 		if (this.level().isClientSide) {
 			if (this.clientSideAttackStarted) {
 				--this.lifeTicks;
-				if (this.lifeTicks == ATTACK_TRIGGER_TICKS) {
-					for (int i = 0; i < 12; ++i) {
-						double d0 = this.getX() + (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getBbWidth() * 0.5D;
-						double d1 = this.getY() + 0.05D + this.random.nextDouble();
-						double d2 = this.getZ() + (this.random.nextDouble() * 2.0D - 1.0D) * (double) this.getBbWidth() * 0.5D;
-						double d3 = (this.random.nextDouble() * 2.0D - 1.0D) * 0.3D;
-						double d4 = 0.3D + this.random.nextDouble() * 0.3D;
-						double d5 = (this.random.nextDouble() * 2.0D - 1.0D) * 0.3D;
-						this.level().addParticle(ParticleTypes.CRIT, d0, d1 + 1.0D, d2, d3, d4, d5);
-					}
+				if (this.lifeTicks == ATTACK_DURATION) {
+					this.level().addParticle(ParticleTypes.SONIC_BOOM, getX(), getY() + 1,
+							getZ(), 1, 0, 0);
+
 				}
 			}
 		} else if (--this.warmupDelayTicks < 0) {
 			if (this.warmupDelayTicks == -8) {
-				for (LivingEntity livingentity : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(0.2D, 0.0D, 0.2D))) {
-					this.dealDamageTo(livingentity);
+				double r = 0.7;
+				double height = 3;
+				AABB aabb = getBoundingBox().inflate(r, height, r);
+				for (LivingEntity target : level().getEntitiesOfClass(LivingEntity.class, aabb)) {
+					this.dealDamageTo(target);
 				}
 			}
 
