@@ -1,7 +1,7 @@
-18 / 11 / 7 / 20+10 / 0+4
+18 / 11+1 / 7 / 20+10 / 0+4
 
 2.4.4
-- Add Abyssal, Barbaric series
+- Add Abyssal, Barbaric series, charm of luck
 - Add 4 weaponss
 - Add crafting ingredients, tweak recipes
 -
