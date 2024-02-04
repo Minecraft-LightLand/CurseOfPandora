@@ -14,7 +14,8 @@ public class CoPLangData {
 		EFFECT_REFRESH_CURIO("tooltip.misc.effect_refresh", "Grants wearer: ", 0),
 		BIND("tooltip.misc.bind", "This item cannot be taken down.", 0),
 		REALITY_INDEX("tooltip.misc.reality", "When you have at least %s Reality Index:", 1),
-		;
+		KILL_DROPS("tooltip.misc.drop", "Dropped when %s kills %s", 2),
+		KILL_DROP_CHANCE("tooltip.misc.drop_chance", "Dropped when %s kills %s, with %s%% chance", 3);
 
 		final String id, def;
 		final int count;

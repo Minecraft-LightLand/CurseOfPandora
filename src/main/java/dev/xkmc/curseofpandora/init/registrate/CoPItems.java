@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.init.registrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import dev.xkmc.curseofpandora.content.complex.GLMDropItem;
 import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
 import dev.xkmc.curseofpandora.content.sets.abyss.*;
@@ -39,7 +40,9 @@ public class CoPItems {
 	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE,
 			ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT,
 			BARBARIC_EDGE, SPELLBOUND_ORB, ABYSS_CRYSTAL, SCULK_CRYSTAL,
-			GREEN_VINES, BLUE_VINES, YELLOW_VINES, EVIL_VINES, EVIL_STONE;
+			EVIL_SPINE, EVIL_STONE;
+	public static final ItemEntry<GLMDropItem> TRANSMUTED_TISSUE, UNSTABLE_MATTER,
+			ROTTEN_SPINE, ERODED_SPINE, DRIED_SPINE, ROTTEN_BRAIN, ERODED_BRAIN, DRIED_BRAIN;
 	public static final ItemEntry<EnchDescItem> EXPLOSION_REJECT, MAGIC_REJECT,
 			ENVIRONMENTAL_REJECT, PROJECTILE_REJECT, OWNER_PROTECTION;
 	public static final ItemEntry<EffectRefreshItem> MINI_BEACON_SPEED, MINI_BEACON_HASTE, MINI_BEACON_JUMP,
@@ -133,10 +136,15 @@ public class CoPItems {
 			HELLFIRE_RUNE = ingredient("hellfire_rune", Item::new).register();
 			SHADOW_FRAGMENT = ingredient("shadow_fragment", Item::new).register();
 			ABYSS_CRYSTAL = ingredient("abyss_crystal", Item::new).register();
-			GREEN_VINES = ingredient("green_vines", Item::new).register();
-			BLUE_VINES = ingredient("blue_vines", Item::new).register();
-			YELLOW_VINES = ingredient("yellow_vines", Item::new).register();
-			EVIL_VINES = ingredient("evil_vines", Item::new).register();
+			TRANSMUTED_TISSUE = ingredient("transmuted_tissue", GLMDropItem::new).register();
+			UNSTABLE_MATTER = ingredient("unstable_matter", GLMDropItem::new).register();
+			ROTTEN_SPINE = ingredient("rotten_spine", GLMDropItem::new).register();
+			ERODED_SPINE = ingredient("eroded_spine", GLMDropItem::new).register();
+			DRIED_SPINE = ingredient("dried_spine", GLMDropItem::new).register();
+			EVIL_SPINE = ingredient("evil_spine", Item::new).register();
+			ROTTEN_BRAIN = ingredient("rotten_brain", GLMDropItem::new).register();
+			ERODED_BRAIN = ingredient("eroded_brain", GLMDropItem::new).register();
+			DRIED_BRAIN = ingredient("dried_brain", GLMDropItem::new).register();
 			EVIL_STONE = ingredient("evil_stone", Item::new).register();
 		}
 

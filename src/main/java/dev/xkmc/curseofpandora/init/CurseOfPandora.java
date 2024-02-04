@@ -7,6 +7,7 @@ import dev.xkmc.curseofpandora.event.ItemClickListener;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
 import dev.xkmc.curseofpandora.init.data.*;
 import dev.xkmc.curseofpandora.init.loot.CoPGLMProvider;
+import dev.xkmc.curseofpandora.init.loot.LootDataToClient;
 import dev.xkmc.curseofpandora.init.loot.LootGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
@@ -18,11 +19,7 @@ import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.init.events.EffectSyncEvents;
-import dev.xkmc.l2library.serial.conditions.*;
 import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
-import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
-import dev.xkmc.l2library.serial.ingredients.MobEffectIngredient;
-import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -33,6 +30,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 import org.apache.logging.log4j.LogManager;
@@ -49,7 +47,8 @@ public class CurseOfPandora {
 	public static final L2Registrate REGISTRATE;
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
-			new ResourceLocation(MODID, "main"), 2
+			new ResourceLocation(MODID, "main"), 2,
+			e -> e.create(LootDataToClient.class, NetworkDirection.PLAY_TO_CLIENT)
 	);
 
 	static {
