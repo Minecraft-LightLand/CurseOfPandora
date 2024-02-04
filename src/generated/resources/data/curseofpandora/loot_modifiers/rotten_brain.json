@@ -1,0 +1,8 @@
+{
+  "type": "curseofpandora:mob_kills_mob",
+  "chance": 1.0,
+  "conditions": [],
+  "item": "curseofpandora:rotten_brain",
+  "killer": "minecraft:zombie",
+  "target": "minecraft:evoker"
+}

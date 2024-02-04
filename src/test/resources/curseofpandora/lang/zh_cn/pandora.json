@@ -76,13 +76,25 @@
 	"abyssal_edge": "深渊之锋",
 	"barbaric_edge": "蛮荒之锋",
 	"sculk_crystal": "幽匿结晶",
-	"spellbound_orb": "咒魔舍利"
+	"spellbound_orb": "咒魔舍利",
+	"dried_brain": "沙化之脑",
+	"dried_spine": "沙化脉络",
+	"eroded_brain": "流蚀之脑",
+	"eroded_spine": "流蚀脉络",
+	"evil_spine": "邪祟脉络",
+	"evil_stone": "邪祟之石",
+	"rotten_brain": "溃烂之脑",
+	"rotten_spine": "溃烂脉络",
+	"transmuted_tissue": "畸变组织",
+	"unstable_matter": "不稳定因子"
   },
   "curseofpandora.tooltip": {
 	"misc": {
 	  "effect_refresh": "给穿戴者提供：",
 	  "bind": "这个物品不可取下",
-	  "reality": "当你有%s以上现实指数时："
+	  "reality": "当你有%s以上现实指数时：",
+	  "drop": "%s击杀%s时掉落",
+	  "drop_chance": "%s击杀%s时%s%%概率掉落"
 	},
 	"curse": {
 	  "inertia": "抹除其他所有攻击速度加成。玩家最高攻击速度为%s。如果玩家攻击速度在%s及以下，给予玩家%s%%攻击速度加成。",

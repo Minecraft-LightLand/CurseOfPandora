@@ -8,6 +8,7 @@ import dev.xkmc.curseofpandora.content.pandora.*;
 import dev.xkmc.curseofpandora.content.reality.*;
 import dev.xkmc.curseofpandora.content.sets.abyss.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
+import dev.xkmc.curseofpandora.content.sets.barbaric.*;
 import dev.xkmc.curseofpandora.content.sets.elemental.*;
 import dev.xkmc.curseofpandora.content.sets.hell.*;
 import dev.xkmc.curseofpandora.content.sets.shadow.*;
@@ -84,12 +85,17 @@ public class CoPItems {
 	public static final ItemEntry<AbyssalShell> ABYSSAL_SHELL;
 	public static final ItemEntry<AbyssalCrown> ABYSSAL_CROWN;
 	public static final ItemEntry<AbyssalWill> ABYSSAL_WILL;
+	public static final ItemEntry<BarbaricInstinct> BARBARIC_INSTINCT;
+	public static final ItemEntry<BarbaricWrath> BARBARIC_WRATH;
+	public static final ItemEntry<BarbaricRoar> BARBARIC_ROAR;
+	public static final ItemEntry<BarbaricBlade> BARBARIC_BLADE;
+	public static final ItemEntry<PrimalForce> PRIMAL_FORCE;
+
 	public static final ItemEntry<WindThrust> WIND_THRUST;
 	public static final ItemEntry<EarthCrush> EARTH_CRUSH;
 	public static final ItemEntry<FlamingExplosion> FLAMING_EXPLOSION;
 	public static final ItemEntry<WavingSpell> WAVING_SPELL;
 	public static final ItemEntry<CurseRedirection> CURSE_REDIRECTION;
-
 	public static final ItemEntry<AngelicJudgement> ANGELIC_JUDGEMENT;
 	public static final ItemEntry<DoomStar> DOOM_STAR;
 	public static final ItemEntry<CursedKarma> CURSED_KARMA;
@@ -246,6 +252,16 @@ public class CoPItems {
 			ABYSSAL_WILL = item("abyssal_will", AbyssalWill::new)
 					.tag(CoPTagGen.ABYSSAL).register();
 
+			BARBARIC_INSTINCT = item("barbaric_instinct", BarbaricInstinct::new)
+					.tag(CoPTagGen.BARBARIC).register();
+			BARBARIC_WRATH = item("barbaric_wrath", BarbaricWrath::new)
+					.tag(CoPTagGen.BARBARIC).register();
+			BARBARIC_ROAR = item("barbaric_roar", BarbaricRoar::new)
+					.tag(CoPTagGen.BARBARIC).register();
+			BARBARIC_BLADE = item("barbaric_blade", BarbaricBlade::new)
+					.tag(CoPTagGen.BARBARIC).register();
+			PRIMAL_FORCE = item("primal_force", PrimalForce::new)
+					.tag(CoPTagGen.BARBARIC).register();
 
 			WIND_THRUST = item("wind_thrust", WindThrust::new)
 					.tag(CoPTagGen.ELEMENTAL).register();

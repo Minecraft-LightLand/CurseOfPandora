@@ -1,0 +1,8 @@
+{
+  "type": "curseofpandora:mob_kills_mob",
+  "chance": 1.0,
+  "conditions": [],
+  "item": "curseofpandora:eroded_brain",
+  "killer": "minecraft:drowned",
+  "target": "minecraft:evoker"
+}

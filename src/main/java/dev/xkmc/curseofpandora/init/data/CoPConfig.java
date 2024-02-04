@@ -389,22 +389,46 @@ public class CoPConfig {
 
 		public static class Barbaric {
 
+			public final ForgeConfigSpec.DoubleValue magicDamageDebuff;
 			public final ForgeConfigSpec.IntValue barbaricInstinctRealityIndex;
+			public final ForgeConfigSpec.DoubleValue barbaricInstinctHeal;
 			public final ForgeConfigSpec.IntValue barbaricWrathRealityIndex;
-			public final ForgeConfigSpec.IntValue barbaricScareRealityIndex;
+			public final ForgeConfigSpec.DoubleValue barbaricWrathCritBonus;
+			public final ForgeConfigSpec.DoubleValue barbaricWrathToughBonus;
+			public final ForgeConfigSpec.IntValue barbaricRoarRealityIndex;
+			public final ForgeConfigSpec.DoubleValue barbaricRoarReduction;
+			public final ForgeConfigSpec.DoubleValue barbaricRoarAttack;
 			public final ForgeConfigSpec.IntValue barbaricBladeRealityIndex;
+			public final ForgeConfigSpec.DoubleValue barbaricBladeProjectile;
+			public final ForgeConfigSpec.DoubleValue barbaricBladeAttack;
 			public final ForgeConfigSpec.IntValue primalForceRealityIndex;
 
 			private Barbaric(ForgeConfigSpec.Builder builder) {
 				builder.push("Barbaric");
+				magicDamageDebuff = builder.comment("Magic damage reduction in percentage for all barbaric set")
+						.defineInRange("magicDamageDebuff", 1d, 0, 100);
 				barbaricInstinctRealityIndex = builder.comment("Reality Index requirement for Barbaric Instinct")
 						.defineInRange("barbaricInstinctRealityIndex", 3, 0, 7);
+				barbaricInstinctHeal = builder.comment("Barbaric Instinct healing percentage")
+						.defineInRange("barbaricInstinctHeal", 0.1, 0, 1);
 				barbaricWrathRealityIndex = builder.comment("Reality Index requirement for Barbaric Wrath")
 						.defineInRange("barbaricWrathRealityIndex", 4, 0, 7);
-				barbaricScareRealityIndex = builder.comment("Reality Index requirement for Barbaric Scare")
+				barbaricWrathCritBonus = builder.comment("Barbaric Wrath crit damage bonus")
+						.defineInRange("barbaricWrathCritBonus", 0.5, 0, 10);
+				barbaricWrathToughBonus = builder.comment("Barbaric Wrath armor toughness bonus")
+						.defineInRange("barbaricWrathToughBonus", 10d, 0, 1000);
+				barbaricRoarRealityIndex = builder.comment("Reality Index requirement for Barbaric Scare")
 						.defineInRange("barbaricScareRealityIndex", 5, 0, 7);
+				barbaricRoarAttack = builder.comment("Barbaric Roar attack damage bonus")
+						.defineInRange("barbaricRoarAttack", 0.25, 0, 10);
+				barbaricRoarReduction = builder.comment("Barbaric Roar damage reduction")
+						.defineInRange("barbaricRoarReduction", 0.25, 0, 1);
 				barbaricBladeRealityIndex = builder.comment("Reality Index requirement for Barbaric Blade")
 						.defineInRange("barbaricBladeRealityIndex", 6, 0, 7);
+				barbaricBladeAttack = builder.comment("Barbaric Blade attack damage bonus")
+						.defineInRange("barbaricBladeAttack", 0.5, 0, 10);
+				barbaricBladeProjectile = builder.comment("Barbaric Blade projectile damage bonus")
+						.defineInRange("barbaricBladeProjectile", 0.5, 0, 10);
 				primalForceRealityIndex = builder.comment("Reality Index requirement for Primal Force")
 						.defineInRange("primalForceRealityIndex", 7, 0, 7);
 				builder.pop();

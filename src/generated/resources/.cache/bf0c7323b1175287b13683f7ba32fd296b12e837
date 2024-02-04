@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-03T15:56:03.653213	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-6d99d15ee6314df425e0f93977f6746843083d25 assets/curseofpandora/lang/en_ud.json
-0049e1cacf9e7383dd53658147502b731b2671e3 assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-02-04T18:29:43.212426	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+7d5ca2a482160063007810956a3835f7dd564eaf assets/curseofpandora/lang/en_ud.json
+7932d0f43bd171f45f43f93074b663e9cccae11e assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 9e663ded8effd00979e0800ba5b66bdbfd249f64 assets/curseofpandora/models/item/abyssal_edge.json
@@ -15,7 +15,11 @@ c76acfeacfdb7dda82312c93fa6615b73832edb6 assets/curseofpandora/models/item/angel
 b8c82c4a6204cacd3a637a5fd9cc9487fc24a409 assets/curseofpandora/models/item/angelic_protection.json
 b2a9cdc1bec6db8effde389a8c73ee2f40ae92c5 assets/curseofpandora/models/item/angelic_punishment.json
 d716bfddcefcd58e41cfd8660c49f82fe57df05e assets/curseofpandora/models/item/angelic_wing.json
+9b5331a27688f8fddf84b5b97a2cdf3ee84d67eb assets/curseofpandora/models/item/barbaric_blade.json
 de28131bbc658c6141562f35feb25880948faf17 assets/curseofpandora/models/item/barbaric_edge.json
+5245536c905507db34024258669ae7170db95d3a assets/curseofpandora/models/item/barbaric_instinct.json
+921fd38ee91023b5c498a2e75a23595cfe1fa8d4 assets/curseofpandora/models/item/barbaric_roar.json
+dac8566ebb8fac15772f324169e62f68a6f6de13 assets/curseofpandora/models/item/barbaric_wrath.json
 b5a90f39e92310bdfc72208fe5e6d428df3386d4 assets/curseofpandora/models/item/bless_of_lava_walker.json
 c50857ec4afda02f726154328424c720aa2922a2 assets/curseofpandora/models/item/bless_of_snow_walker.json
 c755a0162b78554b539c2186534fc34ed1328438 assets/curseofpandora/models/item/charm_of_accuracy.json
@@ -43,7 +47,13 @@ f630cca7aa6201e733664897d3d886c6f875a713 assets/curseofpandora/models/item/curse
 2158e92cee930b49953de34758547de45a845cb3 assets/curseofpandora/models/item/cursed_karma.json
 f4a730e058235b4164438dadc6d8f5b02bfe42be assets/curseofpandora/models/item/cursed_soul_crystal.json
 7cd3c3d5708df62861b67b69e73099137e29e778 assets/curseofpandora/models/item/doom_star.json
+a504ea1c17e75652be1d24007285d82d16ab9de6 assets/curseofpandora/models/item/dried_brain.json
+2aa6ef6f0ee4d0400a00a50be5b3e86174f86a36 assets/curseofpandora/models/item/dried_spine.json
 705fd2d7b76b96ab5b63b2e4e9f081fed2ce3251 assets/curseofpandora/models/item/earth_crush.json
+09d10c7abd8f9e3c19e8e9ca99d7cd3924e40755 assets/curseofpandora/models/item/eroded_brain.json
+d9702f6a6d64a9bc17c972f3070a7f166249159c assets/curseofpandora/models/item/eroded_spine.json
+43140bb45d1cdb0dcbd4e533a6059479450b415e assets/curseofpandora/models/item/evil_spine.json
+8574940778d84aeb4cdead07b8b467902be1126a assets/curseofpandora/models/item/evil_stone.json
 adf46b8df428f82d246a6fc165a7444661479747 assets/curseofpandora/models/item/eye_of_cursed_souls.json
 68e81cf09899cfb62a3f8b35149a015c37a03f54 assets/curseofpandora/models/item/flaming_explosion.json
 4d58c6d1f0ee21f4213d9791a5a9825f8fc3a1ae assets/curseofpandora/models/item/golden_heart.json
@@ -66,7 +76,10 @@ a09af7f3835259b2871c012ed97f6358c8d3226a assets/curseofpandora/models/item/orb_o
 6ac05765980cfbc292dc33d3e9b4a5413e0375b3 assets/curseofpandora/models/item/orb_of_projectile_rejection.json
 847cc89f9d92b759289cc953f668bc29180316e7 assets/curseofpandora/models/item/orb_of_stability.json
 958fdc991778cbb4d4dee0d9144e99064126fa76 assets/curseofpandora/models/item/plain_charm.json
+21efd32ab4fa111f65ebffda3abfba363ada8437 assets/curseofpandora/models/item/primal_force.json
 b6a7b1b18de7706ca615f3502a49f203613cf034 assets/curseofpandora/models/item/reality.json
+60057f3593b835457b05f519ef0434e54f320675 assets/curseofpandora/models/item/rotten_brain.json
+6f5f6349b132162a439d405c682231ea36ed5c4e assets/curseofpandora/models/item/rotten_spine.json
 7ca51f943ba7d5797fc1071978aa7ceb9c681881 assets/curseofpandora/models/item/sculk_crystal.json
 3d74e0884aac3585ef64c309d23275730b79484e assets/curseofpandora/models/item/shadow_consolidation.json
 3da7b803380a5d1ae5bb6f5b2ae38b37fbe3c4b1 assets/curseofpandora/models/item/shadow_convergence.json
@@ -74,6 +87,8 @@ b6a7b1b18de7706ca615f3502a49f203613cf034 assets/curseofpandora/models/item/reali
 cb3d37f0bf9c35a3706bd662431968ae3929e3d8 assets/curseofpandora/models/item/shadow_fragment.json
 d4dbbcce45fa7a7a26ff539b53d0993d78f2d6d7 assets/curseofpandora/models/item/shadow_reformation.json
 e230c53000da2ddf6680fc665704f2d92e01e3ed assets/curseofpandora/models/item/spellbound_orb.json
+e49d5de2e7a6bbdeb8537434c33498fa29500b2f assets/curseofpandora/models/item/transmuted_tissue.json
+b97f34df3b9fc064a9027f0a2e63b749a6e53af8 assets/curseofpandora/models/item/unstable_matter.json
 6f2b2be6d226f3ed125067c68dcbd0056e5c0256 assets/curseofpandora/models/item/void_overflow.json
 7b17ab803f8883c0027ddea9a7943756df37e582 assets/curseofpandora/models/item/waving_spell.json
 a072819ac02fd15455b1842e8bd1375cf21bf191 assets/curseofpandora/models/item/wind_thrust.json
@@ -247,12 +262,13 @@ cd50702920250de3891f4e44dddbdf430fd2945a data/curseofpandora/recipes/void_overfl
 bd66edf78bf2108ee058a7f9d799fc074d15230e data/curseofpandora/tags/items/abyssal_charms.json
 a5bdd5f24200e1959e0544ec4418315e5d4f101e data/curseofpandora/tags/items/angelic_charms.json
 a91b77e548c8e6b89e14ff65160d58194a398fba data/curseofpandora/tags/items/attribute_charms.json
+0bf77ce4aeb74ad6edceb82c90d11398d395879f data/curseofpandora/tags/items/barbaric_charms.json
 7f8ef9f795189759fbebbdfa0e8ecd9326af01a6 data/curseofpandora/tags/items/elemental_charms.json
 fe3abf1d1a72768c5a5c0293eb90db02e0c9f3d4 data/curseofpandora/tags/items/hell_charms.json
 e4add7ffdeb0de367cb8f4605b8ee4db2bfa4f9b data/curseofpandora/tags/items/mini_beacons.json
 4a2bddc57a37cc4f7015ebf5092b8122539e0748 data/curseofpandora/tags/items/pandora_base.json
 6cccdb86989ad373511ab81c763dcda36b015d6b data/curseofpandora/tags/items/pandora_curse.json
-3959726d4e19eb4880d77af0b8e033e35234ca29 data/curseofpandora/tags/items/reality_charms.json
+decd4532d3f66531ed97bb6299739880adf1ce90 data/curseofpandora/tags/items/reality_charms.json
 cd1f4cb4aebdd3628132fc39f6d408992d961f85 data/curseofpandora/tags/items/shadow_charms.json
 88c5635dfa58e2155062017721841168d167afbe data/jeed/tags/mob_effect/hidden.json
 b98e6c0329fa696c7dae18bab0da520023b41308 data/l2complements/tags/items/l2c_totems.json

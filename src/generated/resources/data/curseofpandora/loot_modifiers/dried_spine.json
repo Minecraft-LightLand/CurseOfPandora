@@ -1,0 +1,8 @@
+{
+  "type": "curseofpandora:mob_kills_mob",
+  "chance": 1.0,
+  "conditions": [],
+  "item": "curseofpandora:dried_spine",
+  "killer": "minecraft:husk",
+  "target": "minecraft:pillager"
+}

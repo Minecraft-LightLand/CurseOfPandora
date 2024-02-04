@@ -24,6 +24,9 @@ public class CoPTagGen {
 	public static final TagKey<Item> HELL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "hell_charms"));
 	public static final TagKey<Item> SHADOW = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "shadow_charms"));
 	public static final TagKey<Item> ABYSSAL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "abyssal_charms"));
+	public static final TagKey<Item> BARBARIC = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "barbaric_charms"));
+	public static final TagKey<Item> MUTATION = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "mutation_charms"));
+	public static final TagKey<Item> EVIL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "evil_spirit_charms"));
 	public static final TagKey<Item> ELEMENTAL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "elemental_charms"));
 
 	public static final TagKey<MobEffect> HIDDEN = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
@@ -31,7 +34,7 @@ public class CoPTagGen {
 
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
-		pvd.addTag(REALITY).addTags(ANGELIC, HELL, SHADOW, ABYSSAL, ELEMENTAL);
+		pvd.addTag(REALITY).addTags(ANGELIC, HELL, SHADOW, ABYSSAL, BARBARIC, ELEMENTAL);//, MUTATION, EVIL
 		pvd.addTag(PandoraTagGen.PANDORA_SLOT).addTags(ATTR, BEACON, CURSE, REALITY);
 		pvd.addTag(PANDORA_BASE).addTags(ATTR, REALITY);
 	}
