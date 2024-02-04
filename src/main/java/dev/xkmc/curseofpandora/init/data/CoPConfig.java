@@ -347,7 +347,6 @@ public class CoPConfig {
 
 		}
 
-
 		public static class Abyssal {
 
 			public final ForgeConfigSpec.IntValue abyssalTreasureRealityIndex;
@@ -388,6 +387,81 @@ public class CoPConfig {
 
 		}
 
+		public static class Barbaric {
+
+			public final ForgeConfigSpec.IntValue barbaricInstinctRealityIndex;
+			public final ForgeConfigSpec.IntValue barbaricWrathRealityIndex;
+			public final ForgeConfigSpec.IntValue barbaricScareRealityIndex;
+			public final ForgeConfigSpec.IntValue barbaricBladeRealityIndex;
+			public final ForgeConfigSpec.IntValue primalForceRealityIndex;
+
+			private Barbaric(ForgeConfigSpec.Builder builder) {
+				builder.push("Barbaric");
+				barbaricInstinctRealityIndex = builder.comment("Reality Index requirement for Barbaric Instinct")
+						.defineInRange("barbaricInstinctRealityIndex", 3, 0, 7);
+				barbaricWrathRealityIndex = builder.comment("Reality Index requirement for Barbaric Wrath")
+						.defineInRange("barbaricWrathRealityIndex", 4, 0, 7);
+				barbaricScareRealityIndex = builder.comment("Reality Index requirement for Barbaric Scare")
+						.defineInRange("barbaricScareRealityIndex", 5, 0, 7);
+				barbaricBladeRealityIndex = builder.comment("Reality Index requirement for Barbaric Blade")
+						.defineInRange("barbaricBladeRealityIndex", 6, 0, 7);
+				primalForceRealityIndex = builder.comment("Reality Index requirement for Primal Force")
+						.defineInRange("primalForceRealityIndex", 7, 0, 7);
+				builder.pop();
+			}
+
+		}
+
+		public static class Mutation {
+
+			public final ForgeConfigSpec.IntValue infectiveMutationRealityIndex;
+			public final ForgeConfigSpec.IntValue parasiticMutationRealityIndex;
+			public final ForgeConfigSpec.IntValue deformingMutationRealityIndex;
+			public final ForgeConfigSpec.IntValue hostileMutationRealityIndex;
+			public final ForgeConfigSpec.IntValue distortedMutationRealityIndex;
+
+			private Mutation(ForgeConfigSpec.Builder builder) {
+				builder.push("Mutation");
+				infectiveMutationRealityIndex = builder.comment("Reality Index requirement for Infective Mutation")
+						.defineInRange("infectiveMutationRealityIndex", 3, 0, 7);
+				parasiticMutationRealityIndex = builder.comment("Reality Index requirement for Parasitic Mutation")
+						.defineInRange("parasiticMutationRealityIndex", 4, 0, 7);
+				deformingMutationRealityIndex = builder.comment("Reality Index requirement for Deforming Mutation")
+						.defineInRange("deformingMutationRealityIndex", 5, 0, 7);
+				hostileMutationRealityIndex = builder.comment("Reality Index requirement for Hostile Mutation")
+						.defineInRange("hostileMutationRealityIndex", 6, 0, 7);
+				distortedMutationRealityIndex = builder.comment("Reality Index requirement for Distorted Mutation")
+						.defineInRange("distortedMutationRealityIndex", 7, 0, 7);
+				builder.pop();
+			}
+
+		}
+
+		public static class Evil {
+
+			public final ForgeConfigSpec.IntValue evilSpiritRitualRealityIndex;
+			public final ForgeConfigSpec.IntValue evilSpiritEvokeRealityIndex;
+			public final ForgeConfigSpec.IntValue evilSpiritAwakeningRealityIndex;
+			public final ForgeConfigSpec.IntValue evilSpiritCurseRealityIndex;
+			public final ForgeConfigSpec.IntValue evilSpiritWalkRealityIndex;
+
+			private Evil(ForgeConfigSpec.Builder builder) {
+				builder.push("Evil");
+				evilSpiritRitualRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Ritual")
+						.defineInRange("infectiveMutationRealityIndex", 3, 0, 7);
+				evilSpiritEvokeRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Evoke")
+						.defineInRange("parasiticMutationRealityIndex", 4, 0, 7);
+				evilSpiritAwakeningRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Awakening")
+						.defineInRange("deformingMutationRealityIndex", 5, 0, 7);
+				evilSpiritCurseRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Curse")
+						.defineInRange("hostileMutationRealityIndex", 6, 0, 7);
+				evilSpiritWalkRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Walk")
+						.defineInRange("distortedMutationRealityIndex", 7, 0, 7);
+				builder.pop();
+			}
+
+		}
+
 		public static class Weapon {
 
 			public final ForgeConfigSpec.IntValue angelicJudgementRealityIndex;
@@ -416,7 +490,6 @@ public class CoPConfig {
 
 		}
 
-
 		public final Attr attr;
 		public final Curse curse;
 		public final Angelic angelic;
@@ -424,6 +497,9 @@ public class CoPConfig {
 		public final Shadow shadow;
 		public final Elemental elemental;
 		public final Abyssal abyssal;
+		public final Barbaric barbaric;
+		public final Mutation mutation;
+		public final Evil evil;
 		public final Weapon weapon;
 
 		Common(ForgeConfigSpec.Builder builder) {
@@ -434,6 +510,9 @@ public class CoPConfig {
 			this.shadow = new Shadow(builder);
 			this.elemental = new Elemental(builder);
 			this.abyssal = new Abyssal(builder);
+			this.barbaric = new Barbaric(builder);
+			this.mutation = new Mutation(builder);
+			this.evil = new Evil(builder);
 			this.weapon = new Weapon(builder);
 		}
 

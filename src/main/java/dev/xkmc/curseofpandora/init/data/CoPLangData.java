@@ -5,6 +5,7 @@ import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 public class CoPLangData {
@@ -32,7 +33,41 @@ public class CoPLangData {
 
 	}
 
-	public enum Reality {
+	private static final HashMap<Class<?>, EnumEntry> MAP = new HashMap<>();
+
+	@SafeVarargs
+	private static <T extends Info> void putLang(Class<T> cls, String str, T... vals) {
+		MAP.put(cls, new EnumEntry(str, vals));
+	}
+
+	public record EnumEntry(String path, Info[] info) {
+
+	}
+
+	public record Entry(String id, String def, int count) {
+	}
+
+	public interface Info {
+
+		Entry entry();
+
+		default String path() {
+			return MAP.get(getClass()).path();
+		}
+
+		default String desc() {
+			return CurseOfPandora.MODID + ".tooltip." + path() + "." + entry().id();
+		}
+
+		default MutableComponent get(Object... objs) {
+			if (objs.length != entry().count())
+				throw new IllegalArgumentException("for " + entry().id() + ": expect " + entry().count() + " parameters, got " + objs.length);
+			return translate(desc(), objs);
+		}
+
+	}
+
+	public enum Reality implements Info {
 		INERTIA("Negate all other non-tool attack speed bonus. Cap player attack speed to %s. When player attack speed is %s or lower, grant %s%% attack speed bonus.", 3),
 		PROXIMITY("Negate all other non-tool attack reach bonus. Cap player attack reach to %s. When player attack reach is %s or lower, grant %s%% attack reach bonus.", 3),
 		FLESH("Negate all max health bonus. If player maintains at least %s food level for %s minutes, grant +%s%% max health.", 3),
@@ -48,24 +83,19 @@ public class CoPLangData {
 		SPELL_3("Item spell load: %s%%", 1),
 		;
 
-		final String id, def;
-		final int count;
+		final Entry entry;
 
 		Reality(String def, int count) {
-			this.id = name().toLowerCase(Locale.ROOT);
-			this.def = def;
-			this.count = count;
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-		public MutableComponent get(Object... objs) {
-			if (objs.length != count)
-				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + ".tooltip.curse." + id, objs);
+		public Entry entry() {
+			return entry;
 		}
 
 	}
 
-	public enum Angelic {
+	public enum Angelic implements Info {
 		CHECK("Effective only when player is under sky", 0),
 		WING("When player is elytra flying, gives player a velocity boost.", 0),
 		WING_IMMUNE("Player takes no damage for falling and flying into wall.", 0),
@@ -75,24 +105,19 @@ public class CoPLangData {
 		PUNISHMENT_2("Damage dealt to target will be at least %s%% of their current health. This effect can trigger at most once every %s seconds.", 2),
 		;
 
-		final String id, def;
-		final int count;
+		final Entry entry;
 
 		Angelic(String def, int count) {
-			this.id = name().toLowerCase(Locale.ROOT);
-			this.def = def;
-			this.count = count;
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-		public MutableComponent get(Object... objs) {
-			if (objs.length != count)
-				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + ".tooltip.angel." + id, objs);
+		public Entry entry() {
+			return entry;
 		}
 
 	}
 
-	public enum Hell {
+	public enum Hell implements Info {
 		SKULL("When you damage a target on Soul Flame effect with at least %s seconds duration, increase the effect level by 1, capped at your Reality Index.", 1),
 		REFORMATION_1("You are immune to Soul Flame damage, but you are not immune to the effect even when you have Cleansed effect. ", 0),
 		REFORMATION_2("When you deal damage to targets while you are on Soul Flame effect, inflict the target with same level and duration of Soul Flame", 0),
@@ -101,24 +126,19 @@ public class CoPLangData {
 		CROWN("All weak undead mobs around you will listen to your command.", 0),
 		;
 
-		final String id, def;
-		final int count;
+		final Entry entry;
 
 		Hell(String def, int count) {
-			this.id = name().toLowerCase(Locale.ROOT);
-			this.def = def;
-			this.count = count;
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-		public MutableComponent get(Object... objs) {
-			if (objs.length != count)
-				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + ".tooltip.hell." + id, objs);
+		public Entry entry() {
+			return entry;
 		}
 
 	}
 
-	public enum Shadow {
+	public enum Shadow implements Info {
 		CORE_1("Inflict shadow effect on attack target with duration of %s seconds per your Reality Index.", 1),
 		CORE_2("Shadow effect will reduce damage mobs dealt by %s%%", 1),
 		CONVERGENCE("Heal %s%% of the damage you dealt to target with Shadow effect", 1),
@@ -127,24 +147,19 @@ public class CoPLangData {
 		REFORMATION_2("-%s%% physical damage from mobs with Shadow effect", 1),
 		VOID("Shadow damage you dealt becomes void shadow damage.", 0);
 
-		final String id, def;
-		final int count;
+		final Entry entry;
 
 		Shadow(String def, int count) {
-			this.id = name().toLowerCase(Locale.ROOT);
-			this.def = def;
-			this.count = count;
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-		public MutableComponent get(Object... objs) {
-			if (objs.length != count)
-				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + ".tooltip.shadow." + id, objs);
+		public Entry entry() {
+			return entry;
 		}
 
 	}
 
-	public enum Elemental {
+	public enum Elemental implements Info {
 		WIND_1("Effective only when player is sprinting", 0),
 		WIND_2("Automatically attack aimed targets", 0),
 		EARTH("Effective only when player attack speed is %s or lower", 1),
@@ -153,24 +168,19 @@ public class CoPLangData {
 		CURSE_2("+%s%% magic damage for every curse enchantment on your armors.", 1),
 		;
 
-		final String id, def;
-		final int count;
+		final Entry entry;
 
 		Elemental(String def, int count) {
-			this.id = name().toLowerCase(Locale.ROOT);
-			this.def = def;
-			this.count = count;
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-		public MutableComponent get(Object... objs) {
-			if (objs.length != count)
-				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + ".tooltip.elemental." + id, objs);
+		public Entry entry() {
+			return entry;
 		}
 
 	}
 
-	public enum Abyssal {
+	public enum Abyssal implements Info {
 		TREASURE("For every %s blocks below 0, you gain 1 Luck", 1),
 		WATCHER("For every %s blocks below 0, you gain %s%% regeneration per second", 2),
 		SHELL("For every %s blocks below 0, you gain +%s%% Armor and Armor Toughness", 2),
@@ -178,71 +188,103 @@ public class CoPLangData {
 		WILL("Reduce depth requirement for Abyssal pandora charms", 0),
 		;
 
-		final String id, def;
-		final int count;
+		final Entry entry;
 
 		Abyssal(String def, int count) {
-			this.id = name().toLowerCase(Locale.ROOT);
-			this.def = def;
-			this.count = count;
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-		public MutableComponent get(Object... objs) {
-			if (objs.length != count)
-				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + ".tooltip.abyssal." + id, objs);
+		public Entry entry() {
+			return entry;
 		}
 
 	}
 
-	public enum Weapon {
+	public enum Barbaric implements Info {
+		;
+
+		final Entry entry;
+
+		Barbaric(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Mutation implements Info {
+		;
+
+		final Entry entry;
+
+		Mutation(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Evil implements Info {
+		;
+
+		final Entry entry;
+
+		Evil(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
+	public enum Weapon implements Info {
 		ANGELIC_JUDGEMENT("Empty slash shoots 5 piercing magic blades. When sneaking, blades are more concentrated.", 0),
 		DOOM_STAR("Empty slash shoots shadow blade", 0),
 		CURSED_KARMA("Empty slash shoots explosive cursed flaming blade", 0),
 		ABYSSAL_EDGE("Slash summons abyssal fangs. Sneak slash summons them around you ", 0),
 		;
 
-		final String id, def;
-		final int count;
+		final Entry entry;
 
 		Weapon(String def, int count) {
-			this.id = name().toLowerCase(Locale.ROOT);
-			this.def = def;
-			this.count = count;
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
 		}
 
-		public MutableComponent get(Object... objs) {
-			if (objs.length != count)
-				throw new IllegalArgumentException("for " + name() + ": expect " + count + " parameters, got " + objs.length);
-			return translate(CurseOfPandora.MODID + ".tooltip.weapon." + id, objs);
+		public Entry entry() {
+			return entry;
 		}
 
+	}
+
+	static {
+		putLang(Reality.class, "curse", Reality.values());
+		putLang(Angelic.class, "angel", Angelic.values());
+		putLang(Hell.class, "hell", Hell.values());
+		putLang(Shadow.class, "shadow", Shadow.values());
+		putLang(Elemental.class, "elemental", Elemental.values());
+		putLang(Abyssal.class, "abyssal", Abyssal.values());
+		putLang(Barbaric.class, "barbaric", Barbaric.values());
+		putLang(Mutation.class, "mutation", Mutation.values());
+		putLang(Evil.class, "evil", Evil.values());
+		putLang(Weapon.class, "weapon", Weapon.values());
 	}
 
 	public static void addTranslations(RegistrateLangProvider pvd) {
 		for (var id : IDS.values()) {
 			pvd.add(CurseOfPandora.MODID + "." + id.id, id.def);
 		}
-		for (var id : Reality.values()) {
-			pvd.add(CurseOfPandora.MODID + ".tooltip.curse." + id.id, id.def);
-		}
-		for (var id : Angelic.values()) {
-			pvd.add(CurseOfPandora.MODID + ".tooltip.angel." + id.id, id.def);
-		}
-		for (var id : Hell.values()) {
-			pvd.add(CurseOfPandora.MODID + ".tooltip.hell." + id.id, id.def);
-		}
-		for (var id : Shadow.values()) {
-			pvd.add(CurseOfPandora.MODID + ".tooltip.shadow." + id.id, id.def);
-		}
-		for (var id : Elemental.values()) {
-			pvd.add(CurseOfPandora.MODID + ".tooltip.elemental." + id.id, id.def);
-		}
-		for (var id : Abyssal.values()) {
-			pvd.add(CurseOfPandora.MODID + ".tooltip.abyssal." + id.id, id.def);
-		}
-		for (var id : Weapon.values()) {
-			pvd.add(CurseOfPandora.MODID + ".tooltip.weapon." + id.id, id.def);
+		for (var ent : MAP.values()) {
+			for (var e : ent.info()) {
+				pvd.add(e.desc(), e.entry().def());
+			}
 		}
 		pvd.add("death.attack.soul_curse", "%s is cursed by evil souls");
 		pvd.add("death.attack.soul_curse.player", "%s is cursed by %s's evil souls");
