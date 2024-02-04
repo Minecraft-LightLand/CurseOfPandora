@@ -86,7 +86,13 @@
 	"rotten_brain": "溃烂之脑",
 	"rotten_spine": "溃烂脉络",
 	"transmuted_tissue": "畸变组织",
-	"unstable_matter": "不稳定因子"
+	"unstable_matter": "不稳定因子",
+	"barbaric_blade": "蛮荒凶器",
+	"barbaric_blood": "蛮荒之血",
+	"barbaric_instinct": "蛮荒本能",
+	"barbaric_roar": "蛮荒恐吓",
+	"barbaric_wrath": "蛮荒暴戾",
+	"primal_force": "原始之力"
   },
   "curseofpandora.tooltip": {
 	"misc": {
@@ -157,6 +163,11 @@
 	  "doom_star": "空挥发射虚影剑气",
 	  "cursed_karma": "空挥发射诅咒燃魂爆炸剑气",
 	  "abyssal_edge": "斩击召唤深渊之牙。潜行时斩击在自身周围召唤。"
+	},
+	"barbaric": {
+	  "instinct": "玩家持武器攻击目标时回复%s%%生命值，冷却%s秒",
+	  "primal_1": "玩家获得最大生命值%s%%的护甲",
+	  "primal_2": "你被怪物攻击时，那些怪物获得最大生命值%s%%的护甲"
 	}
   },
   "effect.curseofpandora": {

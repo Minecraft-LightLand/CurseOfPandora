@@ -33,7 +33,7 @@ public class BarbaricBlade extends ITokenProviderItem<BarbaricBlade.Data> {
 			AttributeModifier.Operation.ADDITION, BarbaricBlade::getProj);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
 	}
 
 	private static double getAtk() {

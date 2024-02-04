@@ -447,6 +447,62 @@ public class CoPRecipeGen {
 						.define('X', CoPItems.BARBARIC_EDGE)
 						.save(pvd);
 			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.BARBARIC_INSTINCT.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("BLB").pattern("FOF").pattern("BLB")
+						.define('O', CoPItems.CHARM)
+						.define('B', CoPItems.BARBARIC_BLOOD)
+						.define('F', Items.ROTTEN_FLESH)
+						.define('L', Items.LEATHER).save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.BARBARIC_WRATH.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("BFB").pattern("BOB").pattern("EFE")
+						.define('O', CoPItems.CHARM)
+						.define('B', CoPItems.BARBARIC_BLOOD)
+						.define('E', CoPItems.BARBARIC_EDGE)
+						.define('F', Items.ROTTEN_FLESH).save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.BARBARIC_ROAR.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("BBB").pattern("BOB").pattern("EFE")
+						.define('O', CoPItems.CHARM)
+						.define('B', CoPItems.BARBARIC_BLOOD)
+						.define('E', CoPItems.BARBARIC_EDGE)
+						.define('F', LCItems.BLACKSTONE_CORE).save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.BARBARIC_BLADE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("BBB").pattern("FOF").pattern("EEE")
+						.define('O', CoPItems.CHARM)
+						.define('B', CoPItems.BARBARIC_BLOOD)
+						.define('E', CoPItems.BARBARIC_EDGE)
+						.define('F', LCItems.WARDEN_BONE_SHARD).save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.PRIMAL_FORCE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("BXE").pattern("FOF").pattern("EXB")
+						.define('O', CoPItems.CHARM)
+						.define('B', CoPItems.BARBARIC_BLOOD)
+						.define('E', CoPItems.BARBARIC_EDGE)
+						.define('X', LCItems.WARDEN_BONE_SHARD)
+						.define('F', LCItems.FORCE_FIELD).save(pvd);
+			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EVIL_SPINE.get(), 1)::unlockedBy, CoPItems.ROTTEN_SPINE.get())
+						.pattern("S1S").pattern(" 2 ").pattern(" 3 ")
+						.define('1', CoPItems.ROTTEN_SPINE)
+						.define('2', CoPItems.ERODED_SPINE)
+						.define('3', CoPItems.DRIED_SPINE)
+						.define('S', Items.BONE)
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EVIL_STONE.get(), 1)::unlockedBy, CoPItems.ROTTEN_BRAIN.get())
+						.pattern(" 2 ").pattern("1S3").pattern(" B ")
+						.define('1', CoPItems.ROTTEN_BRAIN)
+						.define('2', CoPItems.ERODED_BRAIN)
+						.define('3', CoPItems.DRIED_BRAIN)
+						.define('S', Items.WITHER_SKELETON_SKULL)
+						.define('B', CoPItems.SPELLBOUND_ORB)
+						.save(pvd);
+
+			}
 		}
 
 		// weapons

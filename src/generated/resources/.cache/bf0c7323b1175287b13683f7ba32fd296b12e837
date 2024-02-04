@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-04T18:29:43.212426	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-7d5ca2a482160063007810956a3835f7dd564eaf assets/curseofpandora/lang/en_ud.json
-7932d0f43bd171f45f43f93074b663e9cccae11e assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-02-04T19:56:13.836537	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+088b8cbfdffb6838f264577a390e2069d4ec8f18 assets/curseofpandora/lang/en_ud.json
+97a9932c65245f91c536a4d5d11f5a28a9b19bc7 assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 9e663ded8effd00979e0800ba5b66bdbfd249f64 assets/curseofpandora/models/item/abyssal_edge.json
@@ -16,6 +16,7 @@ b8c82c4a6204cacd3a637a5fd9cc9487fc24a409 assets/curseofpandora/models/item/angel
 b2a9cdc1bec6db8effde389a8c73ee2f40ae92c5 assets/curseofpandora/models/item/angelic_punishment.json
 d716bfddcefcd58e41cfd8660c49f82fe57df05e assets/curseofpandora/models/item/angelic_wing.json
 9b5331a27688f8fddf84b5b97a2cdf3ee84d67eb assets/curseofpandora/models/item/barbaric_blade.json
+a089520f22740f04c89178a81d761f0c4137e2d2 assets/curseofpandora/models/item/barbaric_blood.json
 de28131bbc658c6141562f35feb25880948faf17 assets/curseofpandora/models/item/barbaric_edge.json
 5245536c905507db34024258669ae7170db95d3a assets/curseofpandora/models/item/barbaric_instinct.json
 921fd38ee91023b5c498a2e75a23595cfe1fa8d4 assets/curseofpandora/models/item/barbaric_roar.json
@@ -114,10 +115,16 @@ b786ca88ea500978e79954d3eb614cf7a36d2265 data/curseofpandora/advancements/recipe
 4300ce6b0789e33c34105bf53c01d2ff05994a3c data/curseofpandora/advancements/recipes/misc/angelic_protection.json
 dba7a89b27eb3ab0bae047823f69b71ea8ff6dc4 data/curseofpandora/advancements/recipes/misc/angelic_punishment.json
 cbcf62404253cca83a02a89c104096ff479209b8 data/curseofpandora/advancements/recipes/misc/angelic_wing.json
+e01b6f5f517cacf0701dd41da612921f9b327517 data/curseofpandora/advancements/recipes/misc/barbaric_blade.json
+4c58ce63aa14fa596946132dae77a2b00c7ee6cc data/curseofpandora/advancements/recipes/misc/barbaric_instinct.json
+a40d83f7738de6c8e2ef2e77b1e55c30af3ef5ee data/curseofpandora/advancements/recipes/misc/barbaric_roar.json
+eda2393765ad8107bee549702121efc988c35114 data/curseofpandora/advancements/recipes/misc/barbaric_wrath.json
 f7ce6093c60a80794c3dd8be6ac1130cac0ce400 data/curseofpandora/advancements/recipes/misc/crown_of_demon.json
 975cc0e50b3e093756feb7cab9b5732998e6eed6 data/curseofpandora/advancements/recipes/misc/curse_redirection.json
 8b1c0a8e1aab83e9e518887cfb63089edda0f71c data/curseofpandora/advancements/recipes/misc/cursed_soul_crystal.json
 2a50961db900cf958a9c26c0377c36b7722d08ac data/curseofpandora/advancements/recipes/misc/earth_crush.json
+ea8395a12000b19ec74875227974686f04445834 data/curseofpandora/advancements/recipes/misc/evil_spine.json
+bf755af4f4fa638ea8314cf9bafd874f13526132 data/curseofpandora/advancements/recipes/misc/evil_stone.json
 f08af69a534b6707006a93dd7a538d2e4ba31f68 data/curseofpandora/advancements/recipes/misc/eye_of_cursed_souls.json
 dad882f7009002c7ea86fd13b1adbf2b6f71352a data/curseofpandora/advancements/recipes/misc/flaming_explosion.json
 97f58d6bb27305d9df6460e6e1e0172959c289b7 data/curseofpandora/advancements/recipes/misc/hellfire_reformation.json
@@ -157,6 +164,7 @@ a50a8151f8e5f83fc2aaedbe156d9b772a945a1e data/curseofpandora/advancements/recipe
 ded10930988c41d2dba105b5793ac8c301b534f4 data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_craft.json
 b81afc72481f71630a52618b4ea9b1995d584268 data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_renew.json
 ba4396d98ac0e1297c062f8c19fa56e946596d9f data/curseofpandora/advancements/recipes/misc/pandora/plain_charm_smelt.json
+374549c5f894b617ffc8752b69d5da89411acf05 data/curseofpandora/advancements/recipes/misc/primal_force.json
 c81c8a76ba363e0edcaf7b006a90385428384db0 data/curseofpandora/advancements/recipes/misc/seven_curses.json
 82b5ed398bcc7a5d3fbd226e582a46d35502ffdd data/curseofpandora/advancements/recipes/misc/shadow_consolidation.json
 90ec80e9f9bd1de63171ca2ccdd560bdf0b08ae3 data/curseofpandora/advancements/recipes/misc/shadow_convergence.json
@@ -200,6 +208,10 @@ bb5b1806f61820d47388c1c54c04840accc41a68 data/curseofpandora/recipes/abyssal_wil
 ad3f58b8b3c753a1e629a8eb2ff1bec1b077d16a data/curseofpandora/recipes/angelic_protection.json
 c6ad34a81dbeafb301ef4b3660cb312e32b2683a data/curseofpandora/recipes/angelic_punishment.json
 6165e6f38f6aa9440ab4807e3bcc744e7645a9c1 data/curseofpandora/recipes/angelic_wing.json
+de57428ee3f1405643b4e9e49d727db0aafe5f90 data/curseofpandora/recipes/barbaric_blade.json
+f0a60f0a6aad7fea81bdfadcb426dd854faab167 data/curseofpandora/recipes/barbaric_instinct.json
+b22fbb6ed5aeb9faa21067b81c8d4bf5b3b15174 data/curseofpandora/recipes/barbaric_roar.json
+a558195106deb7f631eafa43b939d1071abb9e49 data/curseofpandora/recipes/barbaric_wrath.json
 a609d35b44a7fd59e4943b5a52667881b9eb03af data/curseofpandora/recipes/burnt/flint.json
 1d82211200634491defe2d72691d3ce63c2633ff data/curseofpandora/recipes/burnt/mini_beacon_base_block.json
 cea64d7fe20036215ce0ec22f8b13a48d3a4a51f data/curseofpandora/recipes/burnt/mini_beacon_base_ingot.json
@@ -210,6 +222,8 @@ a13cd268f06a2b8ab3860b6ea9b9482d52e7ee7c data/curseofpandora/recipes/curse_redir
 7ecd49897a1730a7907eaa8d523a925510f04349 data/curseofpandora/recipes/cursed_soul_crystal.json
 c8fc4b32a81824bb903da3e7e9c80e88d260d892 data/curseofpandora/recipes/doom_star.json
 abc287beca8087560452596ceffa35fc483adc42 data/curseofpandora/recipes/earth_crush.json
+45d0c65edd15af2ccd03a82b1fea7c21692e85c7 data/curseofpandora/recipes/evil_spine.json
+abc3d3b69c089e63ed48f96d1558dcfc5bb7a885 data/curseofpandora/recipes/evil_stone.json
 4bffc5fc96c0c92166d6fd6979ab438b470d97a4 data/curseofpandora/recipes/eye_of_cursed_souls.json
 dd2835f2f196a76c55a2ed8e29f46c324eb85b34 data/curseofpandora/recipes/flaming_explosion.json
 b031d7367f505980b13113b2de36112c1ef52b24 data/curseofpandora/recipes/hellfire_reformation.json
@@ -249,6 +263,7 @@ a49134e54b6aa4119a0e6c385b91533dbe39d558 data/curseofpandora/recipes/pandora/orb
 4999cc4ff07110e0e0049e8db02565549e98003c data/curseofpandora/recipes/pandora/plain_charm_craft.json
 0f82d78ce8712ec19b59725e43e19ffdee88fdb6 data/curseofpandora/recipes/pandora/plain_charm_renew.json
 b9f76d2f1816e9a9dac4eabbd421a66052d8d2c7 data/curseofpandora/recipes/pandora/plain_charm_smelt.json
+b8ee43dfa58ee8df88f0db5b92e1103d93616e03 data/curseofpandora/recipes/primal_force.json
 4988e2d75848dcb388c43d062eafdf68331995f4 data/curseofpandora/recipes/seven_curses.json
 0b9d5090c797a4e29f2f586feeddd67e7b149803 data/curseofpandora/recipes/shadow_consolidation.json
 9a3157714a7961a50ca22bedee3ee0f6d9d291fb data/curseofpandora/recipes/shadow_convergence.json

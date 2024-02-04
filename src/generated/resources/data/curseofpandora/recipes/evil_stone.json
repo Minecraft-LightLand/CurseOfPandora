@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "curseofpandora:rotten_brain"
+    },
+    "2": {
+      "item": "curseofpandora:eroded_brain"
+    },
+    "3": {
+      "item": "curseofpandora:dried_brain"
+    },
+    "B": {
+      "item": "curseofpandora:spellbound_orb"
+    },
+    "S": {
+      "item": "minecraft:wither_skeleton_skull"
+    }
+  },
+  "pattern": [
+    " 2 ",
+    "1S3",
+    " B "
+  ],
+  "result": {
+    "item": "curseofpandora:evil_stone"
+  },
+  "show_notification": true
+}

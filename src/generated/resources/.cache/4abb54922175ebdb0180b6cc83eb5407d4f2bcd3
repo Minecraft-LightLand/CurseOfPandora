@@ -1,6 +1,7 @@
-// 1.20.1	2024-02-04T17:01:44.973013	Global Loot Modifiers : curseofpandora
+// 1.20.1	2024-02-04T19:56:13.841392	Global Loot Modifiers : curseofpandora
 bdf792897a8a94c652aa635c2b11c8e9c0827fa2 data/curseofpandora/loot_modifiers/abandoned_mineshaft.json
 6df6cf0fa6c27584a1f664a1211fa26cb71ccb66 data/curseofpandora/loot_modifiers/ancient_city.json
+3c70ccbcc78b1c8396924300a3cabf9b7334f68c data/curseofpandora/loot_modifiers/barbaric_blood.json
 b05defc9b731b15795687df230bfe6347b719d93 data/curseofpandora/loot_modifiers/bastion_bridge.json
 faba6d1583c6920dd46d1118ed7e36d10f378e30 data/curseofpandora/loot_modifiers/bastion_other.json
 1f88b20f0da22418e619c8616adcf4956235b672 data/curseofpandora/loot_modifiers/bastion_treasure.json
@@ -25,4 +26,4 @@ cc52960f9c0e1df2295957110d6b1936f67386af data/curseofpandora/loot_modifiers/unde
 904dba7272199d1b7280058f5315d8c7a0303ed4 data/curseofpandora/loot_modifiers/unstable_matter.json
 1cfcd882fa2f6943821e52709c9c8081ffa26313 data/curseofpandora/loot_modifiers/village_temple.json
 4a81533c5711210fe040309b804295e232e05dff data/curseofpandora/loot_modifiers/woodland_mansion.json
-4774931ec04ed102fd3945489a961b77eb7fe3f8 data/forge/loot_modifiers/global_loot_modifiers.json
+076415da32f25768ffbc4f9a328bc06f058ce608 data/forge/loot_modifiers/global_loot_modifiers.json

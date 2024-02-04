@@ -392,6 +392,7 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue magicDamageDebuff;
 			public final ForgeConfigSpec.IntValue barbaricInstinctRealityIndex;
 			public final ForgeConfigSpec.DoubleValue barbaricInstinctHeal;
+			public final ForgeConfigSpec.IntValue barbaricInstinctCoolDown;
 			public final ForgeConfigSpec.IntValue barbaricWrathRealityIndex;
 			public final ForgeConfigSpec.DoubleValue barbaricWrathCritBonus;
 			public final ForgeConfigSpec.DoubleValue barbaricWrathToughBonus;
@@ -402,6 +403,8 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue barbaricBladeProjectile;
 			public final ForgeConfigSpec.DoubleValue barbaricBladeAttack;
 			public final ForgeConfigSpec.IntValue primalForceRealityIndex;
+			public final ForgeConfigSpec.DoubleValue primalForceSelfArmor;
+			public final ForgeConfigSpec.DoubleValue primalForceTargetArmor;
 
 			private Barbaric(ForgeConfigSpec.Builder builder) {
 				builder.push("Barbaric");
@@ -411,6 +414,8 @@ public class CoPConfig {
 						.defineInRange("barbaricInstinctRealityIndex", 3, 0, 7);
 				barbaricInstinctHeal = builder.comment("Barbaric Instinct healing percentage")
 						.defineInRange("barbaricInstinctHeal", 0.1, 0, 1);
+				barbaricInstinctCoolDown = builder.comment("Barbaric Instinct healing cool down")
+						.defineInRange("barbaricInstinctCoolDown", 40, 0, 1000);
 				barbaricWrathRealityIndex = builder.comment("Reality Index requirement for Barbaric Wrath")
 						.defineInRange("barbaricWrathRealityIndex", 4, 0, 7);
 				barbaricWrathCritBonus = builder.comment("Barbaric Wrath crit damage bonus")
@@ -431,6 +436,10 @@ public class CoPConfig {
 						.defineInRange("barbaricBladeProjectile", 0.5, 0, 10);
 				primalForceRealityIndex = builder.comment("Reality Index requirement for Primal Force")
 						.defineInRange("primalForceRealityIndex", 7, 0, 7);
+				primalForceSelfArmor = builder.comment("Primal Force armor bonus for player as percentage of max health")
+						.defineInRange("primalForceSelfArmor", 1d, 0, 100);
+				primalForceTargetArmor = builder.comment("Primal Force armor bonus for attacker as percentage of max health")
+						.defineInRange("primalForceTargetArmor", 1d, 0, 100);
 				builder.pop();
 			}
 

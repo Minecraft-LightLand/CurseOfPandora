@@ -4,6 +4,7 @@ import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.util.math.MathHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -28,6 +29,10 @@ public record AttrAdder(String name, Supplier<Attribute> attr, UUID uuid,
 	}
 
 	public void tickImpl(Player player) {
+		addAttr(player);
+	}
+
+	public void addAttr(LivingEntity player) {
 		if (player.level().isClientSide()) return;
 		double val = value.getAsDouble();
 		var ins = player.getAttribute(attr.get());

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:barbaric_blood"
+    },
+    "E": {
+      "item": "curseofpandora:barbaric_edge"
+    },
+    "F": {
+      "item": "l2complements:blackstone_core"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BOB",
+    "EFE"
+  ],
+  "result": {
+    "item": "curseofpandora:barbaric_roar"
+  },
+  "show_notification": true
+}

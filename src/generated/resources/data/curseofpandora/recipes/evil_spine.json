@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "curseofpandora:rotten_spine"
+    },
+    "2": {
+      "item": "curseofpandora:eroded_spine"
+    },
+    "3": {
+      "item": "curseofpandora:dried_spine"
+    },
+    "S": {
+      "item": "minecraft:bone"
+    }
+  },
+  "pattern": [
+    "S1S",
+    " 2 ",
+    " 3 "
+  ],
+  "result": {
+    "item": "curseofpandora:evil_spine"
+  },
+  "show_notification": true
+}

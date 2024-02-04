@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:barbaric_blood"
+    },
+    "E": {
+      "item": "curseofpandora:barbaric_edge"
+    },
+    "F": {
+      "item": "l2complements:force_field"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "X": {
+      "item": "l2complements:warden_bone_shard"
+    }
+  },
+  "pattern": [
+    "BXE",
+    "FOF",
+    "EXB"
+  ],
+  "result": {
+    "item": "curseofpandora:primal_force"
+  },
+  "show_notification": true
+}

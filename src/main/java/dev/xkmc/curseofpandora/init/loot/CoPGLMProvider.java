@@ -39,6 +39,7 @@ public class CoPGLMProvider extends GlobalLootModifierProvider {
 		add(EntityType.ZOMBIE, EntityType.EVOKER, CoPItems.ROTTEN_BRAIN.get(), 1);
 		add(EntityType.DROWNED, EntityType.EVOKER, CoPItems.ERODED_BRAIN.get(), 1);
 		add(EntityType.HUSK, EntityType.EVOKER, CoPItems.DRIED_BRAIN.get(), 1);
+		add(EntityType.ZOGLIN, EntityType.HOGLIN, CoPItems.BARBARIC_BLOOD.get(), 1);
 	}
 
 	private void add(EntityType<?> killer, EntityType<?> target, Item item, double chance) {

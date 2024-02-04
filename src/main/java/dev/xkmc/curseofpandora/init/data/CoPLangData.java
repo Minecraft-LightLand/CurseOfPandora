@@ -202,6 +202,9 @@ public class CoPLangData {
 	}
 
 	public enum Barbaric implements Info {
+		INSTINCT("When player hit target with weapon, heal %s%% of player max health. Cool Down: %s seconds", 2),
+		PRIMAL_1("Gain armor equal to %s%% of your max health", 1),
+		PRIMAL_2("When you are hit by mobs, those mobs gain armor equal to %s%% of their max health", 1),
 		;
 
 		final Entry entry;

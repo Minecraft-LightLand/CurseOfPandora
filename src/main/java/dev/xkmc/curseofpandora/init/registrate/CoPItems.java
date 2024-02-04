@@ -40,9 +40,9 @@ public class CoPItems {
 
 	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE,
 			ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT,
-			BARBARIC_EDGE, SPELLBOUND_ORB, ABYSS_CRYSTAL, SCULK_CRYSTAL,
-			EVIL_SPINE, EVIL_STONE;
-	public static final ItemEntry<GLMDropItem> TRANSMUTED_TISSUE, UNSTABLE_MATTER,
+			SPELLBOUND_ORB, ABYSS_CRYSTAL, SCULK_CRYSTAL,
+			BARBARIC_EDGE, EVIL_SPINE, EVIL_STONE;
+	public static final ItemEntry<GLMDropItem> BARBARIC_BLOOD, TRANSMUTED_TISSUE, UNSTABLE_MATTER,
 			ROTTEN_SPINE, ERODED_SPINE, DRIED_SPINE, ROTTEN_BRAIN, ERODED_BRAIN, DRIED_BRAIN;
 	public static final ItemEntry<EnchDescItem> EXPLOSION_REJECT, MAGIC_REJECT,
 			ENVIRONMENTAL_REJECT, PROJECTILE_REJECT, OWNER_PROTECTION;
@@ -142,6 +142,7 @@ public class CoPItems {
 			HELLFIRE_RUNE = ingredient("hellfire_rune", Item::new).register();
 			SHADOW_FRAGMENT = ingredient("shadow_fragment", Item::new).register();
 			ABYSS_CRYSTAL = ingredient("abyss_crystal", Item::new).register();
+			BARBARIC_BLOOD = ingredient("barbaric_blood", GLMDropItem::new).register();
 			TRANSMUTED_TISSUE = ingredient("transmuted_tissue", GLMDropItem::new).register();
 			UNSTABLE_MATTER = ingredient("unstable_matter", GLMDropItem::new).register();
 			ROTTEN_SPINE = ingredient("rotten_spine", GLMDropItem::new).register();

@@ -33,7 +33,7 @@ public class BarbaricWrath extends ITokenProviderItem<BarbaricWrath.Data> {
 			AttributeModifier.Operation.ADDITION, BarbaricWrath::getProt);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
 	}
 
 	private static double getCrit() {

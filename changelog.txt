@@ -1,7 +1,8 @@
-18 / 11 / 7 / 20+5 / 0+4
+18 / 11 / 7 / 20+10 / 0+4
 
 2.4.4
-- Add Abyssal series
+- Add Abyssal, Barbaric series
+- Add 4 weaponss
 - Add crafting ingredients, tweak recipes
 -
 

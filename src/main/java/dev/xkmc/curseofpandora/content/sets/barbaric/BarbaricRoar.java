@@ -33,7 +33,7 @@ public class BarbaricRoar extends ITokenProviderItem<BarbaricRoar.Data> {
 			AttributeModifier.Operation.MULTIPLY_TOTAL, BarbaricRoar::getProt);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
 	}
 
 	private static double getAtk() {

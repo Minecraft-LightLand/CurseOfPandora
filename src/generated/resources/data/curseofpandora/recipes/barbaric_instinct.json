@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:barbaric_blood"
+    },
+    "F": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "BLB",
+    "FOF",
+    "BLB"
+  ],
+  "result": {
+    "item": "curseofpandora:barbaric_instinct"
+  },
+  "show_notification": true
+}

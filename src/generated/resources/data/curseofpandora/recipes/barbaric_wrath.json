@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "curseofpandora:barbaric_blood"
+    },
+    "E": {
+      "item": "curseofpandora:barbaric_edge"
+    },
+    "F": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "O": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "BFB",
+    "BOB",
+    "EFE"
+  ],
+  "result": {
+    "item": "curseofpandora:barbaric_wrath"
+  },
+  "show_notification": true
+}
