@@ -510,6 +510,48 @@ public class CoPRecipeGen {
 						.save(pvd);
 
 			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EVIL_SPIRIT_RITUAL.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern(" A ").pattern("DCD").pattern(" B ")
+						.define('C', CoPItems.CHARM.get())
+						.define('A', CoPItems.EVIL_SPINE.get())
+						.define('B', CoPItems.SPELLBOUND_ORB.get())
+						.define('D', Ingredient.of(Items.SKELETON_SKULL, Items.WITHER_SKELETON_SKULL))
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EVIL_SPIRIT_EVOKE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("AEB").pattern("DCD").pattern("BDA")
+						.define('C', CoPItems.CHARM.get())
+						.define('A', CoPItems.EVIL_SPINE.get())
+						.define('B', CoPItems.SPELLBOUND_ORB.get())
+						.define('D', LCItems.EXPLOSION_SHARD.get())
+						.define('E', Ingredient.of(CoPItems.DRIED_BRAIN, CoPItems.ERODED_BRAIN, CoPItems.ROTTEN_BRAIN))
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EVIL_SPIRIT_AWAKENING.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("AEA").pattern("DCD").pattern("BBB")
+						.define('C', CoPItems.CHARM.get())
+						.define('A', CoPItems.EVIL_SPINE.get())
+						.define('B', CoPItems.SPELLBOUND_ORB.get())
+						.define('D', LCItems.CURSED_DROPLET.get())
+						.define('E', CoPItems.EVIL_STONE.get())
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EVIL_SPIRIT_CURSE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("AEA").pattern("DCD").pattern("DED")
+						.define('C', CoPItems.CHARM.get())
+						.define('A', CoPItems.EVIL_SPINE.get())
+						.define('D', LCItems.CURSED_DROPLET.get())
+						.define('E', CoPItems.EVIL_STONE.get())
+						.save(pvd);
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EVIL_SPIRIT_WALK.get(), 1)::unlockedBy, CoPItems.CHARM.get())
+						.pattern("AEA").pattern("ECE").pattern("AEA")
+						.define('C', CoPItems.CHARM.get())
+						.define('A', CoPItems.EVIL_SPINE.get())
+						.define('E', CoPItems.EVIL_STONE.get())
+						.save(pvd);
+			}
 		}
 
 		// weapons

@@ -34,7 +34,7 @@ public class CoPTagGen {
 
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
-		pvd.addTag(REALITY).addTags(ANGELIC, HELL, SHADOW, ABYSSAL, BARBARIC, ELEMENTAL);//, MUTATION, EVIL
+		pvd.addTag(REALITY).addTags(ANGELIC, HELL, SHADOW, ABYSSAL, BARBARIC, EVIL, ELEMENTAL);// MUTATION
 		pvd.addTag(PandoraTagGen.PANDORA_SLOT).addTags(ATTR, BEACON, CURSE, REALITY);
 		pvd.addTag(PANDORA_BASE).addTags(ATTR, REALITY);
 	}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "curseofpandora:evil_spine"
+    },
+    "B": {
+      "item": "curseofpandora:spellbound_orb"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "E": {
+      "item": "curseofpandora:evil_stone"
+    }
+  },
+  "pattern": [
+    "AEA",
+    "DCD",
+    "BBB"
+  ],
+  "result": {
+    "item": "curseofpandora:evil_spirit_awakening"
+  },
+  "show_notification": true
+}

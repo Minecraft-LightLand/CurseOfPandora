@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "curseofpandora:evil_spine"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:cursed_droplet"
+    },
+    "E": {
+      "item": "curseofpandora:evil_stone"
+    }
+  },
+  "pattern": [
+    "AEA",
+    "DCD",
+    "DED"
+  ],
+  "result": {
+    "item": "curseofpandora:evil_spirit_curse"
+  },
+  "show_notification": true
+}

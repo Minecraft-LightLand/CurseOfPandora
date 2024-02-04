@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "curseofpandora:evil_spine"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "E": {
+      "item": "curseofpandora:evil_stone"
+    }
+  },
+  "pattern": [
+    "AEA",
+    "ECE",
+    "AEA"
+  ],
+  "result": {
+    "item": "curseofpandora:evil_spirit_walk"
+  },
+  "show_notification": true
+}

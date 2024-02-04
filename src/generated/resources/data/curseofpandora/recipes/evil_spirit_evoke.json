@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "curseofpandora:evil_spine"
+    },
+    "B": {
+      "item": "curseofpandora:spellbound_orb"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "l2complements:explosion_shard"
+    },
+    "E": [
+      {
+        "item": "curseofpandora:dried_brain"
+      },
+      {
+        "item": "curseofpandora:eroded_brain"
+      },
+      {
+        "item": "curseofpandora:rotten_brain"
+      }
+    ]
+  },
+  "pattern": [
+    "AEB",
+    "DCD",
+    "BDA"
+  ],
+  "result": {
+    "item": "curseofpandora:evil_spirit_evoke"
+  },
+  "show_notification": true
+}

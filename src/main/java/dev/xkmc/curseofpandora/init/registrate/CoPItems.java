@@ -10,6 +10,7 @@ import dev.xkmc.curseofpandora.content.sets.abyss.*;
 import dev.xkmc.curseofpandora.content.sets.angle.*;
 import dev.xkmc.curseofpandora.content.sets.barbaric.*;
 import dev.xkmc.curseofpandora.content.sets.elemental.*;
+import dev.xkmc.curseofpandora.content.sets.evil.*;
 import dev.xkmc.curseofpandora.content.sets.hell.*;
 import dev.xkmc.curseofpandora.content.sets.shadow.*;
 import dev.xkmc.curseofpandora.content.weapon.AbyssalEdge;
@@ -91,6 +92,11 @@ public class CoPItems {
 	public static final ItemEntry<BarbaricBlade> BARBARIC_BLADE;
 	public static final ItemEntry<PrimalForce> PRIMAL_FORCE;
 
+	public static final ItemEntry<EvilSpiritRitual> EVIL_SPIRIT_RITUAL;
+	public static final ItemEntry<EvilSpiritEvoke> EVIL_SPIRIT_EVOKE;
+	public static final ItemEntry<EvilSpiritAwakening> EVIL_SPIRIT_AWAKENING;
+	public static final ItemEntry<EvilSpiritCurse> EVIL_SPIRIT_CURSE;
+	public static final ItemEntry<EvilSpiritWalk> EVIL_SPIRIT_WALK;
 	public static final ItemEntry<WindThrust> WIND_THRUST;
 	public static final ItemEntry<EarthCrush> EARTH_CRUSH;
 	public static final ItemEntry<FlamingExplosion> FLAMING_EXPLOSION;
@@ -268,6 +274,18 @@ public class CoPItems {
 					.tag(CoPTagGen.BARBARIC).register();
 			PRIMAL_FORCE = item("primal_force", PrimalForce::new)
 					.tag(CoPTagGen.BARBARIC).register();
+
+
+			EVIL_SPIRIT_RITUAL = item("evil_spirit_ritual", EvilSpiritRitual::new)
+					.tag(CoPTagGen.EVIL).register();
+			EVIL_SPIRIT_EVOKE = item("evil_spirit_evoke", EvilSpiritEvoke::new)
+					.tag(CoPTagGen.EVIL).register();
+			EVIL_SPIRIT_AWAKENING = item("evil_spirit_awakening", EvilSpiritAwakening::new)
+					.tag(CoPTagGen.EVIL).register();
+			EVIL_SPIRIT_CURSE = item("evil_spirit_curse", EvilSpiritCurse::new)
+					.tag(CoPTagGen.EVIL).register();
+			EVIL_SPIRIT_WALK = item("evil_spirit_walk", EvilSpiritWalk::new)
+					.tag(CoPTagGen.EVIL).register();
 
 			WIND_THRUST = item("wind_thrust", WindThrust::new)
 					.tag(CoPTagGen.ELEMENTAL).register();

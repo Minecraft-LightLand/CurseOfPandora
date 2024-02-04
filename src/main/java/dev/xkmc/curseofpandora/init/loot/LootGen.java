@@ -88,6 +88,10 @@ public class LootGen {
 		return new ItemEntry<?>[]{BARBARIC_INSTINCT, BARBARIC_WRATH, BARBARIC_ROAR, BARBARIC_BLADE, PRIMAL_FORCE};
 	}
 
+	private static ItemEntry<?>[] evil() {
+		return new ItemEntry<?>[]{EVIL_SPIRIT_RITUAL, EVIL_SPIRIT_EVOKE, EVIL_SPIRIT_AWAKENING, EVIL_SPIRIT_CURSE, EVIL_SPIRIT_WALK};
+	}
+
 	private static ItemEntry<?>[] elemental() {
 		return new ItemEntry<?>[]{WIND_THRUST, EARTH_CRUSH, FLAMING_EXPLOSION, WAVING_SPELL, CURSE_REDIRECTION};
 	}
@@ -116,7 +120,8 @@ public class LootGen {
 						.addItem(200, CoPItems.GOLDEN_HEART.get())
 						.addItem(200, CoPItems.STABLE_BODY.get()).build()),
 		BASTION_OTHER(0.2, 0.1, BuiltInLootTables.BASTION_OTHER,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, hell())
+				() -> new PoolBuilder().fromTag(100, attr())
+						.fromTag(25, hell()).fromTag(25, barbaric())
 						.addItem(200, CoPItems.BLESS_LAVA_WALKER.get())
 						.addItem(200, CoPItems.GOLDEN_HEART.get())
 						.addItem(200, CoPItems.STABLE_BODY.get()).build()),
@@ -132,19 +137,20 @@ public class LootGen {
 		ANCIENT_CITY(0.4, 0.2, BuiltInLootTables.ANCIENT_CITY,
 				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, abyssal()).build()),
 		WOODLAND_MANSION(0.4, 0.2, BuiltInLootTables.WOODLAND_MANSION,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, evil()).build()),
+		PILLAGER_OUTPOST(0.2, 0.1, BuiltInLootTables.PILLAGER_OUTPOST,
+				() -> new PoolBuilder().fromTag(100, attr())
+						.fromTag(25, evil()).fromTag(25, elemental()).build()),
 		DESERT_PYRAMID(0.2, 0.1, BuiltInLootTables.DESERT_PYRAMID,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
+		JUNGLE_TEMPLE(0.2, 0.1, BuiltInLootTables.JUNGLE_TEMPLE,
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
+		UNDERWATER_RUIN_BIG(0.2, 0.1, BuiltInLootTables.UNDERWATER_RUIN_BIG,
 				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
 		SHIPWRECK_TREASURE(0.2, 0.1, BuiltInLootTables.SHIPWRECK_TREASURE,
 				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
-		UNDERWATER_RUIN_BIG(0.2, 0.1, BuiltInLootTables.UNDERWATER_RUIN_BIG,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
 		STRONGHOLD_CORRIDOR(0.2, 0.1, BuiltInLootTables.STRONGHOLD_CORRIDOR,
 				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
-		PILLAGER_OUTPOST(0.2, 0.1, BuiltInLootTables.PILLAGER_OUTPOST,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, elemental()).build()),
-		JUNGLE_TEMPLE(0.2, 0.1, BuiltInLootTables.JUNGLE_TEMPLE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, angelic()).build()),
 		ABANDONED_MINESHAFT(0.1, 0.05, BuiltInLootTables.ABANDONED_MINESHAFT, LootGen::buildPlaceholderLoot),
 		SIMPLE_DUNGEON(0.1, 0.05, BuiltInLootTables.SIMPLE_DUNGEON, LootGen::buildPlaceholderLoot),
 		VILLAGE_TEMPLE(0.1, 0.05, BuiltInLootTables.VILLAGE_TEMPLE, LootGen::buildPlaceholderLoot),

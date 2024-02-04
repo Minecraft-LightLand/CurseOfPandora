@@ -67,27 +67,52 @@
         {
           "type": "minecraft:item",
           "name": "curseofpandora:hellfire_skull",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:hellfire_reformation",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:eye_of_cursed_souls",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:cursed_soul_crystal",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:crown_of_demon",
-          "weight": 50
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:barbaric_instinct",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:barbaric_wrath",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:barbaric_roar",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:barbaric_blade",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:primal_force",
+          "weight": 25
         },
         {
           "type": "minecraft:item",

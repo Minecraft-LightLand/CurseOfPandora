@@ -66,28 +66,53 @@
         },
         {
           "type": "minecraft:item",
+          "name": "curseofpandora:evil_spirit_ritual",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:evil_spirit_evoke",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:evil_spirit_awakening",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:evil_spirit_curse",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:evil_spirit_walk",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:item",
           "name": "curseofpandora:wind_thrust",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:earth_crush",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:flaming_explosion",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:waving_spell",
-          "weight": 50
+          "weight": 25
         },
         {
           "type": "minecraft:item",
           "name": "curseofpandora:curse_redirection",
-          "weight": 50
+          "weight": 25
         }
       ],
       "rolls": 1.0
