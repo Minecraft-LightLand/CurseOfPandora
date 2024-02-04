@@ -1,8 +1,0 @@
-{
-  "type": "curseofpandora:mob_kills_mob",
-  "chance": 1.0,
-  "conditions": [],
-  "item": "curseofpandora:unstable_matter",
-  "killer": "minecraft:pig",
-  "target": "minecraft:creeper"
-}

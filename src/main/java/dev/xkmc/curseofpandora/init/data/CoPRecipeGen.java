@@ -222,6 +222,13 @@ public class CoPRecipeGen {
 					.define('C', CoPItems.CHARM.get())
 					.save(pvd, getID(CoPItems.FIRE_REJECT.get()));
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM_LUCK.get())::unlockedBy, CoPItems.CHARM.get())
+					.pattern("BAB").pattern("ACA").pattern("BAB")
+					.define('A', Items.BIG_DRIPLEAF)
+					.define('B', Items.RABBIT_FOOT)
+					.define('C', CoPItems.CHARM.get())
+					.save(pvd, getID(CoPItems.CHARM_LUCK.get()));
+
 		}
 
 		// sets

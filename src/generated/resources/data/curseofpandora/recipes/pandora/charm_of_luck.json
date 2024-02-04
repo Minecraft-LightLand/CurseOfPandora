@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:big_dripleaf"
+    },
+    "B": {
+      "item": "minecraft:rabbit_foot"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "ACA",
+    "BAB"
+  ],
+  "result": {
+    "item": "curseofpandora:charm_of_luck"
+  },
+  "show_notification": true
+}

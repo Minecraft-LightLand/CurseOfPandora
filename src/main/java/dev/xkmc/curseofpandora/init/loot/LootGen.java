@@ -64,7 +64,7 @@ public class LootGen {
 		return new ItemEntry<?>[]{
 				CHARM_HEALTH, CHARM_ARMOR, CHARM_SPEED,
 				CHARM_DAMAGE, CHARM_HEAVY, CHARM_ACCURACY, CHARM_CRIT, CHARM_BOW, CHARM_PROTECTION,
-				CHARM_MAGIC, CHARM_EXPLOSION
+				CHARM_MAGIC, CHARM_EXPLOSION, CHARM_LUCK
 		};
 	}
 
@@ -82,6 +82,10 @@ public class LootGen {
 
 	private static ItemEntry<?>[] abyssal() {
 		return new ItemEntry<?>[]{ABYSSAL_TREASURE, ABYSSAL_WATCHER, ABYSSAL_SHELL, ABYSSAL_CROWN, ABYSSAL_WILL};
+	}
+
+	private static ItemEntry<?>[] barbaric() {
+		return new ItemEntry<?>[]{BARBARIC_INSTINCT, BARBARIC_WRATH, BARBARIC_ROAR, BARBARIC_BLADE, PRIMAL_FORCE};
 	}
 
 	private static ItemEntry<?>[] elemental() {
@@ -117,7 +121,7 @@ public class LootGen {
 						.addItem(200, CoPItems.GOLDEN_HEART.get())
 						.addItem(200, CoPItems.STABLE_BODY.get()).build()),
 		BASTION_BRIDGE(0.2, 0.1, BuiltInLootTables.BASTION_BRIDGE,
-				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, hell())
+				() -> new PoolBuilder().fromTag(100, attr()).fromTag(50, barbaric())
 						.addItem(200, CoPItems.BLESS_LAVA_WALKER.get())
 						.addItem(200, CoPItems.GOLDEN_HEART.get())
 						.addItem(200, CoPItems.STABLE_BODY.get()).build()),

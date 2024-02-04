@@ -31,8 +31,8 @@ public class CoPGLMProvider extends GlobalLootModifierProvider {
 		for (LootGen.LootDefinition def : LootGen.LootDefinition.values()) {
 			this.add(def.id, new LuckAppendTableLootModifier(def.chance, def.bonus, def.getInner(), LootTableIdCondition.builder(def.table).build()));
 		}
-		add(EntityType.CREEPER, EntityType.PIG, CoPItems.TRANSMUTED_TISSUE.get(), 0.5);
-		add(EntityType.PIG, EntityType.CREEPER, CoPItems.UNSTABLE_MATTER.get(), 1);
+		//add(EntityType.CREEPER, EntityType.PIG, CoPItems.TRANSMUTED_TISSUE.get(), 0.5);
+		//add(EntityType.PIG, EntityType.CREEPER, CoPItems.UNSTABLE_MATTER.get(), 1);
 		add(EntityType.ZOMBIE, EntityType.PILLAGER, CoPItems.ROTTEN_SPINE.get(), 1);
 		add(EntityType.DROWNED, EntityType.PILLAGER, CoPItems.ERODED_SPINE.get(), 1);
 		add(EntityType.HUSK, EntityType.PILLAGER, CoPItems.DRIED_SPINE.get(), 1);

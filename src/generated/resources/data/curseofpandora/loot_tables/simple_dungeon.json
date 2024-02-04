@@ -58,6 +58,11 @@
           "type": "minecraft:item",
           "name": "curseofpandora:charm_of_explosion",
           "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_luck",
+          "weight": 100
         }
       ],
       "rolls": 1.0

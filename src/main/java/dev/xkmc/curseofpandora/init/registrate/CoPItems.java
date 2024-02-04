@@ -42,8 +42,8 @@ public class CoPItems {
 			ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT,
 			SPELLBOUND_ORB, ABYSS_CRYSTAL, SCULK_CRYSTAL,
 			BARBARIC_EDGE, EVIL_SPINE, EVIL_STONE;
-	public static final ItemEntry<GLMDropItem> BARBARIC_BLOOD, TRANSMUTED_TISSUE, UNSTABLE_MATTER,
-			ROTTEN_SPINE, ERODED_SPINE, DRIED_SPINE, ROTTEN_BRAIN, ERODED_BRAIN, DRIED_BRAIN;
+	public static final ItemEntry<GLMDropItem> BARBARIC_BLOOD, ROTTEN_SPINE, ERODED_SPINE, DRIED_SPINE,
+			ROTTEN_BRAIN, ERODED_BRAIN, DRIED_BRAIN;//TRANSMUTED_TISSUE, UNSTABLE_MATTER,
 	public static final ItemEntry<EnchDescItem> EXPLOSION_REJECT, MAGIC_REJECT,
 			ENVIRONMENTAL_REJECT, PROJECTILE_REJECT, OWNER_PROTECTION;
 	public static final ItemEntry<EffectRefreshItem> MINI_BEACON_SPEED, MINI_BEACON_HASTE, MINI_BEACON_JUMP,
@@ -56,7 +56,7 @@ public class CoPItems {
 	public static final ItemEntry<DescCurioItem> BLESS_LAVA_WALKER;
 	public static final ItemEntry<AttributeItem> CHARM_HEALTH, CHARM_ARMOR, CHARM_SPEED,
 			CHARM_DAMAGE, CHARM_HEAVY, CHARM_ACCURACY, CHARM_CRIT, CHARM_BOW, CHARM_PROTECTION,
-			CHARM_MAGIC, CHARM_EXPLOSION;
+			CHARM_MAGIC, CHARM_EXPLOSION, CHARM_LUCK;
 
 	public static final ItemEntry<CurseOfInertiaItem> CURSE_OF_INERTIA;
 	public static final ItemEntry<CurseOfProximityItem> CURSE_OF_PROXIMITY;
@@ -143,8 +143,8 @@ public class CoPItems {
 			SHADOW_FRAGMENT = ingredient("shadow_fragment", Item::new).register();
 			ABYSS_CRYSTAL = ingredient("abyss_crystal", Item::new).register();
 			BARBARIC_BLOOD = ingredient("barbaric_blood", GLMDropItem::new).register();
-			TRANSMUTED_TISSUE = ingredient("transmuted_tissue", GLMDropItem::new).register();
-			UNSTABLE_MATTER = ingredient("unstable_matter", GLMDropItem::new).register();
+			//TRANSMUTED_TISSUE = ingredient("transmuted_tissue", GLMDropItem::new).register();
+			//UNSTABLE_MATTER = ingredient("unstable_matter", GLMDropItem::new).register();
 			ROTTEN_SPINE = ingredient("rotten_spine", GLMDropItem::new).register();
 			ERODED_SPINE = ingredient("eroded_spine", GLMDropItem::new).register();
 			DRIED_SPINE = ingredient("dried_spine", GLMDropItem::new).register();
@@ -203,6 +203,11 @@ public class CoPItems {
 					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", CoPConfig.COMMON.attr.charmOfAccuracy::get),
 					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", () -> -CoPConfig.COMMON.attr.charmOfAccuracySlow.get())
 			)).tag(CoPTagGen.ATTR).register();
+
+
+			CHARM_LUCK = item("charm_of_luck", p -> new AttributeItem(p,
+					AttributeItem.add(()->Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfExplosion::get)))
+					.tag(CoPTagGen.ATTR).register();
 
 		}
 

@@ -61,6 +61,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "curseofpandora:charm_of_luck",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
           "name": "curseofpandora:bless_of_snow_walker",
           "weight": 400
         }

@@ -33,6 +33,7 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue charmOfProtection;
 			public final ForgeConfigSpec.DoubleValue charmOfMagic;
 			public final ForgeConfigSpec.DoubleValue charmOfExplosion;
+			public final ForgeConfigSpec.DoubleValue charmOfLuck;
 
 			private Attr(ForgeConfigSpec.Builder builder) {
 				builder.push("AttributeCharms");
@@ -50,6 +51,7 @@ public class CoPConfig {
 				charmOfProtection = builder.defineInRange("charmOfProtection", 0.04, 0, 1);
 				charmOfMagic = builder.defineInRange("charmOfMagic", 0.1, 0, 10);
 				charmOfExplosion = builder.defineInRange("charmOfExplosion", 0.1, 0, 10);
+				charmOfLuck = builder.defineInRange("charmOfLuck", 1d, 0, 10);
 				builder.pop();
 			}
 

@@ -1,8 +1,0 @@
-{
-  "type": "curseofpandora:mob_kills_mob",
-  "chance": 0.5,
-  "conditions": [],
-  "item": "curseofpandora:transmuted_tissue",
-  "killer": "minecraft:creeper",
-  "target": "minecraft:pig"
-}
