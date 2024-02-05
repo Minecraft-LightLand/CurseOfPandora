@@ -209,10 +209,9 @@ public class CoPItems {
 					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", CoPConfig.COMMON.attr.charmOfAccuracy::get),
 					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", () -> -CoPConfig.COMMON.attr.charmOfAccuracySlow.get())
 			)).tag(CoPTagGen.ATTR).register();
-
-
+			
 			CHARM_LUCK = item("charm_of_luck", p -> new AttributeItem(p,
-					AttributeItem.add(() -> Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfExplosion::get)))
+					AttributeItem.add(() -> Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfLuck::get)))
 					.tag(CoPTagGen.ATTR).register();
 
 		}
