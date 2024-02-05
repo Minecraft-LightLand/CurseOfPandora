@@ -1,6 +1,7 @@
 package dev.xkmc.curseofpandora.init.registrate;
 
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.xkmc.curseofpandora.content.effect.EmptyEffect;
 import dev.xkmc.curseofpandora.content.effect.FakeRenderEffect;
 import dev.xkmc.curseofpandora.content.effect.ShadowEffect;
 import net.minecraft.world.effect.MobEffect;
@@ -30,6 +31,16 @@ public class CoPEffects {
 	public static final RegistryEntry<ShadowEffect> SHADOW = REGISTRATE
 			.effect("shadow", () -> new ShadowEffect(MobEffectCategory.NEUTRAL, 0x000000),
 					"Shadow Mark")
+			.lang(MobEffect::getDescriptionId).register();
+
+	public static final RegistryEntry<EmptyEffect> AWAKENING = REGISTRATE
+			.effect("evil_spirit_awakening", () -> new EmptyEffect(MobEffectCategory.NEUTRAL, 0x000000),
+					"Evil Spirit Awakening")
+			.lang(MobEffect::getDescriptionId).register();
+
+	public static final RegistryEntry<EmptyEffect> SPIRIT_WALK = REGISTRATE
+			.effect("evil_spirit_walk", () -> new EmptyEffect(MobEffectCategory.NEUTRAL, 0x000000),
+					"Evil Spirit Walk")
 			.lang(MobEffect::getDescriptionId).register();
 
 	public static void register() {

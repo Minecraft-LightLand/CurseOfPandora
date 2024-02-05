@@ -1,11 +1,15 @@
 package dev.xkmc.curseofpandora.content.sets.evil;
 
 import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -17,10 +21,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {//TODO
+public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 
 	private static int getIndexReq() {
 		return CoPConfig.COMMON.evil.evilSpiritCurseRealityIndex.get();
+	}
+
+	private static double getThreshold() {
+		return CoPConfig.COMMON.evil.evilSpiritCurseThreshold.get();
+	}
+
+	private static double getBonus() {
+		return CoPConfig.COMMON.evil.evilSpiritCurseBonus.get();
 	}
 
 	public EvilSpiritCurse(Properties properties) {
@@ -32,6 +44,10 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {/
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
+		list.add(CoPLangData.Evil.CURSE.get(
+				(int) Math.round(getThreshold() * 100),
+				(int) Math.round(getBonus() * 100)
+		).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
@@ -41,7 +57,7 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {/
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken {
+	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
 		@Override
 		protected void removeImpl(Player player) {
@@ -53,6 +69,16 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {/
 
 		}
 
+		@Override
+		public void onPlayerHurtTarget(Player player, AttackCache cache) {
+			var event = cache.getLivingHurtEvent();
+			assert event != null;
+			if (event.getSource().is(L2DamageTypes.MAGIC)) {
+				if (cache.getAttackTarget().getHealth() < cache.getAttackTarget().getMaxHealth() * getThreshold()) {
+					cache.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus())));
+				}
+			}
+		}
 	}
 
 }

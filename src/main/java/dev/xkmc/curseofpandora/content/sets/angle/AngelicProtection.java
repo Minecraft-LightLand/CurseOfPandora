@@ -7,6 +7,7 @@ import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.misc.ILCTotem;
 import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.network.TotemUseToClient;
+import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;

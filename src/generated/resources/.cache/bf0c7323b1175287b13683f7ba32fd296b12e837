@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-04T22:52:36.714467	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-c14a99816d460b896c7def155a52419b16177a23 assets/curseofpandora/lang/en_ud.json
-a0431715d55b88fb39e77f6dcae41210a3ef7f99 assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-02-05T11:20:45.771557	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+60bdd4afa9680de122190e3177d2725cc94900fc assets/curseofpandora/lang/en_ud.json
+da2100d5cb9fbdb94138a9f55dfa4cf49bdde99d assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 9e663ded8effd00979e0800ba5b66bdbfd249f64 assets/curseofpandora/models/item/abyssal_edge.json
@@ -303,8 +303,8 @@ e4add7ffdeb0de367cb8f4605b8ee4db2bfa4f9b data/curseofpandora/tags/items/mini_bea
 07cf071ee1f27431be0232e59a6d38bb032a32c8 data/curseofpandora/tags/items/reality_charms.json
 cd1f4cb4aebdd3628132fc39f6d408992d961f85 data/curseofpandora/tags/items/shadow_charms.json
 88c5635dfa58e2155062017721841168d167afbe data/jeed/tags/mob_effect/hidden.json
-b98e6c0329fa696c7dae18bab0da520023b41308 data/l2complements/tags/items/l2c_totems.json
-cc841ee80a5520e5daf59f47d9c60ec50d799b89 data/l2complements/tags/mob_effect/skill_effect.json
+604b3857f773c17e14b5a6ffaa5f0b7302d96926 data/l2complements/tags/items/l2c_totems.json
+6c88b418d2b48482932018f76e9a3a0923c68081 data/l2complements/tags/mob_effect/skill_effect.json
 54dbeb697e82ab8c4a9505b47395450dd78cbcdf data/l2hostility/tags/items/trait_item.json
 d06014bac89533c3455871c277a89a4fc326773e data/minecraft/tags/items/swords.json
 1cd6e1aca0bbce5c9b053af5b8fc1821bd0ffb49 data/pandora/tags/items/allow_duplicates.json

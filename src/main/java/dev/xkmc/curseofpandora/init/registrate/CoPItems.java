@@ -212,7 +212,7 @@ public class CoPItems {
 
 
 			CHARM_LUCK = item("charm_of_luck", p -> new AttributeItem(p,
-					AttributeItem.add(()->Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfExplosion::get)))
+					AttributeItem.add(() -> Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfExplosion::get)))
 					.tag(CoPTagGen.ATTR).register();
 
 		}
@@ -275,7 +275,6 @@ public class CoPItems {
 			PRIMAL_FORCE = item("primal_force", PrimalForce::new)
 					.tag(CoPTagGen.BARBARIC).register();
 
-
 			EVIL_SPIRIT_RITUAL = item("evil_spirit_ritual", EvilSpiritRitual::new)
 					.tag(CoPTagGen.EVIL).register();
 			EVIL_SPIRIT_EVOKE = item("evil_spirit_evoke", EvilSpiritEvoke::new)
@@ -285,7 +284,7 @@ public class CoPItems {
 			EVIL_SPIRIT_CURSE = item("evil_spirit_curse", EvilSpiritCurse::new)
 					.tag(CoPTagGen.EVIL).register();
 			EVIL_SPIRIT_WALK = item("evil_spirit_walk", EvilSpiritWalk::new)
-					.tag(CoPTagGen.EVIL).register();
+					.tag(CoPTagGen.EVIL, TagGen.TOTEM).register();
 
 			WIND_THRUST = item("wind_thrust", WindThrust::new)
 					.tag(CoPTagGen.ELEMENTAL).register();

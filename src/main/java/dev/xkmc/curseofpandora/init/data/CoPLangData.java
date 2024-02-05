@@ -235,7 +235,11 @@ public class CoPLangData {
 	}
 
 	public enum Evil implements Info {
-		;
+		RITUAL("Mobs you kills drop extra exp, equals to %s%% of their max health", 1),
+		EVOKE("When you are hit, summons Vex to fight for you. Each lasts %s seconds. Cool down: %s seconds", 2),
+		AWAKENING("When you kills enemy, gain %s%% magic damage and %s%% damage reduction for %s seconds, stacking up to %s level", 4),
+		CURSE("Magic damage against mobs with %s%% or lower health increases by %s%%", 2),
+		WALK("Evil spirit possess you. Gain %s%% magic and %s%% attack damage bonus. When taking fatal damage, exit possession mode for %s seconds.", 3);
 
 		final Entry entry;
 

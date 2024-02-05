@@ -17,10 +17,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EvilSpiritRitual extends ITokenProviderItem<EvilSpiritRitual.Data> {//TODO
+public class EvilSpiritRitual extends ITokenProviderItem<EvilSpiritRitual.Data> {
 
 	private static int getIndexReq() {
 		return CoPConfig.COMMON.evil.evilSpiritRitualRealityIndex.get();
+	}
+
+	public static double getFactor() {
+		return CoPConfig.COMMON.evil.evilSpiritRitualExpRate.get();
 	}
 
 	public EvilSpiritRitual(Properties properties) {
@@ -32,6 +36,9 @@ public class EvilSpiritRitual extends ITokenProviderItem<EvilSpiritRitual.Data> 
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
+		list.add(CoPLangData.Evil.RITUAL.get(
+				(int) Math.round(getFactor() * 100)
+		).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

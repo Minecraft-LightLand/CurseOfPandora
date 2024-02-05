@@ -93,7 +93,12 @@
 	"barbaric_instinct": "蛮荒本能",
 	"barbaric_roar": "蛮荒恐吓",
 	"barbaric_wrath": "蛮荒暴戾",
-	"primal_force": "原始之力"
+	"primal_force": "原始之力",
+	"evil_spirit_ritual": "邪祟秘法",
+	"evil_spirit_evoke": "邪祟唤魔",
+	"evil_spirit_awakening": "邪祟觉醒",
+	"evil_spirit_curse": "邪祟咒灭",
+	"evil_spirit_walk": "祟神附体"
   },
   "curseofpandora.tooltip": {
 	"misc": {
@@ -169,6 +174,13 @@
 	  "instinct": "玩家持武器攻击目标时回复%s%%生命值，冷却%s秒",
 	  "primal_1": "玩家获得最大生命值%s%%的护甲",
 	  "primal_2": "你被怪物攻击时，那些怪物获得最大生命值%s%%的护甲"
+	},
+	"evil": {
+	  "ritual": "你击杀的敌人额外掉落%s%%最大生命值的经验",
+	  "evoke": "你被攻击时召唤邪灵帮助你反击。邪灵能存在%s秒，召唤冷却%s秒",
+	  "awakening": "你击杀敌人时，获得%3$s秒的%1$s%%魔法伤害加成和%2$s%%伤害减免。最多叠加%4$s层",
+	  "curse": "对血量低于%s%%的生物造成的魔法伤害+%s%%",
+	  "walk": "处于祟神附体状态下时获得%s%%魔法伤害加成和%s%%攻击伤害加成。受到致命伤时，退出附体状态，回复全部生命值，之后进入%s秒冷却"
 	}
   },
   "effect.curseofpandora": {
@@ -181,7 +193,11 @@
 	"terrorized": "恐惧指示物",
 	"terrorized.description": "只用于渲染。显示你是否因为现实第五诅咒的效果无法对该目标造成伤害",
 	"shadow": "虚影",
-	"shadow.description": "虚影标记"
+	"shadow.description": "虚影标记",
+	"evil_spirit_awakening": "邪祟觉醒",
+	"evil_spirit_awakening.description": "邪祟觉醒饰品效果标记",
+	"evil_spirit_walk": "祟神附体",
+	"evil_spirit_walk.description": "祟神附体饰品效果标记"
   },
   "attribute.name": {
 	"reality_index": "现实指数",
@@ -206,5 +222,6 @@
 	"echo_abyssal_fangs.player": "%ss被%s的深渊之牙杀死了"
   },
   "entity.curseofpandora.wind_blade": "剑气",
-  "entity.curseofpandora.abyssal_fangs": "深渊之牙"
+  "entity.curseofpandora.abyssal_fangs": "深渊之牙",
+  "entity.curseofpandora.evil_spirit": "邪灵"
 }

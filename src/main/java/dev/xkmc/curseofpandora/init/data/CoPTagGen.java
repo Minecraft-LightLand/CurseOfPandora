@@ -45,7 +45,9 @@ public class CoPTagGen {
 				CoPEffects.FAKE_TERROR_PRE.get(),
 				CoPEffects.FAKE_TERROR.get(),
 				CoPEffects.PRUDENCE.get(),
-				CoPEffects.SHADOW.get()
+				CoPEffects.SHADOW.get(),
+				CoPEffects.AWAKENING.get(),
+				CoPEffects.SPIRIT_WALK.get()
 		);
 		pvd.addTag(HIDDEN).add(
 				CoPEffects.FAKE_TERRORIZED.get(),

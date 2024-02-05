@@ -475,23 +475,59 @@ public class CoPConfig {
 		public static class Evil {
 
 			public final ForgeConfigSpec.IntValue evilSpiritRitualRealityIndex;
+			public final ForgeConfigSpec.DoubleValue evilSpiritRitualExpRate;
 			public final ForgeConfigSpec.IntValue evilSpiritEvokeRealityIndex;
+			public final ForgeConfigSpec.IntValue evilSpiritEvokeDuration;
+			public final ForgeConfigSpec.IntValue evilSpiritEvokeCoolDown;
 			public final ForgeConfigSpec.IntValue evilSpiritAwakeningRealityIndex;
+			public final ForgeConfigSpec.DoubleValue evilSpiritAwakeningMagicBonus;
+			public final ForgeConfigSpec.DoubleValue evilSpiritAwakeningReduction;
+			public final ForgeConfigSpec.IntValue evilSpiritAwakeningDuration;
+			public final ForgeConfigSpec.IntValue evilSpiritAwakeningMaxLevel;
 			public final ForgeConfigSpec.IntValue evilSpiritCurseRealityIndex;
+			public final ForgeConfigSpec.DoubleValue evilSpiritCurseThreshold;
+			public final ForgeConfigSpec.DoubleValue evilSpiritCurseBonus;
 			public final ForgeConfigSpec.IntValue evilSpiritWalkRealityIndex;
+			public final ForgeConfigSpec.DoubleValue evilSpiritWalkMagicBonus;
+			public final ForgeConfigSpec.DoubleValue evilSpiritWalkAtkBonus;
+			public final ForgeConfigSpec.IntValue evilSpiritWalkCoolDown;
 
 			private Evil(ForgeConfigSpec.Builder builder) {
 				builder.push("Evil");
 				evilSpiritRitualRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Ritual")
 						.defineInRange("infectiveMutationRealityIndex", 3, 0, 7);
+				evilSpiritRitualExpRate = builder.comment("Evil Spirit Ritual extra exp drop as percentage of max health")
+						.defineInRange("evilSpiritRitualExpRate", 0.5, 0, 100);
 				evilSpiritEvokeRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Evoke")
 						.defineInRange("parasiticMutationRealityIndex", 4, 0, 7);
+				evilSpiritEvokeDuration = builder.comment("Evil Spirit Evoke summoned Vex lifetime")
+						.defineInRange("evilSpiritEvokeDuration", 400, 0, 100000);
+				evilSpiritEvokeCoolDown = builder.comment("Evil Spirit Evoke summoning cool down")
+						.defineInRange("evilSpiritEvokeCoolDown", 60, 0, 10000);
 				evilSpiritAwakeningRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Awakening")
 						.defineInRange("deformingMutationRealityIndex", 5, 0, 7);
+				evilSpiritAwakeningMagicBonus = builder.comment("Evil Spirit Awakening magic damage bonus")
+						.defineInRange("evilSpiritAwakeningMagicBonus", 0.15, 0, 10);
+				evilSpiritAwakeningReduction = builder.comment("Evil Spirit Awakening damage reduction")
+						.defineInRange("evilSpiritAwakeningAtkBonus", 0.1, 0, 10);
+				evilSpiritAwakeningDuration = builder.comment("Evil Spirit Awakening bonus duration")
+						.defineInRange("evilSpiritAwakeningDuration", 600, 0, 1000000);
+				evilSpiritAwakeningMaxLevel = builder.comment("Evil Spirit Awakening bonus max level")
+						.defineInRange("evilSpiritAwakeningMaxLevel", 5, 0, 1000);
 				evilSpiritCurseRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Curse")
 						.defineInRange("hostileMutationRealityIndex", 6, 0, 7);
+				evilSpiritCurseThreshold = builder.comment("Evil Spirit Curse health threshold")
+						.defineInRange("evilSpiritCurseThreshold", 0.2, 0, 10);
+				evilSpiritCurseBonus = builder.comment("Evil Spirit Curse magic damage bonus")
+						.defineInRange("evilSpiritCurseBonus", 1d, 0, 10);
 				evilSpiritWalkRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Walk")
 						.defineInRange("distortedMutationRealityIndex", 7, 0, 7);
+				evilSpiritWalkMagicBonus = builder.comment("Evil Spirit Walk magic damage bonus")
+						.defineInRange("evilSpiritWalkMagicBonus", 0.5, 0, 10);
+				evilSpiritWalkAtkBonus = builder.comment("Evil Spirit Walk attack damage bonus")
+						.defineInRange("evilSpiritWalkAtkBonus", 0.5, 0, 10);
+				evilSpiritWalkCoolDown = builder.comment("Evil Spirit Walk cool down")
+						.defineInRange("evilSpiritWalkCoolDown", 600, 0, 1000000);
 				builder.pop();
 			}
 

@@ -4,7 +4,6 @@ import dev.xkmc.curseofpandora.compat.CoPTraits;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2hostility.init.L2Hostility;
-import dev.xkmc.l2hostility.init.entries.LHRegistrate;
 import dev.xkmc.l2library.serial.config.ConfigDataProvider;
 import dev.xkmc.l2tabs.init.L2Tabs;
 import dev.xkmc.l2tabs.init.data.AttributeDisplayConfig;
@@ -27,7 +26,8 @@ public class CoPConfigGen extends ConfigDataProvider {
 				new AttributeDisplayConfig()
 						.add(CoPAttrs.SPELL.get(), 20000)
 						.add(CoPAttrs.REALITY.get(), 21000)
-						.add(CoPAttrs.ABSORB.get(), 23000));
+						.add(CoPAttrs.REDUCTION.get(), true, 23000, 0)
+						.add(CoPAttrs.ABSORB.get(), 24000));
 	}
 
 }
