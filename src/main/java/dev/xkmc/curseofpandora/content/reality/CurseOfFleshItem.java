@@ -67,7 +67,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 		@Override
 		public void tickImpl(Player player) {
 			if (player.getFoodData().getFoodLevel() >= getThreshold()) {
-				if (maintain < getDuration())
+				if (maintain < 100000000)
 					maintain++;
 			} else maintain = 0;
 			super.tickImpl(player);

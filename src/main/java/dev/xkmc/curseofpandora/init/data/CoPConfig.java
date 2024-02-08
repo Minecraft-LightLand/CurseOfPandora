@@ -573,7 +573,16 @@ public class CoPConfig {
 		public final Evil evil;
 		public final Weapon weapon;
 
+		public final ForgeConfigSpec.DoubleValue lootLuckFactor;
+		public final ForgeConfigSpec.IntValue maxItemGenerated;
+
 		Common(ForgeConfigSpec.Builder builder) {
+			builder.push("Loot");
+			lootLuckFactor = builder.comment("Scale up/down luck in calculation of chance to find a pandora charm in chest")
+					.defineInRange("lootLuckFactor", 1d, 0, 10);
+			maxItemGenerated = builder.comment("Maximum number of pandora charms generated in loot chest")
+					.defineInRange("maxItemGenerated", 2, 0, 10);
+			builder.pop();
 			this.attr = new Attr(builder);
 			this.curse = new Curse(builder);
 			this.angelic = new Angelic(builder);

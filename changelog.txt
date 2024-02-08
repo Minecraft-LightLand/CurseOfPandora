@@ -1,5 +1,9 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.5
+- Add config to chest loot
+- Fix curse of flesh
+
 2.4.4
 - Add Abyssal / Barbaric / Evil Spirit series, charm of luck
 - Add 4 weaponss

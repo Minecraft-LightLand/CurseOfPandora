@@ -2,6 +2,7 @@ package dev.xkmc.curseofpandora.init.loot;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -37,11 +38,14 @@ public class LuckAppendTableLootModifier extends LootModifier {
 
 	@Override
 	protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> list, LootContext context) {
-		double total = chance + bonus * context.getLuck();
+		double luckFactor = CoPConfig.COMMON.lootLuckFactor.get();
+		double total = chance + bonus * luckFactor * context.getLuck();
 		int count = (int) total;
 		if (total - count > context.getRandom().nextDouble()) {
 			count++;
 		}
+		int maxItem = CoPConfig.COMMON.maxItemGenerated.get();
+		count = Math.min(maxItem, count);
 		for (int i = 0; i < count; i++) {
 			add(list, context);
 		}
