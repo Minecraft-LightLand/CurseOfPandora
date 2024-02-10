@@ -30,7 +30,7 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> {
 	public static int getStep(Player player) {
 		int depth = getDepth(player);
 		double y = player.position().y;
-		return y > 0 ? 0 : (int) Math.floor(y / depth);
+		return y > 0 ? 0 : (int) -Math.floor(y / depth);
 	}
 
 
