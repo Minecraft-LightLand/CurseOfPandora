@@ -1,5 +1,8 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.6
+- Fix server launch crash
+
 2.4.5
 - Add config to chest loot
 - Fix curse of flesh
