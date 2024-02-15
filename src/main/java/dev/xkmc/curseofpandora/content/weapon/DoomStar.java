@@ -4,12 +4,14 @@ import dev.xkmc.curseofpandora.content.entity.WindBladeEntity;
 import dev.xkmc.curseofpandora.content.entity.WindBladeWeapon;
 import dev.xkmc.curseofpandora.content.sets.shadow.VoidOverflow;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -70,6 +72,11 @@ public class DoomStar extends SwordItem implements EmptyClickListener, WindBlade
 		var type = owner instanceof Player player && VoidOverflow.check(player) ?
 				CoPDamageTypeGen.VOID_CURSE : CoPDamageTypeGen.SHADOW_CURSE;
 		return new DamageSource(CoPDamageTypeGen.forKey(entity.level(), type), entity, owner);
+	}
+
+	@Override
+	public ResourceLocation bladeTexture() {
+		return new ResourceLocation(CurseOfPandora.MODID, "shadow_blade");
 	}
 
 }

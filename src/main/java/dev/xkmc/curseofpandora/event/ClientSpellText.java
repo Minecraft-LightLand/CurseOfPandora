@@ -73,13 +73,13 @@ public class ClientSpellText {
 		}
 	}
 
-	public static Component getDepth(Level level) {
-		int def = CoPConfig.COMMON.abyssal.abyssalDepthRequirement.get();
+	public static Component getDepth(@Nullable Level level) {
+		int def = CoPConfig.COMMON.abyssal.abyssalDepthStep.get();
 		if (level != null) {
 			Player player = Proxy.getClientPlayer();
 			if (player != null) {
 				if (ConditionalData.HOLDER.get(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey())) {
-					int val = CoPConfig.COMMON.abyssal.abyssalWillDepthRequirement.get();
+					int val = CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get();
 					return Component.literal(val + "").withStyle(ChatFormatting.YELLOW);
 				}
 			}

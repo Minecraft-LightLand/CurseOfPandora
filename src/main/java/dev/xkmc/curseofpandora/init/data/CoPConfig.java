@@ -356,18 +356,18 @@ public class CoPConfig {
 			public final ForgeConfigSpec.IntValue abyssalShellRealityIndex;
 			public final ForgeConfigSpec.IntValue abyssalCrownRealityIndex;
 			public final ForgeConfigSpec.IntValue abyssalWillRealityIndex;
-			public final ForgeConfigSpec.IntValue abyssalDepthRequirement;
-			public final ForgeConfigSpec.IntValue abyssalWillDepthRequirement;
+			public final ForgeConfigSpec.IntValue abyssalDepthStep;
+			public final ForgeConfigSpec.IntValue abyssalWillDepthStep;
 			public final ForgeConfigSpec.DoubleValue abyssalWatcherRegen;
 			public final ForgeConfigSpec.DoubleValue abyssalShellBonus;
 			public final ForgeConfigSpec.DoubleValue abyssalCrownChance;
 
 			private Abyssal(ForgeConfigSpec.Builder builder) {
 				builder.push("Abyssal");
-				abyssalDepthRequirement = builder.comment("Depth requirement for Abyssal charms")
-						.defineInRange("abyssalDepthRequirement", 12, 0, 64);
-				abyssalWillDepthRequirement = builder.comment("Depth requirement for Abyssal charms with Abyssal Will")
-						.defineInRange("abyssalDepthRequirement", 8, 0, 64);
+				abyssalDepthStep = builder.comment("Depth requirement for Abyssal charms")
+						.defineInRange("abyssalDepthStep", 12, 0, 64);
+				abyssalWillDepthStep = builder.comment("Depth requirement for Abyssal charms with Abyssal Will")
+						.defineInRange("abyssalWillDepthStep", 8, 0, 64);
 				abyssalTreasureRealityIndex = builder.comment("Reality Index requirement for Abyssal Treasure")
 						.defineInRange("abyssalTreasureRealityIndex", 3, 0, 7);
 				abyssalWatcherRealityIndex = builder.comment("Reality Index requirement for Abyssal Watcher")

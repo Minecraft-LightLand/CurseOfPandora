@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.content.weapon;
 import dev.xkmc.curseofpandora.content.entity.WindBladeEntity;
 import dev.xkmc.curseofpandora.content.entity.WindBladeWeapon;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
@@ -15,6 +16,7 @@ import dev.xkmc.l2library.init.explosion.ExplosionHandler;
 import dev.xkmc.l2library.init.explosion.VanillaExplosionContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -120,6 +122,11 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 	@Override
 	public boolean glow() {
 		return true;
+	}
+
+	@Override
+	public ResourceLocation bladeTexture() {
+		return new ResourceLocation(CurseOfPandora.MODID, "flame_blade");
 	}
 
 }

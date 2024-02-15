@@ -1,5 +1,9 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.7
+- Fix Abyssal Will
+- Fix compat with right click equip curios
+
 2.4.6
 - Fix server launch crash
 
