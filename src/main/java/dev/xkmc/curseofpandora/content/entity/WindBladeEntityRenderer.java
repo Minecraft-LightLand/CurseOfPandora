@@ -28,7 +28,7 @@ public class WindBladeEntityRenderer extends EntityRenderer<WindBladeEntity> {
 
 	@Override
 	public void render(WindBladeEntity entity, float yRot, float partial, PoseStack matrix, MultiBufferSource buffer, int light) {
-		if(entity.getStack().getItem() instanceof WindBladeWeapon weapon && weapon.glow()){
+		if (entity.getStack().getItem() instanceof WindBladeWeapon weapon && weapon.glow()) {
 			light = LightTexture.FULL_BRIGHT;
 		}
 		matrix.pushPose();
@@ -67,6 +67,9 @@ public class WindBladeEntityRenderer extends EntityRenderer<WindBladeEntity> {
 
 	@Override
 	public ResourceLocation getTextureLocation(WindBladeEntity entity) {
+		if (entity.getStack().getItem() instanceof WindBladeWeapon weapon) {
+			return weapon.bladeTexture();
+		}
 		return TEXTURE;
 	}
 }

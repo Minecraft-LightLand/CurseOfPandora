@@ -1,5 +1,6 @@
 package dev.xkmc.curseofpandora.content.entity;
 
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -18,5 +19,7 @@ public interface WindBladeWeapon {
 	}
 
 	ResourceLocation bladeTexture();
+
+	ParticleOptions getParticle();
 
 }

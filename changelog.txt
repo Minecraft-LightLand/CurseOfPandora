@@ -1,8 +1,10 @@
 18 / 12 / 7 / 35 / 4
 
 2.4.7
-- Fix Abyssal Will
+- Fix Charm of protection not using mult-total
+- Fix Abyssal Will text
 - Fix compat with right click equip curios
+- Add unique texture and particle for swords
 
 2.4.6
 - Fix server launch crash

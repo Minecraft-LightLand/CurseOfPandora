@@ -2,10 +2,10 @@ package dev.xkmc.curseofpandora.content.entity;
 
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
-import dev.xkmc.l2damagetracker.contents.attributes.WrappedAttribute;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
@@ -35,6 +35,7 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 	@SerialClass.SerialField
 	public float zrot = 0f;
 
+	@SerialClass.SerialField
 	private ItemStack issuer = ItemStack.EMPTY;
 
 	public WindBladeEntity(EntityType<? extends WindBladeEntity> type, Level w) {
@@ -73,16 +74,17 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 		if (last <= 0) {
 			discard();
 		}
-
+		ParticleOptions particle = issuer.getItem() instanceof WindBladeWeapon weapon ?
+				weapon.getParticle() : ParticleTypes.CRIT;
 		double vx = velocity.x;
 		double vy = velocity.y;
 		double vz = velocity.z;
 		for (int i = 0; i < 4; ++i) {
-			level().addParticle(ParticleTypes.CRIT,
+			level().addParticle(particle,
 					this.getX() + vx * (double) i / 4.0D,
 					this.getY() + vy * (double) i / 4.0D,
 					this.getZ() + vz * (double) i / 4.0D,
-					-vx, -vy + 0.2, -vz);
+					0, 0, 0);
 		}
 	}
 
@@ -103,13 +105,13 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 			}
 			float dmg = damage;
 			if (getOwner() instanceof Player player) {
-				double cr = ((WrappedAttribute) L2DamageTracker.CRIT_RATE.get()).getWrappedValue(player);
-				double cd = ((WrappedAttribute) L2DamageTracker.CRIT_DMG.get()).getWrappedValue(player);
-				double strength = ((WrappedAttribute) L2DamageTracker.BOW_STRENGTH.get()).getWrappedValue(player);
+				double cr = L2DamageTracker.CRIT_RATE.get().getWrappedValue(player);
+				double cd = L2DamageTracker.CRIT_DMG.get().getWrappedValue(player);
+				double strength = L2DamageTracker.BOW_STRENGTH.get().getWrappedValue(player);
 				if (player.getRandom().nextDouble() < cr) {
 					strength *= 1.0 + cd;
 				}
-				dmg *= strength;
+				dmg *= (float) strength;
 			}
 			entity.hurt(source, dmg);
 			if (owner instanceof LivingEntity) {
@@ -151,11 +153,13 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 	@Override
 	public void writeSpawnData(FriendlyByteBuf buffer) {
 		buffer.writeFloat(zrot);
+		buffer.writeItemStack(issuer, true);
 	}
 
 	@Override
 	public void readSpawnData(FriendlyByteBuf additionalData) {
 		zrot = additionalData.readFloat();
+		issuer = additionalData.readItem();
 	}
 
 	public ItemStack getStack() {

@@ -10,6 +10,8 @@ import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -76,7 +78,12 @@ public class DoomStar extends SwordItem implements EmptyClickListener, WindBlade
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return new ResourceLocation(CurseOfPandora.MODID, "shadow_blade");
+		return new ResourceLocation(CurseOfPandora.MODID, "textures/entity/shadow_blade.png");
+	}
+
+	@Override
+	public ParticleOptions getParticle() {
+		return ParticleTypes.DRAGON_BREATH;
 	}
 
 }

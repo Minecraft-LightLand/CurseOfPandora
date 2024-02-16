@@ -25,7 +25,7 @@ public record SlotAdder(String name, String slotId, UUID slot, int slotCount) im
 		var old = opt.get().getModifiers().get(slot);
 		if (old == null || old.getAmount() != slotCount) {
 			opt.get().removeModifier(slot);
-			opt.get().addTransientModifier(new AttributeModifier(slot, name,
+			opt.get().addPermanentModifier(new AttributeModifier(slot, name,
 					slotCount, AttributeModifier.Operation.ADDITION));
 		}
 	}

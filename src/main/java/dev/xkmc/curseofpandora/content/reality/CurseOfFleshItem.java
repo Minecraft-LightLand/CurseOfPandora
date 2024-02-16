@@ -93,6 +93,9 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 
 		public void tickImpl(Player player) {
 			doAttributeLimit(player, Set.of(), false);
+			if (player.getHealth() > player.getMaxHealth()) {
+				player.setHealth(player.getMaxHealth());
+			}
 		}
 
 	}

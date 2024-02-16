@@ -15,6 +15,9 @@ import dev.xkmc.l2library.init.explosion.BaseExplosionContext;
 import dev.xkmc.l2library.init.explosion.ExplosionHandler;
 import dev.xkmc.l2library.init.explosion.VanillaExplosionContext;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.DustColorTransitionOptions;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -79,7 +82,7 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 			WindBladeEntity e = new WindBladeEntity(level);
 			e.setOwner(player);
 			e.setPos(player.getX(), player.getEyeY() - 0.5f, player.getZ());
-			e.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, velocity, 1);
+			e.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, velocity, 0);
 			e.setProperties(dmg, Math.round(dist / velocity), f, stack);
 			level.addFreshEntity(e);
 		}
@@ -126,7 +129,12 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return new ResourceLocation(CurseOfPandora.MODID, "flame_blade");
+		return new ResourceLocation(CurseOfPandora.MODID, "textures/entity/flame_blade.png");
+	}
+
+	@Override
+	public ParticleOptions getParticle() {
+		return DustColorTransitionOptions.SCULK_TO_REDSTONE;
 	}
 
 }

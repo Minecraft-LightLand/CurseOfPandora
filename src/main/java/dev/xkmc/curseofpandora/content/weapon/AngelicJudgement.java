@@ -9,6 +9,8 @@ import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -63,7 +65,7 @@ public class AngelicJudgement extends SwordItem implements EmptyClickListener, W
 				WindBladeEntity e = new WindBladeEntity(level);
 				e.setOwner(player);
 				e.setPos(player.getX(), player.getEyeY() - 0.5f, player.getZ());
-				e.shootFromRotation(player, player.getXRot(), y, 0, velocity, 1);
+				e.shootFromRotation(player, player.getXRot(), y, 0, velocity, 0);
 				e.setProperties(dmg, Math.round(dist / velocity), f, stack);
 				level.addFreshEntity(e);
 			}
@@ -86,7 +88,12 @@ public class AngelicJudgement extends SwordItem implements EmptyClickListener, W
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return new ResourceLocation(CurseOfPandora.MODID, "angelic_blade");
+		return new ResourceLocation(CurseOfPandora.MODID, "textures/entity/angelic_blade.png");
+	}
+
+	@Override
+	public ParticleOptions getParticle() {
+		return ParticleTypes.WAX_OFF;
 	}
 
 }
