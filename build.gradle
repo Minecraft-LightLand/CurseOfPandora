@@ -184,20 +184,24 @@ dependencies {
     implementation fg.deobf("dev.xkmc.l2serial:l2serial:1.2.2")
     implementation fg.deobf("dev.xkmc.l2screentracker:l2screentracker:0.1.4")
     implementation fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.7")
-    implementation fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.2.7")
     implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.2.6")
 
-    implementation(jarJar(fg.deobf("dev.xkmc.pandora:pandora:0.1.5-slim"))) {
+    implementation(jarJar(fg.deobf("dev.xkmc.pandora:pandora:0.1.6-slim"))) {
         transitive = false
-        jarJar.ranged(it, "[0.1.5,)")
+        jarJar.ranged(it, "[0.1.6,)")
+    }
+
+    implementation(jarJar(fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.2.8"))) {
+        transitive = false
+        jarJar.ranged(it, "[0.2.8,)")
     }
 
     runtimeOnly fg.deobf("dev.xkmc.l2modularblock:l2modularblock:1.1.0")
-    runtimeOnly fg.deobf("dev.xkmc.l2backpack:l2backpack:2.4.5-slim")
-    runtimeOnly fg.deobf("dev.xkmc.modulargolems:modulargolems:2.4.19-slim")
+    runtimeOnly fg.deobf("dev.xkmc.l2backpack:l2backpack:2.4.19-slim")
+    runtimeOnly fg.deobf("dev.xkmc.modulargolems:modulargolems:2.4.28-slim")
     runtimeOnly fg.deobf("dev.xkmc.l2archery:l2archery:2.4.13")
-    implementation fg.deobf("dev.xkmc.l2weaponry:l2weaponry:2.4.18")
-    implementation fg.deobf("dev.xkmc.l2hostility:l2hostility:2.4.15-slim")
+    implementation fg.deobf("dev.xkmc.l2weaponry:l2weaponry:2.4.23")
+    implementation fg.deobf("dev.xkmc.l2hostility:l2hostility:2.4.17-slim")
     implementation fg.deobf("dev.xkmc.l2complements:l2complements:2.4.31-slim")
 
     implementation fg.deobf("mezz.jei:jei-${jei_minecraft_version}:${jei_version}")

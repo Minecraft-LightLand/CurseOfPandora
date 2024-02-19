@@ -3,7 +3,6 @@ package dev.xkmc.curseofpandora.event;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.entity.WindBladeEntity;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
-import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -122,17 +121,6 @@ public class PandoraAttackListener implements AttackListener {
 		var event = cache.getLivingDamageEvent();
 		assert event != null;
 		if (!event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-			var ins = cache.getAttackTarget().getAttribute(CoPAttrs.REDUCTION.get());
-			if (ins != null) {
-				float val = (float) ins.getValue();
-				cache.addDealtModifier(DamageModifier.multAttr(val));
-			}
-			ins = cache.getAttackTarget().getAttribute(CoPAttrs.ABSORB.get());
-			if (ins != null) {
-				float val = (float) ins.getValue();
-				cache.addDealtModifier(DamageModifier.add(-val));
-				cache.addDealtModifier(DamageModifier.nonlinearMiddle(943, e -> Math.max(0, e)));
-			}
 			if (!event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS)) {
 				if (cache.getAttacker() != null && cache.getAttacker().hasEffect(CoPEffects.SHADOW.get())) {
 					cache.addDealtModifier(DamageModifier.multTotal((float) (1 - CoPConfig.COMMON.shadow.damageReduction.get())));

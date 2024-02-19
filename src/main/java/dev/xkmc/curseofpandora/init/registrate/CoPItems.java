@@ -189,7 +189,7 @@ public class CoPItems {
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
-					AttributeItem.multTotal(CoPAttrs.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
+					AttributeItem.multTotal(L2DamageTracker.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,

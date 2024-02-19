@@ -6,6 +6,7 @@ import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2complements.content.item.curios.ICapItem;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.pandora.init.data.PandoraLangData;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
 import net.minecraft.ChatFormatting;
@@ -106,7 +107,7 @@ public class AttributeItem extends CurioItem implements ICapItem<AttributeItem.D
 				if (AttrAdder.isMult(ent.attr.get())) {
 					rep = AttrAdder.getDesc(ent.attr.get(), val, ent.op());
 				}
-				if (ent.attr.get() == CoPAttrs.REDUCTION.get()) {
+				if (ent.attr.get() == L2DamageTracker.REDUCTION.get()) {
 					rep = AttrAdder.getDesc(ent.attr.get(), val, ent.op());
 				}
 				if (rep != null) {

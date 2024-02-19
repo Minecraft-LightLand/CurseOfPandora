@@ -90,8 +90,6 @@ public class CurseOfPandora {
 	public static void modifyAttributes(EntityAttributeModificationEvent event) {
 		event.add(EntityType.PLAYER, CoPAttrs.SPELL.get());
 		event.add(EntityType.PLAYER, CoPAttrs.REALITY.get());
-		event.add(EntityType.PLAYER, CoPAttrs.REDUCTION.get());
-		event.add(EntityType.PLAYER, CoPAttrs.ABSORB.get());
 	}
 
 	@SubscribeEvent

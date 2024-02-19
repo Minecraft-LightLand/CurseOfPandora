@@ -78,7 +78,7 @@ public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.
 		}
 
 		private static AttrAdder protAttr(int size) {
-			return AttrAdder.of("evil_spirit_awakening", CoPAttrs.REDUCTION,
+			return AttrAdder.of("evil_spirit_awakening", L2DamageTracker.REDUCTION,
 					AttributeModifier.Operation.MULTIPLY_TOTAL, -prot() * size);
 		}
 

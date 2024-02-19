@@ -7,6 +7,7 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -21,9 +22,9 @@ import java.util.List;
 
 public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
-	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", CoPAttrs.ABSORB,
+	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", L2DamageTracker.ABSORB,
 			AttributeModifier.Operation.ADDITION, AngelicBless::getStat);
-	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", CoPAttrs.REDUCTION,
+	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", L2DamageTracker.REDUCTION,
 			AttributeModifier.Operation.MULTIPLY_TOTAL, AngelicBless::getFactor);
 
 	private static double getStat() {

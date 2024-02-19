@@ -175,8 +175,6 @@
   "effect.curseofpandora.evil_spirit_walk.description": "祟神附体饰品效果标记",
   "attribute.name.reality_index": "现实指数",
   "attribute.name.spell_tolerance": "魔力耐性",
-  "attribute.name.damage_absorption": "伤害吸收",
-  "attribute.name.damage_reduction": "受到的伤害",
   "trait.curseofpandora.reality": "现实压制",
   "trait.curseofpandora.reality.desc": "免疫现实指数低于词条等级的来源的伤害",
   "death.attack.soul_curse": "%s被怨魂咒死了",

@@ -201,9 +201,7 @@
   },
   "attribute.name": {
 	"reality_index": "现实指数",
-	"spell_tolerance": "魔力耐性",
-	"damage_absorption": "伤害吸收",
-	"damage_reduction": "受到的伤害"
+	"spell_tolerance": "魔力耐性"
   },
   "trait.curseofpandora": {
 	"reality": "现实压制",

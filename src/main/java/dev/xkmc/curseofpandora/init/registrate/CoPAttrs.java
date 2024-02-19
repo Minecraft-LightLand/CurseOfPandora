@@ -10,8 +10,6 @@ public class CoPAttrs {
 
 	public static final RegistryEntry<Attribute> SPELL = reg("spell_tolerance", 1, 10000, "Spell Tolerance");
 	public static final RegistryEntry<Attribute> REALITY = reg("reality_index", 0, 10000, "Reality Index");
-	public static final RegistryEntry<Attribute> ABSORB = reg("damage_absorption", 0, 10000, "Damage Absorption");
-	public static final RegistryEntry<Attribute> REDUCTION = reg("damage_reduction", 1, 10000, "Damage after Reduction");
 
 	public static void register() {
 

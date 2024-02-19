@@ -25,9 +25,7 @@ public class CoPConfigGen extends ConfigDataProvider {
 		collector.add(L2Tabs.ATTRIBUTE_ENTRY, new ResourceLocation(CurseOfPandora.MODID, "pandora"),
 				new AttributeDisplayConfig()
 						.add(CoPAttrs.SPELL.get(), 20000)
-						.add(CoPAttrs.REALITY.get(), 21000)
-						.add(CoPAttrs.REDUCTION.get(), true, 23000, 0)
-						.add(CoPAttrs.ABSORB.get(), 24000));
+						.add(CoPAttrs.REALITY.get(), 21000));
 	}
 
 }
