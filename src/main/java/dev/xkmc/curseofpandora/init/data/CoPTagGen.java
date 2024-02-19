@@ -5,6 +5,7 @@ import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.init.data.TagGen;
+import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -35,7 +36,11 @@ public class CoPTagGen {
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		pvd.addTag(REALITY).addTags(ANGELIC, HELL, SHADOW, ABYSSAL, BARBARIC, EVIL, ELEMENTAL);// MUTATION
-		pvd.addTag(PandoraTagGen.PANDORA_SLOT).addTags(ATTR, BEACON, CURSE, REALITY);
+		pvd.addTag(PandoraTagGen.PANDORA_SLOT).addTags(ATTR, BEACON, CURSE, REALITY)
+				.addOptional(LHItems.LOOT_1.getId())
+				.addOptional(LHItems.LOOT_2.getId())
+				.addOptional(LHItems.LOOT_3.getId())
+				.addOptional(LHItems.LOOT_4.getId());
 		pvd.addTag(PANDORA_BASE).addTags(ATTR, REALITY);
 	}
 

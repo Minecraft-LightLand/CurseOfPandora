@@ -3,6 +3,7 @@
 2.4.8
 - Fix snow walker not immune to freeze
 - Improve curse charm textures
+- Fix pandora tab not being able to open sometimes
 
 2.4.7
 - Fix Charm of protection not using mult-total

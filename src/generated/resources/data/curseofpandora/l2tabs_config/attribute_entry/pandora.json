@@ -11,18 +11,6 @@
       "intrinsic": 0.0,
       "order": 21000,
       "usePercent": false
-    },
-    {
-      "id": "curseofpandora:damage_reduction",
-      "intrinsic": 0.0,
-      "order": 23000,
-      "usePercent": true
-    },
-    {
-      "id": "curseofpandora:damage_absorption",
-      "intrinsic": 0.0,
-      "order": 24000,
-      "usePercent": false
     }
   ]
 }

@@ -1,6 +1,4 @@
 {
-  "attribute.name.damage_absorption": "Damage Absorption",
-  "attribute.name.damage_reduction": "Damage after Reduction",
   "attribute.name.reality_index": "Reality Index",
   "attribute.name.spell_tolerance": "Spell Tolerance",
   "curseofpandora.tooltip.abyssal.crown": "For every %s blocks below 0, you gain +%s%% chance for melee damage to bypass magic",

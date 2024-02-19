@@ -15,6 +15,22 @@
     "#curseofpandora:attribute_charms",
     "#curseofpandora:mini_beacons",
     "#curseofpandora:pandora_curse",
-    "#curseofpandora:reality_charms"
+    "#curseofpandora:reality_charms",
+    {
+      "id": "l2hostility:charm_of_looting_1",
+      "required": false
+    },
+    {
+      "id": "l2hostility:charm_of_looting_2",
+      "required": false
+    },
+    {
+      "id": "l2hostility:charm_of_looting_3",
+      "required": false
+    },
+    {
+      "id": "l2hostility:charm_of_looting_4",
+      "required": false
+    }
   ]
 }

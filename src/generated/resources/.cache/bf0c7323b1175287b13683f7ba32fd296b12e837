@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-05T11:20:45.771557	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-60bdd4afa9680de122190e3177d2725cc94900fc assets/curseofpandora/lang/en_ud.json
-da2100d5cb9fbdb94138a9f55dfa4cf49bdde99d assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-02-19T11:53:30.678465	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+df9ed80e55a5c2b8bf2a3dddb6a0743b303e21a0 assets/curseofpandora/lang/en_ud.json
+3c5519c3155a69b9bc5851763da756f880923e0c assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 9e663ded8effd00979e0800ba5b66bdbfd249f64 assets/curseofpandora/models/item/abyssal_edge.json
@@ -97,7 +97,7 @@ e230c53000da2ddf6680fc665704f2d92e01e3ed assets/curseofpandora/models/item/spell
 6f2b2be6d226f3ed125067c68dcbd0056e5c0256 assets/curseofpandora/models/item/void_overflow.json
 7b17ab803f8883c0027ddea9a7943756df37e582 assets/curseofpandora/models/item/waving_spell.json
 a072819ac02fd15455b1842e8bd1375cf21bf191 assets/curseofpandora/models/item/wind_thrust.json
-8311295097ff5fbbbc0fea4012a1330284472aa2 data/curios/tags/items/pandora_charm.json
+55a7dfc6833a08290e68488316611f35a739c36b data/curios/tags/items/pandora_charm.json
 996ce41e49808183206928826a92d5bb4197be7f data/curseofpandora/advancements/pandora/pandora_box.json
 e53d9e2a287d53b543ab3e36a8579a7c6b1d1003 data/curseofpandora/advancements/recipes/burnt/burnt/flint.json
 f2916a01345c26938623dd1154cf6ffccd1b09b8 data/curseofpandora/advancements/recipes/burnt/burnt/mini_beacon_base_block.json
