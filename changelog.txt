@@ -1,5 +1,8 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.9
+- Fix pandora tab not being able to open sometimes (again)
+
 2.4.8
 - Fix snow walker not immune to freeze
 - Improve curse charm textures
