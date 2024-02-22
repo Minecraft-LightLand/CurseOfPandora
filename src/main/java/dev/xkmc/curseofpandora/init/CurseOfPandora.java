@@ -1,8 +1,10 @@
 package dev.xkmc.curseofpandora.init;
 
+import com.github.L_Ender.cataclysm.Cataclysm;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.curseofpandora.compat.CoPLoader;
 import dev.xkmc.curseofpandora.compat.CoPTraits;
+import dev.xkmc.curseofpandora.compat.cataclysm.CataclysmRegistry;
 import dev.xkmc.curseofpandora.event.ItemClickListener;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
 import dev.xkmc.curseofpandora.init.data.*;
@@ -68,6 +70,8 @@ public class CurseOfPandora {
 		CoPConfig.init();
 		if (ModList.get().isLoaded(L2Hostility.MODID))
 			CoPTraits.register();
+		if (ModList.get().isLoaded(Cataclysm.MODID))
+			CataclysmRegistry.register();
 		AttackEventHandler.register(5200, new PandoraAttackListener());
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);

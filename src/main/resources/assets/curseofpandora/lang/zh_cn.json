@@ -189,5 +189,7 @@
   "death.attack.echo_abyssal_fangs.player": "%ss被%s的深渊之牙杀死了",
   "entity.curseofpandora.wind_blade": "剑气",
   "entity.curseofpandora.abyssal_fangs": "深渊之牙",
-  "entity.curseofpandora.evil_spirit": "邪灵"
+  "entity.curseofpandora.evil_spirit": "邪灵",
+  "entity.curseofpandora.death_laser_beam": "Death Laser Beam",
+  "item.curseofpandora.cataclysm": "Cataclysm"
 }

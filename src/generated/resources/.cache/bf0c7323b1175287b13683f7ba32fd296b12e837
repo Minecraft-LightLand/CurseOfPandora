@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-19T11:53:30.678465	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-df9ed80e55a5c2b8bf2a3dddb6a0743b303e21a0 assets/curseofpandora/lang/en_ud.json
-3c5519c3155a69b9bc5851763da756f880923e0c assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-02-21T14:40:46.794791	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+fb209f1b5e690a957c3303140aa389541a7504b9 assets/curseofpandora/lang/en_ud.json
+20ec448246a0c84a756155edf898edfa6f223fa5 assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 9e663ded8effd00979e0800ba5b66bdbfd249f64 assets/curseofpandora/models/item/abyssal_edge.json
@@ -23,6 +23,7 @@ de28131bbc658c6141562f35feb25880948faf17 assets/curseofpandora/models/item/barba
 dac8566ebb8fac15772f324169e62f68a6f6de13 assets/curseofpandora/models/item/barbaric_wrath.json
 b5a90f39e92310bdfc72208fe5e6d428df3386d4 assets/curseofpandora/models/item/bless_of_lava_walker.json
 c50857ec4afda02f726154328424c720aa2922a2 assets/curseofpandora/models/item/bless_of_snow_walker.json
+f000689fdfe5fe0778d200b76cd9ad1512487ee8 assets/curseofpandora/models/item/cataclysm.json
 c755a0162b78554b539c2186534fc34ed1328438 assets/curseofpandora/models/item/charm_of_accuracy.json
 672cfe8d101440944bd6f7811fcb01aba7295be0 assets/curseofpandora/models/item/charm_of_archery.json
 39949071b3850877e09dbd5456f457d180757c83 assets/curseofpandora/models/item/charm_of_armor.json
@@ -306,5 +307,5 @@ cd1f4cb4aebdd3628132fc39f6d408992d961f85 data/curseofpandora/tags/items/shadow_c
 604b3857f773c17e14b5a6ffaa5f0b7302d96926 data/l2complements/tags/items/l2c_totems.json
 6c88b418d2b48482932018f76e9a3a0923c68081 data/l2complements/tags/mob_effect/skill_effect.json
 54dbeb697e82ab8c4a9505b47395450dd78cbcdf data/l2hostility/tags/items/trait_item.json
-d06014bac89533c3455871c277a89a4fc326773e data/minecraft/tags/items/swords.json
+2b79a0d2af767d2fcac4ecbdb76e6372b574504d data/minecraft/tags/items/swords.json
 1cd6e1aca0bbce5c9b053af5b8fc1821bd0ffb49 data/pandora/tags/items/allow_duplicates.json
