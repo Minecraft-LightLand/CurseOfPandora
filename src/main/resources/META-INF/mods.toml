@@ -40,7 +40,7 @@ The charms will can be edited in the item, or when the holder items are equipped
 [[dependencies.curseofpandora]]
     modId="l2hostility"
     mandatory=false
-    versionRange="[2.4.14,)"
+    versionRange="[2.4.18,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.curseofpandora]]

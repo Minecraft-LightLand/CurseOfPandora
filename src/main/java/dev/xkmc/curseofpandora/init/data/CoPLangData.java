@@ -79,9 +79,10 @@ public class CoPLangData {
 		TENSION_2("When a mob deals you a damage higher than %s%% of your current health, all Terror Token from you breaks, and you cannot deal damage to that target for %s seconds", 2),
 		PRUDENCE_1("When you hit a target, your damage to the same target for the next %s second will -%s%% (stackable).", 2),
 		PRUDENCE_2("Your damage dealt against a target cannot exceed %s%% of target max health.", 1),
-		SPELL_1("Enchantments on your weapons and armors will put a burden on you, increase damage you take and reduce damage you dealt. Use equipments with high enchantment affinity and gain spell tolerance to mitigate that.", 0),
+		SPELL_1("Enchantments on your weapons and armors will put a burden on you, hurt you, increase damage you take and reduce damage you dealt. Use equipments with high enchantment affinity and gain spell tolerance to mitigate that.", 0),
 		SPELL_2("Current total spell overload: %s%%", 1),
 		SPELL_3("Item spell load: %s%%", 1),
+		SPELL_4("Item spell load: %1$s/(%2$s+%3$s)/%2$s*%4$s%%=%5$s%%", 5),
 		;
 
 		final Entry entry;
@@ -304,6 +305,8 @@ public class CoPLangData {
 		pvd.add("death.attack.abyssal_fangs.player", "%s is killed by %s's abyssal fangs");
 		pvd.add("death.attack.echo_abyssal_fangs", "%s is killed by abyssal fangs");
 		pvd.add("death.attack.echo_abyssal_fangs.player", "%s is killed by %s's abyssal fangs");
+		pvd.add("death.attack.spell_curse", "%s is killed by spell overload");
+		pvd.add("death.attack.spell_curse.player", "%s is killed by spell overload");
 	}
 
 	public static String asId(String name) {

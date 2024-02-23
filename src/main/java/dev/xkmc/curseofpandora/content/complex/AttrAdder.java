@@ -83,6 +83,7 @@ public record AttrAdder(String name, Supplier<Attribute> attr, UUID uuid,
 	}
 
 	public static boolean isMult(Attribute attr) {
+		if (attr == L2DamageTracker.ABSORB.get()) return false;
 		var rl = ForgeRegistries.ATTRIBUTES.getKey(attr);
 		assert rl != null;
 		return rl.getNamespace().equals(L2DamageTracker.MODID);

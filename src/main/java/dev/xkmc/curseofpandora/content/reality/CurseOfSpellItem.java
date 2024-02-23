@@ -4,6 +4,7 @@ import dev.xkmc.curseofpandora.content.complex.*;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
+import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -12,6 +13,7 @@ import dev.xkmc.l2library.capability.conditionals.TokenKey;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +32,9 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	public static double getItemSpellPenalty(double base, ItemStack stack) {
 		double level = 0;
 		for (var i : stack.getAllEnchantments().values()) {
-			level += Math.pow(2, i);
+			if (i > 0) {
+				level += Math.pow(2, i - 1);
+			}
 		}
 		double val = (base + stack.getEnchantmentValue());
 		return level / val / base * CoPConfig.COMMON.curse.curseOfSpellLoadFactor.get();
@@ -65,6 +69,14 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
 		public Ticker() {
 			super(List.of(ADDER, R, S));
+		}
+
+		@Override
+		protected void tickImpl(Player player) {
+			super.tickImpl(player);
+			if (getSpellPenalty(player) > 0 && player.tickCount % 20 == 0) {
+				player.hurt(new DamageSource(CoPDamageTypeGen.forKey(player.level(), CoPDamageTypeGen.SPELL_CURSE), player), 1);
+			}
 		}
 
 		@Override

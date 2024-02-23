@@ -22,6 +22,7 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 	public static final ResourceKey<DamageType> SOUL_CURSE = create("soul_curse");
 	public static final ResourceKey<DamageType> SHADOW_CURSE = create("shadow_curse");
 	public static final ResourceKey<DamageType> VOID_CURSE = create("void_curse");
+	public static final ResourceKey<DamageType> SPELL_CURSE = create("spell_curse");
 	public static final ResourceKey<DamageType> WIND_BLADE = create("wind_blade");
 	public static final ResourceKey<DamageType> ABYSSAL_FANG = create("abyssal_fang");
 	public static final ResourceKey<DamageType> ECHO_ABYSSAL_FANG = create("echo_abyssal_fang");
@@ -46,6 +47,9 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 						DamageTypeTags.BYPASSES_ENCHANTMENTS);
 		new DamageTypeHolder(ECHO_ABYSSAL_FANG, new DamageType("echo_abyssal_fang", DamageScaling.NEVER, 0.1F))
 				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
+						DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE);
+		new DamageTypeHolder(SPELL_CURSE, new DamageType("spell_curse", DamageScaling.NEVER, 0))
+				.add(DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN,
 						DamageTypeTags.BYPASSES_ENCHANTMENTS, DamageTypeTags.BYPASSES_EFFECTS, DamageTypeTags.BYPASSES_RESISTANCE);
 	}
 

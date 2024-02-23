@@ -11,6 +11,7 @@ import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ExperienceOrb;
@@ -45,7 +46,24 @@ public class ClientSpellText {
 		bonus = Math.max(1, bonus);
 		double penalty = CurseOfSpellItem.getItemSpellPenalty(bonus, event.getItemStack());
 		int load = (int) Math.round(penalty * 100);
-		event.getToolTip().add(CoPLangData.Reality.SPELL_3.get(load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GRAY));
+		if (Screen.hasShiftDown()) {
+			double level = 0;
+			for (var i : event.getItemStack().getAllEnchantments().values()) {
+				if (i > 0) {
+					level += Math.pow(2, i - 1);
+				}
+			}
+			var clevel = Component.literal("" + (int) level).withStyle(ChatFormatting.RED);
+			var base = Component.literal("" + (int) bonus).withStyle(ChatFormatting.BLUE);
+			var ench = Component.literal("" + event.getItemStack().getEnchantmentValue()).withStyle(ChatFormatting.GOLD);
+			var perc = Component.literal("" + (int) (CoPConfig.COMMON.curse.curseOfSpellLoadFactor.get() * 100)).withStyle(ChatFormatting.GRAY);
+			var cload = Component.literal("" + load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GREEN);
+			event.getToolTip().add(CoPLangData.Reality.SPELL_4.get(clevel, base, ench, perc, cload)
+					.withStyle(ChatFormatting.GRAY));
+		} else {
+			event.getToolTip().add(CoPLangData.Reality.SPELL_3.get(load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GRAY));
+		}
+
 	}
 
 	public static int getReality(@Nullable Level level) {

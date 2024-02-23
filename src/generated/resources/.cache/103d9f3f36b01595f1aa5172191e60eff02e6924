@@ -1,7 +1,8 @@
-// 1.20.1	2024-02-03T15:39:12.436792	Registries
+// 1.20.1	2024-02-24T00:00:37.300326	Registries
 ceafa36f2532d4490fb64017bef9e16c489701ee data/curseofpandora/damage_type/abyssal_fang.json
 a0acf438fa9408a12bcb7bd14a8e4c31c0195481 data/curseofpandora/damage_type/echo_abyssal_fang.json
 75a6559512bc24e0fabe64e3b31c1c57f8534a1b data/curseofpandora/damage_type/shadow_curse.json
 d2084e6e12e36604d4969db0d72a83f428536839 data/curseofpandora/damage_type/soul_curse.json
+076f205bb71c2fdb6959b2cf7a5cdee77fe3666e data/curseofpandora/damage_type/spell_curse.json
 74cff39124fc4e538f5746c83cc8c13f4b856752 data/curseofpandora/damage_type/void_curse.json
 3bef5d9048adbd4c997911210e4e263473111f86 data/curseofpandora/damage_type/wind_blade.json
