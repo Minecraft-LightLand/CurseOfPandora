@@ -1,5 +1,12 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.11
+- Fix item disappearing when removing necklace or bracelet
+
+2.4.10
+- Fix language and translation
+- Fix attribute removal
+
 2.4.9
 - Fix pandora tab not being able to open sometimes (again)
 

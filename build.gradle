@@ -186,9 +186,9 @@ dependencies {
     implementation fg.deobf("dev.xkmc.l2itemselector:l2itemselector:0.1.7")
     implementation fg.deobf("dev.xkmc.l2tabs:l2tabs:0.3.1")
 
-    implementation(jarJar(fg.deobf("dev.xkmc.pandora:pandora:0.1.7-slim"))) {
+    implementation(jarJar(fg.deobf("dev.xkmc.pandora:pandora:0.1.9-slim"))) {
         transitive = false
-        jarJar.ranged(it, "[0.1.7,)")
+        jarJar.ranged(it, "[0.1.9,)")
     }
 
     implementation(jarJar(fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.2.8"))) {
