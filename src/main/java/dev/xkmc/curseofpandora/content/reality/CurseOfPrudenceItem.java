@@ -4,6 +4,7 @@ import dev.xkmc.curseofpandora.content.complex.*;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
+import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
@@ -117,6 +118,8 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 			}
 			fear.computeIfAbsent(target.getUUID(), k -> new HashSet<>()).add(time);
 			sync(sp);
+			if (cache.getAttackTarget().getType().is(CoPTagGen.PRUDENCE_WHITELIST)) return;
+			if (cache.getAttackTarget().getHealth() <= player.getHealth()) return;
 			double maxDamage = cache.getAttackTarget().getMaxHealth() * getMaxHurtDamage();
 			cache.addDealtModifier(DamageModifier.nonlinearFinal(9000, e -> Math.min(e, (float) maxDamage)));
 		}

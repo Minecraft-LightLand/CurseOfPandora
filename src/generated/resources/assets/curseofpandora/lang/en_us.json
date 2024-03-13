@@ -23,7 +23,7 @@
   "curseofpandora.tooltip.curse.metabolism_3": "When food level is full, gain %s%% attack and speed, and negate all speed reduction",
   "curseofpandora.tooltip.curse.proximity": "Negate all other non-tool attack reach bonus. Cap player attack reach to %s. When player attack reach is %s or lower, grant %s%% attack reach bonus.",
   "curseofpandora.tooltip.curse.prudence_1": "When you hit a target, your damage to the same target for the next %s second will -%s%% (stackable).",
-  "curseofpandora.tooltip.curse.prudence_2": "Your damage dealt against a target cannot exceed %s%% of target max health.",
+  "curseofpandora.tooltip.curse.prudence_2": "Your damage dealt against a target with health higher than you cannot exceed %s%% of target max health.",
   "curseofpandora.tooltip.curse.spell_1": "Enchantments on your weapons and armors will put a burden on you, hurt you, increase damage you take and reduce damage you dealt. Use equipments with high enchantment affinity and gain spell tolerance to mitigate that.",
   "curseofpandora.tooltip.curse.spell_2": "Current total spell overload: %s%%",
   "curseofpandora.tooltip.curse.spell_3": "Item spell load: %s%%",

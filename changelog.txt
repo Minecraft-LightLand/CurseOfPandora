@@ -4,6 +4,8 @@
 - Add universal curio slot to curse of Flesh
 - Add hands slot to curse of Tension
 - Make Curse of Spell damage won't be scaled by itself
+- Add tags and thresholds to curse of prudence
+- Fix Curse of Spell being scaled by void touch
 
 2.4.11
 - Fix item disappearing when removing necklace or bracelet

@@ -1,6 +1,6 @@
-// 1.20.1	2024-02-24T00:06:52.339088	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (enchantments), Tags (mob_effects), Tags (traits), Patchouli Provider]
-32156a83b48e59389a1dcbad3e8d7472fd362554 assets/curseofpandora/lang/en_ud.json
-6e64ab12e7055e9ca5314c304f7fd6e2b0b88fee assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-03-14T00:04:06.998416	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+4e8281fae793d5955cb0645b67cf3c3fadc75209 assets/curseofpandora/lang/en_ud.json
+fa0ef68f8e1e5400627b37d298ac4c7bed087a1c assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 9e663ded8effd00979e0800ba5b66bdbfd249f64 assets/curseofpandora/models/item/abyssal_edge.json
@@ -290,6 +290,7 @@ f55d60e35e610191125e0e096d01b9327b30acce data/curseofpandora/recipes/spellbound_
 cd50702920250de3891f4e44dddbdf430fd2945a data/curseofpandora/recipes/void_overflow.json
 01714b6fb2361feaadd1872079b643d3d8e4db54 data/curseofpandora/recipes/waving_spell.json
 7d566a956b0c37bf838405ad9c9583fe7f35f880 data/curseofpandora/recipes/wind_thrust.json
+6bc44833795832985fac7c8853938fe575d34cc3 data/curseofpandora/tags/entity_types/prudence_whitelist.json
 bd66edf78bf2108ee058a7f9d799fc074d15230e data/curseofpandora/tags/items/abyssal_charms.json
 a5bdd5f24200e1959e0544ec4418315e5d4f101e data/curseofpandora/tags/items/angelic_charms.json
 8611bd472e96560cc8006512e8a717e4725814ff data/curseofpandora/tags/items/attribute_charms.json

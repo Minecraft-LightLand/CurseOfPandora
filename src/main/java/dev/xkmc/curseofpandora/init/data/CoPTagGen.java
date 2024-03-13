@@ -7,10 +7,12 @@ import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -29,6 +31,8 @@ public class CoPTagGen {
 	public static final TagKey<Item> MUTATION = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "mutation_charms"));
 	public static final TagKey<Item> EVIL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "evil_spirit_charms"));
 	public static final TagKey<Item> ELEMENTAL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "elemental_charms"));
+
+	public static final TagKey<EntityType<?>> PRUDENCE_WHITELIST = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(CurseOfPandora.MODID, "prudence_whitelist"));
 
 	public static final TagKey<MobEffect> HIDDEN = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
 			new ResourceLocation("jeed", "hidden"));
@@ -59,6 +63,11 @@ public class CoPTagGen {
 				CoPEffects.FAKE_TERROR_PRE.get(),
 				CoPEffects.FAKE_TERROR.get(),
 				CoPEffects.PRUDENCE.get());
+	}
+
+	public static void onEntityTagGen(RegistrateTagsProvider.IntrinsicImpl<EntityType<?>> pvd) {
+		pvd.addTag(PRUDENCE_WHITELIST).add(EntityType.VEX);
+
 	}
 
 }

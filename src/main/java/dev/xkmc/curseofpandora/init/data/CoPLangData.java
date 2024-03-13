@@ -78,7 +78,7 @@ public class CoPLangData {
 		TENSION_1("When you hit a target, place a Terror Token on it. Tokens take %s seconds to mature, then increase your damage to it by %s%% for %s seconds, stacking to at most %s levels.", 4),
 		TENSION_2("When a mob deals you a damage higher than %s%% of your current health, all Terror Token from you breaks, and you cannot deal damage to that target for %s seconds", 2),
 		PRUDENCE_1("When you hit a target, your damage to the same target for the next %s second will -%s%% (stackable).", 2),
-		PRUDENCE_2("Your damage dealt against a target cannot exceed %s%% of target max health.", 1),
+		PRUDENCE_2("Your damage dealt against a target with health higher than you cannot exceed %s%% of target max health.", 1),
 		SPELL_1("Enchantments on your weapons and armors will put a burden on you, hurt you, increase damage you take and reduce damage you dealt. Use equipments with high enchantment affinity and gain spell tolerance to mitigate that.", 0),
 		SPELL_2("Current total spell overload: %s%%", 1),
 		SPELL_3("Item spell load: %s%%", 1),

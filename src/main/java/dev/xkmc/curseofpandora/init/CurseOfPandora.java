@@ -72,6 +72,7 @@ public class CurseOfPandora {
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, CoPTagGen::onEntityTagGen);
 		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, CoPTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);

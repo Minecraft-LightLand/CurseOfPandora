@@ -112,7 +112,7 @@
   "curseofpandora.tooltip.curse.tension_1": "你击中目标后在其身上放置一个恐惧标记。这个标记%1$s秒后成熟，之后%3$s秒内你对这个目标造成的伤害+%2$s%%，最多可叠加%s层",
   "curseofpandora.tooltip.curse.tension_2": "当一个生物对你造成大于当前生命%s%%的伤害时，你%s秒内无法对这个生物造成伤害，且抹除你在这个生物身上放置的恐惧标记",
   "curseofpandora.tooltip.curse.prudence_1": "对目标造成伤害后%s秒内对同一目标造成的伤害下降%s%%，可叠加",
-  "curseofpandora.tooltip.curse.prudence_2": "单次对一个目标造成的伤害无法超过对方%s%%的血量上限",
+  "curseofpandora.tooltip.curse.prudence_2": "单次对一个血量比你高的目标造成的伤害无法超过对方%s%%的血量上限",
   "curseofpandora.tooltip.curse.spell_1": "装备的附魔会对你造成伤害，增加你受到的伤害，减少你能造成的伤害。使用高魔力亲和度的附魔以及提高魔力耐性可以降低负担",
   "curseofpandora.tooltip.curse.spell_2": "当前总魔力过载：%s%%",
   "curseofpandora.tooltip.curse.spell_3": "物品魔力负荷：%s%%",
