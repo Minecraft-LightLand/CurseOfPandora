@@ -3,6 +3,7 @@ package dev.xkmc.curseofpandora.content.reality;
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
+import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
@@ -22,6 +23,7 @@ import java.util.Set;
 
 public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_flesh", "curio", 1);
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_flesh");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
@@ -38,7 +40,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 	}
 
 	public CurseOfFleshItem(Properties properties) {
-		super(properties, Ticker::new, R, S);
+		super(properties, Ticker::new, ADDER, R, S);
 	}
 
 	@Override
@@ -56,7 +58,7 @@ public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 		public int maintain = 0;
 
 		public Ticker() {
-			super(List.of(R, S));
+			super(List.of(ADDER, R, S));
 		}
 
 		@Override

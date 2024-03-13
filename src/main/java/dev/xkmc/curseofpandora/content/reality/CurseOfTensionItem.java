@@ -1,9 +1,6 @@
 package dev.xkmc.curseofpandora.content.reality;
 
-import dev.xkmc.curseofpandora.content.complex.AttrAdder;
-import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
-import dev.xkmc.curseofpandora.content.complex.ISlotAdderItem;
-import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
+import dev.xkmc.curseofpandora.content.complex.*;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
@@ -33,6 +30,7 @@ import java.util.UUID;
 
 public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker> {
 
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_tension", "hands", 1);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_tension");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
@@ -61,7 +59,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 	}
 
 	public CurseOfTensionItem(Properties properties) {
-		super(properties, Ticker::new, R, S);
+		super(properties, Ticker::new, ADDER, R, S);
 	}
 
 	@Override
@@ -89,7 +87,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 		private boolean sync = false;
 
 		public Ticker() {
-			super(List.of(R, S));
+			super(List.of(ADDER, R, S));
 		}
 
 		@Override

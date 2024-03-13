@@ -37,7 +37,7 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curse.curseOfFleshBonus.get();
+		return CoPConfig.COMMON.curse.curseOfInertiaBonus.get();
 	}
 
 	public CurseOfInertiaItem(Properties properties) {

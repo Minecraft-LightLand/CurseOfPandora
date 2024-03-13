@@ -81,6 +81,11 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
 		@Override
 		public void onPlayerDamaged(Player player, AttackCache cache) {
+			var event = cache.getLivingDamageEvent();
+			assert event != null;
+			if (event.getSource().is(CoPDamageTypeGen.SPELL_CURSE)) {
+				return;
+			}
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
 				double factor = CoPConfig.COMMON.curse.curseOfSpellDamageFactor.get();
