@@ -1,5 +1,6 @@
-// 1.20.1	2024-02-24T00:00:37.293078	Tags for minecraft:damage_type mod id curseofpandora
+// 1.20.1	2024-03-15T12:02:14.07799	Tags for minecraft:damage_type mod id curseofpandora
 94f7b7d2740d4079d12c57dce356cb9f4a075cd0 data/curseofpandora/tags/damage_type/shadow.json
+e1da7020a0b467bfa1cc9baffb3337b392822452 data/forge/tags/damage_type/ignore_scaling.json
 b3889f4a1dda2621953b567a5481e1d8bc6deead data/forge/tags/damage_type/is_magic.json
 b3889f4a1dda2621953b567a5481e1d8bc6deead data/minecraft/tags/damage_type/avoids_guardian_thorns.json
 4cc26ea960935e51fca961afff6534b551db1e8c data/minecraft/tags/damage_type/bypasses_armor.json

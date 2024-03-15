@@ -23,8 +23,8 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> {
 
 	public static int getDepth(Player player) {
 		return ConditionalData.HOLDER.get(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey()) ?
-				CoPConfig.COMMON.abyssal.abyssalDepthStep.get() :
-				CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get();
+				CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get() :
+				CoPConfig.COMMON.abyssal.abyssalDepthStep.get();
 	}
 
 	public static int getStep(Player player) {

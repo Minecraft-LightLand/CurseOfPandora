@@ -75,7 +75,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		protected void tickImpl(Player player) {
 			super.tickImpl(player);
 			if (getSpellPenalty(player) > 0 && player.tickCount % 20 == 0) {
-				player.hurt(new DamageSource(CoPDamageTypeGen.forKey(player.level(), CoPDamageTypeGen.SPELL_CURSE), null, player), 1);
+				player.hurt(new DamageSource(CoPDamageTypeGen.forKey(player.level(), CoPDamageTypeGen.SPELL_CURSE)), 1);
 			}
 		}
 

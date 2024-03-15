@@ -49,7 +49,7 @@ public class PandoraAttackListener implements AttackListener {
 	public void onDamageFinalized(AttackCache cache, ItemStack weapon) {
 		var event = cache.getLivingDamageEvent();
 		assert event != null;
-		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
+		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
 			return;
 		}
 		if (cache.getAttackTarget() instanceof Player player) {
@@ -81,7 +81,7 @@ public class PandoraAttackListener implements AttackListener {
 				}
 			}
 		}
-		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
+		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
 			return;
 		}
 		if (cache.getAttacker() instanceof Player player) {
@@ -97,7 +97,7 @@ public class PandoraAttackListener implements AttackListener {
 	public void onHurt(AttackCache cache, ItemStack weapon) {
 		var event = cache.getLivingHurtEvent();
 		assert event != null;
-		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
+		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
 			return;
 		}
 		if (cache.getAttacker() instanceof Player player) {
@@ -127,7 +127,7 @@ public class PandoraAttackListener implements AttackListener {
 				}
 			}
 		}
-		if (event.getSource().is(DamageTypeGen.SOUL_FLAME)) {
+		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
 			return;
 		}
 		if (cache.getAttacker() instanceof Player player) {
