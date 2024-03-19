@@ -16,11 +16,12 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 import java.util.function.Supplier;
 
-public class EffectRefreshItem extends CurioItem implements EffectValidItem, ICapItem<EffectRefreshItem.Data> {
+public class EffectRefreshItem extends CurioItem implements EffectValidItem, ICurioItem {
 
 	private final Supplier<MobEffectInstance> sup;
 
@@ -51,22 +52,8 @@ public class EffectRefreshItem extends CurioItem implements EffectValidItem, ICa
 	}
 
 	@Override
-	public Data create(ItemStack stack) {
-		return new Data(this, stack);
-	}
-
-	public record Data(EffectRefreshItem item, ItemStack stack) implements ICurio {
-
-		@Override
-		public ItemStack getStack() {
-			return stack;
-		}
-
-		@Override
-		public void curioTick(SlotContext slotContext) {
-			item.curioTick(slotContext.entity());
-		}
-
+	public void curioTick(SlotContext slotContext, ItemStack stack) {
+		curioTick(slotContext.entity());
 	}
 
 }

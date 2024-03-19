@@ -189,7 +189,7 @@ public class CoPItems {
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
-					AttributeItem.multTotal(L2DamageTracker.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
+					AttributeItem.multTotal(L2DamageTracker.REDUCTION::get, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
@@ -226,7 +226,7 @@ public class CoPItems {
 			ANGELIC_DESCENT = item("angelic_descent", AngelicDescent::new)
 					.tag(CoPTagGen.ANGELIC).register();
 			ANGELIC_PROTECTION = item("angelic_protection", AngelicProtection::new)
-					.tag(CoPTagGen.ANGELIC, TagGen.TOTEM).register();
+					.tag(CoPTagGen.ANGELIC).register();
 			ANGELIC_PUNISHMENT = item("angelic_punishment", AngelicPunishment::new)
 					.tag(CoPTagGen.ANGELIC).register();
 
@@ -283,7 +283,7 @@ public class CoPItems {
 			EVIL_SPIRIT_CURSE = item("evil_spirit_curse", EvilSpiritCurse::new)
 					.tag(CoPTagGen.EVIL).register();
 			EVIL_SPIRIT_WALK = item("evil_spirit_walk", EvilSpiritWalk::new)
-					.tag(CoPTagGen.EVIL, TagGen.TOTEM).register();
+					.tag(CoPTagGen.EVIL).register();
 
 			WIND_THRUST = item("wind_thrust", WindThrust::new)
 					.tag(CoPTagGen.ELEMENTAL).register();

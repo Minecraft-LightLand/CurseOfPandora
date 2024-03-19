@@ -4,10 +4,9 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.l2complements.content.item.curios.CurioItem;
-import dev.xkmc.l2complements.content.item.misc.ILCTotem;
-import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.network.TotemUseToClient;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
+import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
+import dev.xkmc.l2damagetracker.contents.curios.TotemUseToClient;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class AngelicProtection extends CurioItem implements ILCTotem {
+public class AngelicProtection extends CurioItem implements L2Totem {
 
 	public AngelicProtection(Properties properties) {
 		super(properties);
@@ -37,7 +36,7 @@ public class AngelicProtection extends CurioItem implements ILCTotem {
 
 	@Override
 	public void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
-		L2Complements.HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
+		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
 		self.setHealth(self.getMaxHealth());
 		self.removeAllEffects();
 		self.hasImpulse = true;

@@ -10,7 +10,8 @@ import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.content.item.misc.ILCTotem;
 import dev.xkmc.l2complements.init.L2Complements;
-import dev.xkmc.l2complements.network.TotemUseToClient;
+import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
+import dev.xkmc.l2damagetracker.contents.curios.TotemUseToClient;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.capability.conditionals.ConditionalData;
@@ -32,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> implements ILCTotem {
+public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> implements L2Totem {
 
 	private static final AttrAdder MAGIC = AttrAdder.of("evil_spirit_walk", L2DamageTracker.MAGIC_FACTOR::get,
 			AttributeModifier.Operation.ADDITION, EvilSpiritWalk::getMagic);
@@ -92,7 +93,7 @@ public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> impl
 	@Override
 	public void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
 		if (!(self instanceof Player player)) return;
-		L2Complements.HANDLER.toTrackingPlayers(new TotemUseToClient(player, holded), player);
+		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(new TotemUseToClient(player, holded), player);
 		self.setHealth(self.getMaxHealth());
 		self.removeAllEffects();
 		self.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));

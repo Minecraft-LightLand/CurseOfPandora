@@ -22,9 +22,9 @@ import java.util.List;
 
 public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
-	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", L2DamageTracker.ABSORB,
+	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", L2DamageTracker.ABSORB::get,
 			AttributeModifier.Operation.ADDITION, AngelicBless::getStat);
-	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", L2DamageTracker.REDUCTION,
+	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", L2DamageTracker.REDUCTION::get,
 			AttributeModifier.Operation.MULTIPLY_TOTAL, AngelicBless::getFactor);
 
 	private static double getStat() {

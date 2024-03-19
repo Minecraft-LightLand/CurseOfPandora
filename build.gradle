@@ -192,9 +192,9 @@ dependencies {
         jarJar.ranged(it, "[0.1.9,)")
     }
 
-    implementation(jarJar(fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.3.0"))) {
+    implementation(jarJar(fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:0.3.7"))) {
         transitive = false
-        jarJar.ranged(it, "[0.3.0,)")
+        jarJar.ranged(it, "[0.3.7,)")
     }
 
     runtimeOnly fg.deobf("dev.xkmc.l2modularblock:l2modularblock:1.1.0")

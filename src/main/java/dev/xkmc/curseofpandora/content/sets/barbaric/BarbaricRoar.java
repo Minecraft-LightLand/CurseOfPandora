@@ -29,7 +29,7 @@ public class BarbaricRoar extends ITokenProviderItem<BarbaricRoar.Data> {
 	private static final AttrAdder ATK = AttrAdder.of("barbaric_roar", () -> Attributes.ATTACK_DAMAGE,
 			AttributeModifier.Operation.MULTIPLY_BASE, BarbaricRoar::getAtk);
 
-	private static final AttrAdder PROT = AttrAdder.of("barbaric_roar", L2DamageTracker.REDUCTION,
+	private static final AttrAdder PROT = AttrAdder.of("barbaric_roar", L2DamageTracker.REDUCTION::get,
 			AttributeModifier.Operation.MULTIPLY_TOTAL, BarbaricRoar::getProt);
 
 	private static double getStat() {

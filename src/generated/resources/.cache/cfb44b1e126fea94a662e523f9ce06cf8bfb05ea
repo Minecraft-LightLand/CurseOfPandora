@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-14T00:04:06.998416	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+// 1.20.1	2024-03-19T11:20:40.106406	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
 4e8281fae793d5955cb0645b67cf3c3fadc75209 assets/curseofpandora/lang/en_ud.json
 fa0ef68f8e1e5400627b37d298ac4c7bed087a1c assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
@@ -304,7 +304,6 @@ e4add7ffdeb0de367cb8f4605b8ee4db2bfa4f9b data/curseofpandora/tags/items/mini_bea
 07cf071ee1f27431be0232e59a6d38bb032a32c8 data/curseofpandora/tags/items/reality_charms.json
 cd1f4cb4aebdd3628132fc39f6d408992d961f85 data/curseofpandora/tags/items/shadow_charms.json
 88c5635dfa58e2155062017721841168d167afbe data/jeed/tags/mob_effect/hidden.json
-604b3857f773c17e14b5a6ffaa5f0b7302d96926 data/l2complements/tags/items/l2c_totems.json
 6c88b418d2b48482932018f76e9a3a0923c68081 data/l2complements/tags/mob_effect/skill_effect.json
 54dbeb697e82ab8c4a9505b47395450dd78cbcdf data/l2hostility/tags/items/trait_item.json
 d06014bac89533c3455871c277a89a4fc326773e data/minecraft/tags/items/swords.json

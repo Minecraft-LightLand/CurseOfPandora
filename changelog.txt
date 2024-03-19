@@ -1,5 +1,9 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.13
+- Allow mobs with reality trait to attack other mobs with equal or lower reality traits
+- Switch to new form of totem triggering mechanics
+
 2.4.12
 - Add universal curio slot to curse of Flesh
 - Add hands slot to curse of Tension
