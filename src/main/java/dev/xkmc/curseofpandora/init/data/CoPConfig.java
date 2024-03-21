@@ -361,6 +361,8 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue abyssalWatcherRegen;
 			public final ForgeConfigSpec.DoubleValue abyssalShellBonus;
 			public final ForgeConfigSpec.DoubleValue abyssalCrownChance;
+			public final ForgeConfigSpec.IntValue abyssalWillCoolDown;
+			public final ForgeConfigSpec.IntValue abyssalWillDuration;
 
 			private Abyssal(ForgeConfigSpec.Builder builder) {
 				builder.push("Abyssal");
@@ -384,6 +386,10 @@ public class CoPConfig {
 						.defineInRange("abyssalShellBonus", 0.2, 0, 1);
 				abyssalCrownChance = builder.comment("Abyssal Crown magic bypassing chance per depth step")
 						.defineInRange("abyssalCrownChance", 0.05, 0, 1);
+				abyssalWillCoolDown = builder.comment("Abyssal Will totem effect cool down in ticks")
+						.defineInRange("abyssalWillCoolDown", 600, 1, 100000);
+				abyssalWillDuration = builder.comment("Abyssal Will protection effect duration in ticks")
+						.defineInRange("abyssalWillDuration", 200, 1, 100000);
 				builder.pop();
 			}
 

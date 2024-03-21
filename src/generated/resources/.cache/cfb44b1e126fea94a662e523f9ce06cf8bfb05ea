@@ -1,6 +1,6 @@
-// 1.20.1	2024-03-19T11:20:40.106406	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
-4e8281fae793d5955cb0645b67cf3c3fadc75209 assets/curseofpandora/lang/en_ud.json
-fa0ef68f8e1e5400627b37d298ac4c7bed087a1c assets/curseofpandora/lang/en_us.json
+// 1.20.1	2024-03-20T21:36:28.714823	Registrate Provider for curseofpandora [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud), Tags (attributes), Tags (mob_effects), Tags (enchantments), Tags (traits), Patchouli Provider]
+5f900e239ed17852eaa60252fa980a0824b94851 assets/curseofpandora/lang/en_ud.json
+33593557d03eb85ed14873e44869ac0727780232 assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
 49191655d6fa2d07e1ae85411226ef90576609f6 assets/curseofpandora/models/item/abyssal_crown.json
 9e663ded8effd00979e0800ba5b66bdbfd249f64 assets/curseofpandora/models/item/abyssal_edge.json

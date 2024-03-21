@@ -34,13 +34,18 @@ public class CoPEffects {
 			.lang(MobEffect::getDescriptionId).register();
 
 	public static final RegistryEntry<EmptyEffect> AWAKENING = REGISTRATE
-			.effect("evil_spirit_awakening", () -> new EmptyEffect(MobEffectCategory.NEUTRAL, 0x000000),
+			.effect("evil_spirit_awakening", () -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x000000),
 					"Evil Spirit Awakening")
 			.lang(MobEffect::getDescriptionId).register();
 
 	public static final RegistryEntry<EmptyEffect> SPIRIT_WALK = REGISTRATE
-			.effect("evil_spirit_walk", () -> new EmptyEffect(MobEffectCategory.NEUTRAL, 0x000000),
+			.effect("evil_spirit_walk", () -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x000000),
 					"Evil Spirit Walk")
+			.lang(MobEffect::getDescriptionId).register();
+
+	public static final RegistryEntry<EmptyEffect> ABYSSAL_PROTECTION = REGISTRATE
+			.effect("abyssal_protection", () -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x000000),
+					"Negates magic-bypassing damage when you have Abyssal Will")
 			.lang(MobEffect::getDescriptionId).register();
 
 	public static void register() {

@@ -1,5 +1,10 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.14
+- Buff Abyssal Will
+- Fix potential crash with Artifacts mod when throwing pandora hold out from curios slot
+- Fix Evil Spirit Walk effect description
+
 2.4.13
 - Allow mobs with reality trait to attack other mobs with equal or lower reality traits
 - Switch to new form of totem triggering mechanics

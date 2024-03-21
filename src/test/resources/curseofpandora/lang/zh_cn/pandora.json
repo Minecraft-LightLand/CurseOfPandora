@@ -155,7 +155,9 @@
 	  "shell": "纵坐标0以下每%s格，获得+%s%%护甲和护甲韧性",
 	  "treasure": "纵坐标0以下每%s格，获得+1幸运",
 	  "watcher": "纵坐标0以下每%s格，获得+%s%%每秒生命回复",
-	  "will": "深渊饰品的深度要求减少"
+	  "will": "深渊饰品的深度要求减少",
+	  "will_restrict": "你在y=0以上时，这个效果只对穿透魔法的伤害有效",
+	  "will_totem": "你受到致命伤时，保留1血，并且%s秒内免疫穿透魔法的伤害。冷却：%s秒"
 	},
 	"elemental": {
 	  "wind_1": "只当玩家疾跑时生效",
@@ -198,7 +200,9 @@
 	"evil_spirit_awakening": "邪祟觉醒",
 	"evil_spirit_awakening.description": "邪祟觉醒饰品效果标记",
 	"evil_spirit_walk": "祟神附体",
-	"evil_spirit_walk.description": "祟神附体饰品效果标记"
+	"evil_spirit_walk.description": "祟神附体饰品效果标记",
+	"abyssal_protection": "深渊庇护",
+	"abyssal_protection.description": "当你佩戴深渊意志时，你免疫穿透魔法的伤害。"
   },
   "attribute.name": {
 	"reality_index": "现实指数",

@@ -4,6 +4,8 @@ import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -188,7 +190,8 @@ public class CoPLangData {
 		SHELL("For every %s blocks below 0, you gain +%s%% Armor and Armor Toughness", 2),
 		CROWN("For every %s blocks below 0, you gain +%s%% chance for melee damage to bypass magic", 2),
 		WILL("Reduce depth requirement for Abyssal pandora charms", 0),
-		;
+		WILL_TOTEM("When taking fatal damage, retain 1 health and be immune to magic-bypassing damage for the next %s seconds. Cool down: %s seconds.", 2),
+		WILL_RESTRICT("When you are above y=0, it only works for magic-bypassing damage.", 0);
 
 		final Entry entry;
 
@@ -240,7 +243,7 @@ public class CoPLangData {
 		EVOKE("When you are hit, summons Vex to fight for you. Each lasts %s seconds. Cool down: %s seconds", 2),
 		AWAKENING("When you kills enemy, gain %s%% magic damage and %s%% damage reduction for %s seconds, stacking up to %s level", 4),
 		CURSE("Magic damage against mobs with %s%% or lower health increases by %s%%", 2),
-		WALK("Evil spirit possess you. Gain %s%% magic and %s%% attack damage bonus. When taking fatal damage, exit possession mode for %s seconds.", 3);
+		WALK("Evil spirit possess you. Gain %s%% magic and %s%% attack damage bonus. When taking fatal damage, restore full health and exit possession mode for %s seconds.", 3);
 
 		final Entry entry;
 
@@ -307,6 +310,23 @@ public class CoPLangData {
 		pvd.add("death.attack.echo_abyssal_fangs.player", "%s is killed by %s's abyssal fangs");
 		pvd.add("death.attack.spell_curse", "%s is killed by spell overload");
 		pvd.add("death.attack.spell_curse.player", "%s is killed by spell overload");
+	}
+
+	public static MutableComponent getDesc(MobEffectInstance ins) {
+		return getDesc(ins, true);
+	}
+
+	public static MutableComponent getDesc(MobEffectInstance ins, boolean showDuration) {
+		MutableComponent desc = Component.translatable(ins.getDescriptionId());
+		if (ins.getAmplifier() > 0) {
+			desc = Component.translatable("potion.withAmplifier", desc,
+					Component.translatable("potion.potency." + ins.getAmplifier()));
+		}
+		if (showDuration && !ins.endsWithin(20)) {
+			desc = Component.translatable("potion.withDuration", desc, MobEffectUtil.formatDuration(ins, 1));
+		}
+
+		return desc.withStyle(ins.getEffect().getCategory().getTooltipFormatting());
 	}
 
 	public static String asId(String name) {
