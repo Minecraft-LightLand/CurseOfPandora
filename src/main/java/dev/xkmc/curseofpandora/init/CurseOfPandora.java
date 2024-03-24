@@ -95,13 +95,15 @@ public class CurseOfPandora {
 
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
-		boolean gen = event.includeServer();
-		PackOutput output = event.getGenerator().getPackOutput();
+		boolean run = event.includeServer();
+		var gen = event.getGenerator();
+		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-		event.getGenerator().addProvider(gen, new CoPConfigGen(event.getGenerator()));
-		new CoPDamageTypeGen(output, pvd, helper).generate(gen, event.getGenerator());
-		event.getGenerator().addProvider(gen, new CoPGLMProvider(output));
+		gen.addProvider(run, new CoPConfigGen(gen));
+		new CoPDamageTypeGen(output, pvd, helper).generate(run, gen);
+		gen.addProvider(run, new CoPGLMProvider(output));
+		gen.addProvider(run, new CoPSlotGen(gen));
 	}
 
 	@SubscribeEvent

@@ -1,0 +1,11 @@
+{
+  "add_cosmetic": false,
+  "conditions": [],
+  "icon": "curios:slot/empty_curio_slot",
+  "operation": "SET",
+  "order": 20,
+  "render_toggle": true,
+  "replace": false,
+  "size": 0,
+  "use_native_gui": true
+}

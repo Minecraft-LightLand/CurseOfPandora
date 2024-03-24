@@ -1,0 +1,10 @@
+{
+  "conditions": [],
+  "entities": [
+    "minecraft:player"
+  ],
+  "slots": [
+    "curio",
+    "hands"
+  ]
+}
