@@ -124,6 +124,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			if (!(player instanceof ServerPlayer sp)) return;
 			var attacker = cache.getAttacker();
 			if (attacker == null) return;
+			if (attacker == player) return;
 			if (cache.getDamageDealt() >= player.getMaxHealth() * getDamageThreshold())
 				terror.put(attacker.getUUID(), player.level().getGameTime());
 			brave.remove(attacker.getUUID());
@@ -149,6 +150,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			if (!(player instanceof ServerPlayer sp)) return;
 			long time = player.level().getGameTime();
 			var target = cache.getAttackTarget();
+			if (player == target) return;
 			List<Long> list = brave.get(target.getUUID());
 			int count = 0;
 			if (list != null) {

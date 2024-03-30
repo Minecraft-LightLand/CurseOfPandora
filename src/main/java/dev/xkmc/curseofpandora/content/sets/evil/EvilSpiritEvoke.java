@@ -8,12 +8,17 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -46,10 +51,12 @@ public class EvilSpiritEvoke extends ITokenProviderItem<EvilSpiritEvoke.Data> {
 		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(CoPLangData.Evil.EVOKE.get(
+		list.add(Component.literal("- ").append(CoPLangData.Evil.EVOKE.get(
 				(int) Math.round(getLife() / 20d),
 				(int) Math.round(getCD() / 20d)
-		).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
+		)).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
+		list.add(Component.literal("- ").append(CoPLangData.Evil.EVOKE_CONVERT.get())
+				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
@@ -72,17 +79,43 @@ public class EvilSpiritEvoke extends ITokenProviderItem<EvilSpiritEvoke.Data> {
 		}
 
 		@Override
+		public void onPlayerAttacked(Player player, AttackCache cache) {
+			if (cache.getAttacker() instanceof Vex vex && player instanceof ServerPlayer sp) {
+				cache.getLivingAttackEvent().setCanceled(true);
+				var sl = sp.serverLevel();
+				var spirit = vex.convertTo(CoPEntities.EVIL_SPIRIT.get(), false);
+				if (spirit == null) return;
+				for (EquipmentSlot slot : EquipmentSlot.values()) {
+					ItemStack stack = vex.getItemBySlot(slot);
+					if (!stack.isEmpty()) {
+						spirit.setItemSlot(slot, stack);
+					}
+				}
+				spirit.finalizeSpawn(sl, sl.getCurrentDifficultyAt(spirit.blockPosition()), MobSpawnType.CONVERSION, null, null);
+				spirit.setLimitedLife(getLife());
+				spirit.setOwner(player);
+				if (spirit.getMainHandItem().isEmpty())
+					spirit.setItemInHand(InteractionHand.MAIN_HAND, Items.IRON_SWORD.getDefaultInstance());
+				if (vex.getOwner() != null) spirit.setTarget(vex.getOwner());
+				net.minecraftforge.event.ForgeEventFactory.onLivingConvert(vex, spirit);
+
+			}
+		}
+
+		@Override
 		public void onPlayerDamaged(Player player, AttackCache cache) {
 			var item = CoPItems.EVIL_SPIRIT_EVOKE.get();
 			if (cache.getAttacker() != null && !player.getCooldowns().isOnCooldown(item)) {
 				player.getCooldowns().addCooldown(item, getCD());
 				EvilSpirit vex = new EvilSpirit(player);
+				vex.setOwner(player);
 				vex.setLimitedLife(getLife());
 				vex.setItemInHand(InteractionHand.MAIN_HAND, Items.IRON_SWORD.getDefaultInstance());
 				vex.setTarget(cache.getAttacker());
 				player.level().addFreshEntity(vex);
 			}
 		}
+
 	}
 
 }

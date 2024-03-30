@@ -106,6 +106,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 			if (!(player instanceof ServerPlayer sp)) return;
 			long time = player.level().getGameTime();
 			var target = cache.getAttackTarget();
+			if (target == player) return;
 			Set<Long> list = fear.get(target.getUUID());
 			int count = list == null ? 0 : list.size();
 			if (count > 0) {
