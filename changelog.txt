@@ -1,5 +1,8 @@
 18 / 12 / 7 / 35 / 4
 
+2.4.16
+- Fix curse of spell on empty slots
+
 2.4.15
 - Fix Curse of Flesh curio slot add
 - Prevent self damaging triggering Curse of Tension and Prudence

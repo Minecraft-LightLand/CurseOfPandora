@@ -30,6 +30,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	public static double getItemSpellPenalty(double base, ItemStack stack) {
+		if (stack.isEmpty() || !stack.isEnchanted()) return 0;
 		double level = 0;
 		for (var i : stack.getAllEnchantments().values()) {
 			if (i > 0) {
