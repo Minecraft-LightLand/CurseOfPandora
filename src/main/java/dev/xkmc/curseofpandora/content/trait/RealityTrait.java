@@ -1,5 +1,6 @@
 package dev.xkmc.curseofpandora.content.trait;
 
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
@@ -55,4 +56,10 @@ public class RealityTrait extends MobTrait {
 		}
 		cache.addDealtModifier(DamageModifier.nonlinearFinal(12346, e -> 0));
 	}
+
+	@Override
+	public boolean isBanned() {
+		return !CoPConfig.COMMON.allowRealityTrait.get();
+	}
+
 }

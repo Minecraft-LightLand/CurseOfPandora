@@ -581,6 +581,7 @@ public class CoPConfig {
 
 		public final ForgeConfigSpec.DoubleValue lootLuckFactor;
 		public final ForgeConfigSpec.IntValue maxItemGenerated;
+		public final ForgeConfigSpec.BooleanValue allowRealityTrait;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("Loot");
@@ -600,6 +601,10 @@ public class CoPConfig {
 			this.mutation = new Mutation(builder);
 			this.evil = new Evil(builder);
 			this.weapon = new Weapon(builder);
+			builder.push("Compat");
+			allowRealityTrait = builder.comment("L2Hostility compat: allow Reality trait")
+					.define("allowRealityTrait", true);
+			builder.pop();
 		}
 
 	}

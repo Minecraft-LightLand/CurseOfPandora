@@ -26,6 +26,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 
+@SerialClass
 public class WindBladeEntity extends ThrowableProjectile implements IEntityAdditionalSpawnData {
 
 	@SerialClass.SerialField

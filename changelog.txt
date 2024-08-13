@@ -1,7 +1,10 @@
-18 / 12 / 7 / 35 / 4
+2.4.17
+- Fix shadow consolidation
 
 2.4.16
 - Fix curse of spell on empty slots
+- Fix magic blade serialization
+- Fix compat with REI
 
 2.4.15
 - Fix Curse of Flesh curio slot add

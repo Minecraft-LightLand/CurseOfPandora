@@ -9,6 +9,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2serial.serialization.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -102,7 +103,7 @@ public class ShadowConsolidation extends ITokenProviderItem<ShadowConsolidation.
 			var event = cache.getLivingDamageEvent();
 			assert event != null;
 			if (event.getSource().is(CoPDamageTypeGen.SHADOW)) return;
-
+			if (!cache.getAttackTarget().hasEffect(CoPEffects.SHADOW.get())) return;
 			if (current == null) {
 				if (cooldown > 0) {
 					return;
