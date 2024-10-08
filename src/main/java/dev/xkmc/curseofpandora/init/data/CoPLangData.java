@@ -277,6 +277,24 @@ public class CoPLangData {
 
 	}
 
+	public enum Compat implements Info {
+		SEAL_OF_SWORDS("Gain 1 %s for every %s player difficulty level. At most gain %s %s", 4),
+		SPELL_SINGULARITY_0("When none of your equipments have more enchantments than your %s:", 1),
+		SPELL_SINGULARITY_1("Gain %s %s and %s %s for every %s", 5),
+		;
+
+		final Entry entry;
+
+		Compat(String def, int count) {
+			entry = new Entry(name().toLowerCase(Locale.ROOT), def, count);
+		}
+
+		public Entry entry() {
+			return entry;
+		}
+
+	}
+
 	static {
 		putLang(Reality.class, "curse", Reality.values());
 		putLang(Angelic.class, "angel", Angelic.values());
@@ -288,6 +306,7 @@ public class CoPLangData {
 		putLang(Mutation.class, "mutation", Mutation.values());
 		putLang(Evil.class, "evil", Evil.values());
 		putLang(Weapon.class, "weapon", Weapon.values());
+		putLang(Compat.class, "compat", Compat.values());
 	}
 
 	public static void addTranslations(RegistrateLangProvider pvd) {

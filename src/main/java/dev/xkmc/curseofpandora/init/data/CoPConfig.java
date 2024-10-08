@@ -567,6 +567,36 @@ public class CoPConfig {
 
 		}
 
+		public static class Compat {
+
+			public final ForgeConfigSpec.IntValue sealOfSwordDifficultyPerBonus;
+			public final ForgeConfigSpec.IntValue sealOfSwordMaxRealityBonus;
+			public final ForgeConfigSpec.DoubleValue spellSingularitySpellBonusPerReality;
+			public final ForgeConfigSpec.DoubleValue spellSingularityMagicDamageBonusPerReality;
+
+			public final ForgeConfigSpec.BooleanValue allowRealityTrait;
+
+			private Compat(ForgeConfigSpec.Builder builder) {
+				builder.push("Compat");
+				allowRealityTrait = builder.comment("L2Hostility compat: allow Reality trait")
+						.define("allowRealityTrait", true);
+
+				sealOfSwordDifficultyPerBonus = builder.comment("Seal of Swords: player difficulty required per reality index bonus")
+						.defineInRange("sealOfSwordDifficultyPerBonus", 500, 1, 10000);
+				sealOfSwordMaxRealityBonus = builder.comment("Seal of Swords: max reality index bonus")
+						.defineInRange("sealOfSwordMaxRealityBonus", 3, 1, 10000);
+				spellSingularitySpellBonusPerReality = builder.comment("Spell Singularity: Spell Tolerance per reality index")
+						.defineInRange("spellSingularitySpellBonusPerReality", 0.5, 0, 5);
+				spellSingularityMagicDamageBonusPerReality = builder.comment("Spell Singularity: Magic Damage bonus per reality index")
+						.defineInRange("spellSingularityMagicDamageBonusPerReality", 0.5, 0, 5);
+
+
+				builder.pop();
+			}
+
+		}
+
+
 		public final Attr attr;
 		public final Curse curse;
 		public final Angelic angelic;
@@ -578,10 +608,10 @@ public class CoPConfig {
 		public final Mutation mutation;
 		public final Evil evil;
 		public final Weapon weapon;
+		public final Compat compat;
 
 		public final ForgeConfigSpec.DoubleValue lootLuckFactor;
 		public final ForgeConfigSpec.IntValue maxItemGenerated;
-		public final ForgeConfigSpec.BooleanValue allowRealityTrait;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("Loot");
@@ -601,10 +631,7 @@ public class CoPConfig {
 			this.mutation = new Mutation(builder);
 			this.evil = new Evil(builder);
 			this.weapon = new Weapon(builder);
-			builder.push("Compat");
-			allowRealityTrait = builder.comment("L2Hostility compat: allow Reality trait")
-					.define("allowRealityTrait", true);
-			builder.pop();
+			this.compat = new Compat(builder);
 		}
 
 	}

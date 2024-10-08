@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.curseofpandora.content.trait;
+package dev.xkmc.curseofpandora.content.hostility;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

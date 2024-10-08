@@ -1,4 +1,4 @@
-package dev.xkmc.curseofpandora.content.trait;
+package dev.xkmc.curseofpandora.content.hostility;
 
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
@@ -59,7 +59,7 @@ public class RealityTrait extends MobTrait {
 
 	@Override
 	public boolean isBanned() {
-		return !CoPConfig.COMMON.allowRealityTrait.get();
+		return !CoPConfig.COMMON.compat.allowRealityTrait.get();
 	}
 
 }

@@ -98,7 +98,9 @@
 	"evil_spirit_evoke": "邪祟唤魔",
 	"evil_spirit_awakening": "邪祟觉醒",
 	"evil_spirit_curse": "邪祟咒灭",
-	"evil_spirit_walk": "祟神附体"
+	"evil_spirit_walk": "祟神附体",
+	"seal_of_swords": "破境剑符",
+	"spell_singularity": "魔能奇点"
   },
   "curseofpandora.tooltip": {
 	"misc": {
@@ -185,7 +187,12 @@
 	  "awakening": "你击杀敌人时，获得%3$s秒的%1$s%%魔法伤害加成和%2$s%%伤害减免。最多叠加%4$s层",
 	  "curse": "对血量低于%s%%的生物造成的魔法伤害+%s%%",
 	  "walk": "处于祟神附体状态下时获得%s%%魔法伤害加成和%s%%攻击伤害加成。受到致命伤时，退出附体状态，回复全部生命值，之后进入%s秒冷却"
-	}
+	},
+    "compat": {
+	  "seal_of_swords": "玩家每有%2$s恶意难度获得1点%1$s。最多获得%3$s点%4$s",
+	  "spell_singularity_0": "当你所有装备的附魔数量都不超过你的%s时：",
+	  "spell_singularity_1": "对于每点%5$s，获得%s%s和%s%s"
+    }
   },
   "effect.curseofpandora": {
 	"prudence": "碎魂指示物",

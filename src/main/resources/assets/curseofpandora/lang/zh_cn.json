@@ -197,5 +197,10 @@
   "death.attack.spell_curse.player": "%s被魔力过载杀死了",
   "entity.curseofpandora.wind_blade": "剑气",
   "entity.curseofpandora.abyssal_fangs": "深渊之牙",
-  "entity.curseofpandora.evil_spirit": "邪灵"
+  "entity.curseofpandora.evil_spirit": "邪灵",
+  "curseofpandora.tooltip.compat.seal_of_swords": "Gain 1 %s for every %s player difficulty level. At most gain %s %s",
+  "curseofpandora.tooltip.compat.spell_singularity_0": "When none of your equipments have more enchantments than your %s:",
+  "curseofpandora.tooltip.compat.spell_singularity_1": "Gain %s %s and %s %s for every %s",
+  "item.curseofpandora.seal_of_swords": "Seal Of Swords",
+  "item.curseofpandora.spell_singularity": "Spell Singularity"
 }

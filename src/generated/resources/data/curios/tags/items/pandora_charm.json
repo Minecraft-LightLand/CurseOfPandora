@@ -12,10 +12,9 @@
     "curseofpandora:orb_of_explosion_rejection",
     "curseofpandora:orb_of_projectile_rejection",
     "curseofpandora:orb_of_magic_rejection",
-    "#curseofpandora:attribute_charms",
+    "#curseofpandora:pandora_base",
     "#curseofpandora:mini_beacons",
     "#curseofpandora:pandora_curse",
-    "#curseofpandora:reality_charms",
     {
       "id": "l2hostility:charm_of_looting_1",
       "required": false

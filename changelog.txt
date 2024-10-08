@@ -1,5 +1,6 @@
 2.4.17
 - Fix shadow consolidation
+- Add Seal of Swords and Spell Singularity
 
 2.4.16
 - Fix curse of spell on empty slots

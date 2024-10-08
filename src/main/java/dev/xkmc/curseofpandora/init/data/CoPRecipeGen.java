@@ -2,6 +2,7 @@ package dev.xkmc.curseofpandora.init.data;
 
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
+import dev.xkmc.curseofpandora.compat.CoPTraits;
 import dev.xkmc.curseofpandora.content.reality.CursePandoraUtil;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
@@ -687,6 +688,30 @@ public class CoPRecipeGen {
 						.define('B', CoPItems.CHARM.get())
 						.define('C', LHTraits.GRENADE.get().asItem())
 						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID), getID(CoPItems.CHARM_EXPLOSION.get()));
+			}
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPTraits.SEAL_OF_SWORDS.get())::unlockedBy, CoPTraits.TRAIT_REALITY.get().asItem())
+						.pattern("1 2").pattern("3A4").pattern("BBB")
+						.define('1', CoPItems.ANGELIC_JUDGEMENT)
+						.define('2', CoPItems.DOOM_STAR)
+						.define('3', CoPItems.CURSED_KARMA)
+						.define('4', CoPItems.ABYSSAL_EDGE)
+						.define('A', CoPItems.CHARM)
+						.define('B', CoPTraits.TRAIT_REALITY.get().asItem())
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPTraits.SPELL_SINGULARITY.get())::unlockedBy, CoPTraits.TRAIT_REALITY.get().asItem())
+						.pattern("1B7").pattern("2A6").pattern("345")
+						.define('1', CoPItems.CURSE_OF_INERTIA)
+						.define('2', CoPItems.CURSE_OF_PROXIMITY)
+						.define('3', CoPItems.CURSE_OF_FLESH)
+						.define('4', CoPItems.CURSE_OF_METABOLISM)
+						.define('5', CoPItems.CURSE_OF_TENSION)
+						.define('6', CoPItems.CURSE_OF_PRUDENCE)
+						.define('7', CoPItems.CURSE_OF_SPELL)
+						.define('A', CoPItems.CURSE_REDIRECTION)
+						.define('B', CoPTraits.TRAIT_REALITY.get().asItem())
+						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID));
 			}
 		}
 
