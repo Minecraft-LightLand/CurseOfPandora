@@ -3,16 +3,16 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "l2hostility"
+      "modid": "enigmaticlegacy"
     }
   ],
   "criteria": {
-    "has_plain_charm": {
+    "has_pandora_necklace": {
       "conditions": {
         "items": [
           {
             "items": [
-              "curseofpandora:plain_charm"
+              "pandora:pandora_necklace"
             ]
           }
         ]
@@ -21,20 +21,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "curseofpandora:pandora/plain_charm_renew"
+        "recipe": "curseofpandora:illusory_affection"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_plain_charm",
+      "has_pandora_necklace",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "curseofpandora:pandora/plain_charm_renew"
+      "curseofpandora:illusory_affection"
     ]
   },
   "sends_telemetry_event": false

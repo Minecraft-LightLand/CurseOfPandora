@@ -1,8 +1,10 @@
 package dev.xkmc.curseofpandora.init.data;
 
+import com.aizistral.enigmaticlegacy.EnigmaticLegacy;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import dev.xkmc.curseofpandora.compat.CoPTraits;
+import dev.xkmc.curseofpandora.compat.enigmaticlegacy.ELItems;
 import dev.xkmc.curseofpandora.content.reality.CursePandoraUtil;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
@@ -23,6 +25,7 @@ import dev.xkmc.pandora.init.registrate.PandoraItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -601,6 +604,7 @@ public class CoPRecipeGen {
 
 
 		if (ModList.get().isLoaded(L2Hostility.MODID)) {
+			currentFolder = "compat/hostility/";
 			{
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.CHARM.get(), 2)::unlockedBy, CoPItems.CHARM.get())
 						.pattern("AAA").pattern("ABA").pattern("AAA")
@@ -712,6 +716,23 @@ public class CoPRecipeGen {
 						.define('A', CoPItems.CURSE_REDIRECTION)
 						.define('B', CoPTraits.TRAIT_REALITY.get().asItem())
 						.save(ConditionalRecipeWrapper.mod(pvd, L2Hostility.MODID));
+			}
+		}
+
+		if (ModList.get().isLoaded(EnigmaticLegacy.MODID)) {
+			currentFolder = "compat/enigmaticlegacy/";
+			{
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ELItems.AGGREVATE.get(), 1)::unlockedBy, PandoraItems.PANDORA_NECKLACE.get())
+						.pattern(" A ").pattern("ABA").pattern(" A ")
+						.define('B', CoPTagGen.CURSE)
+						.define('A', ItemTags.FLOWERS)
+						.save(ConditionalRecipeWrapper.mod(pvd, EnigmaticLegacy.MODID));
+
+				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ELItems.INSOMNIA.get(), 1)::unlockedBy, PandoraItems.PANDORA_NECKLACE.get())
+						.pattern(" A ").pattern("ABA").pattern(" A ")
+						.define('B', CoPTagGen.CURSE)
+						.define('A', ItemTags.WOOL)
+						.save(ConditionalRecipeWrapper.mod(pvd, EnigmaticLegacy.MODID));
 			}
 		}
 

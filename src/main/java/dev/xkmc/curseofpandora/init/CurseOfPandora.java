@@ -1,8 +1,10 @@
 package dev.xkmc.curseofpandora.init;
 
+import com.aizistral.enigmaticlegacy.EnigmaticLegacy;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.curseofpandora.compat.CoPLoader;
 import dev.xkmc.curseofpandora.compat.CoPTraits;
+import dev.xkmc.curseofpandora.compat.enigmaticlegacy.ELItems;
 import dev.xkmc.curseofpandora.event.ItemClickListener;
 import dev.xkmc.curseofpandora.event.PandoraAttackListener;
 import dev.xkmc.curseofpandora.init.data.*;
@@ -66,6 +68,9 @@ public class CurseOfPandora {
 		CoPEntities.register();
 		CoPGLMProvider.register();
 		CoPConfig.init();
+		CoPDamageTypeGen.register();
+		if (ModList.get().isLoaded(EnigmaticLegacy.MODID))
+			ELItems.register();
 		if (ModList.get().isLoaded(L2Hostility.MODID))
 			CoPTraits.register();
 		AttackEventHandler.register(5200, new PandoraAttackListener());

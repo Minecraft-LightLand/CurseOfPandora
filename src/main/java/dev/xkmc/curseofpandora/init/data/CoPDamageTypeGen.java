@@ -1,6 +1,7 @@
 package dev.xkmc.curseofpandora.init.data;
 
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
+import dev.xkmc.l2complements.init.L2Complements;
 import dev.xkmc.l2complements.init.data.DamageTypeGen;
 import dev.xkmc.l2damagetracker.contents.damage.DamageWrapperTagProvider;
 import dev.xkmc.l2damagetracker.init.data.DamageTypeAndTagsGen;
@@ -21,13 +22,25 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import java.util.concurrent.CompletableFuture;
 
 public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
-	public static final ResourceKey<DamageType> SOUL_CURSE = create("soul_curse");
-	public static final ResourceKey<DamageType> SHADOW_CURSE = create("shadow_curse");
-	public static final ResourceKey<DamageType> VOID_CURSE = create("void_curse");
-	public static final ResourceKey<DamageType> SPELL_CURSE = create("spell_curse");
-	public static final ResourceKey<DamageType> WIND_BLADE = create("wind_blade");
-	public static final ResourceKey<DamageType> ABYSSAL_FANG = create("abyssal_fang");
-	public static final ResourceKey<DamageType> ECHO_ABYSSAL_FANG = create("echo_abyssal_fang");
+
+	public static final ResourceKey<DamageType> SOUL_CURSE = create("soul_curse",
+			"%s is cursed by evil souls", "%s is cursed by %s's evil souls");
+	public static final ResourceKey<DamageType> SHADOW_CURSE = create("shadow_curse",
+			"%s is cursed by shadow", "%s is cursed by %s's shadow");
+	public static final ResourceKey<DamageType> VOID_CURSE = create("void_curse",
+			"%s is cursed by shadow", "%s is cursed by %s's shadow");
+	public static final ResourceKey<DamageType> SPELL_CURSE = create("spell_curse",
+			"%s is killed by abyssal fangs", "%s is killed by %s's abyssal fangs");
+	public static final ResourceKey<DamageType> WIND_BLADE = create("wind_blade",
+			"%s is killed by wind blade", "%s is killed by %s's wind blade");
+	public static final ResourceKey<DamageType> ABYSSAL_FANG = create("abyssal_fang",
+			"%s is killed by abyssal fangs", "%s is killed by %s's abyssal fangs");
+	public static final ResourceKey<DamageType> ECHO_ABYSSAL_FANG = create("echo_abyssal_fang",
+			"%s is killed by spell overload");
+
+	public static void register() {
+
+	}
 
 	public static final TagKey<DamageType> SHADOW = TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(CurseOfPandora.MODID, "shadow"));
 
@@ -61,6 +74,21 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 
 	public static Holder<DamageType> forKey(Level level, ResourceKey<DamageType> key) {
 		return level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(key);
+	}
+
+	private static ResourceKey<DamageType> create(String id, String msg) {
+		return create(id, msg, msg);
+	}
+
+	private static ResourceKey<DamageType> create(String id, String msg, String player) {
+		return create(id, msg, player, player);
+	}
+
+	private static ResourceKey<DamageType> create(String id, String msg, String player, String item) {
+		CurseOfPandora.REGISTRATE.addRawLang("death.attack." + id, msg);
+		CurseOfPandora.REGISTRATE.addRawLang("death.attack." + id + ".player", player);
+		CurseOfPandora.REGISTRATE.addRawLang("death.attack." + id + ".item", item);
+		return create(id);
 	}
 
 	private static ResourceKey<DamageType> create(String id) {

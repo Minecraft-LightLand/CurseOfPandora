@@ -21,7 +21,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "curseofpandora:pandora/charm_of_heavy_weapon"
+        "recipe": "curseofpandora:compat/hostility/charm_of_speed"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -34,7 +34,7 @@
   ],
   "rewards": {
     "recipes": [
-      "curseofpandora:pandora/charm_of_heavy_weapon"
+      "curseofpandora:compat/hostility/charm_of_speed"
     ]
   },
   "sends_telemetry_event": false

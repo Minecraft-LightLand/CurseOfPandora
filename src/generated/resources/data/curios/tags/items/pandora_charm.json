@@ -30,6 +30,14 @@
     {
       "id": "l2hostility:charm_of_looting_4",
       "required": false
+    },
+    {
+      "id": "curseofpandora:illusory_affection",
+      "required": false
+    },
+    {
+      "id": "curseofpandora:fading_dream",
+      "required": false
     }
   ]
 }

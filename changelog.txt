@@ -1,3 +1,14 @@
+2.4.20
+- Add Illusory Affection and Fading Dream
+- Improve death message
+- Texture update
+
+2.4.19
+- Fix translation
+
+2.4.18
+- fix refmap
+
 2.4.17
 - Fix shadow consolidation
 - Add Seal of Swords and Spell Singularity

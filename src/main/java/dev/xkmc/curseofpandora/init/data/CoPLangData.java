@@ -281,6 +281,8 @@ public class CoPLangData {
 		SEAL_OF_SWORDS("Gain 1 %s for every %s player difficulty level. At most gain %s %s", 4),
 		SPELL_SINGULARITY_0("When none of your equipments have more enchantments than your %s:", 1),
 		SPELL_SINGULARITY_1("Gain %s %s and %s %s for every %s", 5),
+		EL_AGGREVATE("Negate 2nd Curse from the Cursed Ring. Feel free to make friends.", 0),
+		EL_INSOMNIA("Negate 7th Curse from the Cursed Ring. Have a good night.", 0),
 		;
 
 		final Entry entry;
@@ -318,18 +320,6 @@ public class CoPLangData {
 				pvd.add(e.desc(), e.entry().def());
 			}
 		}
-		pvd.add("death.attack.soul_curse", "%s is cursed by evil souls");
-		pvd.add("death.attack.soul_curse.player", "%s is cursed by %s's evil souls");
-		pvd.add("death.attack.shadow_curse", "%s is cursed by shadow");
-		pvd.add("death.attack.shadow_curse.player", "%s is cursed by %s's shadow");
-		pvd.add("death.attack.void_curse", "%s is cursed by shadow");
-		pvd.add("death.attack.void_curse.player", "%s is cursed by %s's shadow");
-		pvd.add("death.attack.abyssal_fangs", "%s is killed by abyssal fangs");
-		pvd.add("death.attack.abyssal_fangs.player", "%s is killed by %s's abyssal fangs");
-		pvd.add("death.attack.echo_abyssal_fangs", "%s is killed by abyssal fangs");
-		pvd.add("death.attack.echo_abyssal_fangs.player", "%s is killed by %s's abyssal fangs");
-		pvd.add("death.attack.spell_curse", "%s is killed by spell overload");
-		pvd.add("death.attack.spell_curse.player", "%s is killed by spell overload");
 	}
 
 	public static MutableComponent getDesc(MobEffectInstance ins) {

@@ -21,7 +21,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "curseofpandora:pandora/charm_of_health"
+        "recipe": "curseofpandora:compat/hostility/plain_charm_renew"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -34,7 +34,7 @@
   ],
   "rewards": {
     "recipes": [
-      "curseofpandora:pandora/charm_of_health"
+      "curseofpandora:compat/hostility/plain_charm_renew"
     ]
   },
   "sends_telemetry_event": false
