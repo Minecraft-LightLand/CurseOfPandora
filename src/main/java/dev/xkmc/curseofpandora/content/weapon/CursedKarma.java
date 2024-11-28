@@ -17,7 +17,6 @@ import dev.xkmc.l2library.init.explosion.VanillaExplosionContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
@@ -103,7 +102,7 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 		entity.discard();
 	}
 
-	private boolean isTarget(Entity entity, Entity owner) {
+	private boolean isTarget(Entity entity, @Nullable Entity owner) {
 		if (owner != null) {
 			if (entity == owner) return false;
 			if (entity.isAlliedTo(owner)) return false;

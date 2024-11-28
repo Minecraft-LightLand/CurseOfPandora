@@ -1,3 +1,7 @@
+2.4.21
+- Fix Curse of Tension terrorized token not disappearing visually
+- Make wind blade direction not affected by player speed if player speed is slower than 75% of blade speed
+
 2.4.20
 - Add Illusory Affection and Fading Dream
 - Improve death message

@@ -181,13 +181,19 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 
 		private void removeEffect(Player player) {
 			if (!player.level().isClientSide()) return;
+			for (var id : terror.keySet()) {
+				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
+				if (ent instanceof LivingEntity le) {
+					var cap = ClientEffectCap.HOLDER.get(le);
+					cap.map.remove(CoPEffects.FAKE_TERRORIZED.get());
+				}
+			}
 			for (var id : brave.keySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
 					var cap = ClientEffectCap.HOLDER.get(le);
 					cap.map.remove(CoPEffects.FAKE_TERROR_PRE.get());
 					cap.map.remove(CoPEffects.FAKE_TERROR.get());
-					cap.map.remove(CoPEffects.FAKE_TERRORIZED.get());
 				}
 			}
 		}

@@ -167,4 +167,14 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 		return issuer;
 	}
 
+	public void shootFromRotation(Entity user, float xr, float yr, float angle, float v, float rand) {
+		float f = -Mth.sin(yr * 0.017453292F) * Mth.cos(xr * 0.017453292F);
+		float f1 = -Mth.sin((xr + angle) * 0.017453292F);
+		float f2 = Mth.cos(yr * 0.017453292F) * Mth.cos(xr * 0.017453292F);
+		this.shoot(f, f1, f2, v, rand);
+		Vec3 vec3 = user.getDeltaMovement();
+		if (vec3.length() < v * 0.75) return;
+		this.setDeltaMovement(this.getDeltaMovement().add(vec3.x, user.onGround() ? 0.0 : vec3.y, vec3.z));
+	}
+
 }
