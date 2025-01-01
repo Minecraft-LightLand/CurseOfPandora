@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:bone"
+    },
+    "B": {
+      "item": "minecraft:skeleton_skull"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "curseofpandora:angelic_feather"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    "DAD"
+  ],
+  "result": {
+    "item": "curseofpandora:orb_of_soulguard"
+  },
+  "show_notification": true
+}

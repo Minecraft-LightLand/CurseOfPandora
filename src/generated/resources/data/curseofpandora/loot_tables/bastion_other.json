@@ -66,6 +66,21 @@
         },
         {
           "type": "minecraft:item",
+          "name": "curseofpandora:orb_of_executor",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:orb_of_prosecutor",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
+          "name": "curseofpandora:orb_of_soulguard",
+          "weight": 100
+        },
+        {
+          "type": "minecraft:item",
           "name": "curseofpandora:hellfire_skull",
           "weight": 25
         },

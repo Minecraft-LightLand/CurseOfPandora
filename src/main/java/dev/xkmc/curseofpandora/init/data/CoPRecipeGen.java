@@ -233,6 +233,30 @@ public class CoPRecipeGen {
 					.define('C', CoPItems.CHARM.get())
 					.save(pvd, getID(CoPItems.CHARM_LUCK.get()));
 
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ORB_SOULGUARD.get())::unlockedBy, CoPItems.CHARM.get())
+					.pattern("ABA").pattern("ACA").pattern("DAD")
+					.define('A', Items.BONE)
+					.define('B', Items.SKELETON_SKULL)
+					.define('C', CoPItems.CHARM.get())
+					.define('D', CoPItems.ANGELIC_FEATHER)
+					.save(pvd, getID(CoPItems.ORB_SOULGUARD.get()));
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ORB_EXECUTOR.get())::unlockedBy, CoPItems.CHARM.get())
+					.pattern("ABA").pattern("ACA").pattern("DAD")
+					.define('A', Items.WITHER_ROSE)
+					.define('B', Items.WITHER_SKELETON_SKULL)
+					.define('C', CoPItems.CHARM.get())
+					.define('D', CoPItems.HELLFIRE_RUNE)
+					.save(pvd, getID(CoPItems.ORB_EXECUTOR.get()));
+
+			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ORB_PROSECUTOR.get())::unlockedBy, CoPItems.CHARM.get())
+					.pattern("ABA").pattern("ACA").pattern("DAD")
+					.define('A', Items.NETHERITE_SCRAP)
+					.define('B', Items.PIGLIN_HEAD)
+					.define('C', CoPItems.CHARM.get())
+					.define('D', CoPItems.BARBARIC_BLOOD)
+					.save(pvd, getID(CoPItems.ORB_PROSECUTOR.get()));
+
 		}
 
 		// sets

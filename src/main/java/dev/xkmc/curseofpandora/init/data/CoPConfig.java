@@ -34,6 +34,12 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue charmOfMagic;
 			public final ForgeConfigSpec.DoubleValue charmOfExplosion;
 			public final ForgeConfigSpec.DoubleValue charmOfLuck;
+			public final ForgeConfigSpec.DoubleValue orbOfExecutorAttack;
+			public final ForgeConfigSpec.DoubleValue orbOfExecutorHealth;
+			public final ForgeConfigSpec.DoubleValue orbOfSoulGuardSpeed;
+			public final ForgeConfigSpec.DoubleValue orbOfSoulGuardReduction;
+			public final ForgeConfigSpec.DoubleValue orbOfProsecutorCritRate;
+			public final ForgeConfigSpec.DoubleValue orbOfProsecutorCritDmg;
 
 			private Attr(ForgeConfigSpec.Builder builder) {
 				builder.push("AttributeCharms");
@@ -52,6 +58,12 @@ public class CoPConfig {
 				charmOfMagic = builder.defineInRange("charmOfMagic", 0.1, 0, 10);
 				charmOfExplosion = builder.defineInRange("charmOfExplosion", 0.1, 0, 10);
 				charmOfLuck = builder.defineInRange("charmOfLuck", 1d, 0, 10);
+				orbOfExecutorAttack = builder.defineInRange("orbOfExecutorAttack", 0.5d, 0, 10);
+				orbOfExecutorHealth = builder.defineInRange("orbOfExecutorHealth", 0.5d, 0, 10);
+				orbOfSoulGuardSpeed = builder.defineInRange("orbOfSoulGuardSpeed", 0.2d, 0, 1);
+				orbOfSoulGuardReduction = builder.defineInRange("orbOfSoulGuardReduction", 0.1d, 0, 1);
+				orbOfProsecutorCritRate = builder.defineInRange("orbOfProsecutorCritRate", 0.1d, 0, 1);
+				orbOfProsecutorCritDmg = builder.defineInRange("orbOfProsecutorCritDmg", 0.2d, 0, 1);
 				builder.pop();
 			}
 

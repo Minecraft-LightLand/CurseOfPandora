@@ -23,7 +23,6 @@ import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.l2complements.content.feature.CurioFeaturePredicate;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.content.item.curios.DescCurioItem;
-import dev.xkmc.l2complements.init.data.TagGen;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.base.L2Registrate;
@@ -57,7 +56,7 @@ public class CoPItems {
 	public static final ItemEntry<DescCurioItem> BLESS_LAVA_WALKER;
 	public static final ItemEntry<AttributeItem> CHARM_HEALTH, CHARM_ARMOR, CHARM_SPEED,
 			CHARM_DAMAGE, CHARM_HEAVY, CHARM_ACCURACY, CHARM_CRIT, CHARM_BOW, CHARM_PROTECTION,
-			CHARM_MAGIC, CHARM_EXPLOSION, CHARM_LUCK;
+			CHARM_MAGIC, CHARM_EXPLOSION, CHARM_LUCK, ORB_EXECUTOR, ORB_PROSECUTOR, ORB_SOULGUARD;
 
 	public static final ItemEntry<CurseOfInertiaItem> CURSE_OF_INERTIA;
 	public static final ItemEntry<CurseOfProximityItem> CURSE_OF_PROXIMITY;
@@ -214,6 +213,21 @@ public class CoPItems {
 					AttributeItem.add(() -> Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfLuck::get)))
 					.tag(CoPTagGen.ATTR).register();
 
+			ORB_SOULGUARD = item("orb_of_soulguard", p -> new AttributeItem(p,
+					AttributeItem.multTotal(() -> Attributes.MOVEMENT_SPEED, "orb_of_soulguard", () -> -CoPConfig.COMMON.attr.orbOfSoulGuardSpeed.get()),
+					AttributeItem.multTotal(L2DamageTracker.REDUCTION::get, "orb_of_soulguard", () -> -CoPConfig.COMMON.attr.orbOfSoulGuardReduction.get()),
+					AttributeItem.add(CoPAttrs.SPELL, "orb_of_soulguard", () -> 1)))
+					.tag(CoPTagGen.ATTR).register();
+
+			ORB_EXECUTOR = item("orb_of_executor", p -> new AttributeItem(p,
+					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "orb_of_executor", CoPConfig.COMMON.attr.orbOfExecutorAttack::get),
+					AttributeItem.multTotal(() -> Attributes.MAX_HEALTH, "orb_of_executor", () -> -CoPConfig.COMMON.attr.orbOfExecutorHealth.get())))
+					.tag(CoPTagGen.ATTR).register();
+
+			ORB_PROSECUTOR = item("orb_of_prosecutor", p -> new AttributeItem(p,
+					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "orb_of_prosecutor", CoPConfig.COMMON.attr.orbOfProsecutorCritDmg::get),
+					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "orb_of_prosecutor", () -> -CoPConfig.COMMON.attr.orbOfProsecutorCritRate.get())))
+					.tag(CoPTagGen.ATTR).register();
 		}
 
 		//sets

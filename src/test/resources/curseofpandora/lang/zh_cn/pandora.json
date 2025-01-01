@@ -102,7 +102,10 @@
 		"seal_of_swords": "破境剑符",
 		"spell_singularity": "魔能奇点",
 		"fading_dream": "幻梦",
-		"illusory_affection": "伪善"
+		"illusory_affection": "伪善",
+		"orb_of_executor": "处刑人宝珠",
+		"orb_of_prosecutor": "审判官宝珠",
+		"orb_of_soulguard": "守灵人宝珠"
 	},
 	"curseofpandora.tooltip": {
 		"misc": {
