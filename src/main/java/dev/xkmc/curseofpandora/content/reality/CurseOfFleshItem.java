@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_flesh", "curio", 1);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_flesh", CoPConfig.COMMON.curse.curseOfFleshSlot);
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_flesh");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 

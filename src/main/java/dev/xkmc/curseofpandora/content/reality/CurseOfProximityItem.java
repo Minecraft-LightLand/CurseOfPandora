@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_proximity", "bracelet", 1);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_proximity", CoPConfig.COMMON.curse.curseOfProximitySlot);
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_proximity");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 

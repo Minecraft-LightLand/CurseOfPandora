@@ -24,7 +24,7 @@ import java.util.UUID;
 
 public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_inertia", "necklace", 1);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_inertia", CoPConfig.COMMON.curse.curseOfInertiaSlot);
 	private static final TokenKey<CurseOfInertiaItem.Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_inertia");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 

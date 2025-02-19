@@ -31,7 +31,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_prudence");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
-	public static final SlotAdder ADDER = SlotAdder.of("curse_of_prudence", "charm", 3);
+	public static final SlotAdder ADDER = SlotAdder.of("curse_of_prudence", CoPConfig.COMMON.curse.curseOfPrudenceSlot);
 
 	public static int getMaxLevel() {
 		return CoPConfig.COMMON.curse.curseOfPrudenceMaxLevel.get();

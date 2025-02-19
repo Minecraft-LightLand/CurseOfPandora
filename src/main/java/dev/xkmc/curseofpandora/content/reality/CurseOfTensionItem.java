@@ -30,7 +30,7 @@ import java.util.UUID;
 
 public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_tension", "hands", 1);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_tension", CoPConfig.COMMON.curse.curseOfTensionSlot);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_tension");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 

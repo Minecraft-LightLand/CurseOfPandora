@@ -99,6 +99,14 @@ public class CoPConfig {
 			public final ForgeConfigSpec.DoubleValue curseOfSpellDamageFactor;
 			public final ForgeConfigSpec.DoubleValue curseOfSpellWeakenFactor;
 
+
+			public final ForgeConfigSpec.ConfigValue<String> curseOfInertiaSlot;
+			public final ForgeConfigSpec.ConfigValue<String> curseOfProximitySlot;
+			public final ForgeConfigSpec.ConfigValue<String> curseOfFleshSlot;
+			public final ForgeConfigSpec.ConfigValue<String> curseOfTensionSlot;
+			public final ForgeConfigSpec.ConfigValue<String> curseOfPrudenceSlot;
+			public final ForgeConfigSpec.ConfigValue<String> curseOfSpellSlot;
+
 			private Curse(ForgeConfigSpec.Builder builder) {
 				builder.push("Reality");
 
@@ -157,6 +165,19 @@ public class CoPConfig {
 				curseOfSpellWeakenFactor = builder.comment("Curse of Spell: player will deal less damage when having spell overload")
 						.comment("Higher number means mob takes less damage")
 						.defineInRange("curseOfSpellWeakenFactor", 1d, 0, 100);
+
+				curseOfInertiaSlot = builder.comment("Curse of Inertia: bonus slot")
+						.define("curseOfInertiaSlot", "necklace#1");
+				curseOfProximitySlot = builder.comment("Curse of Proximity: bonus slot")
+						.define("curseOfProximitySlot", "bracelet#1");
+				curseOfFleshSlot = builder.comment("Curse of Flesh: bonus slot")
+						.define("curseOfFleshSlot", "curio#1");
+				curseOfTensionSlot = builder.comment("Curse of Tension: bonus slot")
+						.define("curseOfTensionSlot", "hands#1");
+				curseOfPrudenceSlot = builder.comment("Curse of Prudence: bonus slot")
+						.define("curseOfPrudenceSlot", "charm#3");
+				curseOfSpellSlot = builder.comment("Curse of Spell: bonus slot")
+						.define("curseOfSpellSlot", "hands#1");
 
 				builder.pop();
 			}

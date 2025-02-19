@@ -25,7 +25,7 @@ import java.util.List;
 
 public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", "hands", 1);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", CoPConfig.COMMON.curse.curseOfSpellSlot);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_spell");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 

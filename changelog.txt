@@ -1,3 +1,6 @@
+2.4.24
+- Allow slot bonus of pandora curse items to be altered on config
+
 2.4.23
 - Add 3 charms
 
