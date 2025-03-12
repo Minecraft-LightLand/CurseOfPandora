@@ -1,3 +1,7 @@
+2.4.25
+- Fix ZH translation for hellfire skull
+
+
 2.4.24
 - Allow slot bonus of pandora curse items to be altered on config
 
