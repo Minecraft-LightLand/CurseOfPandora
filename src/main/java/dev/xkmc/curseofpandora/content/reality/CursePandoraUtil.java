@@ -56,7 +56,7 @@ public class CursePandoraUtil {
 		double mod = negate.reverse();
 		if (old == null || old.getAmount() != mod) {
 			attr.removeModifier(negId);
-			attr.addTransientModifier(new AttributeModifier(negId, negName, mod, op));
+			attr.addPermanentModifier(new AttributeModifier(negId, negName, mod, op));
 		}
 		val.accept(mod);
 	}

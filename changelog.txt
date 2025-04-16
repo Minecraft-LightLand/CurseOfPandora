@@ -1,3 +1,6 @@
+2.4.26
+- Fix Curse of Flesh deactivating between world loads
+
 2.4.25
 - Fix ZH translation for hellfire skull
 
