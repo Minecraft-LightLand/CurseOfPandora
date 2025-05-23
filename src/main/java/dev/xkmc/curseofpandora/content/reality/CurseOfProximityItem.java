@@ -7,18 +7,15 @@ import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.capability.conditionals.TokenKey;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeMod;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +43,7 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		list.add(CoPLangData.Reality.PROXIMITY.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
 	}
 
@@ -62,7 +59,7 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 	public static class Lim extends AttributeLimiter {
 
 		protected Lim() {
-			super(ForgeMod.ENTITY_REACH.get(), "proximity");
+			super(Attributes.ENTITY_INTERACTION_RANGE, "proximity");
 		}
 
 		@Override
@@ -71,9 +68,10 @@ public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ti
 		}
 
 		public void tickImpl(Player player) {
-			var map = player.getMainHandItem().getAttributeModifiers(EquipmentSlot.MAINHAND);
-			var list = map.get(ForgeMod.ENTITY_REACH.get());
-			var set = list.stream().map(AttributeModifier::getId).collect(Collectors.toSet());
+			var set = player.getMainHandItem().getAttributeModifiers().modifiers().stream()
+					.filter(e -> e.slot().test(EquipmentSlot.MAINHAND))
+					.filter(e -> e.attribute().is(Attributes.ENTITY_INTERACTION_RANGE))
+					.map(e -> e.modifier().id()).collect(Collectors.toSet());
 			doAttributeLimit(player, set, false);
 		}
 

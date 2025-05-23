@@ -6,12 +6,13 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2core.capability.conditionals.NetworkSensitiveToken;
+import dev.xkmc.l2core.capability.conditionals.TokenKey;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import dev.xkmc.l2library.base.effects.ClientEffectCap;
-import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -63,7 +64,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		int tkMat = getTokenMature();
 		int tkLife = getTokenLife();
 		int dur = getPenaltyDuration();
@@ -77,11 +78,11 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 	@SerialClass
 	public static class Ticker extends ListTickingToken implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
 
-		@SerialClass.SerialField
+		@SerialField
 		public HashMap<UUID, Long> terror = new HashMap<>();
 
 
-		@SerialClass.SerialField
+		@SerialField
 		public HashMap<UUID, ArrayList<Long>> brave = new HashMap<>();
 
 		private boolean sync = false;
@@ -120,12 +121,12 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 		}
 
 		@Override
-		public void onPlayerDamagedFinal(Player player, AttackCache cache) {
+		public void onPlayerDamagedFinal(Player player, DamageData.DefenceMax data) {
 			if (!(player instanceof ServerPlayer sp)) return;
-			var attacker = cache.getAttacker();
+			var attacker = data.getAttacker();
 			if (attacker == null) return;
 			if (attacker == player) return;
-			if (cache.getDamageDealt() >= player.getMaxHealth() * getDamageThreshold())
+			if (data.getDamageFinal() >= player.getMaxHealth() * getDamageThreshold())
 				terror.put(attacker.getUUID(), player.level().getGameTime());
 			brave.remove(attacker.getUUID());
 			sync(sp);
@@ -136,20 +137,16 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 		}
 
 		@Override
-		public void onPlayerAttackTarget(Player player, AttackCache cache) {
-			if (!(player instanceof ServerPlayer)) return;
-			if (isTerrorized(cache.getAttackTarget())) {
-				var event = cache.getLivingAttackEvent();
-				assert event != null;
-				event.setCanceled(true);
-			}
+		public boolean onPlayerAttackTarget(Player player, DamageData.Attack data) {
+			if (!(player instanceof ServerPlayer)) return false;
+			return isTerrorized(data.getTarget());
 		}
 
 		@Override
-		public void onPlayerHurtTarget(Player player, AttackCache cache) {
+		public void onPlayerHurtTarget(Player player, DamageData.Offence data) {
 			if (!(player instanceof ServerPlayer sp)) return;
 			long time = player.level().getGameTime();
-			var target = cache.getAttackTarget();
+			var target = data.getTarget();
 			if (player == target) return;
 			List<Long> list = brave.get(target.getUUID());
 			int count = 0;
@@ -162,7 +159,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			}
 			if (count > 0) {
 				count = Math.min(count, getMaxLevel());
-				cache.addHurtModifier(DamageModifier.multTotal(1 + count * getDamageBonus()));
+				data.addHurtModifier(DamageModifier.multTotal(1 + count * getDamageBonus()));
 			}
 			brave.computeIfAbsent(target.getUUID(), k -> new ArrayList<>()).add(time);
 			sync(sp);
@@ -184,16 +181,16 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			for (var id : terror.keySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
-					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.remove(CoPEffects.FAKE_TERRORIZED.get());
+					var cap = L2LibReg.EFFECT.type().getOrCreate(le);
+					cap.map.remove(CoPEffects.FAKE_TERRORIZED);
 				}
 			}
 			for (var id : brave.keySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
-					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.remove(CoPEffects.FAKE_TERROR_PRE.get());
-					cap.map.remove(CoPEffects.FAKE_TERROR.get());
+					var cap = L2LibReg.EFFECT.type().getOrCreate(le);
+					cap.map.remove(CoPEffects.FAKE_TERROR_PRE);
+					cap.map.remove(CoPEffects.FAKE_TERROR);
 				}
 			}
 		}
@@ -204,9 +201,9 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			for (var pair : brave.entrySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
 				if (ent instanceof LivingEntity le) {
-					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.remove(CoPEffects.FAKE_TERROR_PRE.get());
-					cap.map.remove(CoPEffects.FAKE_TERROR.get());
+					var cap = L2LibReg.EFFECT.type().getOrCreate(le);
+					cap.map.remove(CoPEffects.FAKE_TERROR_PRE);
+					cap.map.remove(CoPEffects.FAKE_TERROR);
 					int pre = 0;
 					int lost = 0;
 					for (long t : pair.getValue()) {
@@ -217,18 +214,18 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 						}
 					}
 					if (pre > 0) {
-						cap.map.put(CoPEffects.FAKE_TERROR_PRE.get(), pre - 1);
+						cap.map.put(CoPEffects.FAKE_TERROR_PRE, pre - 1);
 					}
 					if (lost > 0) {
-						cap.map.put(CoPEffects.FAKE_TERROR.get(), lost - 1);
+						cap.map.put(CoPEffects.FAKE_TERROR, lost - 1);
 					}
 				}
 			}
 			for (var pair : terror.entrySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
 				if (ent instanceof LivingEntity le) {
-					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.put(CoPEffects.FAKE_TERRORIZED.get(), 0);
+					var cap = L2LibReg.EFFECT.type().getOrCreate(le);
+					cap.map.put(CoPEffects.FAKE_TERRORIZED, 0);
 				}
 			}
 		}

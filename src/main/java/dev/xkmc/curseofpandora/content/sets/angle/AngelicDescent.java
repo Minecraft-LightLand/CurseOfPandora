@@ -8,9 +8,9 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.MobType;
@@ -19,15 +19,13 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 
-	private static final AttrAdder ATTACK = AttrAdder.of("angelic_descent", () -> Attributes.ATTACK_DAMAGE,
-			AttributeModifier.Operation.MULTIPLY_BASE, AngelicDescent::getStat);
+	private static final AttrAdder ATTACK = AttrAdder.of("angelic_descent", Attributes.ATTACK_DAMAGE,
+			AttributeModifier.Operation.ADD_MULTIPLIED_BASE, AngelicDescent::getStat);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.angelic.angelicDescentMeleeBonus.get();
@@ -46,9 +44,9 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		list.add(CoPLangData.Angelic.CHECK.get().withStyle(ChatFormatting.GRAY));
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(CoPLangData.Angelic.DESCENT.get(Math.round(getBonus() * 100)))
@@ -59,7 +57,7 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -67,10 +65,10 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
 		@Override
-		public void onPlayerHurtTarget(Player player, AttackCache cache) {
+		public void onPlayerHurtTarget(Player player, DamageData.Offence data) {
 			float bonus = 1 + (float) getBonus();
-			if (cache.getAttackTarget().getMobType() == MobType.UNDEAD && check(player)) {
-				cache.addHurtModifier(DamageModifier.multTotal(bonus));
+			if (data.getTarget().getType().is(EntityTypeTags.UNDEAD) && check(player)) {
+				data.addHurtModifier(DamageModifier.multTotal(bonus));
 			}
 		}
 

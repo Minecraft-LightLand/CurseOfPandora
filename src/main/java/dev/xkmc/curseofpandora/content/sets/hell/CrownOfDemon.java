@@ -8,21 +8,19 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -31,11 +29,11 @@ import java.util.Set;
 public class CrownOfDemon extends ITokenProviderItem<CrownOfDemon.Data> {
 
 	public static boolean check(Player player) {
-		return ConditionalData.HOLDER.get(player).hasData(CoPItems.CROWN_OF_DEMON.get().getKey());
+		return L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.CROWN_OF_DEMON.get().getKey());
 	}
 
 	public static boolean isPeon(Mob entity) {
-		return entity.getMobType() == MobType.UNDEAD && entity.getAttributeBaseValue(Attributes.MAX_HEALTH) <= getThreshold();
+		return entity.getType().is(EntityTypeTags.UNDEAD) && entity.getAttributeBaseValue(Attributes.MAX_HEALTH) <= getThreshold();
 	}
 
 	public static int getIndexReq() {
@@ -56,8 +54,8 @@ public class CrownOfDemon extends ITokenProviderItem<CrownOfDemon.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq()).withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Hell.CROWN.get(
 		).withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
@@ -65,7 +63,7 @@ public class CrownOfDemon extends ITokenProviderItem<CrownOfDemon.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -114,13 +112,14 @@ public class CrownOfDemon extends ITokenProviderItem<CrownOfDemon.Data> {
 		}
 
 		@Override
-		public void onPlayerAttackTarget(Player player, AttackCache cache) {
+		public boolean onPlayerAttackTarget(Player player, DamageData.Attack data) {
 			refresh(player);
 			for (var e : peon) {
 				if (e.getTarget() == null) {
-					e.setLastHurtByMob(cache.getAttackTarget());
+					e.setLastHurtByMob(data.getTarget());
 				}
 			}
+			return false;
 		}
 
 	}

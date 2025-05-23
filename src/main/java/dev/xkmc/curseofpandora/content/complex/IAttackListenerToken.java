@@ -1,44 +1,38 @@
 package dev.xkmc.curseofpandora.content.complex;
 
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import net.minecraft.world.entity.player.Player;
 
 public interface IAttackListenerToken {
-	default void onPlayerDamagedFinal(Player player, AttackCache cache) {
 
+	default void onPlayerDamagedFinal(Player player, DamageData.DefenceMax data) {
 	}
 
-	default void onPlayerAttackTarget(Player player, AttackCache cache) {
-
+	default boolean onPlayerAttackTarget(Player player, DamageData.Attack data) {
+		return false;
 	}
 
-	default void onPlayerHurtTarget(Player player, AttackCache cache) {
-
+	default void onPlayerHurtTarget(Player player, DamageData.Offence data) {
 	}
 
-	default void onPlayerDamageTarget(Player player, AttackCache cache) {
-
+	default void onPlayerDamageTarget(Player player, DamageData.Defence data) {
 	}
 
-	default void onPlayerAttacked(Player player, AttackCache cache) {
-
+	default boolean onPlayerAttacked(Player player, DamageData.Attack data) {
+		return false;
 	}
 
-	default void onPlayerHurt(Player player, AttackCache cache) {
-
+	default void onPlayerHurt(Player player, DamageData.Offence data) {
 	}
 
-	default void onPlayerDamaged(Player player, AttackCache cache) {
-
+	default void onPlayerDamaged(Player player, DamageData.Defence data) {
 	}
 
-	default void onPlayerDamageTargetFinal(Player player, AttackCache cache) {
-
+	default void onPlayerDamageTargetFinal(Player player, DamageData.DefenceMax data) {
 	}
 
 	default void onCreateSource(Player player, CreateSourceEvent event) {
-
 	}
 
 }

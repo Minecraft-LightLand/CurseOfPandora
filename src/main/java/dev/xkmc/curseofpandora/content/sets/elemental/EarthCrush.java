@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -16,15 +16,13 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class EarthCrush extends ITokenProviderItem<EarthCrush.Data> {
 
-	private static final AttrAdder CRIT_DMG = AttrAdder.of("earth_crush", L2DamageTracker.CRIT_DMG::get,
-			AttributeModifier.Operation.ADDITION, EarthCrush::getStat);
+	private static final AttrAdder CRIT_DMG = AttrAdder.of("earth_crush", L2DamageTracker.CRIT_DMG,
+			AttributeModifier.Operation.ADD_VALUE, EarthCrush::getStat);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.elemental.earthCrushBonus.get();
@@ -43,8 +41,8 @@ public class EarthCrush extends ITokenProviderItem<EarthCrush.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.Elemental.EARTH.get(getThreshold()).withStyle(ChatFormatting.GRAY));
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
@@ -54,7 +52,7 @@ public class EarthCrush extends ITokenProviderItem<EarthCrush.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

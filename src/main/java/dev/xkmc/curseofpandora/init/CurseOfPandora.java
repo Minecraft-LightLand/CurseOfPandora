@@ -115,4 +115,8 @@ public class CurseOfPandora {
 		}
 	}
 
+	public static ResourceLocation loc(String id) {
+		return ResourceLocation.fromNamespaceAndPath(MODID, id);
+	}
+
 }

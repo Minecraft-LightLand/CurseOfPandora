@@ -7,11 +7,11 @@ import net.minecraft.world.entity.player.Player;
 public class EnigmaticLegacyCompat {
 
 	public static boolean suppressAggro(ServerPlayer player) {
-		return ConditionalData.HOLDER.get(player).getData(ELItems.AGGREVATE.get().getKey()) != null;
+		return L2LibReg.CONDITIONAL.type().getOrCreate(player).getData(ELItems.AGGREVATE.get().getKey()) != null;
 	}
 
 	public static boolean suppressInsomnia(Player player) {
-		return ConditionalData.HOLDER.get(player).getData(ELItems.INSOMNIA.get().getKey()) != null;
+		return L2LibReg.CONDITIONAL.type().getOrCreate(player).getData(ELItems.INSOMNIA.get().getKey()) != null;
 	}
 
 }

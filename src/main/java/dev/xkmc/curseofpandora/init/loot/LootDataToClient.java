@@ -2,7 +2,7 @@ package dev.xkmc.curseofpandora.init.loot;
 
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2serial.network.SerialPacketBase;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.SerialClass.SerialField;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;

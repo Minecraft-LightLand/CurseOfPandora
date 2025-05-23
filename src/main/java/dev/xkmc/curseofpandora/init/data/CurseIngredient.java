@@ -3,7 +3,7 @@ package dev.xkmc.curseofpandora.init.data;
 import com.google.gson.JsonObject;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.l2library.serial.ingredients.BaseIngredient;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;

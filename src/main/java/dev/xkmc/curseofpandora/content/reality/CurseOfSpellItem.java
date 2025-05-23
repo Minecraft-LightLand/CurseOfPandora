@@ -7,10 +7,10 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2core.capability.conditionals.TokenKey;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -18,8 +18,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -58,7 +56,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		list.add(CoPLangData.Reality.SPELL_1.get().withStyle(ChatFormatting.RED));
 		if (level != null && level.isClientSide()) {
 			ClientSpellText.addTotal(list);
@@ -81,8 +79,8 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		}
 
 		@Override
-		public void onPlayerDamaged(Player player, AttackCache cache) {
-			var event = cache.getLivingDamageEvent();
+		public void onPlayerDamaged(Player player, DamageData.Defence data) {
+			var event = data.getLivingDamageEvent();
 			assert event != null;
 			if (event.getSource().is(CoPDamageTypeGen.SPELL_CURSE)) {
 				return;
@@ -90,16 +88,16 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
 				double factor = CoPConfig.COMMON.curse.curseOfSpellDamageFactor.get();
-				cache.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty * factor)));
+				data.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty * factor)));
 			}
 		}
 
 		@Override
-		public void onPlayerDamageTarget(Player player, AttackCache cache) {
+		public void onPlayerDamageTarget(Player player, DamageData.Defence data) {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
 				double factor = CoPConfig.COMMON.curse.curseOfSpellWeakenFactor.get();
-				cache.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty * factor)));
+				data.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty * factor)));
 			}
 		}
 

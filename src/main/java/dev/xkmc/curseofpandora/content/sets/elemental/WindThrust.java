@@ -8,8 +8,8 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -17,20 +17,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class WindThrust extends ITokenProviderItem<WindThrust.Data> {
 
-	private static final AttrAdder SPEED = AttrAdder.of("wind_thrust", () -> Attributes.MOVEMENT_SPEED,
-			AttributeModifier.Operation.MULTIPLY_BASE, WindThrust::getSpeed);
-	private static final AttrAdder DAMAGE = AttrAdder.of("wind_thrust", () -> Attributes.ATTACK_DAMAGE,
-			AttributeModifier.Operation.MULTIPLY_BASE, WindThrust::getDamage);
+	private static final AttrAdder SPEED = AttrAdder.of("wind_thrust", Attributes.MOVEMENT_SPEED,
+			AttributeModifier.Operation.ADD_MULTIPLIED_BASE, WindThrust::getSpeed);
+	private static final AttrAdder DAMAGE = AttrAdder.of("wind_thrust", Attributes.ATTACK_DAMAGE,
+			AttributeModifier.Operation.ADD_MULTIPLIED_BASE, WindThrust::getDamage);
 
 	public static boolean check(Player player) {
-		return ConditionalData.HOLDER.get(player).hasData(CoPItems.WIND_THRUST.get().getKey());
+		return L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.WIND_THRUST.get().getKey());
 	}
 
 	private static double getSpeed() {
@@ -50,8 +48,8 @@ public class WindThrust extends ITokenProviderItem<WindThrust.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.Elemental.WIND_1.get().withStyle(ChatFormatting.GRAY));
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
@@ -65,7 +63,7 @@ public class WindThrust extends ITokenProviderItem<WindThrust.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

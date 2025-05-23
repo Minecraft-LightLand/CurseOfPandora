@@ -2,15 +2,17 @@ package dev.xkmc.curseofpandora.content.pandora;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import dev.xkmc.l2complements.content.item.curios.CurioItem;
 import dev.xkmc.l2damagetracker.contents.curios.AttrTooltip;
 import dev.xkmc.pandora.init.data.PandoraLangData;
 import dev.xkmc.pandora.init.data.PandoraTagGen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -21,20 +23,19 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.DoubleSupplier;
-import java.util.function.Supplier;
 
-public class AttributeItem extends CurioItem implements ICurioItem {
+public class AttributeItem extends Item implements ICurioItem {
 
-	public static AttributeEntry add(Supplier<Attribute> attr, String name, DoubleSupplier val) {
-		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.ADDITION);
+	public static AttributeEntry add(Holder<Attribute> attr, String name, DoubleSupplier val) {
+		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.ADD_VALUE);
 	}
 
-	public static AttributeEntry multBase(Supplier<Attribute> attr, String name, DoubleSupplier val) {
-		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.MULTIPLY_BASE);
+	public static AttributeEntry multBase(Holder<Attribute> attr, String name, DoubleSupplier val) {
+		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 	}
 
-	public static AttributeEntry multTotal(Supplier<Attribute> attr, String name, DoubleSupplier val) {
-		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.MULTIPLY_TOTAL);
+	public static AttributeEntry multTotal(Holder<Attribute> attr, String name, DoubleSupplier val) {
+		return new AttributeEntry(attr, name, val, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
 	}
 
 	private final AttributeEntry[] entries;
@@ -45,7 +46,7 @@ public class AttributeItem extends CurioItem implements ICurioItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		if (stack.is(PandoraTagGen.ALLOW_DUPLICATE))
 			list.add(PandoraLangData.TOOLTIP_DUPLICATE.get().withStyle(ChatFormatting.GRAY));
 	}
@@ -63,16 +64,11 @@ public class AttributeItem extends CurioItem implements ICurioItem {
 		return ans;
 	}
 
-	@Override
-	public List<Component> getAttributesTooltip(List<Component> tooltips, ItemStack stack) {
-		return AttrTooltip.modifyTooltip(tooltips, getAttributeModifiers(Util.NIL_UUID), false);
-	}
-
-	public record AttributeEntry(Supplier<Attribute> attr, String name, DoubleSupplier val,
+	public record AttributeEntry(Holder<Attribute> attr, String name, DoubleSupplier val,
 								 AttributeModifier.Operation op) {
 
-		public void modify(UUID uuid, Multimap<Attribute, AttributeModifier> ans) {
-			ans.put(attr.get(), new AttributeModifier(uuid, name, val.getAsDouble(), op));
+		public void modify(ResourceLocation uuid, Multimap<Holder<Attribute>, AttributeModifier> ans) {
+			ans.put(attr, new AttributeModifier(uuid.withSuffix("_" + name), val.getAsDouble(), op));
 		}
 
 	}

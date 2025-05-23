@@ -9,24 +9,21 @@ import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2library.util.math.MathHelper;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.capability.conditionals.TokenKey;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
-import java.util.function.Supplier;
 
 public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.Ticker> {
 
@@ -54,11 +51,11 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		int f = (int) Math.round(getFactor() * 100);
 		int b = (int) Math.round(getBonus() * 100);
 		int t = getThreshold();
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.Reality.METABOLISM_2.get(f, t).withStyle(ChatFormatting.RED));
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq()).withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Reality.METABOLISM_1.get(f, t).withStyle(pass ? ChatFormatting.DARK_GREEN : ChatFormatting.DARK_GRAY));
@@ -68,9 +65,9 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 	@SerialClass
 	public static class Ticker extends ListTickingToken {
 
-		private static final AttrBonus ATK = AttrBonus.of(() -> Attributes.ATTACK_DAMAGE,
+		private static final AttrBonus ATK = AttrBonus.of(Attributes.ATTACK_DAMAGE,
 				"curse_of_metabolism_attack", true);
-		private static final AttrBonus SPEED = AttrBonus.of(() -> Attributes.MOVEMENT_SPEED,
+		private static final AttrBonus SPEED = AttrBonus.of(Attributes.MOVEMENT_SPEED,
 				"curse_of_metabolism_speed", true);
 
 		public Ticker() {
@@ -90,7 +87,7 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 			if (player.getFoodData().needsFood()) {
 				removeImpl(player);
 			} else {
-				doAttributeLimit(player, Set.of(Ticker.SPEED.id()), true);
+				doAttributeLimit(player, Set.of(Ticker.SPEED.name()), true);
 			}
 		}
 
@@ -101,36 +98,36 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 
 	}
 
-	public record AttrBonus(Supplier<Attribute> attr, String name, UUID id, boolean bonus) implements ISubToken {
+	public record AttrBonus(Holder<Attribute> attr, ResourceLocation name, boolean bonus) implements ISubToken {
 
-		public static AttrBonus of(Supplier<Attribute> attr, String name, boolean bonus) {
-			return new AttrBonus(attr, name, MathHelper.getUUIDFromString(name), bonus);
+		public static AttrBonus of(Holder<Attribute> attr, String name, boolean bonus) {
+			return new AttrBonus(attr, CurseOfPandora.loc(name), bonus);
 		}
 
 		@Override
 		public void removeImpl(Player player) {
 			if (player.level().isClientSide) return;
-			var ins = player.getAttribute(attr.get());
+			var ins = player.getAttribute(attr);
 			if (ins == null) return;
-			ins.removeModifier(id);
+			ins.removeModifier(name);
 		}
 
 		@Override
 		public void tickImpl(Player player) {
 			if (player.level().isClientSide) return;
-			var ins = player.getAttribute(attr.get());
+			var ins = player.getAttribute(attr);
 			if (ins == null) return;
 			double val = (player.getFoodData().getFoodLevel() - getThreshold()) * getFactor();
-			boolean doBonus = bonus && player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq();
+			boolean doBonus = bonus && player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq();
 			if (!doBonus && val > 0) return;
 			if (!player.getFoodData().needsFood()) val += getBonus();
-			var old = ins.getModifier(id);
-			if (old != null && old.getAmount() == val &&
-					old.getOperation() == AttributeModifier.Operation.MULTIPLY_BASE)
+			var old = ins.getModifier(name);
+			if (old != null && old.amount() == val &&
+					old.operation() == AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
 				return;
-			ins.removeModifier(id);
-			ins.addTransientModifier(new AttributeModifier(id, name, val,
-					AttributeModifier.Operation.MULTIPLY_BASE));
+			ins.removeModifier(name);
+			ins.addTransientModifier(new AttributeModifier(name, val,
+					AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 		}
 	}
 

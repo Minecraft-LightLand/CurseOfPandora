@@ -8,9 +8,9 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -19,15 +19,13 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class BarbaricInstinct extends ITokenProviderItem<BarbaricInstinct.Data> {
 
-	private static final AttrAdder MAGIC = AttrAdder.of("barbaric_instinct", L2DamageTracker.MAGIC_FACTOR::get,
-			AttributeModifier.Operation.ADDITION, BarbaricInstinct::getStat);
+	private static final AttrAdder MAGIC = AttrAdder.of("barbaric_instinct", L2DamageTracker.MAGIC_FACTOR,
+			AttributeModifier.Operation.ADD_VALUE, BarbaricInstinct::getStat);
 
 	private static double getStat() {
 		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
@@ -50,8 +48,8 @@ public class BarbaricInstinct extends ITokenProviderItem<BarbaricInstinct.Data> 
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(MAGIC.getTooltip())
@@ -64,7 +62,7 @@ public class BarbaricInstinct extends ITokenProviderItem<BarbaricInstinct.Data> 
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -86,17 +84,16 @@ public class BarbaricInstinct extends ITokenProviderItem<BarbaricInstinct.Data> 
 		}
 
 		@Override
-		public void onPlayerAttackTarget(Player player, AttackCache cache) {
-			var event = cache.getLivingAttackEvent();
-			assert event != null;
-			if (cooldown > 0) return;
-			if (event.getSource().getMsgId().equals("player")) {
-				if (cache.getStrength() < 0.9f) return;
+		public boolean onPlayerAttackTarget(Player player, DamageData.Attack data) {
+			if (cooldown > 0) return false;
+			if (data.getSource().getMsgId().equals("player")) {
+				if (data.getStrength() < 0.9f) return false;
 				if (isWeapon(player.getMainHandItem())) {
 					player.heal((float) (getHeal() * player.getMaxHealth()));
 					cooldown = getCD();
 				}
 			}
+			return false;
 		}
 
 		private static boolean isWeapon(ItemStack stack) {

@@ -7,25 +7,23 @@ import dev.xkmc.curseofpandora.content.complex.SlotAdder;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.capability.conditionals.TokenKey;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker> {
 
 	private static final SlotAdder ADDER = SlotAdder.of("curse_of_inertia", CoPConfig.COMMON.curse.curseOfInertiaSlot);
-	private static final TokenKey<CurseOfInertiaItem.Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_inertia");
+	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_inertia");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static double getCap() {
@@ -45,7 +43,7 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		list.add(CoPLangData.Reality.INERTIA.get(getCap(), getBase(), Math.round(getBonus() * 100)).withStyle(ChatFormatting.GRAY));
 	}
 
@@ -60,14 +58,12 @@ public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker
 
 	public static class Lim extends AttributeLimiter {
 
-		private static final UUID WEAPON_SPEED = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
-
 		protected Lim() {
 			super(Attributes.ATTACK_SPEED, "inertia");
 		}
 
 		public void tickImpl(Player player) {
-			doAttributeLimit(player, Set.of(WEAPON_SPEED), false);
+			doAttributeLimit(player, Set.of(Item.BASE_ATTACK_SPEED_ID), false);
 		}
 
 		@Override

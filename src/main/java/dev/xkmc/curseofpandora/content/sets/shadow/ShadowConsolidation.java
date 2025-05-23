@@ -10,8 +10,9 @@ import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -25,7 +26,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +57,8 @@ public class ShadowConsolidation extends ITokenProviderItem<ShadowConsolidation.
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq()).withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Shadow.CONSOLIDATION.get(
 				Math.round(getRange()), Math.round(getFactor() * 100),
@@ -68,7 +68,7 @@ public class ShadowConsolidation extends ITokenProviderItem<ShadowConsolidation.
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -76,7 +76,7 @@ public class ShadowConsolidation extends ITokenProviderItem<ShadowConsolidation.
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
 		private Frame current;
-		@SerialClass.SerialField
+		@SerialField
 		private int cooldown = 0;
 
 		@Override
@@ -99,11 +99,9 @@ public class ShadowConsolidation extends ITokenProviderItem<ShadowConsolidation.
 		}
 
 		@Override
-		public void onPlayerDamageTargetFinal(Player player, AttackCache cache) {
-			var event = cache.getLivingDamageEvent();
-			assert event != null;
-			if (event.getSource().is(CoPDamageTypeGen.SHADOW)) return;
-			if (!cache.getAttackTarget().hasEffect(CoPEffects.SHADOW.get())) return;
+		public void onPlayerDamageTargetFinal(Player player, DamageData.DefenceMax data) {
+			if (data.getSource().is(CoPDamageTypeGen.SHADOW)) return;
+			if (!data.getTarget().hasEffect(CoPEffects.SHADOW)) return;
 			if (current == null) {
 				if (cooldown > 0) {
 					return;
@@ -111,7 +109,7 @@ public class ShadowConsolidation extends ITokenProviderItem<ShadowConsolidation.
 				current = new Frame();
 				cooldown = getCoolDown();
 			}
-			current.add(cache.getAttackTarget(), cache.getDamageDealt());
+			current.add(data.getTarget(), data.getDamageFinal());
 		}
 	}
 

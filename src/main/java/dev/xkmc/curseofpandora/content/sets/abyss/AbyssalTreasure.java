@@ -7,7 +7,7 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -15,8 +15,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -27,8 +25,8 @@ public class AbyssalTreasure extends ITokenProviderItem<AbyssalTreasure.Data> {
 	}
 
 	private static AttrAdder getAttr(Player player) {
-		return AttrAdder.of("abyssal_treasure", () -> Attributes.LUCK,
-				AttributeModifier.Operation.ADDITION, () -> AbyssalWill.getStep(player));
+		return AttrAdder.of("abyssal_treasure", Attributes.LUCK,
+				AttributeModifier.Operation.ADD_VALUE, () -> AbyssalWill.getStep(player));
 	}
 
 	public AbyssalTreasure(Properties properties) {
@@ -36,17 +34,17 @@ public class AbyssalTreasure extends ITokenProviderItem<AbyssalTreasure.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
-		list.add(CoPLangData.Abyssal.TREASURE.get(ClientSpellText.getDepth(level))
+		list.add(CoPLangData.Abyssal.TREASURE.get(ClientSpellText.getDepth(ctx.level()))
 				.withStyle(pass ? ChatFormatting.DARK_AQUA : ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

@@ -9,19 +9,17 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2complements.events.MagicEventHandler;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2library.init.events.GeneralEventHandler;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.events.SchedulerHandler;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
@@ -48,8 +46,8 @@ public class CursedSoulCrystal extends ITokenProviderItem<CursedSoulCrystal.Data
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Hell.CRYSTAL.get(
@@ -60,7 +58,7 @@ public class CursedSoulCrystal extends ITokenProviderItem<CursedSoulCrystal.Data
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -77,36 +75,35 @@ public class CursedSoulCrystal extends ITokenProviderItem<CursedSoulCrystal.Data
 		}
 
 		@Override
-		public void onPlayerAttacked(Player player, AttackCache cache) {
-			var event = cache.getLivingAttackEvent();
-			assert event != null;
-			if (event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) ||
-					event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-				return;
+		public boolean onPlayerAttacked(Player player, DamageData.Attack data) {
+			if (data.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) ||
+					data.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+				return false;
 			}
-			if (event.getSource().getEntity() instanceof Mob mob) {
-				if (mob.getMobType() != MobType.UNDEAD) {
+			if (data.getSource().getEntity() instanceof Mob mob) {
+				if (!mob.getType().is(EntityTypeTags.UNDEAD)) {
 					var item = CoPItems.CURSED_SOUL_CRYSTAL.get();
 					if (player.getCooldowns().isOnCooldown(item))
-						return;
+						return false;
 					Mob target = redirect(player);
 					if (target != null) {
-						GeneralEventHandler.schedule(() -> {
-							target.hurt(event.getSource(), event.getAmount());
+						SchedulerHandler.schedule(() -> {
+							target.hurt(data.getSource(), data.getDamageOriginal());
 							player.getCooldowns().addCooldown(item, getCoolDown());
 							ItemEffectHandlers.CURSED_SOUL_CRYSTAL.trigger(target);
 						});
-						event.setCanceled(true);
+						return true;
 					}
 				}
 			}
+			return false;
 		}
 
 		@Nullable
 		private static Mob redirect(Player player) {
 			AABB aabb = player.getBoundingBox().inflate(getRange());
 			List<Mob> list = new ArrayList<>();
-			for (var e : player.level().getEntities(EntityTypeTest.forClass(Mob.class), aabb, e -> e.getMobType() == MobType.UNDEAD)) {
+			for (var e : player.level().getEntities(EntityTypeTest.forClass(Mob.class), aabb, e -> e.getType().is(EntityTypeTags.UNDEAD))) {
 				if (e.distanceTo(player) > getRange())
 					continue;
 				list.add(e);

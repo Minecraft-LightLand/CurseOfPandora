@@ -41,7 +41,7 @@ public class ClientSpellText {
 	@SubscribeEvent
 	public static void onTooltip(ItemTooltipEvent event) {
 		if (event.getEntity() == null) return;
-		if (ConditionalData.HOLDER.get(event.getEntity()).getData(CurseOfSpellItem.KEY) == null) return;
+		if (L2LibReg.CONDITIONAL.type().getOrCreate(event.getEntity()).getData(CurseOfSpellItem.KEY) == null) return;
 		if (!event.getItemStack().isEnchanted()) return;
 		double bonus = event.getEntity().getAttributeValue(CoPAttrs.SPELL.get());
 		bonus = Math.max(1, bonus);
@@ -97,7 +97,7 @@ public class ClientSpellText {
 		if (level != null) {
 			Player player = Proxy.getClientPlayer();
 			if (player != null) {
-				if (ConditionalData.HOLDER.get(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey())) {
+				if (L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey())) {
 					int val = CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get();
 					return Component.literal(val + "").withStyle(ChatFormatting.YELLOW);
 				}

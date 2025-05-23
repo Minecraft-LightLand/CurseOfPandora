@@ -7,20 +7,19 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.event.ItemEffectHandlers;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
-import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -31,10 +30,10 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 	}
 
 	public static boolean check(Player player, int reality) {
-		if (ConditionalData.HOLDER.get(player).getData(item().getKey()) != null)
+		if (L2LibReg.CONDITIONAL.type().getOrCreate(player).getData(item().getKey()) != null)
 			return true;
 		return player.level().canSeeSky(player.blockPosition()) &&
-				player.getAttributeValue(CoPAttrs.REALITY.get()) >= reality;
+				player.getAttributeValue(CoPAttrs.REALITY) >= reality;
 	}
 
 	public static int getCoolDown() {
@@ -55,13 +54,13 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Angelic.PUNISHMENT_1.get()
@@ -74,7 +73,7 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
-		@SerialClass.SerialField
+		@SerialField
 		private int cooldown;
 
 		@Override
@@ -88,13 +87,13 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 		}
 
 		@Override
-		public void onPlayerDamageTarget(Player player, AttackCache cache) {
-			var cond = ConditionalData.HOLDER.get(player);
+		public void onPlayerDamageTarget(Player player, DamageData.Defence data) {
+			var cond = L2LibReg.CONDITIONAL.type().getOrCreate(player);
 			var tension = cond.getData(CoPItems.CURSE_OF_TENSION.get().getKey());
-			if (tension != null && tension.isTerrorized(cache.getAttackTarget()))
+			if (tension != null && tension.isTerrorized(data.getTarget()))
 				return;
 			if (check(player, getIndexReq())) {
-				cache.addDealtModifier(DamageModifier.nonlinearMiddle(71, e -> mapVal(e, cache.getAttackTarget())));
+				data.addDealtModifier(DamageModifier.nonlinearMiddle(71, e -> mapVal(e, data.getTarget())));
 			}
 		}
 

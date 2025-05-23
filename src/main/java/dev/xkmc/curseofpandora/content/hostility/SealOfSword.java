@@ -7,7 +7,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2hostility.content.capability.player.PlayerDifficulty;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -26,7 +26,7 @@ public class SealOfSword extends ITokenProviderItem<SealOfSword.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		var reality = Component.translatable(CoPAttrs.REALITY.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
 		var step = Component.literal("" + CoPConfig.COMMON.compat.sealOfSwordDifficultyPerBonus.get()).withStyle(ChatFormatting.AQUA);
 		var max =  Component.literal("" + CoPConfig.COMMON.compat.sealOfSwordMaxRealityBonus.get()).withStyle(ChatFormatting.GOLD);
@@ -42,7 +42,7 @@ public class SealOfSword extends ITokenProviderItem<SealOfSword.Data> {
 			int max = CoPConfig.COMMON.compat.sealOfSwordMaxRealityBonus.get();
 			int add = Math.min(lv / step, max);
 			return AttrAdder.of("seal_of_sword", CoPAttrs.REALITY,
-					AttributeModifier.Operation.ADDITION, () -> add);
+					AttributeModifier.Operation.ADD_VALUE, () -> add);
 		}
 
 		@Override

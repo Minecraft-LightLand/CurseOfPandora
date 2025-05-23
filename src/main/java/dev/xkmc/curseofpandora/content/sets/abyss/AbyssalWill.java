@@ -9,13 +9,13 @@ import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2core.base.effects.EffectUtil;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
 import dev.xkmc.l2damagetracker.contents.curios.TotemUseToClient;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2library.base.effects.EffectUtil;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.DamageTypeTags;
@@ -25,8 +25,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -34,7 +32,7 @@ import java.util.function.Consumer;
 public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements L2Totem {
 
 	public static int getDepth(Player player) {
-		return ConditionalData.HOLDER.get(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey()) ?
+		return L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey()) ?
 				CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get() :
 				CoPConfig.COMMON.abyssal.abyssalDepthStep.get();
 	}
@@ -58,7 +56,7 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements
 	}
 
 	private static MobEffectInstance eff() {
-		return new MobEffectInstance(CoPEffects.ABYSSAL_PROTECTION.get(), getDuration());
+		return new MobEffectInstance(CoPEffects.ABYSSAL_PROTECTION, getDuration());
 	}
 
 	public AbyssalWill(Properties properties) {
@@ -66,8 +64,8 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(CoPLangData.Abyssal.WILL.get())
@@ -81,17 +79,16 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
 	@Override
 	public void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
-		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(new TotemUseToClient(self, holded), self);
+		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(TotemUseToClient.of(self, holded), self);
 		self.setHealth(1);
 		self.removeAllEffects();
-		EffectUtil.addEffect(self, eff(),
-				EffectUtil.AddReason.SELF, self);
+		EffectUtil.addEffect(self, eff(), self);
 		if (self instanceof Player player) {
 			player.getCooldowns().addCooldown(this, getCoolDown());
 		}
@@ -120,13 +117,9 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements
 		}
 
 		@Override
-		public void onPlayerAttacked(Player player, AttackCache cache) {
-			var event = cache.getLivingAttackEvent();
-			assert event != null;
-			if (!player.hasEffect(CoPEffects.ABYSSAL_PROTECTION.get())) return;
-			if (event.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS)) {
-				event.setCanceled(true);
-			}
+		public boolean onPlayerAttacked(Player player, DamageData.Attack data) {
+			if (!player.hasEffect(CoPEffects.ABYSSAL_PROTECTION)) return false;
+			return data.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS);
 		}
 	}
 

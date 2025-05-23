@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -42,8 +42,8 @@ public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> 
 			}
 		}
 		double bonus = count * getStat();
-		return AttrAdder.of("curse_redirection", L2DamageTracker.MAGIC_FACTOR::get,
-				AttributeModifier.Operation.ADDITION, () -> bonus);
+		return AttrAdder.of("curse_redirection", L2DamageTracker.MAGIC_FACTOR,
+				AttributeModifier.Operation.ADD_VALUE, () -> bonus);
 	}
 
 	private static AttrAdder spell(Player player) {
@@ -61,7 +61,7 @@ public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> 
 		}
 		double bonus = count;
 		return AttrAdder.of("curse_redirection", CoPAttrs.SPELL,
-				AttributeModifier.Operation.ADDITION, () -> bonus);
+				AttributeModifier.Operation.ADD_VALUE, () -> bonus);
 	}
 
 	public CurseRedirection(Properties properties) {
@@ -69,8 +69,8 @@ public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> 
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(CoPLangData.Elemental.CURSE_1.get())
@@ -82,7 +82,7 @@ public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> 
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

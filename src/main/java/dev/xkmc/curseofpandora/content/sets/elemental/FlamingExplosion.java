@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -22,8 +22,8 @@ import java.util.List;
 
 public class FlamingExplosion extends ITokenProviderItem<FlamingExplosion.Data> {
 
-	private static final AttrAdder EXPLOSION = AttrAdder.of("flaming_explosion", L2DamageTracker.EXPLOSION_FACTOR::get,
-			AttributeModifier.Operation.ADDITION, FlamingExplosion::getStat);
+	private static final AttrAdder EXPLOSION = AttrAdder.of("flaming_explosion", L2DamageTracker.EXPLOSION_FACTOR,
+			AttributeModifier.Operation.ADD_VALUE, FlamingExplosion::getStat);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.elemental.flamingExplosionBonus.get();
@@ -38,8 +38,8 @@ public class FlamingExplosion extends ITokenProviderItem<FlamingExplosion.Data> 
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(EXPLOSION.getTooltip())
@@ -48,7 +48,7 @@ public class FlamingExplosion extends ITokenProviderItem<FlamingExplosion.Data> 
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

@@ -37,8 +37,8 @@ public class DoomStar extends SwordItem implements EmptyClickListener, WindBlade
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Weapon.DOOM_STAR.get()
@@ -47,7 +47,7 @@ public class DoomStar extends SwordItem implements EmptyClickListener, WindBlade
 
 	@Override
 	public void clickEmpty(ItemStack stack, Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) < getIndexReq()) {
+		if (player.getAttributeValue(CoPAttrs.REALITY) < getIndexReq()) {
 			return;
 		}
 		float strength = player.getAttackStrengthScale(0.5f);

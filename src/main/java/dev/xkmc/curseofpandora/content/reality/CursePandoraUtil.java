@@ -1,11 +1,12 @@
 package dev.xkmc.curseofpandora.content.reality;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
-import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
+import dev.xkmc.l2core.capability.conditionals.TokenKey;
 import dev.xkmc.pandora.content.base.IPandoraHolder;
 import dev.xkmc.pandora.content.base.PandoraHolder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
@@ -13,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 public class CursePandoraUtil {
 
@@ -36,27 +36,28 @@ public class CursePandoraUtil {
 	}
 
 	public static AttrAdder spell(TokenKey<?> key) {
-		return AttrAdder.of(key.id(), CoPAttrs.SPELL, AttributeModifier.Operation.ADDITION, 1);
+		return AttrAdder.of(key.id(), CoPAttrs.SPELL, AttributeModifier.Operation.ADD_VALUE, 1);
 	}
 
 	public static AttrAdder reality(TokenKey<?> key) {
-		return AttrAdder.of(key.id(), CoPAttrs.REALITY, AttributeModifier.Operation.ADDITION, 1);
+		return AttrAdder.of(key.id(), CoPAttrs.REALITY, AttributeModifier.Operation.ADD_VALUE, 1);
 	}
 
-	public static void remove(AttributeInstance attr, AttributeModifier.Operation op, UUID negId, String negName,
-							  Set<UUID> ignore, ValueConsumer negate, ValueConsumer val, boolean posOnly) {
-		Set<AttributeModifier> list = attr.getModifiers(op);
+	public static void remove(AttributeInstance attr, AttributeModifier.Operation op, ResourceLocation negId,
+							  Set<ResourceLocation> ignore, ValueConsumer negate, ValueConsumer val, boolean posOnly) {
+		Set<AttributeModifier> list = attr.getModifiers();
 		for (var e : list) {
-			if (e.getId().equals(negId)) continue;
-			val.accept(e.getAmount());
-			if (ignore.contains(e.getId())) continue;
-			if (posOnly ^ e.getAmount() > 0) negate.accept(e.getAmount());
+			if (e.operation() != op) continue;
+			if (e.id().equals(negId)) continue;
+			val.accept(e.amount());
+			if (ignore.contains(e.id())) continue;
+			if (posOnly ^ e.amount() > 0) negate.accept(e.amount());
 		}
 		var old = attr.getModifier(negId);
 		double mod = negate.reverse();
-		if (old == null || old.getAmount() != mod) {
+		if (old == null || old.amount() != mod) {
 			attr.removeModifier(negId);
-			attr.addPermanentModifier(new AttributeModifier(negId, negName, mod, op));
+			attr.addPermanentModifier(new AttributeModifier(negId, mod, op));
 		}
 		val.accept(mod);
 	}

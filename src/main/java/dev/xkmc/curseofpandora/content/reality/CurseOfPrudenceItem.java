@@ -7,12 +7,13 @@ import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.data.CoPTagGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2core.capability.conditionals.NetworkSensitiveToken;
+import dev.xkmc.l2core.capability.conditionals.TokenKey;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import dev.xkmc.l2library.base.effects.ClientEffectCap;
-import dev.xkmc.l2library.capability.conditionals.NetworkSensitiveToken;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -54,7 +55,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		int dur = getDuration();
 		int damage = (int) Math.round(getDamageFactor() * 100);
 		int hurt = (int) Math.round(getMaxHurtDamage() * 100);
@@ -66,7 +67,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 	public static class Ticker extends ListTickingToken
 			implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
 
-		@SerialClass.SerialField
+		@SerialField
 		public HashMap<UUID, HashSet<Long>> fear = new HashMap<>();
 
 		private boolean sync = false;
@@ -102,27 +103,25 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 		}
 
 		@Override
-		public void onPlayerDamageTarget(Player player, AttackCache cache) {
+		public void onPlayerDamageTarget(Player player, DamageData.Defence data) {
 			if (!(player instanceof ServerPlayer sp)) return;
 			long time = player.level().getGameTime();
-			var target = cache.getAttackTarget();
+			var target = data.getTarget();
 			if (target == player) return;
 			Set<Long> list = fear.get(target.getUUID());
 			int count = list == null ? 0 : list.size();
 			if (count > 0) {
-				var event = cache.getLivingDamageEvent();
-				assert event != null;
-				if (!event.getSource().is(DamageTypeTags.BYPASSES_COOLDOWN)) {
+				if (!data.getSource().is(DamageTypeTags.BYPASSES_COOLDOWN)) {
 					count = Math.min(count, getMaxLevel());
-					cache.addDealtModifier(DamageModifier.multTotal((float) Math.pow(getDamageFactor(), count)));
+					data.addDealtModifier(DamageModifier.multTotal((float) Math.pow(getDamageFactor(), count)));
 				}
 			}
 			fear.computeIfAbsent(target.getUUID(), k -> new HashSet<>()).add(time);
 			sync(sp);
-			if (cache.getAttackTarget().getType().is(CoPTagGen.PRUDENCE_WHITELIST)) return;
-			if (cache.getAttackTarget().getHealth() <= player.getHealth()) return;
-			double maxDamage = cache.getAttackTarget().getMaxHealth() * getMaxHurtDamage();
-			cache.addDealtModifier(DamageModifier.nonlinearFinal(9000, e -> Math.min(e, (float) maxDamage)));
+			if (data.getTarget().getType().is(CoPTagGen.PRUDENCE_WHITELIST)) return;
+			if (data.getTarget().getHealth() <= player.getHealth()) return;
+			double maxDamage = data.getTarget().getMaxHealth() * getMaxHurtDamage();
+			data.addDealtModifier(DamageModifier.nonlinearFinal(9000, e -> Math.min(e, (float) maxDamage)));
 		}
 
 		private void sync(ServerPlayer sp) {
@@ -141,8 +140,8 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 			for (var id : fear.keySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(id);
 				if (ent instanceof LivingEntity le) {
-					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.remove(CoPEffects.PRUDENCE.get());
+					var cap = L2LibReg.EFFECT.type().getOrCreate(le);
+					cap.map.remove(CoPEffects.PRUDENCE);
 				}
 			}
 		}
@@ -152,8 +151,8 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 			for (var pair : fear.entrySet()) {
 				var ent = ((LevelAccessor) player.level()).callGetEntities().get(pair.getKey());
 				if (ent instanceof LivingEntity le) {
-					var cap = ClientEffectCap.HOLDER.get(le);
-					cap.map.put(CoPEffects.PRUDENCE.get(), 0);
+					var cap = L2LibReg.EFFECT.type().getOrCreate(le);
+					cap.map.put(CoPEffects.PRUDENCE, 0);
 				}
 			}
 		}

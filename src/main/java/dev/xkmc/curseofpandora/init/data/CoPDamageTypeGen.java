@@ -47,20 +47,20 @@ public class CoPDamageTypeGen extends DamageTypeAndTagsGen {
 	public CoPDamageTypeGen(PackOutput output, CompletableFuture<HolderLookup.Provider> pvd, ExistingFileHelper helper) {
 		super(output, pvd, helper, CurseOfPandora.MODID);
 		new DamageTypeHolder(WIND_BLADE, new DamageType("wind_blade", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
+				.add(Tags.DamageTypes.IS_MAGIC, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 		new DamageTypeHolder(SOUL_CURSE, new DamageType("soul_curse", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
+				.add(Tags.DamageTypes.IS_MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS);
 		new DamageTypeHolder(SHADOW_CURSE, new DamageType("shadow_curse", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
+				.add(Tags.DamageTypes.IS_MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
 						DamageTypeTags.BYPASSES_COOLDOWN, SHADOW);
 		new DamageTypeHolder(VOID_CURSE, new DamageType("void_curse", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
+				.add(Tags.DamageTypes.IS_MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
 						DamageTypeTags.BYPASSES_COOLDOWN, SHADOW).add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(ABYSSAL_FANG, new DamageType("abyssal_fang", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
+				.add(Tags.DamageTypes.IS_MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS,
 						DamageTypeTags.BYPASSES_ENCHANTMENTS);
 		new DamageTypeHolder(ECHO_ABYSSAL_FANG, new DamageType("echo_abyssal_fang", DamageScaling.NEVER, 0.1F))
-				.add(L2DamageTypes.MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS)
+				.add(Tags.DamageTypes.IS_MAGIC, DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.AVOIDS_GUARDIAN_THORNS)
 				.add(L2DamageTypes.BYPASS_MAGIC);
 		new DamageTypeHolder(SPELL_CURSE, new DamageType("spell_curse", DamageScaling.NEVER, 0))
 				.add(DamageTypeTags.BYPASSES_ARMOR, DamageTypeTags.BYPASSES_COOLDOWN).add(L2DamageTypes.BYPASS_MAGIC);

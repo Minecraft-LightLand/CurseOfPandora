@@ -8,24 +8,22 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
-	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", L2DamageTracker.ABSORB::get,
-			AttributeModifier.Operation.ADDITION, AngelicBless::getStat);
-	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", L2DamageTracker.REDUCTION::get,
-			AttributeModifier.Operation.MULTIPLY_TOTAL, AngelicBless::getFactor);
+	private static final AttrAdder ABSORPTION = AttrAdder.of("angelic_bless", L2DamageTracker.ABSORB,
+			AttributeModifier.Operation.ADD_VALUE, AngelicBless::getStat);
+	private static final AttrAdder REDUCTION = AttrAdder.of("angelic_bless", L2DamageTracker.REDUCTION,
+			AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, AngelicBless::getFactor);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.angelic.angelicBlessAbsorption.get();
@@ -44,9 +42,9 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		list.add(CoPLangData.Angelic.CHECK.get().withStyle(ChatFormatting.GRAY));
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(ABSORPTION.getTooltip())
@@ -57,7 +55,7 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

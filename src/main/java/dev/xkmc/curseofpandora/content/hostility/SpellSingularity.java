@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.util.Proxy;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -28,7 +28,7 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		var player = Proxy.getPlayer();
 		boolean pass = level == null || player == null || check(player);
 		var spell = Component.translatable(CoPAttrs.SPELL.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
@@ -45,7 +45,7 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 
 	private static boolean check(Player player) {
 		boolean pass = true;
-		int reality = (int) player.getAttributeValue(CoPAttrs.REALITY.get());
+		int reality = (int) player.getAttributeValue(CoPAttrs.REALITY);
 		for (var e : EquipmentSlot.values()) {
 			ItemStack stack = player.getItemBySlot(e);
 			int count = stack.getAllEnchantments().size();
@@ -60,13 +60,13 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 		private AttrAdder getSpell(int val) {
 			double rate = CoPConfig.COMMON.compat.spellSingularitySpellBonusPerReality.get();
 			return AttrAdder.of("spell_singularity", CoPAttrs.SPELL,
-					AttributeModifier.Operation.ADDITION, () -> val * rate);
+					AttributeModifier.Operation.ADD_VALUE, () -> val * rate);
 		}
 
 		private AttrAdder getMagic(int val) {
 			double rate = CoPConfig.COMMON.compat.spellSingularityMagicDamageBonusPerReality.get();
-			return AttrAdder.of("spell_singularity", L2DamageTracker.MAGIC_FACTOR::get,
-					AttributeModifier.Operation.ADDITION, () -> val * rate);
+			return AttrAdder.of("spell_singularity", L2DamageTracker.MAGIC_FACTOR,
+					AttributeModifier.Operation.ADD_VALUE, () -> val * rate);
 		}
 
 		@Override
@@ -79,7 +79,7 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 		protected void tickImpl(Player player) {
 			boolean pass = check(player);
 			if (pass) {
-				int reality = (int) player.getAttributeValue(CoPAttrs.REALITY.get());
+				int reality = (int) player.getAttributeValue(CoPAttrs.REALITY);
 				getSpell(reality).tickImpl(player);
 				getMagic(reality).tickImpl(player);
 			} else {

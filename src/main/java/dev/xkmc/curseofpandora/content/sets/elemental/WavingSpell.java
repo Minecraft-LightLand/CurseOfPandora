@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -22,8 +22,8 @@ import java.util.List;
 
 public class WavingSpell extends ITokenProviderItem<WavingSpell.Data> {
 
-	private static final AttrAdder MAGIC = AttrAdder.of("waving_spell", L2DamageTracker.MAGIC_FACTOR::get,
-			AttributeModifier.Operation.ADDITION, WavingSpell::getStat);
+	private static final AttrAdder MAGIC = AttrAdder.of("waving_spell", L2DamageTracker.MAGIC_FACTOR,
+			AttributeModifier.Operation.ADD_VALUE, WavingSpell::getStat);
 
 	private static double getStat() {
 		return CoPConfig.COMMON.elemental.wavingSpellBonus.get();
@@ -38,8 +38,8 @@ public class WavingSpell extends ITokenProviderItem<WavingSpell.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.Elemental.WAVING.get().withStyle(ChatFormatting.GRAY));
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
@@ -49,7 +49,7 @@ public class WavingSpell extends ITokenProviderItem<WavingSpell.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

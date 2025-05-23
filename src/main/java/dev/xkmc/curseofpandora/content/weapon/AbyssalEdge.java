@@ -27,8 +27,8 @@ public class AbyssalEdge extends SwordItem implements EmptyClickListener {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Weapon.ABYSSAL_EDGE.get()
@@ -36,7 +36,7 @@ public class AbyssalEdge extends SwordItem implements EmptyClickListener {
 	}
 
 	private void attack(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) < getIndexReq()) {
+		if (player.getAttributeValue(CoPAttrs.REALITY) < getIndexReq()) {
 			return;
 		}
 		float strength = player.getAttackStrengthScale(0.5f);

@@ -10,8 +10,8 @@ import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,8 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.event.EventHooks;
 
 import java.util.List;
 
@@ -47,8 +46,8 @@ public class EvilSpiritEvoke extends ITokenProviderItem<EvilSpiritEvoke.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(CoPLangData.Evil.EVOKE.get(
@@ -61,7 +60,7 @@ public class EvilSpiritEvoke extends ITokenProviderItem<EvilSpiritEvoke.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -79,12 +78,11 @@ public class EvilSpiritEvoke extends ITokenProviderItem<EvilSpiritEvoke.Data> {
 		}
 
 		@Override
-		public void onPlayerAttacked(Player player, AttackCache cache) {
-			if (cache.getAttacker() instanceof Vex vex && player instanceof ServerPlayer sp) {
-				cache.getLivingAttackEvent().setCanceled(true);
+		public boolean onPlayerAttacked(Player player, DamageData.Attack data) {
+			if (data.getAttacker() instanceof Vex vex && player instanceof ServerPlayer sp) {
 				var sl = sp.serverLevel();
 				var spirit = vex.convertTo(CoPEntities.EVIL_SPIRIT.get(), false);
-				if (spirit == null) return;
+				if (spirit == null) return false;
 				for (EquipmentSlot slot : EquipmentSlot.values()) {
 					ItemStack stack = vex.getItemBySlot(slot);
 					if (!stack.isEmpty()) {
@@ -97,21 +95,23 @@ public class EvilSpiritEvoke extends ITokenProviderItem<EvilSpiritEvoke.Data> {
 				if (spirit.getMainHandItem().isEmpty())
 					spirit.setItemInHand(InteractionHand.MAIN_HAND, Items.IRON_SWORD.getDefaultInstance());
 				if (vex.getOwner() != null) spirit.setTarget(vex.getOwner());
-				net.minecraftforge.event.ForgeEventFactory.onLivingConvert(vex, spirit);
-
+				EventHooks.onLivingConvert(vex, spirit);
+				spirit.level().addFreshEntity(spirit);
+				return true;
 			}
+			return false;
 		}
 
 		@Override
-		public void onPlayerDamaged(Player player, AttackCache cache) {
+		public void onPlayerDamaged(Player player, DamageData.Defence data) {
 			var item = CoPItems.EVIL_SPIRIT_EVOKE.get();
-			if (cache.getAttacker() != null && !player.getCooldowns().isOnCooldown(item)) {
+			if (data.getAttacker() != null && !player.getCooldowns().isOnCooldown(item)) {
 				player.getCooldowns().addCooldown(item, getCD());
 				EvilSpirit vex = new EvilSpirit(player);
 				vex.setOwner(player);
 				vex.setLimitedLife(getLife());
 				vex.setItemInHand(InteractionHand.MAIN_HAND, Items.IRON_SWORD.getDefaultInstance());
-				vex.setTarget(cache.getAttacker());
+				vex.setTarget(data.getAttacker());
 				player.level().addFreshEntity(vex);
 			}
 		}

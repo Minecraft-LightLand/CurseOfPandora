@@ -4,7 +4,7 @@ import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2library.util.math.MathHelper;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.FriendlyByteBuf;
@@ -29,14 +29,14 @@ import net.minecraftforge.network.NetworkHooks;
 @SerialClass
 public class WindBladeEntity extends ThrowableProjectile implements IEntityAdditionalSpawnData {
 
-	@SerialClass.SerialField
+	@SerialField
 	public float damage = 3;
-	@SerialClass.SerialField
+	@SerialField
 	public int last = 200;
-	@SerialClass.SerialField
+	@SerialField
 	public float zrot = 0f;
 
-	@SerialClass.SerialField
+	@SerialField
 	private ItemStack issuer = ItemStack.EMPTY;
 
 	public WindBladeEntity(EntityType<? extends WindBladeEntity> type, Level w) {

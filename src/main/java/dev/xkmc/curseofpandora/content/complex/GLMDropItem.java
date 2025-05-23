@@ -19,7 +19,7 @@ public class GLMDropItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		var data = LootDataToClient.LIST_CACHE.get(this);
 		if (data != null) {
 			double chance = data.chance;

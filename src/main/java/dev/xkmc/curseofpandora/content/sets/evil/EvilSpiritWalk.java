@@ -8,14 +8,12 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
-import dev.xkmc.l2complements.content.item.misc.ILCTotem;
-import dev.xkmc.l2complements.init.L2Complements;
+import dev.xkmc.l2core.base.effects.EffectUtil;
+import dev.xkmc.l2core.init.L2LibReg;
 import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
 import dev.xkmc.l2damagetracker.contents.curios.TotemUseToClient;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2library.base.effects.EffectUtil;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -27,20 +25,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> implements L2Totem {
 
-	private static final AttrAdder MAGIC = AttrAdder.of("evil_spirit_walk", L2DamageTracker.MAGIC_FACTOR::get,
-			AttributeModifier.Operation.ADDITION, EvilSpiritWalk::getMagic);
+	private static final AttrAdder MAGIC = AttrAdder.of("evil_spirit_walk", L2DamageTracker.MAGIC_FACTOR,
+			AttributeModifier.Operation.ADD_VALUE, EvilSpiritWalk::getMagic);
 
 
-	private static final AttrAdder ATK = AttrAdder.of("evil_spirit_walk", () -> Attributes.ATTACK_DAMAGE,
-			AttributeModifier.Operation.MULTIPLY_BASE, EvilSpiritWalk::getAtk);
+	private static final AttrAdder ATK = AttrAdder.of("evil_spirit_walk", Attributes.ATTACK_DAMAGE,
+			AttributeModifier.Operation.ADD_MULTIPLIED_BASE, EvilSpiritWalk::getAtk);
 
 
 	private static int getIndexReq() {
@@ -65,8 +61,8 @@ public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> impl
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Evil.WALK.get(
@@ -79,21 +75,21 @@ public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> impl
 	@Override
 	public void tick(Player player) {
 		if (player.getCooldowns().isOnCooldown(this)) return;
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
 	@Override
 	public boolean allow(LivingEntity self, DamageSource source) {
 		if (!(self instanceof Player player)) return false;
-		if (!ConditionalData.HOLDER.get(player).hasData(getKey())) return false;
+		if (!L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(getKey())) return false;
 		return !player.getCooldowns().isOnCooldown(this);
 	}
 
 	@Override
 	public void trigger(LivingEntity self, ItemStack holded, Consumer<ItemStack> second) {
 		if (!(self instanceof Player player)) return;
-		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(new TotemUseToClient(player, holded), player);
+		L2DamageTracker.PACKET_HANDLER.toTrackingPlayers(TotemUseToClient.of(player, holded), player);
 		self.setHealth(self.getMaxHealth());
 		self.removeAllEffects();
 		self.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
@@ -112,14 +108,14 @@ public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> impl
 		@Override
 		protected void removeImpl(Player player) {
 			super.removeImpl(player);
-			player.removeEffect(CoPEffects.SPIRIT_WALK.get());
+			player.removeEffect(CoPEffects.SPIRIT_WALK);
 		}
 
 		@Override
 		protected void tickImpl(Player player) {
 			super.tickImpl(player);
-			EffectUtil.refreshEffect(player, new MobEffectInstance(CoPEffects.SPIRIT_WALK.get(), 40, 0,
-					true, true), EffectUtil.AddReason.SKILL, player);
+			EffectUtil.refreshEffect(player, new MobEffectInstance(CoPEffects.SPIRIT_WALK, 40, 0,
+					true, true), player);
 		}
 	}
 

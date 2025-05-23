@@ -163,70 +163,70 @@ public class CoPItems {
 		// attributes
 		{
 			CHARM_HEALTH = item("charm_of_health", p -> new AttributeItem(p,
-					AttributeItem.add(() -> Attributes.MAX_HEALTH, "charm_of_health", CoPConfig.COMMON.attr.charmOfHealth::get)))
+					AttributeItem.add(Attributes.MAX_HEALTH, "charm_of_health", CoPConfig.COMMON.attr.charmOfHealth::get)))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_ARMOR = item("charm_of_armor", p -> new AttributeItem(p,
-					AttributeItem.add(() -> Attributes.ARMOR, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmor::get),
-					AttributeItem.add(() -> Attributes.ARMOR_TOUGHNESS, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmorToughness::get)
+					AttributeItem.add(Attributes.ARMOR, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmor::get),
+					AttributeItem.add(Attributes.ARMOR_TOUGHNESS, "charm_of_armor", CoPConfig.COMMON.attr.charmOfArmorToughness::get)
 			)).tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_SPEED = item("charm_of_speed", p -> new AttributeItem(p,
-					AttributeItem.multBase(() -> Attributes.MOVEMENT_SPEED, "charm_of_speed", CoPConfig.COMMON.attr.charmOfSpeed::get)))
+					AttributeItem.multBase(Attributes.MOVEMENT_SPEED, "charm_of_speed", CoPConfig.COMMON.attr.charmOfSpeed::get)))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_DAMAGE = item("charm_of_damage", p -> new AttributeItem(p,
-					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_damage", CoPConfig.COMMON.attr.charmOfDamage::get)))
+					AttributeItem.multBase(Attributes.ATTACK_DAMAGE, "charm_of_damage", CoPConfig.COMMON.attr.charmOfDamage::get)))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_CRIT = item("charm_of_critical", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "charm_of_critical", CoPConfig.COMMON.attr.charmOfCritical::get)))
+					AttributeItem.add(L2DamageTracker.CRIT_DMG, "charm_of_critical", CoPConfig.COMMON.attr.charmOfCritical::get)))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_BOW = item("charm_of_archery", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.BOW_STRENGTH::get, "charm_of_archery", CoPConfig.COMMON.attr.charmOfArchery::get)))
+					AttributeItem.add(L2DamageTracker.BOW_STRENGTH, "charm_of_archery", CoPConfig.COMMON.attr.charmOfArchery::get)))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_PROTECTION = item("charm_of_protection", p -> new AttributeItem(p,
-					AttributeItem.multTotal(L2DamageTracker.REDUCTION::get, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
+					AttributeItem.multTotal(L2DamageTracker.REDUCTION, "charm_of_protection", () -> -CoPConfig.COMMON.attr.charmOfProtection.get())))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_MAGIC = item("charm_of_magic", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR::get, "charm_of_magic", CoPConfig.COMMON.attr.charmOfMagic::get)))
+					AttributeItem.add(L2DamageTracker.MAGIC_FACTOR, "charm_of_magic", CoPConfig.COMMON.attr.charmOfMagic::get)))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_EXPLOSION = item("charm_of_explosion", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR::get, "charm_of_explosion", CoPConfig.COMMON.attr.charmOfExplosion::get)))
+					AttributeItem.add(L2DamageTracker.EXPLOSION_FACTOR, "charm_of_explosion", CoPConfig.COMMON.attr.charmOfExplosion::get)))
 					.tag(CoPTagGen.ATTR, PandoraTagGen.ALLOW_DUPLICATE).register();
 
 			CHARM_HEAVY = item("charm_of_heavy_weapon", p -> new AttributeItem(p,
-					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "charm_of_heavy_weapon", CoPConfig.COMMON.attr.charmOfHeavyWeapon::get),
-					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_heavy_weapon", () -> -CoPConfig.COMMON.attr.charmOfHeavyWeaponSlow.get())
+					AttributeItem.multBase(Attributes.ATTACK_DAMAGE, "charm_of_heavy_weapon", CoPConfig.COMMON.attr.charmOfHeavyWeapon::get),
+					AttributeItem.add(Attributes.ATTACK_SPEED, "charm_of_heavy_weapon", () -> -CoPConfig.COMMON.attr.charmOfHeavyWeaponSlow.get())
 			)).tag(CoPTagGen.ATTR).register();
 
 			CHARM_ACCURACY = item("charm_of_accuracy", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "charm_of_accuracy", CoPConfig.COMMON.attr.charmOfAccuracy::get),
-					AttributeItem.add(() -> Attributes.ATTACK_SPEED, "charm_of_accuracy", () -> -CoPConfig.COMMON.attr.charmOfAccuracySlow.get())
+					AttributeItem.add(L2DamageTracker.CRIT_RATE, "charm_of_accuracy", CoPConfig.COMMON.attr.charmOfAccuracy::get),
+					AttributeItem.add(Attributes.ATTACK_SPEED, "charm_of_accuracy", () -> -CoPConfig.COMMON.attr.charmOfAccuracySlow.get())
 			)).tag(CoPTagGen.ATTR).register();
 
 			CHARM_LUCK = item("charm_of_luck", p -> new AttributeItem(p,
-					AttributeItem.add(() -> Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfLuck::get)))
+					AttributeItem.add(Attributes.LUCK, "charm_of_luck", CoPConfig.COMMON.attr.charmOfLuck::get)))
 					.tag(CoPTagGen.ATTR).register();
 
 			ORB_SOULGUARD = item("orb_of_soulguard", p -> new AttributeItem(p,
-					AttributeItem.multTotal(() -> Attributes.MOVEMENT_SPEED, "orb_of_soulguard", () -> -CoPConfig.COMMON.attr.orbOfSoulGuardSpeed.get()),
-					AttributeItem.multTotal(L2DamageTracker.REDUCTION::get, "orb_of_soulguard", () -> -CoPConfig.COMMON.attr.orbOfSoulGuardReduction.get()),
+					AttributeItem.multTotal(Attributes.MOVEMENT_SPEED, "orb_of_soulguard", () -> -CoPConfig.COMMON.attr.orbOfSoulGuardSpeed.get()),
+					AttributeItem.multTotal(L2DamageTracker.REDUCTION, "orb_of_soulguard", () -> -CoPConfig.COMMON.attr.orbOfSoulGuardReduction.get()),
 					AttributeItem.add(CoPAttrs.SPELL, "orb_of_soulguard", () -> 1)))
 					.tag(CoPTagGen.ATTR).register();
 
 			ORB_EXECUTOR = item("orb_of_executor", p -> new AttributeItem(p,
-					AttributeItem.multBase(() -> Attributes.ATTACK_DAMAGE, "orb_of_executor", CoPConfig.COMMON.attr.orbOfExecutorAttack::get),
-					AttributeItem.multTotal(() -> Attributes.MAX_HEALTH, "orb_of_executor", () -> -CoPConfig.COMMON.attr.orbOfExecutorHealth.get())))
+					AttributeItem.multBase(Attributes.ATTACK_DAMAGE, "orb_of_executor", CoPConfig.COMMON.attr.orbOfExecutorAttack::get),
+					AttributeItem.multTotal(Attributes.MAX_HEALTH, "orb_of_executor", () -> -CoPConfig.COMMON.attr.orbOfExecutorHealth.get())))
 					.tag(CoPTagGen.ATTR).register();
 
 			ORB_PROSECUTOR = item("orb_of_prosecutor", p -> new AttributeItem(p,
-					AttributeItem.add(L2DamageTracker.CRIT_DMG::get, "orb_of_prosecutor", CoPConfig.COMMON.attr.orbOfProsecutorCritDmg::get),
-					AttributeItem.add(L2DamageTracker.CRIT_RATE::get, "orb_of_prosecutor", () -> -CoPConfig.COMMON.attr.orbOfProsecutorCritRate.get())))
+					AttributeItem.add(L2DamageTracker.CRIT_DMG, "orb_of_prosecutor", CoPConfig.COMMON.attr.orbOfProsecutorCritDmg::get),
+					AttributeItem.add(L2DamageTracker.CRIT_RATE, "orb_of_prosecutor", () -> -CoPConfig.COMMON.attr.orbOfProsecutorCritRate.get())))
 					.tag(CoPTagGen.ATTR).register();
 		}
 

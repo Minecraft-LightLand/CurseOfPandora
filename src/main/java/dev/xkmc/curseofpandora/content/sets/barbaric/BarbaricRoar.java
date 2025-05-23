@@ -8,7 +8,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -16,21 +16,19 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class BarbaricRoar extends ITokenProviderItem<BarbaricRoar.Data> {
 
-	private static final AttrAdder MAGIC = AttrAdder.of("barbaric_roar", L2DamageTracker.MAGIC_FACTOR::get,
-			AttributeModifier.Operation.ADDITION, BarbaricRoar::getStat);
+	private static final AttrAdder MAGIC = AttrAdder.of("barbaric_roar", L2DamageTracker.MAGIC_FACTOR,
+			AttributeModifier.Operation.ADD_VALUE, BarbaricRoar::getStat);
 
-	private static final AttrAdder ATK = AttrAdder.of("barbaric_roar", () -> Attributes.ATTACK_DAMAGE,
-			AttributeModifier.Operation.MULTIPLY_BASE, BarbaricRoar::getAtk);
+	private static final AttrAdder ATK = AttrAdder.of("barbaric_roar", Attributes.ATTACK_DAMAGE,
+			AttributeModifier.Operation.ADD_MULTIPLIED_BASE, BarbaricRoar::getAtk);
 
-	private static final AttrAdder PROT = AttrAdder.of("barbaric_roar", L2DamageTracker.REDUCTION::get,
-			AttributeModifier.Operation.MULTIPLY_TOTAL, BarbaricRoar::getProt);
+	private static final AttrAdder PROT = AttrAdder.of("barbaric_roar", L2DamageTracker.REDUCTION,
+			AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, BarbaricRoar::getProt);
 
 	private static double getStat() {
 		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
@@ -53,8 +51,8 @@ public class BarbaricRoar extends ITokenProviderItem<BarbaricRoar.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(Component.literal("- ").append(MAGIC.getTooltip())
@@ -67,7 +65,7 @@ public class BarbaricRoar extends ITokenProviderItem<BarbaricRoar.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 

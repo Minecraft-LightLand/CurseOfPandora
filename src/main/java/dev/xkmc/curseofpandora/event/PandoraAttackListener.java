@@ -4,13 +4,12 @@ import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.entity.WindBladeEntity;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
-import dev.xkmc.l2complements.init.data.DamageTypeGen;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2core.init.L2LibReg;
 import dev.xkmc.l2damagetracker.contents.attack.AttackListener;
 import dev.xkmc.l2damagetracker.contents.attack.CreateSourceEvent;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +24,7 @@ public class PandoraAttackListener implements AttackListener {
 		if (event.getResult() != null)
 			if (event.getResult().toRoot() == L2DamageTypes.PLAYER_ATTACK) {
 				if (event.getAttacker() instanceof Player player) {
-					for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+					for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
 						if (e instanceof IAttackListenerToken token) {
 							token.onCreateSource(player, event);
 						}
@@ -35,10 +34,8 @@ public class PandoraAttackListener implements AttackListener {
 	}
 
 	@Override
-	public void setupProfile(AttackCache cache, BiConsumer<LivingEntity, ItemStack> profile) {
-		var event = cache.getLivingAttackEvent();
-		assert event != null;
-		if (event.getSource().getDirectEntity() instanceof WindBladeEntity e) {
+	public void setupProfile(DamageData data, BiConsumer<LivingEntity, ItemStack> profile) {
+		if (data.getSource().getDirectEntity() instanceof WindBladeEntity e) {
 			if (e.getOwner() instanceof LivingEntity le && !e.getStack().isEmpty()) {
 				profile.accept(le, e.getStack());
 			}
@@ -46,101 +43,96 @@ public class PandoraAttackListener implements AttackListener {
 	}
 
 	@Override
-	public void onDamageFinalized(AttackCache cache, ItemStack weapon) {
-		var event = cache.getLivingDamageEvent();
-		assert event != null;
-		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
+	public void onDamageFinalized(DamageData.DefenceMax data) {
+		if (data.getSource().is(L2DamageTypes.NO_SCALE)) {
 			return;
 		}
-		if (cache.getAttackTarget() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+		if (data.getTarget() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerDamagedFinal(player, cache);
+					token.onPlayerDamagedFinal(player, data);
 				}
 			}
 		}
-		if (cache.getAttacker() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+		if (data.getAttacker() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerDamageTargetFinal(player, cache);
+					token.onPlayerDamageTargetFinal(player, data);
 				}
 			}
 		}
 	}
 
 	@Override
-	public void onAttack(AttackCache cache, ItemStack weapon) {
-		var event = cache.getLivingAttackEvent();
-		assert event != null;
-		if (cache.getAttackTarget() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+	public boolean onAttack(DamageData.Attack data) {
+		if (data.getTarget() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerAttacked(player, cache);
-					if (event.isCanceled())
-						return;
+					if (token.onPlayerAttacked(player, data))
+						return true;
 				}
 			}
 		}
-		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
+		if (data.getSource().is(L2DamageTypes.NO_SCALE)) {
+			return false;
+		}
+		if (data.getAttacker() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
+				if (e instanceof IAttackListenerToken token) {
+					if (token.onPlayerAttackTarget(player, data))
+						return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public void onHurt(DamageData.Offence data) {
+		if (data.getSource().is(L2DamageTypes.NO_SCALE)) {
 			return;
 		}
-		if (cache.getAttacker() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+		if (data.getAttacker() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerAttackTarget(player, cache);
+					token.onPlayerHurtTarget(player, data);
+				}
+			}
+		}
+		if (data.getTarget() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
+				if (e instanceof IAttackListenerToken token) {
+					token.onPlayerHurt(player, data);
 				}
 			}
 		}
 	}
 
 	@Override
-	public void onHurt(AttackCache cache, ItemStack weapon) {
-		var event = cache.getLivingHurtEvent();
-		assert event != null;
-		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
+	public void onDamage(DamageData.Defence data) {
+		if (!data.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+			if (!data.getSource().is(DamageTypeTags.BYPASSES_EFFECTS)) {
+				if (data.getAttacker() != null && data.getAttacker().hasEffect(CoPEffects.SHADOW)) {
+					var id = CoPEffects.SHADOW.key().location();
+					var factor = (float) (1 - CoPConfig.COMMON.shadow.damageReduction.get());
+					data.addDealtModifier(DamageModifier.multTotal(factor, id));
+				}
+			}
+		}
+		if (data.getSource().is(L2DamageTypes.NO_SCALE)) {
 			return;
 		}
-		if (cache.getAttacker() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+		if (data.getAttacker() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerHurtTarget(player, cache);
+					token.onPlayerDamageTarget(player, data);
 				}
 			}
 		}
-		if (cache.getAttackTarget() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
+		if (data.getTarget() instanceof Player player) {
+			for (var e : L2LibReg.CONDITIONAL.type().getOrCreate(player).data.values()) {
 				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerHurt(player, cache);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void onDamage(AttackCache cache, ItemStack weapon) {
-		var event = cache.getLivingDamageEvent();
-		assert event != null;
-		if (!event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-			if (!event.getSource().is(DamageTypeTags.BYPASSES_EFFECTS)) {
-				if (cache.getAttacker() != null && cache.getAttacker().hasEffect(CoPEffects.SHADOW.get())) {
-					cache.addDealtModifier(DamageModifier.multTotal((float) (1 - CoPConfig.COMMON.shadow.damageReduction.get())));
-				}
-			}
-		}
-		if (event.getSource().is(L2DamageTypes.NO_SCALE)) {
-			return;
-		}
-		if (cache.getAttacker() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerDamageTarget(player, cache);
-				}
-			}
-		}
-		if (cache.getAttackTarget() instanceof Player player) {
-			for (var e : ConditionalData.HOLDER.get(player).data.values()) {
-				if (e instanceof IAttackListenerToken token) {
-					token.onPlayerDamaged(player, cache);
+					token.onPlayerDamaged(player, data);
 				}
 			}
 		}

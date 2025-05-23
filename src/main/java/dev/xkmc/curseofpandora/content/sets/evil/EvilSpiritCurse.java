@@ -7,17 +7,15 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
 
@@ -40,8 +38,8 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Evil.CURSE.get(
@@ -52,7 +50,7 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -70,12 +68,10 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 		}
 
 		@Override
-		public void onPlayerHurtTarget(Player player, AttackCache cache) {
-			var event = cache.getLivingHurtEvent();
-			assert event != null;
-			if (event.getSource().is(L2DamageTypes.MAGIC)) {
-				if (cache.getAttackTarget().getHealth() < cache.getAttackTarget().getMaxHealth() * getThreshold()) {
-					cache.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus())));
+		public void onPlayerHurtTarget(Player player, DamageData.Offence data) {
+			if (data.getSource().is(Tags.DamageTypes.IS_MAGIC)) {
+				if (data.getTarget().getHealth() < data.getTarget().getMaxHealth() * getThreshold()) {
+					data.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus())));
 				}
 			}
 		}

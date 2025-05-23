@@ -22,7 +22,7 @@ public class StabilityCharm extends DescCurioItem implements ICurioItem {
 	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
 		Multimap<Attribute, AttributeModifier> ans = HashMultimap.create();
 		ans.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "curseofpandora:orb_of_stability", 1,
-				AttributeModifier.Operation.ADDITION));
+				AttributeModifier.Operation.ADD_VALUE));
 		return ans;
 	}
 

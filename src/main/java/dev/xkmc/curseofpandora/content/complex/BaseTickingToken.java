@@ -1,13 +1,14 @@
 package dev.xkmc.curseofpandora.content.complex;
 
-import dev.xkmc.l2library.capability.conditionals.ConditionalToken;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.capability.conditionals.ConditionalToken;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.world.entity.player.Player;
 
 @SerialClass
 public abstract class BaseTickingToken extends ConditionalToken {
 
-	@SerialClass.SerialField
+	@SerialField
 	public int life;
 
 	public boolean tick(Player player) {

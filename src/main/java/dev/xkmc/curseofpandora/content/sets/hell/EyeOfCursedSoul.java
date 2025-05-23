@@ -9,8 +9,9 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -20,9 +21,7 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -45,8 +44,8 @@ public class EyeOfCursedSoul extends ITokenProviderItem<EyeOfCursedSoul.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Hell.EYE.get(
@@ -57,14 +56,14 @@ public class EyeOfCursedSoul extends ITokenProviderItem<EyeOfCursedSoul.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
-		@SerialClass.SerialField
+		@SerialField
 		public int coolDown;
 
 		@Override
@@ -80,8 +79,8 @@ public class EyeOfCursedSoul extends ITokenProviderItem<EyeOfCursedSoul.Data> {
 		}
 
 		@Override
-		public void onPlayerHurtTarget(Player player, AttackCache cache) {
-			var target = cache.getAttackTarget();
+		public void onPlayerHurtTarget(Player player, DamageData.Offence data) {
+			var target = data.getTarget();
 			if (coolDown == 0) {
 				coolDown = getCoolDown();
 				for (var e : target.level().getEntities(EntityTypeTest.forClass(Mob.class), target.getBoundingBox().inflate(getRange()), e -> e != target)) {

@@ -1,6 +1,6 @@
 package dev.xkmc.curseofpandora.content.complex;
 
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.List;

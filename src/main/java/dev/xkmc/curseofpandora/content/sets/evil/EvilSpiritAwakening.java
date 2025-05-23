@@ -10,7 +10,8 @@ import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -18,8 +19,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +50,8 @@ public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Evil.AWAKENING.get(
@@ -65,7 +64,7 @@ public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -73,16 +72,16 @@ public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
 		private static AttrAdder magicAttr(int size) {
-			return AttrAdder.of("evil_spirit_awakening", L2DamageTracker.MAGIC_FACTOR::get,
-					AttributeModifier.Operation.ADDITION, magic() * size);
+			return AttrAdder.of("evil_spirit_awakening", L2DamageTracker.MAGIC_FACTOR,
+					AttributeModifier.Operation.ADD_VALUE, magic() * size);
 		}
 
 		private static AttrAdder protAttr(int size) {
-			return AttrAdder.of("evil_spirit_awakening", L2DamageTracker.REDUCTION::get,
-					AttributeModifier.Operation.MULTIPLY_TOTAL, -prot() * size);
+			return AttrAdder.of("evil_spirit_awakening", L2DamageTracker.REDUCTION,
+					AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, -prot() * size);
 		}
 
-		@SerialClass.SerialField
+		@SerialField
 		public ArrayList<Long> list = new ArrayList<>();
 
 		private boolean updated;
@@ -91,13 +90,13 @@ public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.
 		protected void removeImpl(Player player) {
 			magicAttr(list.size()).removeImpl(player);
 			protAttr(list.size()).removeImpl(player);
-			player.removeEffect(CoPEffects.AWAKENING.get());
+			player.removeEffect(CoPEffects.AWAKENING);
 		}
 
 		@Override
 		protected void tickImpl(Player player) {
 			if (player.level().isClientSide()) return;
-			var eff = CoPEffects.AWAKENING.get();
+			var eff = CoPEffects.AWAKENING;
 			if (list.isEmpty()) {
 				if (player.hasEffect(eff))
 					player.removeEffect(eff);
@@ -106,11 +105,11 @@ public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.
 				return;
 			}
 			long start = player.level().getGameTime() - getDuration();
-			if (list.get(0) < start) {
-				list.remove(0);
+			if (list.getFirst() < start) {
+				list.removeFirst();
 			}
 			while (list.size() > 5) {
-				list.remove(0);
+				list.removeFirst();
 			}
 			magicAttr(list.size()).tickImpl(player);
 			protAttr(list.size()).tickImpl(player);
@@ -122,7 +121,7 @@ public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.
 					player.removeEffect(eff);
 				}
 				if (!list.isEmpty()) {
-					player.addEffect(new MobEffectInstance(eff, (int) (list.get(0) - start), level - 1));
+					player.addEffect(new MobEffectInstance(eff, (int) (list.getFirst() - start), level - 1));
 				}
 				updated = false;
 			}

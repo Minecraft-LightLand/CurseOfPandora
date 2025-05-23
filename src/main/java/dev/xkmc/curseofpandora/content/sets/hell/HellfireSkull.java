@@ -9,18 +9,16 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
-import dev.xkmc.l2library.base.effects.EffectBuilder;
-import dev.xkmc.l2library.base.effects.EffectUtil;
-import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.l2core.base.effects.EffectBuilder;
+import dev.xkmc.l2core.base.effects.EffectUtil;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -39,8 +37,8 @@ public class HellfireSkull extends ITokenProviderItem<HellfireSkull.Data> {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		boolean pass = ClientSpellText.getReality(level) >= getIndexReq();
+	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
+		boolean pass = ClientSpellText.getReality(ctx.level()) >= getIndexReq();
 		list.add(CoPLangData.IDS.REALITY_INDEX.get(getIndexReq())
 				.withStyle(pass ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
 		list.add(CoPLangData.Hell.SKULL.get(Math.round(getMinDuration() / 20d))
@@ -49,7 +47,7 @@ public class HellfireSkull extends ITokenProviderItem<HellfireSkull.Data> {
 
 	@Override
 	public void tick(Player player) {
-		if (player.getAttributeValue(CoPAttrs.REALITY.get()) >= getIndexReq())
+		if (player.getAttributeValue(CoPAttrs.REALITY) >= getIndexReq())
 			super.tick(player);
 	}
 
@@ -67,16 +65,15 @@ public class HellfireSkull extends ITokenProviderItem<HellfireSkull.Data> {
 		}
 
 		@Override
-		public void onPlayerHurtTarget(Player player, AttackCache cache) {
-			var target = cache.getAttackTarget();
-			var ins = target.getEffect(LCEffects.FLAME.get());
+		public void onPlayerHurtTarget(Player player, DamageData.Offence data) {
+			var target = data.getTarget();
+			var ins = target.getEffect(LCEffects.FLAME);
 			if (ins != null && ins.getDuration() >= getMinDuration()) {
-				int reality = (int) Math.round(player.getAttributeValue(CoPAttrs.REALITY.get()));
+				int reality = (int) Math.round(player.getAttributeValue(CoPAttrs.REALITY));
 				int amp = Math.min(ins.getAmplifier() + 1, reality - 1);
 				if (amp > ins.getAmplifier()) {
 					ItemEffectHandlers.HELLFIRE_SKULL.trigger(target);
-					EffectUtil.addEffect(target, new EffectBuilder(new MobEffectInstance(ins)).setAmplifier(amp).ins,
-							EffectUtil.AddReason.FORCE, player);
+					EffectUtil.addEffect(target, new EffectBuilder(new MobEffectInstance(ins)).setAmplifier(amp).ins, player);
 				}
 			}
 		}
