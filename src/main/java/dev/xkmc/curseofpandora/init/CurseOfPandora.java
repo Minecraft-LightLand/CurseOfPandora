@@ -85,8 +85,6 @@ public class CurseOfPandora {
 	public static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			ItemUseEventHandler.LIST.add(new ItemClickListener());
-
-			EffectSyncEvents.TRACKED.add(CoPEffects.SHADOW.get());
 		});
 	}
 
@@ -105,16 +103,18 @@ public class CurseOfPandora {
 		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, CoPTagGen::onEffectTagGen);
 		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);
+		REGISTRATE.addDataGenerator(ProviderType.DATA_MAP, CoPDataMapGen::genDataMap);
 		new CoPDamageTypeGen(REGISTRATE).generate();
+		var init = REGISTRATE.getDataGenInitializer();
+
 
 		boolean run = event.includeServer();
 		var gen = event.getGenerator();
 		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
-		gen.addProvider(run, new CoPConfigGen(gen));
 		gen.addProvider(run, new CoPGLMProvider(output, pvd));
-		gen.addProvider(run, new CoPSlotGen(gen));
+		gen.addProvider(run, new CoPSlotGen(output, helper, pvd));
 	}
 
 	public static ResourceLocation loc(String id) {

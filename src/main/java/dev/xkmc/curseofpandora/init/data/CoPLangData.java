@@ -333,10 +333,10 @@ public class CoPLangData {
 					Component.translatable("potion.potency." + ins.getAmplifier()));
 		}
 		if (showDuration && !ins.endsWithin(20)) {
-			desc = Component.translatable("potion.withDuration", desc, MobEffectUtil.formatDuration(ins, 1));
+			desc = Component.translatable("potion.withDuration", desc, MobEffectUtil.formatDuration(ins, 1, 20));
 		}
 
-		return desc.withStyle(ins.getEffect().getCategory().getTooltipFormatting());
+		return desc.withStyle(ins.getEffect().value().getCategory().getTooltipFormatting());
 	}
 
 	public static String asId(String name) {

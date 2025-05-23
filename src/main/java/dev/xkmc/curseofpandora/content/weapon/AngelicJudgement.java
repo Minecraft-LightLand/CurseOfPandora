@@ -32,7 +32,7 @@ public class AngelicJudgement extends SwordItem implements EmptyClickListener, W
 	}
 
 	public AngelicJudgement(Properties props) {
-		super(WeaponTier.ANGELIC_JUDGEMENT, 10, -2.4f, props);
+		super(WeaponTier.ANGELIC_JUDGEMENT, props.attributes(SwordItem.createAttributes(WeaponTier.ANGELIC_JUDGEMENT, 10, -2.4f)));
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class AngelicJudgement extends SwordItem implements EmptyClickListener, W
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return CurseOfPandora.loc( "textures/entity/angelic_blade.png");
+		return CurseOfPandora.loc("textures/entity/angelic_blade.png");
 	}
 
 	@Override

@@ -15,21 +15,22 @@ import java.util.*;
 @SerialClass
 public record LootDataToClient(
 		ArrayList<CompoundTag> list
-) implements SerialPacketBase {
+) implements SerialPacketBase<LootDataToClient> {
 
 	public static Map<Item, MobKillMobLootModifier> LIST_CACHE = new HashMap<>();
 
-	public LootDataToClient(List<MobKillMobLootModifier> list) {
-		for (MobKillMobLootModifier e : list) {
+	public static LootDataToClient of(List<MobKillMobLootModifier> in) {
+		var ans = new LootDataToClient(new ArrayList<>());
+		for (MobKillMobLootModifier e : in) {
 			Optional<Tag> res = IGlobalLootModifier.DIRECT_CODEC.encodeStart(NbtOps.INSTANCE, e).result();
 			if (res.isPresent()) {
 				Object var6 = res.get();
 				if (var6 instanceof CompoundTag ct) {
-					this.list.add(ct);
+					ans.list().add(ct);
 				}
 			}
 		}
-
+		return ans;
 	}
 
 	@Override

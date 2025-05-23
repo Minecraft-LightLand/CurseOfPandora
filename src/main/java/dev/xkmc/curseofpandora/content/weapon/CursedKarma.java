@@ -47,7 +47,7 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 	}
 
 	public CursedKarma(Properties props) {
-		super(WeaponTier.CURSED_KARMA, 10, -2.4f, props);
+		super(WeaponTier.CURSED_KARMA, props.attributes(SwordItem.createAttributes(WeaponTier.CURSED_KARMA, 10, -2.4f)));
 	}
 
 	@Override

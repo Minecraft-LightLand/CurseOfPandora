@@ -6,7 +6,7 @@ import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.loot.LootDataToClient;
 import dev.xkmc.curseofpandora.init.loot.MobKillMobLootModifier;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.curseofpandora.mixin.ForgeInternalHandlerAccessor;
+import dev.xkmc.curseofpandora.mixin.NeoForgeEventHandlerAccessor;
 import dev.xkmc.l2core.init.L2LibReg;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -29,12 +29,12 @@ public class PandoraEvents {
 	@SubscribeEvent
 	public static void onDatapackSync(OnDatapackSyncEvent event) {
 		List<MobKillMobLootModifier> list = new ArrayList<>();
-		for (var e : ForgeInternalHandlerAccessor.callGetLootModifierManager().getAllLootMods()) {
+		for (var e : NeoForgeEventHandlerAccessor.callGetLootModifierManager().getAllLootMods()) {
 			if (e instanceof MobKillMobLootModifier loot) {
 				list.add(loot);
 			}
 		}
-		LootDataToClient packet = new LootDataToClient(list);
+		LootDataToClient packet = LootDataToClient.of(list);
 		if (event.getPlayer() == null) {
 			CurseOfPandora.HANDLER.toAllClient(packet);
 		} else {

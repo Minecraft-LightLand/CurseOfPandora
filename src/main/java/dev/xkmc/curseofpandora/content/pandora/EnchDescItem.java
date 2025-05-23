@@ -21,7 +21,9 @@ public class EnchDescItem extends Item implements ICurioItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
-		list.add(Component.translatable(sup.get().getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
+		var rl = sup.id().location();
+		list.add(Component.translatable("enchantment." + rl.getNamespace() + "." + rl.getPath() + ".desc")
+				.withStyle(ChatFormatting.GRAY));
 	}
 
 }

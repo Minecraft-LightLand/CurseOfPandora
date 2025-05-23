@@ -33,7 +33,7 @@ public class DoomStar extends SwordItem implements EmptyClickListener, WindBlade
 	}
 
 	public DoomStar(Properties props) {
-		super(WeaponTier.DOOM_STAR, 10, -2.4f, props);
+		super(WeaponTier.DOOM_STAR, props.attributes(SwordItem.createAttributes(WeaponTier.DOOM_STAR, 10, -2.4f)));
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class DoomStar extends SwordItem implements EmptyClickListener, WindBlade
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return CurseOfPandora.loc( "textures/entity/shadow_blade.png");
+		return CurseOfPandora.loc("textures/entity/shadow_blade.png");
 	}
 
 	@Override
