@@ -53,7 +53,7 @@ public class CurseOfPandora {
 			e -> e.create(LootDataToClient.class, PacketHandler.NetDir.PLAY_TO_CLIENT)
 	);
 
-	public static final IngVal<CurseIngredient> ING_ENCH_TAG;
+	public static final IngVal<EnchantmentTagIngredient> ING_ENCH_TAG;
 
 	static {
 		if (ModList.get().isLoaded(L2Hostility.MODID)) {
@@ -61,7 +61,7 @@ public class CurseOfPandora {
 		} else {
 			REGISTRATE = new L2Registrate(MODID);
 		}
-		ING_ENCH_TAG = IngReg.of(REG).reg("curse", CurseIngredient.class);
+		ING_ENCH_TAG = IngReg.of(REG).reg("curse", EnchantmentTagIngredient.class);
 	}
 
 	public CurseOfPandora() {

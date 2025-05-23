@@ -25,8 +25,6 @@ import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.pandora.init.data.PandoraTagGen;
-import dev.xkmc.pandora.init.registrate.PandoraItems;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -162,7 +160,7 @@ public class CoPItems {
 
 		// attributes
 		{
-			TagKey<Item> dupe = PandoraTagGen.ALLOW_DUPLICATE;
+			TagKey<Item> dupe = CoPTagGen.ALLOW_DUPLICATE;
 
 			CHARM_HEALTH = item("charm_of_health", p -> new AttributeItem(p,
 					AttributeItem.add(Attributes.MAX_HEALTH, "charm_of_health", CoPConfig.COMMON.attr.charmOfHealth::get)))
@@ -316,7 +314,7 @@ public class CoPItems {
 		// enchs
 		{
 
-			TagKey<Item> slot = PandoraTagGen.PANDORA_SLOT;
+			TagKey<Item> slot = CoPTagGen.PANDORA_SLOT;
 
 			STABLE_BODY = descItem("orb_of_stability", "Orb of Stability", StabilityCharm::new,
 					"When attacked, you won't be knocked back, and your screen won't shake")

@@ -1,12 +1,10 @@
 package dev.xkmc.curseofpandora.init.data;
 
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
-import dev.xkmc.l2core.init.L2LibReg;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -19,15 +17,15 @@ import net.neoforged.neoforge.common.crafting.IngredientType;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public record CurseIngredient(HolderSet<Enchantment> enchantment) implements ICustomIngredient {
+public record EnchantmentTagIngredient(HolderSet<Enchantment> enchantment) implements ICustomIngredient {
 
-	public static Ingredient of(Holder<Enchantment> ench, int min) {
-		return (new dev.xkmc.l2core.serial.ingredients.EnchantmentIngredient(ench, min)).toVanilla();
+	public static Ingredient of(HolderSet<Enchantment> ench) {
+		return (new EnchantmentTagIngredient(ench)).toVanilla();
 	}
 
-	public static Ingredient of(HolderLookup.Provider pvd, ResourceKey<Enchantment> ench, int min) {
-		Holder.Reference<Enchantment> holder = pvd.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(ench);
-		return of(holder, min);
+	public static Ingredient of(HolderLookup.Provider pvd, TagKey<Enchantment> ench) {
+		var holder = pvd.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(ench);
+		return of(holder);
 	}
 
 	public Stream<ItemStack> getItems() {

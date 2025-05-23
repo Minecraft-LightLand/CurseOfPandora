@@ -14,11 +14,11 @@ import dev.xkmc.l2core.serial.configval.BooleanValueCondition;
 import dev.xkmc.l2core.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
 import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
+import dev.xkmc.l2core.serial.recipe.DataRecipeWrapper;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.Tools;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
-import dev.xkmc.l2library.serial.recipe.NBTRecipe;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -27,12 +27,14 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.neoforged.fml.ModList;
 
 import java.util.function.BiFunction;
 
@@ -61,7 +63,7 @@ public class CoPRecipeGen {
 				RecipeCategory.MISC, CoPItems.MINI_BEACON.get(), 1, 200)::unlockedBy, CoPItems.MINI_BEACON.get())
 				.save(pvd, getID(CoPItems.MINI_BEACON.get(), "_smelt"));
 
-		unlock(pvd, SimpleCookingRecipeBuilder.blasting(new CurseIngredient(),
+		unlock(pvd, SimpleCookingRecipeBuilder.blasting(EnchantmentTagIngredient.of(pvd.getProvider(), EnchantmentTags.CURSE),
 				RecipeCategory.MISC, CoPItems.SPELLBOUND_ORB.get(), 1, 200)::unlockedBy, CoPItems.SPELLBOUND_ORB.get())
 				.save(pvd);
 
@@ -264,7 +266,7 @@ public class CoPRecipeGen {
 					.define('C', Items.NETHER_STAR)
 					.define('B', CoPItems.CHARM.get())
 					.define('A', Items.GOLD_INGOT)
-					.save(e -> pvd.accept(new NBTRecipe(e, stack)), CurseOfPandora.loc("seven_curses"));
+					.save(e -> pvd.accept(new DataRecipeWrapper(e, stack)), CurseOfPandora.loc("seven_curses"));
 			{
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_FEATHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
 						.pattern("ABA").pattern("FCF").pattern("MBM")

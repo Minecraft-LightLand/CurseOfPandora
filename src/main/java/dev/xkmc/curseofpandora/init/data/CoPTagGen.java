@@ -32,6 +32,9 @@ public class CoPTagGen {
 	public static final TagKey<Item> EVIL = ItemTags.create(CurseOfPandora.loc("evil_spirit_charms"));
 	public static final TagKey<Item> ELEMENTAL = ItemTags.create(CurseOfPandora.loc("elemental_charms"));
 
+	public static final TagKey<Item> PANDORA_SLOT = ItemTags.create(CurseOfPandora.loc("pandora_slot"));
+	public static final TagKey<Item> ALLOW_DUPLICATE = ItemTags.create(CurseOfPandora.loc("allow_duplicate"));
+
 	public static final TagKey<EntityType<?>> PRUDENCE_WHITELIST = TagKey.create(Registries.ENTITY_TYPE, CurseOfPandora.loc("prudence_whitelist"));
 
 	public static final TagKey<MobEffect> HIDDEN = TagKey.create(Registries.MOB_EFFECT,
