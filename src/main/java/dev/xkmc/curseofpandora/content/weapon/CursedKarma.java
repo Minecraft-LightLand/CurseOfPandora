@@ -9,11 +9,8 @@ import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2complements.init.registrate.LCEffects;
-import dev.xkmc.l2library.base.effects.EffectUtil;
-import dev.xkmc.l2library.init.explosion.BaseExplosion;
-import dev.xkmc.l2library.init.explosion.BaseExplosionContext;
-import dev.xkmc.l2library.init.explosion.ExplosionHandler;
-import dev.xkmc.l2library.init.explosion.VanillaExplosionContext;
+import dev.xkmc.l2core.base.effects.EffectUtil;
+import dev.xkmc.l2library.content.explosion.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleOptions;
@@ -29,7 +26,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -95,10 +91,10 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 	@Override
 	public void onHit(WindBladeEntity entity) {
 		Vec3 pos = entity.position();
-		BaseExplosionContext base = new BaseExplosionContext(entity.level(), pos.x, pos.y, pos.z, getRadius());
-		VanillaExplosionContext mc = new VanillaExplosionContext(entity, null,
-				(ExplosionDamageCalculator) null, false, Explosion.BlockInteraction.KEEP);
-		ExplosionHandler.explode(new BaseExplosion(base, mc, e -> isTarget(e, entity.getOwner())));
+		var r = getRadius();
+		BaseExplosionContext base = new BaseExplosionContext(entity.level(), pos.x, pos.y, pos.z, r);
+		VanillaExplosionContext mc = new VanillaExplosionContext(entity, null, null, false, Explosion.BlockInteraction.KEEP);
+		ExplosionHandler.explode(new BaseExplosion(base, mc, e -> isTarget(e, entity.getOwner()), ParticleExplosionContext.of(r)));
 		entity.discard();
 	}
 
@@ -111,10 +107,8 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 		int duration = getDuration();
 		if (entity instanceof LivingEntity le) {
 			if (owner instanceof Player player) {
-				EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.FLAME.get(), duration),
-						EffectUtil.AddReason.FORCE, player);
-				EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.CURSE.get(), duration),
-						EffectUtil.AddReason.FORCE, player);
+				EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.FLAME, duration), player);
+				EffectUtil.addEffect(le, new MobEffectInstance(LCEffects.CURSE, duration), player);
 			}
 			return true;
 		}
@@ -128,7 +122,7 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return CurseOfPandora.loc( "textures/entity/flame_blade.png");
+		return CurseOfPandora.loc("textures/entity/flame_blade.png");
 	}
 
 	@Override

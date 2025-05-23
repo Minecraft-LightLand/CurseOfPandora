@@ -1,5 +1,6 @@
 package dev.xkmc.curseofpandora.content.pandora;
 
+import dev.xkmc.l2core.init.reg.ench.EnchVal;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -10,7 +11,7 @@ import java.util.function.Supplier;
 
 public class EnderMaskCharm extends EnchDescItem implements ICurioItem {
 
-	public EnderMaskCharm(Properties properties, Supplier<Enchantment> sup) {
+	public EnderMaskCharm(Properties properties, EnchVal sup) {
 		super(properties, sup);
 	}
 

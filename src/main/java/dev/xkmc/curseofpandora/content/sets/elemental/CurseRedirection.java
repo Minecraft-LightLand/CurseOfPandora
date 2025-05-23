@@ -10,14 +10,14 @@ import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -32,12 +32,13 @@ public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> 
 	}
 
 	private static AttrAdder magic(Player player) {
+		var reg = player.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
 		int count = 0;
 		for (var e : EquipmentSlot.values()) {
 			if (e.isArmor()) {
 				ItemStack stack = player.getItemBySlot(e);
-				for (var ent : stack.getAllEnchantments().keySet()) {
-					if (ent.isCurse()) count++;
+				for (var ent : stack.getAllEnchantments(reg).keySet()) {
+					if (ent.is(EnchantmentTags.CURSE)) count++;
 				}
 			}
 		}
@@ -47,12 +48,13 @@ public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> 
 	}
 
 	private static AttrAdder spell(Player player) {
+		var reg = player.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
 		int count = 0;
 		for (var e : EquipmentSlot.values()) {
 			if (e.isArmor()) {
 				ItemStack stack = player.getItemBySlot(e);
-				for (var ent : stack.getAllEnchantments().keySet()) {
-					if (ent.isCurse()) {
+				for (var ent : stack.getAllEnchantments(reg).keySet()) {
+					if (ent.is(EnchantmentTags.CURSE)) {
 						count++;
 						break;
 					}

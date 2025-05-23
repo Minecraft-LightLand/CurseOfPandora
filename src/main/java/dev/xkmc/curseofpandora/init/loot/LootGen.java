@@ -5,7 +5,8 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -158,11 +159,11 @@ public class LootGen {
 
 		public final String id;
 		public final double chance, bonus;
-		public final ResourceLocation table;
+		public final ResourceKey<LootTable> table;
 		public final Supplier<LootTable.Builder> loot;
 
 
-		LootDefinition(double chance, double bonus, ResourceLocation table, Supplier<LootTable.Builder> loot) {
+		LootDefinition(double chance, double bonus, ResourceKey<LootTable> table, Supplier<LootTable.Builder> loot) {
 			this.chance = chance;
 			this.bonus = bonus;
 			this.table = table;
@@ -170,13 +171,13 @@ public class LootGen {
 			this.loot = loot;
 		}
 
-		public ResourceLocation getInner() {
-			return CurseOfPandora.loc( id);
+		public ResourceKey<LootTable> getInner() {
+			return ResourceKey.create(Registries.LOOT_TABLE, CurseOfPandora.loc(id));
 		}
 
 	}
 
-	private static void genInnerLoot(BiConsumer<ResourceLocation, LootTable.Builder> map) {
+	private static void genInnerLoot(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> map) {
 		for (LootDefinition def : LootDefinition.values()) {
 			map.accept(def.getInner(), def.loot.get());
 		}

@@ -1,72 +1,55 @@
 package dev.xkmc.curseofpandora.init.data;
 
-import com.google.gson.JsonObject;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
-import dev.xkmc.l2library.serial.ingredients.BaseIngredient;
-import dev.xkmc.l2serial.serialization.marker.SerialClass;
-import net.minecraft.resources.ResourceLocation;
+import dev.xkmc.l2core.init.L2LibReg;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.crafting.ICustomIngredient;
+import net.neoforged.neoforge.common.crafting.IngredientType;
 
-import java.util.Collection;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-@SerialClass
-public class CurseIngredient extends BaseIngredient<CurseIngredient> {
+public record CurseIngredient(HolderSet<Enchantment> enchantment) implements ICustomIngredient {
 
-	public static final BaseIngredient.Serializer<CurseIngredient> INSTANCE =
-			new BaseIngredient.Serializer<>(CurseIngredient.class, CurseOfPandora.loc( "cursed_enchantments"));
-
-	public CurseIngredient() {
-		super();
+	public static Ingredient of(Holder<Enchantment> ench, int min) {
+		return (new dev.xkmc.l2core.serial.ingredients.EnchantmentIngredient(ench, min)).toVanilla();
 	}
 
-	private CurseIngredient(Stream<? extends Value> stream) {
-		super(stream);
+	public static Ingredient of(HolderLookup.Provider pvd, ResourceKey<Enchantment> ench, int min) {
+		Holder.Reference<Enchantment> holder = pvd.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(ench);
+		return of(holder, min);
 	}
 
-	protected CurseIngredient validate() {
-		return new CurseIngredient(ForgeRegistries.ENCHANTMENTS.getValues().stream().filter(Enchantment::isCurse).map(e -> new EnchValue(e, 1)));
+	public Stream<ItemStack> getItems() {
+		return this.enchantment.stream().flatMap(e -> IntStream.range(1, e.value().definition().maxLevel())
+				.mapToObj(i -> EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, i))));
+	}
+
+	public boolean isSimple() {
+		return false;
+	}
+
+	public IngredientType<?> getType() {
+		return CurseOfPandora.ING_ENCH_TAG.get();
 	}
 
 	public boolean test(ItemStack stack) {
-		return stack.is(Items.ENCHANTED_BOOK) && EnchantmentHelper.getEnchantments(stack).entrySet().stream().anyMatch(e -> e.getKey().isCurse());
-	}
-
-	public BaseIngredient.Serializer<CurseIngredient> getSerializer() {
-		return INSTANCE;
-	}
-
-	private static record EnchValue(Enchantment ench, int min) implements Ingredient.Value {
-		private EnchValue(Enchantment ench, int min) {
-			this.ench = ench;
-			this.min = min;
+		var map = EnchantmentHelper.getEnchantmentsForCrafting(stack);
+		for (var e : map.keySet()) {
+			if (enchantment.contains(e))
+				return true;
 		}
-
-		public Collection<ItemStack> getItems() {
-			return IntStream.range(this.min, this.ench.getMaxLevel() + 1).mapToObj((i) -> {
-				return EnchantedBookItem.createForEnchantment(new EnchantmentInstance(this.ench, i));
-			}).toList();
-		}
-
-		public JsonObject serialize() {
-			throw new IllegalStateException("This value should not be serialized as such");
-		}
-
-		public Enchantment ench() {
-			return this.ench;
-		}
-
-		public int min() {
-			return this.min;
-		}
+		return false;
 	}
 
 }

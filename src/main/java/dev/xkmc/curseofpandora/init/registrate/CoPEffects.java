@@ -11,46 +11,42 @@ import static dev.xkmc.curseofpandora.init.CurseOfPandora.REGISTRATE;
 
 public class CoPEffects {
 
-	public static final SimpleEntry<MobEffect> FAKE_TERROR_PRE = REGISTRATE
+	public static final SimpleEntry<MobEffect> FAKE_TERROR_PRE = new SimpleEntry<>(REGISTRATE
 			.effect("terror_token_pre", () -> new FakeRenderEffect(4),
 					"For Render only. Shows premature Terror Token on target.")
-			.lang(MobEffect::getDescriptionId).register();
-	public static final SimpleEntry<MobEffect> FAKE_TERROR = REGISTRATE
+			.lang(MobEffect::getDescriptionId).register());
+	public static final SimpleEntry<MobEffect> FAKE_TERROR = new SimpleEntry<>(REGISTRATE
 			.effect("terror_token", () -> new FakeRenderEffect(4),
 					"For render only. Shows Mature Terror Token count on target.")
-			.lang(MobEffect::getDescriptionId).register();
-	public static final SimpleEntry<MobEffect> FAKE_TERRORIZED = REGISTRATE
+			.lang(MobEffect::getDescriptionId).register());
+	public static final SimpleEntry<MobEffect> FAKE_TERRORIZED = new SimpleEntry<>(REGISTRATE
 			.effect("terrorized", FakeRenderEffect::new,
 					"For render only. Shows if you cannot deal damage against this target due to Curse of Tension effect.")
-			.lang(MobEffect::getDescriptionId).register();
-	public static final SimpleEntry<MobEffect> PRUDENCE = REGISTRATE
+			.lang(MobEffect::getDescriptionId).register());
+	public static final SimpleEntry<MobEffect> PRUDENCE = new SimpleEntry<>(REGISTRATE
 			.effect("prudence", () -> new FakeRenderEffect(4),
 					"For render only. Shows if your damage is reduced due to Curse of Prudence effect.")
-			.lang(MobEffect::getDescriptionId).register();
+			.lang(MobEffect::getDescriptionId).register());
 
-	//TODO skill
-	public static final SimpleEntry<MobEffect> SHADOW = REGISTRATE
+	public static final SimpleEntry<MobEffect> SHADOW = new SimpleEntry<>(REGISTRATE
 			.effect("shadow", () -> new ShadowEffect(MobEffectCategory.NEUTRAL, 0x000000),
 					"Shadow Mark")
-			.lang(MobEffect::getDescriptionId).register();
+			.lang(MobEffect::getDescriptionId).register());
 
-	//TODO skill
-	public static final SimpleEntry<MobEffect> AWAKENING = REGISTRATE
+	public static final SimpleEntry<MobEffect> AWAKENING = new SimpleEntry<>(REGISTRATE
 			.effect("evil_spirit_awakening", () -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x000000),
 					"Evil Spirit Awakening")
-			.lang(MobEffect::getDescriptionId).register();
+			.lang(MobEffect::getDescriptionId).register());
 
-	//TODO skill
-	public static final SimpleEntry<MobEffect> SPIRIT_WALK = REGISTRATE
+	public static final SimpleEntry<MobEffect> SPIRIT_WALK = new SimpleEntry<>(REGISTRATE
 			.effect("evil_spirit_walk", () -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x000000),
 					"Evil Spirit Walk")
-			.lang(MobEffect::getDescriptionId).register();
+			.lang(MobEffect::getDescriptionId).register());
 
-	//TODO skill
-	public static final SimpleEntry<MobEffect> ABYSSAL_PROTECTION = REGISTRATE
+	public static final SimpleEntry<MobEffect> ABYSSAL_PROTECTION = new SimpleEntry<>(REGISTRATE
 			.effect("abyssal_protection", () -> new EmptyEffect(MobEffectCategory.BENEFICIAL, 0x000000),
 					"Negates magic-bypassing damage when you have Abyssal Will")
-			.lang(MobEffect::getDescriptionId).register();
+			.lang(MobEffect::getDescriptionId).register());
 
 	public static void register() {
 

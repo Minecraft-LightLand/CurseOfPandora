@@ -3,28 +3,21 @@ package dev.xkmc.curseofpandora.init.loot;
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.l2serial.network.SerialPacketBase;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
-import dev.xkmc.l2serial.serialization.SerialClass.SerialField;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 
 import java.util.*;
 
 @SerialClass
-public class LootDataToClient extends SerialPacketBase {
-	public static Map<Item, MobKillMobLootModifier> LIST_CACHE = new HashMap<>();
-	@SerialField
-	public ArrayList<CompoundTag> list = new ArrayList<>();
+public record LootDataToClient(
+		ArrayList<CompoundTag> list
+) implements SerialPacketBase {
 
-	/**
-	 * @deprecated
-	 */
-	@Deprecated
-	public LootDataToClient() {
-	}
+	public static Map<Item, MobKillMobLootModifier> LIST_CACHE = new HashMap<>();
 
 	public LootDataToClient(List<MobKillMobLootModifier> list) {
 		for (MobKillMobLootModifier e : list) {
@@ -39,7 +32,8 @@ public class LootDataToClient extends SerialPacketBase {
 
 	}
 
-	public void handle(NetworkEvent.Context context) {
+	@Override
+	public void handle(Player player) {
 		LIST_CACHE = new HashMap<>();
 		for (CompoundTag ct : this.list) {
 			Optional<Pair<IGlobalLootModifier, Tag>> ans = IGlobalLootModifier.DIRECT_CODEC.decode(NbtOps.INSTANCE, ct).result();
@@ -49,6 +43,6 @@ public class LootDataToClient extends SerialPacketBase {
 				}
 			}
 		}
-
 	}
+
 }

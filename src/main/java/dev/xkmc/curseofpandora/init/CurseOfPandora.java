@@ -18,6 +18,9 @@ import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.events.ItemUseEventHandler;
 import dev.xkmc.l2core.init.L2TagGen;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.init.reg.simple.IngReg;
+import dev.xkmc.l2core.init.reg.simple.IngVal;
+import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2hostility.init.L2Hostility;
@@ -33,7 +36,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
-import net.neoforged.neoforge.registries.RegisterEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,6 +47,7 @@ public class CurseOfPandora {
 	public static final String MODID = "curseofpandora";
 
 	public static final Logger LOGGER = LogManager.getLogger();
+	public static final Reg REG = new Reg(MODID);
 	public static final L2Registrate REGISTRATE;
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
@@ -52,12 +55,15 @@ public class CurseOfPandora {
 			e -> e.create(LootDataToClient.class, PacketHandler.NetDir.PLAY_TO_CLIENT)
 	);
 
+	public static final IngVal<CurseIngredient> ING_ENCH_TAG;
+
 	static {
 		if (ModList.get().isLoaded(L2Hostility.MODID)) {
 			REGISTRATE = CoPLoader.getLHRegistrate(MODID);
 		} else {
 			REGISTRATE = new L2Registrate(MODID);
 		}
+		ING_ENCH_TAG = IngReg.of(REG).reg("curse", CurseIngredient.class);
 	}
 
 	public CurseOfPandora() {
@@ -107,15 +113,8 @@ public class CurseOfPandora {
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		gen.addProvider(run, new CoPConfigGen(gen));
-		gen.addProvider(run, new CoPGLMProvider(output));
+		gen.addProvider(run, new CoPGLMProvider(output, pvd));
 		gen.addProvider(run, new CoPSlotGen(gen));
-	}
-
-	@SubscribeEvent
-	public static void registerRecipeSerializers(RegisterEvent event) {
-		if (event.getRegistryKey().equals(ForgeRegistries.Keys.RECIPE_SERIALIZERS)) {
-			CraftingHelper.register(CurseIngredient.INSTANCE.id(), CurseIngredient.INSTANCE);
-		}
 	}
 
 	public static ResourceLocation loc(String id) {
