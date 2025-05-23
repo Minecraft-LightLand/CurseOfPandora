@@ -178,6 +178,10 @@ dependencies {
     //implementation "maven.modrinth:iris:1.8.1+1.21.1-neoforge"
 
 
+    compileOnly "maven.modrinth:accessories:1.1.0-beta.12+1.21.1"
+    compileOnly "maven.modrinth:accessories-cc-layer:9.3.1-beta.27"
+
+
     testImplementation "com.mojang:datafixerupper:8.0.16"
     testImplementation "com.google.guava:guava:32.1.2-jre"
 }
