@@ -3,7 +3,6 @@ package dev.xkmc.curseofpandora.init.data;
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import dev.xkmc.curseofpandora.compat.CoPTraits;
-import dev.xkmc.curseofpandora.compat.enigmaticlegacy.ELItems;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.init.data.LCTagGen;
@@ -45,9 +44,7 @@ public class CoPTagGen {
 				.addOptional(LHItems.LOOT_1.getId())
 				.addOptional(LHItems.LOOT_2.getId())
 				.addOptional(LHItems.LOOT_3.getId())
-				.addOptional(LHItems.LOOT_4.getId())
-				.addOptional(ELItems.AGGREVATE.getId())
-				.addOptional(ELItems.INSOMNIA.getId());
+				.addOptional(LHItems.LOOT_4.getId());
 		pvd.addTag(PANDORA_BASE).addTags(ATTR, REALITY)
 				.addOptional(CoPTraits.SEAL_OF_SWORDS.getId())
 				.addOptional(CoPTraits.SPELL_SINGULARITY.getId());
