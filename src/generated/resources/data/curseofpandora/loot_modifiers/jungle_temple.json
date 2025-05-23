@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/jungle_temple"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:jungle_temple]"
+  "table": "curseofpandora:jungle_temple"
 }

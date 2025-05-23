@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/pillager_outpost"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:pillager_outpost]"
+  "table": "curseofpandora:pillager_outpost"
 }

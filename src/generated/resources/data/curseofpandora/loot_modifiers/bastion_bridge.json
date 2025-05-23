@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/bastion_bridge"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:bastion_bridge]"
+  "table": "curseofpandora:bastion_bridge"
 }

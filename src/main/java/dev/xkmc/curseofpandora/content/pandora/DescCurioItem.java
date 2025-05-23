@@ -1,4 +1,3 @@
-
 package dev.xkmc.curseofpandora.content.pandora;
 
 import net.minecraft.ChatFormatting;
@@ -11,7 +10,7 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import java.util.List;
 
 public class DescCurioItem extends Item implements ICurioItem {
-	
+
 	public DescCurioItem(Item.Properties properties) {
 		super(properties);
 	}

@@ -1,6 +1,6 @@
 package dev.xkmc.curseofpandora.content.sets.shadow;
 
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
@@ -48,7 +48,7 @@ public class ShadowConvergence extends ITokenProviderItem<ShadowConvergence.Data
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken implements IAttackListenerToken {
+	public static class Data extends BasePandoraToken implements IAttackListenerToken {
 
 		private double heal;
 

@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.content.sets.angle;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
@@ -64,7 +64,7 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken implements IAttackListenerToken {
+	public static class Data extends BasePandoraToken implements IAttackListenerToken {
 
 		private static ResourceLocation id(String suffix) {
 			return CoPItems.ANGELIC_DESCENT.getId().withSuffix(suffix);

@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-23T17:28:43.760018	Registrate Provider for curseofpandora [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Tags (damage_type), Tags (trait), Custom Registrate Provider]
+// 1.21.1	2025-05-23T17:38:17.550475	Registrate Provider for curseofpandora [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (blocks), Tags (enchantments), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Patchouli Provider, Tags (mob_effect), Tags (attribute), Tags (damage_type), Tags (trait), Custom Registrate Provider]
 dab33f2b8c6d0993918b3e677cffe6ed7848178d assets/curseofpandora/lang/en_ud.json
 177bc3c158aaac8f633fdaa5770005087a6178ee assets/curseofpandora/lang/en_us.json
 93b2ae8bc8aa560cf69334d52e07fee38d145abe assets/curseofpandora/models/item/abyss_crystal.json
@@ -102,7 +102,7 @@ e230c53000da2ddf6680fc665704f2d92e01e3ed assets/curseofpandora/models/item/spell
 6f2b2be6d226f3ed125067c68dcbd0056e5c0256 assets/curseofpandora/models/item/void_overflow.json
 7b17ab803f8883c0027ddea9a7943756df37e582 assets/curseofpandora/models/item/waving_spell.json
 a072819ac02fd15455b1842e8bd1375cf21bf191 assets/curseofpandora/models/item/wind_thrust.json
-646f84b82f4deded4504ec4c00260c194ad34663 data/curios/tags/item/pandora_slot.json
+646f84b82f4deded4504ec4c00260c194ad34663 data/curios/tags/item/pandora.json
 0d8ca9399fccaabb08646a0ad9c2c5416a6cfc42 data/curseofpandora/advancement/burnt/burnt/flint.json
 4ea33a063300ab2aceacb0eecc2e02c237a70343 data/curseofpandora/advancement/burnt/burnt/mini_beacon_base_block.json
 457c44bc5647340b85b9f3ec0145c9343b3e32e5 data/curseofpandora/advancement/burnt/burnt/mini_beacon_base_ingot.json

@@ -1,6 +1,6 @@
 package dev.xkmc.curseofpandora.content.sets.evil;
 
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
@@ -57,7 +57,7 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken implements IAttackListenerToken {
+	public static class Data extends BasePandoraToken implements IAttackListenerToken {
 
 		private static ResourceLocation id(String suffix) {
 			return CoPItems.EVIL_SPIRIT_CURSE.getId().withSuffix(suffix);

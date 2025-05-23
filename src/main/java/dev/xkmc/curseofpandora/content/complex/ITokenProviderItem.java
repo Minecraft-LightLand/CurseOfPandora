@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public abstract class ITokenProviderItem<R extends BaseTickingToken> extends Item implements ICurioItem {
+public abstract class ITokenProviderItem<R extends BasePandoraToken> extends Item implements ICurioItem {
 
 	private final Supplier<R> sup;
 

@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/simple_dungeon"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:simple_dungeon]"
+  "table": "curseofpandora:simple_dungeon"
 }

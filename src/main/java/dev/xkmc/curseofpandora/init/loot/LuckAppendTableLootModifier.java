@@ -20,7 +20,7 @@ public class LuckAppendTableLootModifier extends LootModifier {
 	public static final MapCodec<LuckAppendTableLootModifier> CODEC = RecordCodecBuilder.mapCodec(i -> codecStart(i).and(i.group(
 					Codec.DOUBLE.fieldOf("chance").forGetter(e -> e.chance),
 					Codec.DOUBLE.fieldOf("bonus").forGetter(e -> e.bonus),
-					Codec.STRING.fieldOf("table").forGetter(e -> e.table.toString())))
+					Codec.STRING.fieldOf("table").forGetter(e -> e.table.location().toString())))
 			.apply(i, LuckAppendTableLootModifier::new));
 
 	private final double chance, bonus;

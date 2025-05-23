@@ -2,7 +2,7 @@ package dev.xkmc.curseofpandora.content.complex;
 
 import java.util.function.Supplier;
 
-public abstract class ISlotAdderItem<T extends BaseTickingToken> extends ITokenProviderItem<T> {
+public abstract class ISlotAdderItem<T extends BasePandoraToken> extends ITokenProviderItem<T> {
 
 	public final IAttrAdder[] adder;
 

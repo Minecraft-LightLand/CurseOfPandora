@@ -6,7 +6,7 @@ import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.world.entity.player.Player;
 
 @SerialClass
-public abstract class BaseTickingToken extends ConditionalToken {
+public abstract class BasePandoraToken extends ConditionalToken {
 
 	@SerialField
 	public int life;
@@ -30,5 +30,8 @@ public abstract class BaseTickingToken extends ConditionalToken {
 
 	protected abstract void tickImpl(Player player);
 
+	public boolean retainOnDeath(Player player) {
+		return true;
+	}
 
 }

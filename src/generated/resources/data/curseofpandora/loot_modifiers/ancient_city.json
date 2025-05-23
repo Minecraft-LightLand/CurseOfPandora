@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/ancient_city"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:ancient_city]"
+  "table": "curseofpandora:ancient_city"
 }

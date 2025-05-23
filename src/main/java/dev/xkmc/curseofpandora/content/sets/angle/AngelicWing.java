@@ -1,6 +1,6 @@
 package dev.xkmc.curseofpandora.content.sets.angle;
 
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
@@ -47,7 +47,7 @@ public class AngelicWing extends ITokenProviderItem<AngelicWing.Data> {
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken implements IAttackListenerToken {
+	public static class Data extends BasePandoraToken implements IAttackListenerToken {
 
 		@Override
 		protected void removeImpl(Player player) {
@@ -64,10 +64,7 @@ public class AngelicWing extends ITokenProviderItem<AngelicWing.Data> {
 			if (data.getSource().is(DamageTypes.FLY_INTO_WALL)) {
 				return true;
 			}
-			if (data.getSource().is(DamageTypes.FALL)) {
-				return true;
-			}
-			return false;
+			return data.getSource().is(DamageTypes.FALL);
 		}
 
 		@Override

@@ -1,6 +1,6 @@
 package dev.xkmc.curseofpandora.content.sets.hell;
 
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
@@ -52,7 +52,7 @@ public class HellfireSkull extends ITokenProviderItem<HellfireSkull.Data> {
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken implements IAttackListenerToken {
+	public static class Data extends BasePandoraToken implements IAttackListenerToken {
 
 		@Override
 		protected void removeImpl(Player player) {

@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/stronghold_corridor"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:stronghold_corridor]"
+  "table": "curseofpandora:stronghold_corridor"
 }

@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.content.hostility;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
@@ -27,12 +27,12 @@ public class SealOfSword extends ITokenProviderItem<SealOfSword.Data> {
 	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		var reality = Component.translatable(CoPAttrs.REALITY.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
 		var step = Component.literal("" + CoPConfig.SERVER.compat.sealOfSwordDifficultyPerBonus.get()).withStyle(ChatFormatting.AQUA);
-		var max =  Component.literal("" + CoPConfig.SERVER.compat.sealOfSwordMaxRealityBonus.get()).withStyle(ChatFormatting.GOLD);
+		var max = Component.literal("" + CoPConfig.SERVER.compat.sealOfSwordMaxRealityBonus.get()).withStyle(ChatFormatting.GOLD);
 		list.add(CoPLangData.Compat.SEAL_OF_SWORDS.get(reality, step, max, reality).withStyle(ChatFormatting.GRAY));
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken {
+	public static class Data extends BasePandoraToken {
 
 		private AttrAdder getAttr(Player player) {
 			int lv = LHMiscs.PLAYER.type().getOrCreate(player).getLevel(player).getLevel();

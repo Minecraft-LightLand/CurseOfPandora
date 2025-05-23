@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(Player.class)
 public class PlayerMixin {
 
-	@WrapOperation(at = @At(value = "INVOKE", target="Lnet/minecraft/world/entity/player/Player;setSprinting(Z)V"), method = "attack")
+	@WrapOperation(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;setSprinting(Z)V"), method = "attack")
 	public void curseOfPandora$attack$setSprint(Player player, boolean sprint, Operation<Void> op) {
 
 	}

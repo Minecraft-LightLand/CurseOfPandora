@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/nether_bridge"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:nether_bridge]"
+  "table": "curseofpandora:nether_bridge"
 }

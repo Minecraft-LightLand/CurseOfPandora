@@ -6,7 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import java.util.List;
 
 @SerialClass
-public abstract class ListTickingToken extends BaseTickingToken {
+public abstract class ListTickingToken extends BasePandoraToken {
 
 	private final List<ISubToken> list;
 

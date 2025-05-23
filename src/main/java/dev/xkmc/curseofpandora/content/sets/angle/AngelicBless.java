@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.content.sets.angle;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
-import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
+import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
@@ -60,7 +60,7 @@ public class AngelicBless extends ITokenProviderItem<AngelicBless.Data> {
 	}
 
 	@SerialClass
-	public static class Data extends BaseTickingToken {
+	public static class Data extends BasePandoraToken {
 
 		@Override
 		protected void removeImpl(Player player) {

@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/woodland_mansion"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:woodland_mansion]"
+  "table": "curseofpandora:woodland_mansion"
 }

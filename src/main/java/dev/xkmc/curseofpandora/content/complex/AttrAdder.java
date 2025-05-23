@@ -48,7 +48,7 @@ public record AttrAdder(ResourceLocation name, Holder<Attribute> attr,
 	}
 
 	public MutableComponent getTooltip() {
-		return attr.value().toValueComponent(op, value.getAsDouble(), TooltipFlag.NORMAL);
+		return attr.value().toComponent(new AttributeModifier(name, value.getAsDouble(), op), TooltipFlag.NORMAL);
 	}
 
 }

@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/igloo_chest"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:igloo_chest]"
+  "table": "curseofpandora:igloo_chest"
 }

@@ -8,5 +8,5 @@
       "loot_table_id": "minecraft:chests/shipwreck_treasure"
     }
   ],
-  "table": "ResourceKey[minecraft:loot_table / curseofpandora:shipwreck_treasure]"
+  "table": "curseofpandora:shipwreck_treasure"
 }
