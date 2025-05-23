@@ -3,7 +3,6 @@ package dev.xkmc.curseofpandora.init.data;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import dev.xkmc.curseofpandora.compat.CoPTraits;
-import dev.xkmc.curseofpandora.content.reality.CursePandoraUtil;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
@@ -14,12 +13,10 @@ import dev.xkmc.l2core.serial.configval.BooleanValueCondition;
 import dev.xkmc.l2core.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
 import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
-import dev.xkmc.l2core.serial.recipe.DataRecipeWrapper;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.Tools;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
-import dev.xkmc.pandora.init.registrate.PandoraItems;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -132,7 +129,7 @@ public class CoPRecipeGen {
 
 		// reject
 		{
-			BooleanValueCondition cond = BooleanValueCondition.of(LCConfig.RECIPE, e -> e.enableImmunityEnchantments, true);
+			BooleanValueCondition cond = BooleanValueCondition.of(LCConfig.RECIPE, e -> e.enableVanillaItemRecipe, true);//TODO
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.PROJECTILE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
@@ -260,6 +257,7 @@ public class CoPRecipeGen {
 
 		// sets
 		{
+			/* TODO
 			var stack = CursePandoraUtil.allCurses(PandoraItems.PANDORA_NECKLACE.get());
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PandoraItems.PANDORA_NECKLACE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
 					.pattern("ABA").pattern("BCB").pattern("ABA")
@@ -267,6 +265,8 @@ public class CoPRecipeGen {
 					.define('B', CoPItems.CHARM.get())
 					.define('A', Items.GOLD_INGOT)
 					.save(e -> pvd.accept(new DataRecipeWrapper(e, stack)), CurseOfPandora.loc("seven_curses"));
+
+			 */
 			{
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_FEATHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
 						.pattern("ABA").pattern("FCF").pattern("MBM")

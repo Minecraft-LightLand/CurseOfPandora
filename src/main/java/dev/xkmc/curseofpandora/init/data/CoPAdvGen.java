@@ -1,27 +1,11 @@
 package dev.xkmc.curseofpandora.init.data;
 
 import com.tterrag.registrate.providers.RegistrateAdvancementProvider;
-import dev.xkmc.curseofpandora.content.reality.CursePandoraUtil;
-import dev.xkmc.curseofpandora.init.CurseOfPandora;
-import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2core.serial.advancements.AdvancementGenerator;
-import dev.xkmc.l2core.serial.advancements.CriterionBuilder;
-import dev.xkmc.l2core.serial.advancements.RewardBuilder;
-import dev.xkmc.l2core.serial.loot.LootHelper;
-import dev.xkmc.l2core.serial.loot.LootTableTemplate;
-import net.minecraft.advancements.critereon.PlayerTrigger;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CoPAdvGen {
 
 	public static void onAdvGen(RegistrateAdvancementProvider pvd) {
+		/*
 		var gen = new AdvancementGenerator(pvd, CurseOfPandora.MODID);
 		var builder = gen.new TabBuilder("pandora");
 		var item = PandoraItems.PANDORA_NECKLACE.get();
@@ -33,8 +17,10 @@ public class CoPAdvGen {
 								.add(LootItem.lootTableItem(item)
 										.apply(SetComponentsFunction.setComponent(tag))))
 				)).build();
-	}
 
+		 */
+	}
+/*TODO
 	public static ItemStack allCurses(PandoraHolder holder) {
 		ItemStack stack = holder.getDefaultInstance();
 		List<ItemStack> list = new ArrayList<>();
@@ -53,5 +39,7 @@ public class CoPAdvGen {
 		return stack;
 	}
 
+
+ */
 
 }

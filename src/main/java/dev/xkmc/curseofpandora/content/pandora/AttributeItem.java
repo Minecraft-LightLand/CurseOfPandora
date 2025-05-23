@@ -2,10 +2,6 @@ package dev.xkmc.curseofpandora.content.pandora;
 
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import dev.xkmc.curseofpandora.init.data.CoPTagGen;
-import dev.xkmc.pandora.init.data.PandoraLangData;
-import dev.xkmc.pandora.init.data.PandoraTagGen;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -43,8 +39,8 @@ public class AttributeItem extends Item implements ICurioItem {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
-		if (stack.is(CoPTagGen.ALLOW_DUPLICATE))
-			list.add(PandoraLangData.TOOLTIP_DUPLICATE.get().withStyle(ChatFormatting.GRAY));
+		//TODO if (stack.is(CoPTagGen.ALLOW_DUPLICATE))
+		//list.add(PandoraLangData.TOOLTIP_DUPLICATE.get().withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override

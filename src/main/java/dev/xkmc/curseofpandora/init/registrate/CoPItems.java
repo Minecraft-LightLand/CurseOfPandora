@@ -24,17 +24,26 @@ import dev.xkmc.l2complements.content.feature.CurioFeaturePredicate;
 import dev.xkmc.l2complements.content.feature.EntityFeature;
 import dev.xkmc.l2complements.init.registrate.LCEnchantments;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
 import static dev.xkmc.curseofpandora.init.CurseOfPandora.REGISTRATE;
 
 public class CoPItems {
+
+	public static final SimpleEntry<CreativeModeTab> TAB;
+
+	static {
+		TAB = REGISTRATE.buildL2CreativeTab("pandora", "Curse of Pandora", b ->
+				b.icon(CoPItems.CURSE_OF_SPELL::asStack));
+	}
 
 	public static final ItemEntry<Item> CHARM, MINI_BEACON, MINI_BEACON_BASE,
 			ANGELIC_FEATHER, HELLFIRE_RUNE, SHADOW_FRAGMENT,
@@ -105,7 +114,6 @@ public class CoPItems {
 	public static final ItemEntry<AbyssalEdge> ABYSSAL_EDGE;
 
 	static {
-		REGISTRATE.defaultCreativeTab(PandoraItems.TAB.getKey());
 
 		// curse
 		{
