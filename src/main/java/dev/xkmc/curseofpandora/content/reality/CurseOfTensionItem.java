@@ -33,32 +33,32 @@ import java.util.UUID;
 
 public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_tension", CoPConfig.COMMON.curse.curseOfTensionSlot);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_tension", CoPConfig.SERVER.curse.curseOfTensionSlot);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_tension");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	public static int getPenaltyDuration() {
-		return CoPConfig.COMMON.curse.curseOfTensionPenaltyDuration.get();
+		return CoPConfig.SERVER.curse.curseOfTensionPenaltyDuration.get();
 	}
 
 	public static double getDamageThreshold() {
-		return CoPConfig.COMMON.curse.curseOfTensionPenaltyThreshold.get();
+		return CoPConfig.SERVER.curse.curseOfTensionPenaltyThreshold.get();
 	}
 
 	public static int getTokenMature() {
-		return CoPConfig.COMMON.curse.curseOfTensionTokenMatureTime.get();
+		return CoPConfig.SERVER.curse.curseOfTensionTokenMatureTime.get();
 	}
 
 	public static int getTokenLife() {
-		return CoPConfig.COMMON.curse.curseOfTensionTokenEffectiveTime.get();
+		return CoPConfig.SERVER.curse.curseOfTensionTokenEffectiveTime.get();
 	}
 
 	public static float getDamageBonus() {
-		return (float) (double) CoPConfig.COMMON.curse.curseOfTensionDamageBonus.get();
+		return (float) (double) CoPConfig.SERVER.curse.curseOfTensionDamageBonus.get();
 	}
 
 	public static int getMaxLevel() {
-		return CoPConfig.COMMON.curse.curseOfTensionMaxLevel.get();
+		return CoPConfig.SERVER.curse.curseOfTensionMaxLevel.get();
 	}
 
 	public CurseOfTensionItem(Properties properties) {

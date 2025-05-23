@@ -60,7 +60,7 @@ public class ClientSpellText {
 			var clevel = Component.literal("" + (int) level).withStyle(ChatFormatting.RED);
 			var base = Component.literal("" + (int) bonus).withStyle(ChatFormatting.BLUE);
 			var ench = Component.literal("" + event.getItemStack().getEnchantmentValue()).withStyle(ChatFormatting.GOLD);
-			var perc = Component.literal("" + (int) (CoPConfig.COMMON.curse.curseOfSpellLoadFactor.get() * 100)).withStyle(ChatFormatting.GRAY);
+			var perc = Component.literal("" + (int) (CoPConfig.SERVER.curse.curseOfSpellLoadFactor.get() * 100)).withStyle(ChatFormatting.GRAY);
 			var cload = Component.literal("" + load).withStyle(load > 100 ? ChatFormatting.RED : ChatFormatting.GREEN);
 			event.getToolTip().add(CoPLangData.Reality.SPELL_4.get(clevel, base, ench, perc, cload)
 					.withStyle(ChatFormatting.GRAY));
@@ -95,12 +95,12 @@ public class ClientSpellText {
 	}
 
 	public static Component getDepth(@Nullable Level level) {
-		int def = CoPConfig.COMMON.abyssal.abyssalDepthStep.get();
+		int def = CoPConfig.SERVER.abyssal.abyssalDepthStep.get();
 		if (level != null) {
 			Player player = Minecraft.getInstance().player;
 			if (player != null) {
 				if (L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey())) {
-					int val = CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get();
+					int val = CoPConfig.SERVER.abyssal.abyssalWillDepthStep.get();
 					return Component.literal(val + "").withStyle(ChatFormatting.YELLOW);
 				}
 			}

@@ -21,11 +21,11 @@ import java.util.List;
 public class AbyssalShell extends ITokenProviderItem<AbyssalShell.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.abyssal.abyssalShellRealityIndex.get();
+		return CoPConfig.SERVER.abyssal.abyssalShellRealityIndex.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.abyssal.abyssalShellBonus.get();
+		return CoPConfig.SERVER.abyssal.abyssalShellBonus.get();
 	}
 
 	private static AttrAdder getArmor(Player player) {

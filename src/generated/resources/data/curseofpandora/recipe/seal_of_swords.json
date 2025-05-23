@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "l2hostility"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "curseofpandora:angelic_judgement"
+    },
+    "2": {
+      "item": "curseofpandora:doom_star"
+    },
+    "3": {
+      "item": "curseofpandora:cursed_karma"
+    },
+    "4": {
+      "item": "curseofpandora:abyssal_edge"
+    },
+    "A": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "B": {
+      "item": "curseofpandora:reality"
+    }
+  },
+  "pattern": [
+    "1 2",
+    "3A4",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:seal_of_swords"
+  }
+}

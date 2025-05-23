@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "l2hostility"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_plain_charm": {
+      "conditions": {
+        "items": [
+          {
+            "items": "curseofpandora:plain_charm"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "curseofpandora:compat/hostility/charm_of_explosion"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_plain_charm"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "curseofpandora:compat/hostility/charm_of_explosion"
+    ]
+  }
+}

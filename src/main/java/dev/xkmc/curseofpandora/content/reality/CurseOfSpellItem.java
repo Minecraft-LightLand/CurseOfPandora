@@ -27,7 +27,7 @@ import java.util.List;
 
 public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", CoPConfig.COMMON.curse.curseOfSpellSlot);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_spell", CoPConfig.SERVER.curse.curseOfSpellSlot);
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_spell");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
@@ -42,7 +42,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 			}
 		}
 		double val = (base + stack.getEnchantmentValue());
-		return level / val / base * CoPConfig.COMMON.curse.curseOfSpellLoadFactor.get();
+		return level / val / base * CoPConfig.SERVER.curse.curseOfSpellLoadFactor.get();
 	}
 
 	public static double getSpellPenalty(Player player) {
@@ -96,7 +96,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 			}
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
-				double factor = CoPConfig.COMMON.curse.curseOfSpellDamageFactor.get();
+				double factor = CoPConfig.SERVER.curse.curseOfSpellDamageFactor.get();
 				data.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty * factor), id("_fragile")));
 			}
 		}
@@ -105,7 +105,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 		public void onPlayerDamageTarget(Player player, DamageData.Defence data) {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
-				double factor = CoPConfig.COMMON.curse.curseOfSpellWeakenFactor.get();
+				double factor = CoPConfig.SERVER.curse.curseOfSpellWeakenFactor.get();
 				data.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty * factor), id("_weaken")));
 			}
 		}

@@ -22,20 +22,20 @@ import java.util.Set;
 
 public class CurseOfInertiaItem extends ISlotAdderItem<CurseOfInertiaItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_inertia", CoPConfig.COMMON.curse.curseOfInertiaSlot);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_inertia", CoPConfig.SERVER.curse.curseOfInertiaSlot);
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_inertia");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static double getCap() {
-		return CoPConfig.COMMON.curse.curseOfInertiaCap.get();
+		return CoPConfig.SERVER.curse.curseOfInertiaCap.get();
 	}
 
 	private static double getBase() {
-		return CoPConfig.COMMON.curse.curseOfInertiaBase.get();
+		return CoPConfig.SERVER.curse.curseOfInertiaBase.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curse.curseOfInertiaBonus.get();
+		return CoPConfig.SERVER.curse.curseOfInertiaBonus.get();
 	}
 
 	public CurseOfInertiaItem(Properties properties) {

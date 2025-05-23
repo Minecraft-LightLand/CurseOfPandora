@@ -21,11 +21,11 @@ import java.util.List;
 public class ShadowConvergence extends ITokenProviderItem<ShadowConvergence.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.shadow.shadowConvergenceRealityIndex.get();
+		return CoPConfig.SERVER.shadow.shadowConvergenceRealityIndex.get();
 	}
 
 	public static double getFactor() {
-		return CoPConfig.COMMON.shadow.shadowConvergenceHealFactor.get();
+		return CoPConfig.SERVER.shadow.shadowConvergenceHealFactor.get();
 	}
 
 	public ShadowConvergence(Properties properties) {

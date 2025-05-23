@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2complements:hard_ice"
+    },
+    "B": {
+      "item": "minecraft:magma_cream"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCB",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:orb_of_fire_rejection"
+  }
+}

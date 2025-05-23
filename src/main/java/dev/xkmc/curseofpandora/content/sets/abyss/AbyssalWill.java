@@ -33,8 +33,8 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements
 
 	public static int getDepth(Player player) {
 		return L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey()) ?
-				CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get() :
-				CoPConfig.COMMON.abyssal.abyssalDepthStep.get();
+				CoPConfig.SERVER.abyssal.abyssalWillDepthStep.get() :
+				CoPConfig.SERVER.abyssal.abyssalDepthStep.get();
 	}
 
 	public static int getStep(Player player) {
@@ -44,15 +44,15 @@ public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.abyssal.abyssalWillRealityIndex.get();
+		return CoPConfig.SERVER.abyssal.abyssalWillRealityIndex.get();
 	}
 
 	private static int getCoolDown() {
-		return CoPConfig.COMMON.abyssal.abyssalWillCoolDown.get();
+		return CoPConfig.SERVER.abyssal.abyssalWillCoolDown.get();
 	}
 
 	private static int getDuration() {
-		return CoPConfig.COMMON.abyssal.abyssalWillDuration.get();
+		return CoPConfig.SERVER.abyssal.abyssalWillDuration.get();
 	}
 
 	private static MobEffectInstance eff() {

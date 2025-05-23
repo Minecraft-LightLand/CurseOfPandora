@@ -1,0 +1,11 @@
+{
+  "type": "l2complements:burnt",
+  "chance": 1476,
+  "ingredient": {
+    "tag": "minecraft:beacon_payment_items"
+  },
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:mini_beacon_base"
+  }
+}

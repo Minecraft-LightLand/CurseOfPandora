@@ -15,8 +15,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -26,11 +24,11 @@ public class FlamingExplosion extends ITokenProviderItem<FlamingExplosion.Data> 
 			AttributeModifier.Operation.ADD_VALUE, FlamingExplosion::getStat);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.elemental.flamingExplosionBonus.get();
+		return CoPConfig.SERVER.elemental.flamingExplosionBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.elemental.flamingExplosionRealityIndex.get();
+		return CoPConfig.SERVER.elemental.flamingExplosionRealityIndex.get();
 	}
 
 	public FlamingExplosion(Properties properties) {

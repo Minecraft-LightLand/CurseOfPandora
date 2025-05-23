@@ -4,9 +4,9 @@
   "chance": 0.4,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:chests/ancient_city"
     }
   ],
-  "table": "curseofpandora:ancient_city"
+  "table": "ResourceKey[minecraft:loot_table / curseofpandora:ancient_city]"
 }

@@ -8,7 +8,6 @@ displayName = "${mod_name}" #mandatory
 authors = "${mod_authors}" #optional
 description = '''${mod_description}'''
 logoFile="logo.png"
-enumExtensions="META-INF/enumextensions.json"
 [[mixins]]
 config="${mod_id}.mixins.json"
 [[dependencies.${ mod_id }]] #optional

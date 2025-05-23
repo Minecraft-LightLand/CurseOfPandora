@@ -4,9 +4,9 @@
   "chance": 1.0,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:chests/bastion_treasure"
     }
   ],
-  "table": "curseofpandora:bastion_treasure"
+  "table": "ResourceKey[minecraft:loot_table / curseofpandora:bastion_treasure]"
 }

@@ -35,15 +35,15 @@ import java.util.List;
 public class CursedKarma extends SwordItem implements EmptyClickListener, WindBladeWeapon {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.weapon.cursedKarmaRealityIndex.get();
+		return CoPConfig.SERVER.weapon.cursedKarmaRealityIndex.get();
 	}
 
 	public static int getRadius() {
-		return CoPConfig.COMMON.weapon.cursedKarmaExplosionRadius.get();
+		return CoPConfig.SERVER.weapon.cursedKarmaExplosionRadius.get();
 	}
 
 	public static int getDuration() {
-		return CoPConfig.COMMON.weapon.cursedKarmaEffectDuration.get();
+		return CoPConfig.SERVER.weapon.cursedKarmaEffectDuration.get();
 	}
 
 	public CursedKarma(Properties props) {

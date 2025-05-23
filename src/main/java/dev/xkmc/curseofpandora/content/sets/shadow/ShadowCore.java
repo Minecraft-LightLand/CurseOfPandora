@@ -24,15 +24,15 @@ import java.util.List;
 public class ShadowCore extends ITokenProviderItem<ShadowCore.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.shadow.shadowCoreRealityIndex.get();
+		return CoPConfig.SERVER.shadow.shadowCoreRealityIndex.get();
 	}
 
 	public static int getDuration() {
-		return CoPConfig.COMMON.shadow.shadowCoreDurationPerIndex.get();
+		return CoPConfig.SERVER.shadow.shadowCoreDurationPerIndex.get();
 	}
 
 	public static double getFactor() {
-		return CoPConfig.COMMON.shadow.damageReduction.get();
+		return CoPConfig.SERVER.shadow.damageReduction.get();
 	}
 
 	public ShadowCore(Properties properties) {

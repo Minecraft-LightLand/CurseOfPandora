@@ -30,15 +30,15 @@ import java.util.List;
 public class CursedSoulCrystal extends ITokenProviderItem<CursedSoulCrystal.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.hell.cursedSoulCrystalRealityIndex.get();
+		return CoPConfig.SERVER.hell.cursedSoulCrystalRealityIndex.get();
 	}
 
 	public static int getCoolDown() {
-		return CoPConfig.COMMON.hell.cursedSoulCrystalTriggerCoolDown.get();
+		return CoPConfig.SERVER.hell.cursedSoulCrystalTriggerCoolDown.get();
 	}
 
 	public static double getRange() {
-		return CoPConfig.COMMON.hell.cursedSoulCrystalRange.get();
+		return CoPConfig.SERVER.hell.cursedSoulCrystalRange.get();
 	}
 
 	public CursedSoulCrystal(Properties properties) {

@@ -4,9 +4,9 @@
   "chance": 0.2,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:chests/ruined_portal"
     }
   ],
-  "table": "curseofpandora:ruined_portal"
+  "table": "ResourceKey[minecraft:loot_table / curseofpandora:ruined_portal]"
 }

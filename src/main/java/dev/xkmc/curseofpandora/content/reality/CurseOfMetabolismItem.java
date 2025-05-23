@@ -31,19 +31,19 @@ public class CurseOfMetabolismItem extends ISlotAdderItem<CurseOfMetabolismItem.
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getThreshold() {
-		return CoPConfig.COMMON.curse.curseOfMetabolismThreshold.get();
+		return CoPConfig.SERVER.curse.curseOfMetabolismThreshold.get();
 	}
 
 	private static double getFactor() {
-		return CoPConfig.COMMON.curse.curseOfMetabolismFactor.get();
+		return CoPConfig.SERVER.curse.curseOfMetabolismFactor.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curse.curseOfMetabolismBonus.get();
+		return CoPConfig.SERVER.curse.curseOfMetabolismBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.curse.curseOfMetabolismIndexReq.get();
+		return CoPConfig.SERVER.curse.curseOfMetabolismIndexReq.get();
 	}
 
 	public CurseOfMetabolismItem(Properties properties) {

@@ -40,19 +40,19 @@ public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> impl
 
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.evil.evilSpiritWalkRealityIndex.get();
+		return CoPConfig.SERVER.evil.evilSpiritWalkRealityIndex.get();
 	}
 
 	public static double getAtk() {
-		return CoPConfig.COMMON.evil.evilSpiritWalkAtkBonus.get();
+		return CoPConfig.SERVER.evil.evilSpiritWalkAtkBonus.get();
 	}
 
 	public static double getMagic() {
-		return CoPConfig.COMMON.evil.evilSpiritWalkMagicBonus.get();
+		return CoPConfig.SERVER.evil.evilSpiritWalkMagicBonus.get();
 	}
 
 	private static int getCD() {
-		return CoPConfig.COMMON.evil.evilSpiritWalkCoolDown.get();
+		return CoPConfig.SERVER.evil.evilSpiritWalkCoolDown.get();
 	}
 
 

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:leather"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "C": {
+      "item": "minecraft:snowball"
+    }
+  },
+  "pattern": [
+    " C ",
+    "ABA",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:bless_of_snow_walker"
+  }
+}

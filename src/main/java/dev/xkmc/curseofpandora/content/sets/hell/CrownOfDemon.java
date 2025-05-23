@@ -37,15 +37,15 @@ public class CrownOfDemon extends ITokenProviderItem<CrownOfDemon.Data> {
 	}
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.hell.crownOfDemonRealityIndex.get();
+		return CoPConfig.SERVER.hell.crownOfDemonRealityIndex.get();
 	}
 
 	public static double getThreshold() {
-		return CoPConfig.COMMON.hell.crownOfDemonBaseHealthThreshold.get();
+		return CoPConfig.SERVER.hell.crownOfDemonBaseHealthThreshold.get();
 	}
 
 	public static double getRange() {
-		return CoPConfig.COMMON.hell.crownOfDemonRange.get();
+		return CoPConfig.SERVER.hell.crownOfDemonRange.get();
 	}
 
 

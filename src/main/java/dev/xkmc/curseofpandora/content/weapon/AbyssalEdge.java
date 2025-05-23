@@ -17,7 +17,7 @@ import java.util.List;
 public class AbyssalEdge extends SwordItem implements EmptyClickListener {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.weapon.abyssalEdgeRealityIndex.get();
+		return CoPConfig.SERVER.weapon.abyssalEdgeRealityIndex.get();
 	}
 
 	public AbyssalEdge(Properties props) {

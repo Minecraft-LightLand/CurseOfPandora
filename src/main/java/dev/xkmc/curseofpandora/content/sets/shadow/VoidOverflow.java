@@ -24,7 +24,7 @@ public class VoidOverflow extends ITokenProviderItem<VoidOverflow.Data> {
 	}
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.shadow.voidOverflowRealityIndex.get();
+		return CoPConfig.SERVER.shadow.voidOverflowRealityIndex.get();
 	}
 
 	public VoidOverflow(Properties properties) {

@@ -21,7 +21,7 @@ import java.util.List;
 public class AbyssalTreasure extends ITokenProviderItem<AbyssalTreasure.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.abyssal.abyssalTreasureRealityIndex.get();
+		return CoPConfig.SERVER.abyssal.abyssalTreasureRealityIndex.get();
 	}
 
 	private static AttrAdder getAttr(Player player) {

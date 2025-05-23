@@ -31,19 +31,19 @@ public class BarbaricRoar extends ITokenProviderItem<BarbaricRoar.Data> {
 			AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, BarbaricRoar::getProt);
 
 	private static double getStat() {
-		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.SERVER.barbaric.magicDamageDebuff.get();
 	}
 
 	private static double getAtk() {
-		return CoPConfig.COMMON.barbaric.barbaricRoarAttack.get();
+		return CoPConfig.SERVER.barbaric.barbaricRoarAttack.get();
 	}
 
 	private static double getProt() {
-		return -CoPConfig.COMMON.barbaric.barbaricRoarReduction.get();
+		return -CoPConfig.SERVER.barbaric.barbaricRoarReduction.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.barbaric.barbaricRoarRealityIndex.get();
+		return CoPConfig.SERVER.barbaric.barbaricRoarRealityIndex.get();
 	}
 
 	public BarbaricRoar(Properties properties) {

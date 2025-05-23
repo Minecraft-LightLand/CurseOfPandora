@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "l2core:bool_config",
+      "expected": true,
+      "line": [
+        "enableImmunityCharms"
+      ],
+      "path": "l2configs/curseofpandora-common.toml"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "1": {
+      "item": "l2complements:sun_membrane"
+    },
+    "2": {
+      "type": "l2core:enchantment",
+      "enchantment": "minecraft:protection",
+      "minLevel": 4
+    },
+    "B": {
+      "item": "l2complements:void_eye"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    }
+  },
+  "pattern": [
+    "1B1",
+    "BCB",
+    "2B2"
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:orb_of_nature"
+  }
+}

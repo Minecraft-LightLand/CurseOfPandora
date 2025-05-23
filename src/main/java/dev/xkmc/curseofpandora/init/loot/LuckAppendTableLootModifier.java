@@ -42,13 +42,13 @@ public class LuckAppendTableLootModifier extends LootModifier {
 
 	@Override
 	protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> list, LootContext context) {
-		double luckFactor = CoPConfig.COMMON.lootLuckFactor.get();
+		double luckFactor = CoPConfig.SERVER.lootLuckFactor.get();
 		double total = chance + bonus * luckFactor * context.getLuck();
 		int count = (int) total;
 		if (total - count > context.getRandom().nextDouble()) {
 			count++;
 		}
-		int maxItem = CoPConfig.COMMON.maxItemGenerated.get();
+		int maxItem = CoPConfig.SERVER.maxItemGenerated.get();
 		count = Math.min(maxItem, count);
 		for (int i = 0; i < count; i++) {
 			add(list, context);

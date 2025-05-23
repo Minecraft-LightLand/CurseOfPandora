@@ -14,7 +14,6 @@ import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -31,15 +30,15 @@ import java.util.List;
 public class EvilSpiritEvoke extends ITokenProviderItem<EvilSpiritEvoke.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.evil.evilSpiritEvokeRealityIndex.get();
+		return CoPConfig.SERVER.evil.evilSpiritEvokeRealityIndex.get();
 	}
 
 	private static int getLife() {
-		return CoPConfig.COMMON.evil.evilSpiritEvokeDuration.get();
+		return CoPConfig.SERVER.evil.evilSpiritEvokeDuration.get();
 	}
 
 	private static int getCD() {
-		return CoPConfig.COMMON.evil.evilSpiritEvokeCoolDown.get();
+		return CoPConfig.SERVER.evil.evilSpiritEvokeCoolDown.get();
 	}
 
 	public EvilSpiritEvoke(Properties properties) {

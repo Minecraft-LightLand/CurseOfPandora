@@ -4,9 +4,9 @@
   "chance": 0.2,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:chests/underwater_ruin_big"
     }
   ],
-  "table": "curseofpandora:underwater_ruin_big"
+  "table": "ResourceKey[minecraft:loot_table / curseofpandora:underwater_ruin_big]"
 }

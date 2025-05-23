@@ -33,23 +33,23 @@ import java.util.List;
 public class ShadowConsolidation extends ITokenProviderItem<ShadowConsolidation.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.shadow.shadowConsolidationRealityIndex.get();
+		return CoPConfig.SERVER.shadow.shadowConsolidationRealityIndex.get();
 	}
 
 	public static double getRange() {
-		return CoPConfig.COMMON.shadow.shadowConsolidationRange.get();
+		return CoPConfig.SERVER.shadow.shadowConsolidationRange.get();
 	}
 
 	public static double getFactor() {
-		return CoPConfig.COMMON.shadow.shadowConsolidationFactor.get();
+		return CoPConfig.SERVER.shadow.shadowConsolidationFactor.get();
 	}
 
 	public static int getDelay() {
-		return CoPConfig.COMMON.shadow.shadowConsolidationDelay.get();
+		return CoPConfig.SERVER.shadow.shadowConsolidationDelay.get();
 	}
 
 	public static int getCoolDown() {
-		return CoPConfig.COMMON.shadow.shadowConsolidationCoolDown.get();
+		return CoPConfig.SERVER.shadow.shadowConsolidationCoolDown.get();
 	}
 
 	public ShadowConsolidation(Properties properties) {

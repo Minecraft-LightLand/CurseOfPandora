@@ -29,19 +29,19 @@ public class PrimalForce extends ITokenProviderItem<PrimalForce.Data> {
 			AttributeModifier.Operation.ADD_VALUE, PrimalForce::getStat);
 
 	private static double getStat() {
-		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.SERVER.barbaric.magicDamageDebuff.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.barbaric.primalForceRealityIndex.get();
+		return CoPConfig.SERVER.barbaric.primalForceRealityIndex.get();
 	}
 
 	private static double selfArmor() {
-		return CoPConfig.COMMON.barbaric.primalForceSelfArmor.get();
+		return CoPConfig.SERVER.barbaric.primalForceSelfArmor.get();
 	}
 
 	private static double targetArmor() {
-		return CoPConfig.COMMON.barbaric.primalForceTargetArmor.get();
+		return CoPConfig.SERVER.barbaric.primalForceTargetArmor.get();
 	}
 
 	private static AttrAdder getAdder(LivingEntity le, double factor) {

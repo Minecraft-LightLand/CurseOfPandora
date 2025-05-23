@@ -61,7 +61,7 @@ public class CurseOfPandora {
 		} else {
 			REGISTRATE = new L2Registrate(MODID);
 		}
-		ING_ENCH_TAG = IngReg.of(REG).reg("curse", EnchantmentTagIngredient.class);
+		ING_ENCH_TAG = IngReg.of(REG).reg("enchantment_tag", EnchantmentTagIngredient.class);
 	}
 
 	public CurseOfPandora() {

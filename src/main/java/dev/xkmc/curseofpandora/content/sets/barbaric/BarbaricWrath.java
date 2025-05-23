@@ -31,19 +31,19 @@ public class BarbaricWrath extends ITokenProviderItem<BarbaricWrath.Data> {
 			AttributeModifier.Operation.ADD_VALUE, BarbaricWrath::getProt);
 
 	private static double getStat() {
-		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.SERVER.barbaric.magicDamageDebuff.get();
 	}
 
 	private static double getCrit() {
-		return CoPConfig.COMMON.barbaric.barbaricWrathCritBonus.get();
+		return CoPConfig.SERVER.barbaric.barbaricWrathCritBonus.get();
 	}
 
 	private static double getProt() {
-		return CoPConfig.COMMON.barbaric.barbaricWrathToughBonus.get();
+		return CoPConfig.SERVER.barbaric.barbaricWrathToughBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.barbaric.barbaricWrathRealityIndex.get();
+		return CoPConfig.SERVER.barbaric.barbaricWrathRealityIndex.get();
 	}
 
 	public BarbaricWrath(Properties properties) {

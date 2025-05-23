@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "l2hostility"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "l2hostility:freezing"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "C": {
+      "item": "l2hostility:reflect"
+    }
+  },
+  "pattern": [
+    "CAC",
+    "ABA",
+    "CAC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:charm_of_accuracy"
+  }
+}

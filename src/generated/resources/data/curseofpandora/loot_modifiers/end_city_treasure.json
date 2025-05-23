@@ -4,9 +4,9 @@
   "chance": 0.2,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:chests/end_city_treasure"
     }
   ],
-  "table": "curseofpandora:end_city_treasure"
+  "table": "ResourceKey[minecraft:loot_table / curseofpandora:end_city_treasure]"
 }

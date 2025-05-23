@@ -25,15 +25,15 @@ public class EarthCrush extends ITokenProviderItem<EarthCrush.Data> {
 			AttributeModifier.Operation.ADD_VALUE, EarthCrush::getStat);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.elemental.earthCrushBonus.get();
+		return CoPConfig.SERVER.elemental.earthCrushBonus.get();
 	}
 
 	private static double getThreshold() {
-		return CoPConfig.COMMON.elemental.earthCrushThreshold.get();
+		return CoPConfig.SERVER.elemental.earthCrushThreshold.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.elemental.earthCrushRealityIndex.get();
+		return CoPConfig.SERVER.elemental.earthCrushRealityIndex.get();
 	}
 
 	public EarthCrush(Properties properties) {

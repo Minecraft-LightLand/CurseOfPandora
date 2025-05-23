@@ -4,9 +4,9 @@
   "chance": 0.1,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "minecraft:chests/simple_dungeon"
     }
   ],
-  "table": "curseofpandora:simple_dungeon"
+  "table": "ResourceKey[minecraft:loot_table / curseofpandora:simple_dungeon]"
 }

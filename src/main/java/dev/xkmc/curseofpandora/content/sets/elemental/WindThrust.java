@@ -32,15 +32,15 @@ public class WindThrust extends ITokenProviderItem<WindThrust.Data> {
 	}
 
 	private static double getSpeed() {
-		return CoPConfig.COMMON.elemental.windThrustSpeed.get();
+		return CoPConfig.SERVER.elemental.windThrustSpeed.get();
 	}
 
 	private static double getDamage() {
-		return CoPConfig.COMMON.elemental.windThrustDamage.get();
+		return CoPConfig.SERVER.elemental.windThrustDamage.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.elemental.windThrustRealityIndex.get();
+		return CoPConfig.SERVER.elemental.windThrustRealityIndex.get();
 	}
 
 	public WindThrust(Properties properties) {

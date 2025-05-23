@@ -29,7 +29,7 @@ import java.util.List;
 public class DoomStar extends SwordItem implements EmptyClickListener, WindBladeWeapon {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.weapon.doomStarRealityIndex.get();
+		return CoPConfig.SERVER.weapon.doomStarRealityIndex.get();
 	}
 
 	public DoomStar(Properties props) {

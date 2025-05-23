@@ -25,11 +25,11 @@ public class AngelicProtection extends Item implements L2Totem {
 	}
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.angelic.angelicProtectionRealityIndex.get();
+		return CoPConfig.SERVER.angelic.angelicProtectionRealityIndex.get();
 	}
 
 	public static int getCoolDown() {
-		return CoPConfig.COMMON.angelic.angelicProtectionCoolDown.get();
+		return CoPConfig.SERVER.angelic.angelicProtectionCoolDown.get();
 	}
 
 	@Override

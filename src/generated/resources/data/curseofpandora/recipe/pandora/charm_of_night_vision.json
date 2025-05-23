@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "type": "l2core:potion",
+      "potion": "minecraft:night_vision"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "C": {
+      "item": "l2complements:soul_flame"
+    }
+  },
+  "pattern": [
+    " C ",
+    "ABA",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:charm_of_night_vision"
+  }
+}

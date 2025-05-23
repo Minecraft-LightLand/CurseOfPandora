@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "minecraft:nether_star"
+    },
+    "S": {
+      "item": "curseofpandora:spellbound_orb"
+    }
+  },
+  "pattern": [
+    "SCS",
+    "CDC",
+    "SCS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:curse_redirection"
+  }
+}

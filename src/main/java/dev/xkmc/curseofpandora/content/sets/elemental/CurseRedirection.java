@@ -24,11 +24,11 @@ import java.util.List;
 public class CurseRedirection extends ITokenProviderItem<CurseRedirection.Data> {
 
 	private static double getStat() {
-		return CoPConfig.COMMON.elemental.curseRedirectionBonus.get();
+		return CoPConfig.SERVER.elemental.curseRedirectionBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.elemental.curseRedirectionRealityIndex.get();
+		return CoPConfig.SERVER.elemental.curseRedirectionRealityIndex.get();
 	}
 
 	private static AttrAdder magic(Player player) {

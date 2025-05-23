@@ -28,7 +28,7 @@ import java.util.List;
 public class AngelicJudgement extends SwordItem implements EmptyClickListener, WindBladeWeapon {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.weapon.angelicJudgementRealityIndex.get();
+		return CoPConfig.SERVER.weapon.angelicJudgementRealityIndex.get();
 	}
 
 	public AngelicJudgement(Properties props) {

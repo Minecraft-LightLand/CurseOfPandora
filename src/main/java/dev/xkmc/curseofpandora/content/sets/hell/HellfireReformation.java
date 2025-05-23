@@ -26,7 +26,7 @@ import java.util.List;
 public class HellfireReformation extends ITokenProviderItem<HellfireReformation.Data> implements EffectValidItem {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.hell.hellfireReformationRealityIndex.get();
+		return CoPConfig.SERVER.hell.hellfireReformationRealityIndex.get();
 	}
 
 	public HellfireReformation(Properties properties) {

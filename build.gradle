@@ -51,7 +51,6 @@ neoForge {
         }
         data {
             data()
-
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
 
         }
@@ -161,11 +160,16 @@ dependencies {
     implementation "dev.xkmc:l2tabs:${l2tabs_ver}"
     implementation "dev.xkmc:l2menustacker:${l2menustacker_ver}"
     implementation "dev.xkmc:l2itemselector:${l2itemselector_ver}"
-    implementation "dev.xkmc:mob_weapon_api:${mob_weapon_api_ver}"
     implementation "dev.xkmc:l2damagetracker:${l2damagetracker_ver}"
     implementation "dev.xkmc:l2library:${l2library_ver}-slim"
     implementation "dev.xkmc:l2complements:${l2complements_ver}-slim"
     implementation "dev.xkmc:l2hostility:${l2hostility_ver}-slim"
+    runtimeOnly "dev.xkmc:mob_weapon_api:${mob_weapon_api_ver}"
+    runtimeOnly "dev.xkmc:fast_projectile_api:${fast_projectile_api_ver}"
+    runtimeOnly "dev.xkmc:l2magic:${l2magic_ver}"
+    runtimeOnly "dev.xkmc:l2backpack:${l2backpack_ver}"
+    runtimeOnly "dev.xkmc:l2weaponry:${l2weaponry_ver}"
+    runtimeOnly "dev.xkmc:l2archery:${l2archery_ver}"
 
     implementation "curse.maven:patchouli-306770:6164617"
 
@@ -173,13 +177,17 @@ dependencies {
     runtimeOnly "curse.maven:jade-324717:5813144"
 
     implementation "mezz.jei:jei-${jei_minecraft_version}:${jei_version}"
-    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
     runtimeOnly "maven.modrinth:sodium:mc1.21.1-0.6.9-neoforge"
     //implementation "maven.modrinth:iris:1.8.1+1.21.1-neoforge"
 
 
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+
     compileOnly "maven.modrinth:accessories:1.1.0-beta.12+1.21.1"
+    //runtimeOnly "maven.modrinth:accessories:1.1.0-beta.12+1.21.1"
     compileOnly "maven.modrinth:accessories-cc-layer:9.3.1-beta.27"
+    //runtimeOnly "maven.modrinth:accessories-cc-layer:9.3.1-beta.27"
 
 
     testImplementation "com.mojang:datafixerupper:8.0.16"

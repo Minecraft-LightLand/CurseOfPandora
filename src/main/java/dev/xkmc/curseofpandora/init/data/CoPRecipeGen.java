@@ -6,7 +6,6 @@ import dev.xkmc.curseofpandora.compat.CoPTraits;
 import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
-import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCItems;
 import dev.xkmc.l2core.serial.configval.BooleanValueCondition;
@@ -129,7 +128,7 @@ public class CoPRecipeGen {
 
 		// reject
 		{
-			BooleanValueCondition cond = BooleanValueCondition.of(LCConfig.RECIPE, e -> e.enableVanillaItemRecipe, true);//TODO
+			BooleanValueCondition cond = BooleanValueCondition.of(CoPConfig.RECIPE, e -> e.enableImmunityCharms, true);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.PROJECTILE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")

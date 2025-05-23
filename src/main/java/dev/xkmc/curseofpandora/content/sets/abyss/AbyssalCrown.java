@@ -21,11 +21,11 @@ import java.util.List;
 public class AbyssalCrown extends ITokenProviderItem<AbyssalCrown.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.abyssal.abyssalCrownRealityIndex.get();
+		return CoPConfig.SERVER.abyssal.abyssalCrownRealityIndex.get();
 	}
 
 	public static double getChance() {
-		return CoPConfig.COMMON.abyssal.abyssalCrownChance.get();
+		return CoPConfig.SERVER.abyssal.abyssalCrownChance.get();
 	}
 
 	public AbyssalCrown(Properties properties) {

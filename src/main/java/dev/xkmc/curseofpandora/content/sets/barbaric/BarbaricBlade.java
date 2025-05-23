@@ -31,19 +31,19 @@ public class BarbaricBlade extends ITokenProviderItem<BarbaricBlade.Data> {
 			AttributeModifier.Operation.ADD_VALUE, BarbaricBlade::getProj);
 
 	private static double getStat() {
-		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.SERVER.barbaric.magicDamageDebuff.get();
 	}
 
 	private static double getAtk() {
-		return CoPConfig.COMMON.barbaric.barbaricBladeAttack.get();
+		return CoPConfig.SERVER.barbaric.barbaricBladeAttack.get();
 	}
 
 	private static double getProj() {
-		return CoPConfig.COMMON.barbaric.barbaricBladeProjectile.get();
+		return CoPConfig.SERVER.barbaric.barbaricBladeProjectile.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.barbaric.barbaricBladeRealityIndex.get();
+		return CoPConfig.SERVER.barbaric.barbaricBladeRealityIndex.get();
 	}
 
 	public BarbaricBlade(Properties properties) {

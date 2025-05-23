@@ -22,20 +22,20 @@ import java.util.stream.Collectors;
 
 public class CurseOfProximityItem extends ISlotAdderItem<CurseOfProximityItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_proximity", CoPConfig.COMMON.curse.curseOfProximitySlot);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_proximity", CoPConfig.SERVER.curse.curseOfProximitySlot);
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_proximity");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getCap() {
-		return (int) (double) CoPConfig.COMMON.curse.curseOfProximityCap.get();
+		return (int) (double) CoPConfig.SERVER.curse.curseOfProximityCap.get();
 	}
 
 	private static double getBase() {
-		return CoPConfig.COMMON.curse.curseOfProximityBase.get();
+		return CoPConfig.SERVER.curse.curseOfProximityBase.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curse.curseOfProximityBonus.get();
+		return CoPConfig.SERVER.curse.curseOfProximityBonus.get();
 	}
 
 	public CurseOfProximityItem(Properties properties) {

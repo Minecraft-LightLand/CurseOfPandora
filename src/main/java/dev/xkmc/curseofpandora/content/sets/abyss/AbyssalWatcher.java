@@ -18,11 +18,11 @@ import java.util.List;
 public class AbyssalWatcher extends ITokenProviderItem<AbyssalWatcher.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.abyssal.abyssalWatcherRealityIndex.get();
+		return CoPConfig.SERVER.abyssal.abyssalWatcherRealityIndex.get();
 	}
 
 	private static double getRegen() {
-		return CoPConfig.COMMON.abyssal.abyssalWatcherRegen.get();
+		return CoPConfig.SERVER.abyssal.abyssalWatcherRegen.get();
 	}
 
 	public AbyssalWatcher(Properties properties) {

@@ -26,23 +26,23 @@ import java.util.List;
 public class EvilSpiritAwakening extends ITokenProviderItem<EvilSpiritAwakening.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.evil.evilSpiritAwakeningRealityIndex.get();
+		return CoPConfig.SERVER.evil.evilSpiritAwakeningRealityIndex.get();
 	}
 
 	private static double prot() {
-		return CoPConfig.COMMON.evil.evilSpiritAwakeningReduction.get();
+		return CoPConfig.SERVER.evil.evilSpiritAwakeningReduction.get();
 	}
 
 	private static double magic() {
-		return CoPConfig.COMMON.evil.evilSpiritAwakeningMagicBonus.get();
+		return CoPConfig.SERVER.evil.evilSpiritAwakeningMagicBonus.get();
 	}
 
 	private static int getDuration() {
-		return CoPConfig.COMMON.evil.evilSpiritAwakeningDuration.get();
+		return CoPConfig.SERVER.evil.evilSpiritAwakeningDuration.get();
 	}
 
 	private static int getMaxLevel() {
-		return CoPConfig.COMMON.evil.evilSpiritAwakeningMaxLevel.get();
+		return CoPConfig.SERVER.evil.evilSpiritAwakeningMaxLevel.get();
 	}
 
 	public EvilSpiritAwakening(Properties properties) {

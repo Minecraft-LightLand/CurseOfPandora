@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:wither_rose"
+    },
+    "B": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "C": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "D": {
+      "item": "curseofpandora:hellfire_rune"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    "DAD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "curseofpandora:orb_of_executor"
+  }
+}

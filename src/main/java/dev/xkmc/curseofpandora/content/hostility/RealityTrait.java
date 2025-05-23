@@ -55,7 +55,7 @@ public class RealityTrait extends MobTrait {
 
 	@Override
 	public boolean isBanned() {
-		return !CoPConfig.COMMON.compat.allowRealityTrait.get();
+		return !CoPConfig.SERVER.compat.allowRealityTrait.get();
 	}
 
 }

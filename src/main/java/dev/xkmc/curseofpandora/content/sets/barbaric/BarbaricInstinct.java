@@ -28,19 +28,19 @@ public class BarbaricInstinct extends ITokenProviderItem<BarbaricInstinct.Data> 
 			AttributeModifier.Operation.ADD_VALUE, BarbaricInstinct::getStat);
 
 	private static double getStat() {
-		return -CoPConfig.COMMON.barbaric.magicDamageDebuff.get();
+		return -CoPConfig.SERVER.barbaric.magicDamageDebuff.get();
 	}
 
 	private static double getHeal() {
-		return CoPConfig.COMMON.barbaric.barbaricInstinctHeal.get();
+		return CoPConfig.SERVER.barbaric.barbaricInstinctHeal.get();
 	}
 
 	private static int getCD() {
-		return CoPConfig.COMMON.barbaric.barbaricInstinctCoolDown.get();
+		return CoPConfig.SERVER.barbaric.barbaricInstinctCoolDown.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.barbaric.barbaricInstinctRealityIndex.get();
+		return CoPConfig.SERVER.barbaric.barbaricInstinctRealityIndex.get();
 	}
 
 	public BarbaricInstinct(Properties properties) {

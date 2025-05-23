@@ -15,8 +15,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -26,11 +24,11 @@ public class WavingSpell extends ITokenProviderItem<WavingSpell.Data> {
 			AttributeModifier.Operation.ADD_VALUE, WavingSpell::getStat);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.elemental.wavingSpellBonus.get();
+		return CoPConfig.SERVER.elemental.wavingSpellBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.elemental.wavingSpellRealityIndex.get();
+		return CoPConfig.SERVER.elemental.wavingSpellRealityIndex.get();
 	}
 
 	public WavingSpell(Properties properties) {

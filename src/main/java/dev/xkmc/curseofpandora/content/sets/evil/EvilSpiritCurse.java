@@ -24,15 +24,15 @@ import java.util.List;
 public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.evil.evilSpiritCurseRealityIndex.get();
+		return CoPConfig.SERVER.evil.evilSpiritCurseRealityIndex.get();
 	}
 
 	private static double getThreshold() {
-		return CoPConfig.COMMON.evil.evilSpiritCurseThreshold.get();
+		return CoPConfig.SERVER.evil.evilSpiritCurseThreshold.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.evil.evilSpiritCurseBonus.get();
+		return CoPConfig.SERVER.evil.evilSpiritCurseBonus.get();
 	}
 
 	public EvilSpiritCurse(Properties properties) {

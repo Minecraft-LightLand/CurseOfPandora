@@ -1,0 +1,10 @@
+{
+  "values": {
+    "curseofpandora:reality": {
+      "cost": 1000,
+      "max_rank": 7,
+      "min_level": 50,
+      "weight": 1
+    }
+  }
+}

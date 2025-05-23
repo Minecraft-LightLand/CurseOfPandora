@@ -38,15 +38,15 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 	}
 
 	public static int getCoolDown() {
-		return CoPConfig.COMMON.angelic.angelicPunishmentCoolDown.get();
+		return CoPConfig.SERVER.angelic.angelicPunishmentCoolDown.get();
 	}
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.angelic.angelicPunishmentRealityIndex.get();
+		return CoPConfig.SERVER.angelic.angelicPunishmentRealityIndex.get();
 	}
 
 	public static double getDamageBase() {
-		return CoPConfig.COMMON.angelic.angelicPunishmentDamageBase.get();
+		return CoPConfig.SERVER.angelic.angelicPunishmentDamageBase.get();
 	}
 
 	public AngelicPunishment(Properties properties) {

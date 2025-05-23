@@ -26,15 +26,15 @@ import java.util.List;
 public class ShadowReformation extends ITokenProviderItem<ShadowReformation.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.shadow.shadowReformationRealityIndex.get();
+		return CoPConfig.SERVER.shadow.shadowReformationRealityIndex.get();
 	}
 
 	public static double getBonus() {
-		return CoPConfig.COMMON.shadow.shadowReformationBonus.get();
+		return CoPConfig.SERVER.shadow.shadowReformationBonus.get();
 	}
 
 	public static double getReduction() {
-		return CoPConfig.COMMON.shadow.shadowReformationReduction.get();
+		return CoPConfig.SERVER.shadow.shadowReformationReduction.get();
 	}
 
 	public ShadowReformation(Properties properties) {

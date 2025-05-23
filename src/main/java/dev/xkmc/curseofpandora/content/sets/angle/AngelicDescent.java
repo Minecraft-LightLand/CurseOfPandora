@@ -30,15 +30,15 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 			AttributeModifier.Operation.ADD_MULTIPLIED_BASE, AngelicDescent::getStat);
 
 	private static double getStat() {
-		return CoPConfig.COMMON.angelic.angelicDescentMeleeBonus.get();
+		return CoPConfig.SERVER.angelic.angelicDescentMeleeBonus.get();
 	}
 
 	private static int getIndexReq() {
-		return CoPConfig.COMMON.angelic.angelicDescentRealityIndex.get();
+		return CoPConfig.SERVER.angelic.angelicDescentRealityIndex.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.angelic.angelicDescentUndeadBonus.get();
+		return CoPConfig.SERVER.angelic.angelicDescentUndeadBonus.get();
 	}
 
 	public AngelicDescent(Properties properties) {

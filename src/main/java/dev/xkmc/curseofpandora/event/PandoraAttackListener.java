@@ -114,7 +114,7 @@ public class PandoraAttackListener implements AttackListener {
 			if (!data.getSource().is(DamageTypeTags.BYPASSES_EFFECTS)) {
 				if (data.getAttacker() != null && data.getAttacker().hasEffect(CoPEffects.SHADOW)) {
 					var id = CoPEffects.SHADOW.key().location();
-					var factor = (float) (1 - CoPConfig.COMMON.shadow.damageReduction.get());
+					var factor = (float) (1 - CoPConfig.SERVER.shadow.damageReduction.get());
 					data.addDealtModifier(DamageModifier.multTotal(factor, id));
 				}
 			}

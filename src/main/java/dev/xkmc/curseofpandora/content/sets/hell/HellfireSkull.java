@@ -25,11 +25,11 @@ import java.util.List;
 public class HellfireSkull extends ITokenProviderItem<HellfireSkull.Data> {
 
 	public static int getIndexReq() {
-		return CoPConfig.COMMON.hell.hellfireSkullRealityIndex.get();
+		return CoPConfig.SERVER.hell.hellfireSkullRealityIndex.get();
 	}
 
 	public static int getMinDuration() {
-		return CoPConfig.COMMON.hell.hellfireSkullMinimumDuration.get();
+		return CoPConfig.SERVER.hell.hellfireSkullMinimumDuration.get();
 	}
 
 	public HellfireSkull(Properties properties) {

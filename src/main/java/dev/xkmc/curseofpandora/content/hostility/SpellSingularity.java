@@ -7,7 +7,6 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2core.util.ServerProxy;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
@@ -35,8 +34,8 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 		var spell = Component.translatable(CoPAttrs.SPELL.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
 		var magic = Component.translatable(L2DamageTracker.MAGIC_FACTOR.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
 		var reality = Component.translatable(CoPAttrs.REALITY.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
-		var numSpell = CoPConfig.COMMON.compat.spellSingularitySpellBonusPerReality.get();
-		var numMagic = CoPConfig.COMMON.compat.spellSingularityMagicDamageBonusPerReality.get();
+		var numSpell = CoPConfig.SERVER.compat.spellSingularitySpellBonusPerReality.get();
+		var numMagic = CoPConfig.SERVER.compat.spellSingularityMagicDamageBonusPerReality.get();
 		var valSpell = Component.literal(Math.round(numSpell * 100) + "%").withStyle(ChatFormatting.AQUA);
 		var valMagic = Component.literal(Math.round(numMagic * 100) + "%").withStyle(ChatFormatting.AQUA);
 		list.add(CoPLangData.Compat.SPELL_SINGULARITY_0.get(reality).withStyle(ChatFormatting.GRAY));
@@ -60,13 +59,13 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 	public static class Data extends BaseTickingToken {
 
 		private AttrAdder getSpell(int val) {
-			double rate = CoPConfig.COMMON.compat.spellSingularitySpellBonusPerReality.get();
+			double rate = CoPConfig.SERVER.compat.spellSingularitySpellBonusPerReality.get();
 			return AttrAdder.of("spell_singularity", CoPAttrs.SPELL,
 					AttributeModifier.Operation.ADD_VALUE, () -> val * rate);
 		}
 
 		private AttrAdder getMagic(int val) {
-			double rate = CoPConfig.COMMON.compat.spellSingularityMagicDamageBonusPerReality.get();
+			double rate = CoPConfig.SERVER.compat.spellSingularityMagicDamageBonusPerReality.get();
 			return AttrAdder.of("spell_singularity", L2DamageTracker.MAGIC_FACTOR,
 					AttributeModifier.Operation.ADD_VALUE, () -> val * rate);
 		}

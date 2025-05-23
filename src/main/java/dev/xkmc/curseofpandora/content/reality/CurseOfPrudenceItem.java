@@ -34,22 +34,22 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_prudence");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
-	public static final SlotAdder ADDER = SlotAdder.of("curse_of_prudence", CoPConfig.COMMON.curse.curseOfPrudenceSlot);
+	public static final SlotAdder ADDER = SlotAdder.of("curse_of_prudence", CoPConfig.SERVER.curse.curseOfPrudenceSlot);
 
 	public static int getMaxLevel() {
-		return CoPConfig.COMMON.curse.curseOfPrudenceMaxLevel.get();
+		return CoPConfig.SERVER.curse.curseOfPrudenceMaxLevel.get();
 	}
 
 	public static double getDamageFactor() {
-		return CoPConfig.COMMON.curse.curseOfPrudenceDamageFactor.get();
+		return CoPConfig.SERVER.curse.curseOfPrudenceDamageFactor.get();
 	}
 
 	public static int getDuration() {
-		return CoPConfig.COMMON.curse.curseOfPrudenceDuration.get();
+		return CoPConfig.SERVER.curse.curseOfPrudenceDuration.get();
 	}
 
 	public static double getMaxHurtDamage() {
-		return CoPConfig.COMMON.curse.curseOfPrudenceMaxDamage.get();
+		return CoPConfig.SERVER.curse.curseOfPrudenceMaxDamage.get();
 	}
 
 	public CurseOfPrudenceItem(Properties properties) {

@@ -22,20 +22,20 @@ import java.util.Set;
 
 public class CurseOfFleshItem extends ISlotAdderItem<CurseOfFleshItem.Ticker> {
 
-	private static final SlotAdder ADDER = SlotAdder.of("curse_of_flesh", CoPConfig.COMMON.curse.curseOfFleshSlot);
+	private static final SlotAdder ADDER = SlotAdder.of("curse_of_flesh", CoPConfig.SERVER.curse.curseOfFleshSlot);
 	private static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_flesh");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
 	private static int getThreshold() {
-		return CoPConfig.COMMON.curse.curseOfFleshThreshold.get();
+		return CoPConfig.SERVER.curse.curseOfFleshThreshold.get();
 	}
 
 	private static int getDuration() {
-		return CoPConfig.COMMON.curse.curseOfFleshDuration.get();
+		return CoPConfig.SERVER.curse.curseOfFleshDuration.get();
 	}
 
 	private static double getBonus() {
-		return CoPConfig.COMMON.curse.curseOfFleshBonus.get();
+		return CoPConfig.SERVER.curse.curseOfFleshBonus.get();
 	}
 
 	public CurseOfFleshItem(Properties properties) {
