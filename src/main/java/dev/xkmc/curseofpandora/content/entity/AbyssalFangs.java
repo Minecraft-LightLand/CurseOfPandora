@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -105,7 +106,9 @@ public class AbyssalFangs extends Entity implements TraceableEntity {
 		this.setPos(x, y, z);
 	}
 
-	protected void defineSynchedData() {
+	@Override
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+
 	}
 
 	public void setOwner(@Nullable LivingEntity owner) {

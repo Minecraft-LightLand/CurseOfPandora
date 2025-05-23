@@ -97,8 +97,10 @@ public class BarbaricInstinct extends ITokenProviderItem<BarbaricInstinct.Data> 
 		}
 
 		private static boolean isWeapon(ItemStack stack) {
-			return stack.getAttributeModifiers(EquipmentSlot.MAINHAND)
-					.containsKey(Attributes.ATTACK_DAMAGE);
+			for (var e : stack.getAttributeModifiers().modifiers())
+				if (e.slot().test(EquipmentSlot.MAINHAND) && e.attribute().is(Attributes.ATTACK_DAMAGE))
+					return true;
+			return false;
 		}
 	}
 

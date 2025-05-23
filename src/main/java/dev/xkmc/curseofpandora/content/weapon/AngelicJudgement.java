@@ -88,7 +88,7 @@ public class AngelicJudgement extends SwordItem implements EmptyClickListener, W
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return new ResourceLocation(CurseOfPandora.MODID, "textures/entity/angelic_blade.png");
+		return CurseOfPandora.loc( "textures/entity/angelic_blade.png");
 	}
 
 	@Override

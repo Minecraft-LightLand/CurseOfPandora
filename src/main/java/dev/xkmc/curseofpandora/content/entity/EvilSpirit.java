@@ -28,6 +28,7 @@ import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.CommonHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -87,10 +88,6 @@ public class EvilSpirit extends PathfinderMob implements TraceableEntity, Ownabl
 
 	// Vex start
 
-	protected float getStandingEyeHeight(Pose pose, EntityDimensions dim) {
-		return dim.height - 0.28125F;
-	}
-
 	public boolean isFlapping() {
 		return this.tickCount % TICKS_PER_FLAP == 0;
 	}
@@ -126,9 +123,10 @@ public class EvilSpirit extends PathfinderMob implements TraceableEntity, Ownabl
 		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 14.0D).add(Attributes.ATTACK_DAMAGE, 4.0D);
 	}
 
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_FLAGS_ID, (byte) 0);
+	@Override
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_FLAGS_ID, (byte) 0);
 	}
 
 	public void readAdditionalSaveData(CompoundTag tag) {
@@ -220,12 +218,11 @@ public class EvilSpirit extends PathfinderMob implements TraceableEntity, Ownabl
 	}
 
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type,
-										@Nullable SpawnGroupData data, @Nullable CompoundTag tag) {
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance ins, MobSpawnType type, @Nullable SpawnGroupData data) {
 		RandomSource randomsource = level.getRandom();
 		this.populateDefaultEquipmentSlots(randomsource, ins);
-		this.populateDefaultEquipmentEnchantments(randomsource, ins);
-		return super.finalizeSpawn(level, ins, type, data, tag);
+		this.populateDefaultEquipmentEnchantments(level, randomsource, ins);
+		return super.finalizeSpawn(level, ins, type, data);
 	}
 
 	protected void populateDefaultEquipmentSlots(RandomSource source, DifficultyInstance ins) {
@@ -272,9 +269,9 @@ public class EvilSpirit extends PathfinderMob implements TraceableEntity, Ownabl
 		if (weapon.getItem() instanceof ProjectileWeaponItem) {
 			Predicate<ItemStack> predicate = ((ProjectileWeaponItem) weapon.getItem()).getSupportedHeldProjectiles();
 			ItemStack itemstack = ProjectileWeaponItem.getHeldProjectile(this, predicate);
-			return net.minecraftforge.common.ForgeHooks.getProjectile(this, weapon, itemstack.isEmpty() ? new ItemStack(Items.ARROW) : itemstack);
+			return CommonHooks.getProjectile(this, weapon, itemstack.isEmpty() ? new ItemStack(Items.ARROW) : itemstack);
 		} else {
-			return net.minecraftforge.common.ForgeHooks.getProjectile(this, weapon, ItemStack.EMPTY);
+			return CommonHooks.getProjectile(this, weapon, ItemStack.EMPTY);
 		}
 	}
 

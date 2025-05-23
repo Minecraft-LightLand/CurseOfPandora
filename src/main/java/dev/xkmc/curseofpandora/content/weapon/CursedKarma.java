@@ -128,7 +128,7 @@ public class CursedKarma extends SwordItem implements EmptyClickListener, WindBl
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return new ResourceLocation(CurseOfPandora.MODID, "textures/entity/flame_blade.png");
+		return CurseOfPandora.loc( "textures/entity/flame_blade.png");
 	}
 
 	@Override

@@ -7,12 +7,16 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2core.capability.conditionals.TokenKey;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -27,10 +31,12 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	public static final TokenKey<Ticker> KEY = new TokenKey<>(CurseOfPandora.MODID, "curse_of_spell");
 	private static final AttrAdder R = CursePandoraUtil.reality(KEY), S = CursePandoraUtil.spell(KEY);
 
-	public static double getItemSpellPenalty(double base, ItemStack stack) {
+	public static double getItemSpellPenalty(double base, ItemStack stack, RegistryAccess access) {
 		if (stack.isEmpty() || !stack.isEnchanted()) return 0;
+		var reg = access.lookupOrThrow(Registries.ENCHANTMENT);
 		double level = 0;
-		for (var i : stack.getAllEnchantments().values()) {
+		for (var ent : stack.getAllEnchantments(reg).entrySet()) {
+			var i = ent.getIntValue();
 			if (i > 0) {
 				level += Math.pow(2, i - 1);
 			}
@@ -40,12 +46,12 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	}
 
 	public static double getSpellPenalty(Player player) {
-		double bonus = player.getAttributeValue(CoPAttrs.SPELL.get());
+		double bonus = player.getAttributeValue(CoPAttrs.SPELL);
 		bonus = Math.max(1, bonus);
 		double penalty = 0;
 		for (var e : EquipmentSlot.values()) {
 			ItemStack stack = player.getItemBySlot(e);
-			double val = getItemSpellPenalty(bonus, stack);
+			double val = getItemSpellPenalty(bonus, stack, player.registryAccess());
 			penalty += Math.max(0, val - 1);
 		}
 		return penalty;
@@ -58,6 +64,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
 		list.add(CoPLangData.Reality.SPELL_1.get().withStyle(ChatFormatting.RED));
+		var level = ctx.level();
 		if (level != null && level.isClientSide()) {
 			ClientSpellText.addTotal(list);
 		}
@@ -65,6 +72,10 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
 	@SerialClass
 	public static class Ticker extends ListTickingToken implements IAttackListenerToken {
+
+		private static ResourceLocation id(String suffix) {
+			return CoPItems.CURSE_OF_SPELL.getId().withSuffix(suffix);
+		}
 
 		public Ticker() {
 			super(List.of(ADDER, R, S));
@@ -80,15 +91,13 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 
 		@Override
 		public void onPlayerDamaged(Player player, DamageData.Defence data) {
-			var event = data.getLivingDamageEvent();
-			assert event != null;
-			if (event.getSource().is(CoPDamageTypeGen.SPELL_CURSE)) {
+			if (data.getSource().is(CoPDamageTypeGen.SPELL_CURSE)) {
 				return;
 			}
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
 				double factor = CoPConfig.COMMON.curse.curseOfSpellDamageFactor.get();
-				data.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty * factor)));
+				data.addDealtModifier(DamageModifier.multTotal((float) (1 + penalty * factor), id("_fragile")));
 			}
 		}
 
@@ -97,7 +106,7 @@ public class CurseOfSpellItem extends ISlotAdderItem<CurseOfSpellItem.Ticker> {
 			double penalty = getSpellPenalty(player);
 			if (penalty > 0) {
 				double factor = CoPConfig.COMMON.curse.curseOfSpellWeakenFactor.get();
-				data.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty * factor)));
+				data.addDealtModifier(DamageModifier.multTotal(1 / (float) (1 + penalty * factor), id("_weaken")));
 			}
 		}
 

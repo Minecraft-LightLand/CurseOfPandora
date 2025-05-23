@@ -7,6 +7,7 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.l2hostility.content.capability.player.PlayerDifficulty;
+import dev.xkmc.l2hostility.init.registrate.LHMiscs;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -37,7 +38,7 @@ public class SealOfSword extends ITokenProviderItem<SealOfSword.Data> {
 	public static class Data extends BaseTickingToken {
 
 		private AttrAdder getAttr(Player player) {
-			int lv = PlayerDifficulty.HOLDER.get(player).getLevel().getLevel();
+			int lv = LHMiscs.PLAYER.type().getOrCreate(player).getLevel(player).getLevel();
 			int step = CoPConfig.COMMON.compat.sealOfSwordDifficultyPerBonus.get();
 			int max = CoPConfig.COMMON.compat.sealOfSwordMaxRealityBonus.get();
 			int add = Math.min(lv / step, max);

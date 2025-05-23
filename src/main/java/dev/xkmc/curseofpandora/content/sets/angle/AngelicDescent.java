@@ -8,12 +8,14 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.MobType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -64,11 +66,15 @@ public class AngelicDescent extends ITokenProviderItem<AngelicDescent.Data> {
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
+		private static ResourceLocation id(String suffix) {
+			return CoPItems.ANGELIC_DESCENT.getId().withSuffix(suffix);
+		}
+
 		@Override
 		public void onPlayerHurtTarget(Player player, DamageData.Offence data) {
 			float bonus = 1 + (float) getBonus();
 			if (data.getTarget().getType().is(EntityTypeTags.UNDEAD) && check(player)) {
-				data.addHurtModifier(DamageModifier.multTotal(bonus));
+				data.addHurtModifier(DamageModifier.multTotal(bonus, id("_smite")));
 			}
 		}
 

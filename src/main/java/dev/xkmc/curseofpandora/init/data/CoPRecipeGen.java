@@ -12,20 +12,21 @@ import dev.xkmc.l2complements.content.recipe.BurntRecipeBuilder;
 import dev.xkmc.l2complements.init.data.LCConfig;
 import dev.xkmc.l2complements.init.materials.LCMats;
 import dev.xkmc.l2complements.init.registrate.LCItems;
+import dev.xkmc.l2core.serial.configval.BooleanValueCondition;
+import dev.xkmc.l2core.serial.ingredients.EnchantmentIngredient;
+import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
+import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.Tools;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
-import dev.xkmc.l2library.serial.conditions.BooleanValueCondition;
-import dev.xkmc.l2library.serial.ingredients.EnchantmentIngredient;
-import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
-import dev.xkmc.l2library.serial.recipe.ConditionalRecipeWrapper;
 import dev.xkmc.l2library.serial.recipe.NBTRecipe;
 import dev.xkmc.pandora.init.registrate.PandoraItems;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -34,8 +35,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.BiFunction;
 
@@ -84,7 +83,7 @@ public class CoPRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_SPEED.get())::unlockedBy, CoPItems.MINI_BEACON.get())
 					.pattern("ABA").pattern("BCB").pattern("ADA")
 					.define('A', Items.BLAZE_POWDER)
-					.define('B', new PotionIngredient(Potions.STRONG_SWIFTNESS))
+					.define('B', PotionIngredient.of(Potions.STRONG_SWIFTNESS))
 					.define('C', CoPItems.MINI_BEACON.get())
 					.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
 					.save(pvd, getID(CoPItems.MINI_BEACON_SPEED.get()));
@@ -92,7 +91,7 @@ public class CoPRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_JUMP.get())::unlockedBy, CoPItems.MINI_BEACON.get())
 					.pattern("ABA").pattern("BCB").pattern("ADA")
 					.define('A', Items.BLAZE_POWDER)
-					.define('B', new PotionIngredient(Potions.STRONG_LEAPING))
+					.define('B', PotionIngredient.of(Potions.STRONG_LEAPING))
 					.define('C', CoPItems.MINI_BEACON.get())
 					.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
 					.save(pvd, getID(CoPItems.MINI_BEACON_JUMP.get()));
@@ -100,7 +99,7 @@ public class CoPRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_RESISTANCE.get())::unlockedBy, CoPItems.MINI_BEACON.get())
 					.pattern("ABA").pattern("BCB").pattern("ADA")
 					.define('A', Items.BLAZE_POWDER)
-					.define('B', new PotionIngredient(Potions.TURTLE_MASTER))
+					.define('B', PotionIngredient.of(Potions.TURTLE_MASTER))
 					.define('C', CoPItems.MINI_BEACON.get())
 					.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
 					.save(pvd, getID(CoPItems.MINI_BEACON_RESISTANCE.get()));
@@ -108,7 +107,7 @@ public class CoPRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_REGEN.get())::unlockedBy, CoPItems.MINI_BEACON.get())
 					.pattern("ABA").pattern("BCB").pattern("ADA")
 					.define('A', Items.BLAZE_POWDER)
-					.define('B', new PotionIngredient(Potions.STRONG_REGENERATION))
+					.define('B', PotionIngredient.of(Potions.STRONG_REGENERATION))
 					.define('C', CoPItems.MINI_BEACON.get())
 					.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
 					.save(pvd, getID(CoPItems.MINI_BEACON_REGEN.get()));
@@ -116,7 +115,7 @@ public class CoPRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.MINI_BEACON_ATTACK.get())::unlockedBy, CoPItems.MINI_BEACON.get())
 					.pattern("ABA").pattern("BCB").pattern("ADA")
 					.define('A', Items.BLAZE_POWDER)
-					.define('B', new PotionIngredient(Potions.STRONG_STRENGTH))
+					.define('B', PotionIngredient.of(Potions.STRONG_STRENGTH))
 					.define('C', CoPItems.MINI_BEACON.get())
 					.define('D', ItemTags.BEACON_PAYMENT_ITEMS)
 					.save(pvd, getID(CoPItems.MINI_BEACON_ATTACK.get()));
@@ -133,20 +132,20 @@ public class CoPRecipeGen {
 
 		// reject
 		{
-			BooleanValueCondition cond = BooleanValueCondition.of(LCConfig.COMMON_PATH, LCConfig.COMMON.enableImmunityEnchantments, true);
+			BooleanValueCondition cond = BooleanValueCondition.of(LCConfig.RECIPE, e -> e.enableImmunityEnchantments, true);
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.PROJECTILE_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
-					.define('1', new EnchantmentIngredient(Enchantments.PROJECTILE_PROTECTION, 4))
-					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('1', EnchantmentIngredient.of(pvd.getProvider(), Enchantments.PROJECTILE_PROTECTION, 4))
+					.define('2', EnchantmentIngredient.of(pvd.getProvider(), Enchantments.PROTECTION, 4))
 					.define('B', LCItems.FORCE_FIELD.get())
 					.define('C', CoPItems.CHARM.get())
 					.save(ConditionalRecipeWrapper.of(pvd, cond), getID(CoPItems.PROJECTILE_REJECT.get()));
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.EXPLOSION_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
-					.define('1', new EnchantmentIngredient(Enchantments.BLAST_PROTECTION, 4))
-					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('1', EnchantmentIngredient.of(pvd.getProvider(), Enchantments.BLAST_PROTECTION, 4))
+					.define('2', EnchantmentIngredient.of(pvd.getProvider(), Enchantments.PROTECTION, 4))
 					.define('B', LCItems.EXPLOSION_SHARD.get())
 					.define('C', CoPItems.CHARM.get())
 					.save(ConditionalRecipeWrapper.of(pvd, cond), getID(CoPItems.EXPLOSION_REJECT.get()));
@@ -154,7 +153,7 @@ public class CoPRecipeGen {
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ENVIRONMENTAL_REJECT.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern("1B1").pattern("BCB").pattern("2B2")
 					.define('1', LCItems.SUN_MEMBRANE.get())
-					.define('2', new EnchantmentIngredient(Enchantments.ALL_DAMAGE_PROTECTION, 4))
+					.define('2', EnchantmentIngredient.of(pvd.getProvider(), Enchantments.PROTECTION, 4))
 					.define('B', LCItems.VOID_EYE.get())
 					.define('C', CoPItems.CHARM.get())
 					.save(ConditionalRecipeWrapper.of(pvd, cond), getID(CoPItems.ENVIRONMENTAL_REJECT.get()));
@@ -214,7 +213,7 @@ public class CoPRecipeGen {
 
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.NIGHT_VISION_CHARM.get())::unlockedBy, CoPItems.CHARM.get())
 					.pattern(" C ").pattern("ABA").pattern(" A ")
-					.define('A', new PotionIngredient(Potions.NIGHT_VISION))
+					.define('A', PotionIngredient.of(Potions.NIGHT_VISION))
 					.define('C', LCItems.SOUL_FLAME)
 					.define('B', CoPItems.CHARM.get())
 					.save(pvd, getID(CoPItems.NIGHT_VISION_CHARM.get()));
@@ -267,7 +266,7 @@ public class CoPRecipeGen {
 					.define('C', Items.NETHER_STAR)
 					.define('B', CoPItems.CHARM.get())
 					.define('A', Items.GOLD_INGOT)
-					.save(e -> pvd.accept(new NBTRecipe(e, stack)), new ResourceLocation(CurseOfPandora.MODID, "seven_curses"));
+					.save(e -> pvd.accept(new NBTRecipe(e, stack)), CurseOfPandora.loc("seven_curses"));
 			{
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_FEATHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
 						.pattern("ABA").pattern("FCF").pattern("MBM")
@@ -770,17 +769,17 @@ public class CoPRecipeGen {
 		(unlock(pvd, new BurntRecipeBuilder(ing, out.getDefaultInstance(), count)::unlockedBy, ing.getItems()[0].getItem())).save(pvd, getID(out).withSuffix(id));
 	}
 
-	public static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {
-		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCritereon(pvd));
+	public static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, Criterion<InventoryChangeTrigger.TriggerInstance>, T> func, Item item) {
+		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCriterion(pvd));
 	}
 
 	private static ResourceLocation getID(Item item) {
-		return new ResourceLocation(CurseOfPandora.MODID, CoPRecipeGen.currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
+		return CurseOfPandora.loc(CoPRecipeGen.currentFolder + BuiltInRegistries.ITEM.getKey(item).getPath());
 	}
 
 	@SuppressWarnings("ConstantConditions")
 	private static ResourceLocation getID(Item item, String suffix) {
-		return new ResourceLocation(CurseOfPandora.MODID, CoPRecipeGen.currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath() + suffix);
+		return CurseOfPandora.loc(CoPRecipeGen.currentFolder + BuiltInRegistries.ITEM.getKey(item).getPath() + suffix);
 	}
 
 

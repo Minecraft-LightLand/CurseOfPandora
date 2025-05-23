@@ -8,11 +8,13 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -60,6 +62,10 @@ public class ShadowReformation extends ITokenProviderItem<ShadowReformation.Data
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
+		private static ResourceLocation id(String suffix) {
+			return CoPItems.SHADOW_REFORMATION.getId().withSuffix(suffix);
+		}
+
 		@Override
 		protected void removeImpl(Player player) {
 
@@ -75,7 +81,7 @@ public class ShadowReformation extends ITokenProviderItem<ShadowReformation.Data
 			if (!data.getTarget().hasEffect(CoPEffects.SHADOW))
 				return;
 			if (data.getSource().is(Tags.DamageTypes.IS_MAGIC)) {
-				data.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus())));
+				data.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus()), id("_boost")));
 			}
 		}
 
@@ -86,7 +92,7 @@ public class ShadowReformation extends ITokenProviderItem<ShadowReformation.Data
 			if (!data.getSource().is(Tags.DamageTypes.IS_MAGIC) &&
 					!data.getSource().is(DamageTypeTags.BYPASSES_EFFECTS) &&
 					!data.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-				data.addDealtModifier(DamageModifier.multTotal((float) (1 - getReduction())));
+				data.addDealtModifier(DamageModifier.multTotal((float) (1 - getReduction()), id("_resist")));
 			}
 		}
 

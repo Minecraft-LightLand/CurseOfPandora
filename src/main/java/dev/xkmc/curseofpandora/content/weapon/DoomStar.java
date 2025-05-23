@@ -78,7 +78,7 @@ public class DoomStar extends SwordItem implements EmptyClickListener, WindBlade
 
 	@Override
 	public ResourceLocation bladeTexture() {
-		return new ResourceLocation(CurseOfPandora.MODID, "textures/entity/shadow_blade.png");
+		return CurseOfPandora.loc( "textures/entity/shadow_blade.png");
 	}
 
 	@Override

@@ -1,8 +1,8 @@
 package dev.xkmc.curseofpandora.init.data;
 
+import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.l2core.util.ConfigInit;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import org.apache.commons.lang3.tuple.Pair;
 
 public class CoPConfig {
 
@@ -13,7 +13,7 @@ public class CoPConfig {
 
 	}
 
-	public static class Common extends ConfigInit{
+	public static class Common extends ConfigInit {
 
 		public static class Attr {
 
@@ -667,29 +667,15 @@ public class CoPConfig {
 
 	}
 
-	public static final ModConfigSpec CLIENT_SPEC;
 	public static final Client CLIENT;
-
-	public static final ModConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
 
 	static {
-
+		CLIENT = CurseOfPandora.REGISTRATE.registerClient(Client::new);
+		COMMON = CurseOfPandora.REGISTRATE.registerSynced(Common::new);
 	}
 
-	/**
-	 * Registers any relevant listeners for config
-	 */
 	public static void init() {
-		register(ModConfig.Type.CLIENT, CLIENT_SPEC);
-		register(ModConfig.Type.COMMON, COMMON_SPEC);
 	}
-
-	private static void register(ModConfig.Type type, IConfigSpec<?> spec) {
-		var mod = ModLoadingContext.get().getActiveContainer();
-		String path = "l2_configs/" + mod.getModId() + "-" + type.extension() + ".toml";
-		ModLoadingContext.get().registerConfig(type, spec, path);
-	}
-
 
 }

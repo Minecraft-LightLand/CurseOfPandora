@@ -5,6 +5,7 @@ import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.mixin.LevelAccessor;
 import dev.xkmc.l2core.capability.conditionals.NetworkSensitiveToken;
 import dev.xkmc.l2core.capability.conditionals.TokenKey;
@@ -15,6 +16,7 @@ import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -77,6 +79,10 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 
 	@SerialClass
 	public static class Ticker extends ListTickingToken implements IAttackListenerToken, NetworkSensitiveToken<Ticker> {
+
+		private static ResourceLocation id(String suffix) {
+			return CoPItems.CURSE_OF_TENSION.getId().withSuffix(suffix);
+		}
 
 		@SerialField
 		public HashMap<UUID, Long> terror = new HashMap<>();
@@ -159,7 +165,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			}
 			if (count > 0) {
 				count = Math.min(count, getMaxLevel());
-				data.addHurtModifier(DamageModifier.multTotal(1 + count * getDamageBonus()));
+				data.addHurtModifier(DamageModifier.multTotal(1 + count * getDamageBonus(), id("_bonus")));
 			}
 			brave.computeIfAbsent(target.getUUID(), k -> new ArrayList<>()).add(time);
 			sync(sp);

@@ -16,6 +16,7 @@ import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -73,6 +74,10 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
+		private static ResourceLocation id(String suffix) {
+			return CoPItems.ANGELIC_PUNISHMENT.getId().withSuffix(suffix);
+		}
+
 		@SerialField
 		private int cooldown;
 
@@ -93,7 +98,8 @@ public class AngelicPunishment extends ITokenProviderItem<AngelicPunishment.Data
 			if (tension != null && tension.isTerrorized(data.getTarget()))
 				return;
 			if (check(player, getIndexReq())) {
-				data.addDealtModifier(DamageModifier.nonlinearMiddle(71, e -> mapVal(e, data.getTarget())));
+				data.addDealtModifier(DamageModifier.nonlinearMiddle(71,
+						e -> mapVal(e, data.getTarget()), id("_percentage")));
 			}
 		}
 

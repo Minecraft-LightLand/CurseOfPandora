@@ -7,11 +7,13 @@ import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -57,6 +59,10 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 	@SerialClass
 	public static class Data extends BaseTickingToken implements IAttackListenerToken {
 
+		private static ResourceLocation id(String suffix) {
+			return CoPItems.EVIL_SPIRIT_CURSE.getId().withSuffix(suffix);
+		}
+
 		@Override
 		protected void removeImpl(Player player) {
 
@@ -71,7 +77,7 @@ public class EvilSpiritCurse extends ITokenProviderItem<EvilSpiritCurse.Data> {
 		public void onPlayerHurtTarget(Player player, DamageData.Offence data) {
 			if (data.getSource().is(Tags.DamageTypes.IS_MAGIC)) {
 				if (data.getTarget().getHealth() < data.getTarget().getMaxHealth() * getThreshold()) {
-					data.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus())));
+					data.addHurtModifier(DamageModifier.multTotal((float) (1 + getBonus()), id("_boost")));
 				}
 			}
 		}

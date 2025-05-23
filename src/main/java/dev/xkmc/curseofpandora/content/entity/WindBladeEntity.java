@@ -2,14 +2,15 @@ package dev.xkmc.curseofpandora.content.entity;
 
 import dev.xkmc.curseofpandora.init.data.CoPDamageTypeGen;
 import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
+import dev.xkmc.l2core.util.MathHelper;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
+import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -18,16 +19,16 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 
 @SerialClass
-public class WindBladeEntity extends ThrowableProjectile implements IEntityAdditionalSpawnData {
+public class WindBladeEntity extends ThrowableProjectile implements IEntityWithComplexSpawn {
 
 	@SerialField
 	public float damage = 3;
@@ -48,7 +49,8 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 	}
 
 	@Override
-	protected void defineSynchedData() {
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+
 	}
 
 	public void setProperties(float damage, int last, float zrot, ItemStack issuer) {
@@ -106,17 +108,17 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 			}
 			float dmg = damage;
 			if (getOwner() instanceof Player player) {
-				double cr = L2DamageTracker.CRIT_RATE.get().getWrappedValue(player);
-				double cd = L2DamageTracker.CRIT_DMG.get().getWrappedValue(player);
-				double strength = L2DamageTracker.BOW_STRENGTH.get().getWrappedValue(player);
+				double cr = player.getAttributeValue(L2DamageTracker.CRIT_RATE);
+				double cd = player.getAttributeValue(L2DamageTracker.CRIT_DMG);
+				double strength = player.getAttributeValue(L2DamageTracker.BOW_STRENGTH);
 				if (player.getRandom().nextDouble() < cr) {
 					strength *= 1.0 + cd;
 				}
 				dmg *= (float) strength;
 			}
 			entity.hurt(source, dmg);
-			if (owner instanceof LivingEntity) {
-				doEnchantDamageEffects((LivingEntity) owner, entity);
+			if (owner instanceof LivingEntity && level() instanceof ServerLevel sl) {
+				EnchantmentHelper.doPostAttackEffects(sl, entity, source);
 			}
 			if (issuer.getItem() instanceof WindBladeWeapon weapon) {
 				weapon.onHit(this);
@@ -138,13 +140,8 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 	}
 
 	@Override
-	protected float getGravity() {
-		return 0;
-	}
-
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
+	public boolean isNoGravity() {
+		return true;
 	}
 
 	public float getZRot() {
@@ -152,15 +149,15 @@ public class WindBladeEntity extends ThrowableProjectile implements IEntityAddit
 	}
 
 	@Override
-	public void writeSpawnData(FriendlyByteBuf buffer) {
+	public void writeSpawnData(RegistryFriendlyByteBuf buffer) {
 		buffer.writeFloat(zrot);
-		buffer.writeItemStack(issuer, true);
+		ItemStack.OPTIONAL_STREAM_CODEC.encode(buffer, issuer);
 	}
 
 	@Override
-	public void readSpawnData(FriendlyByteBuf additionalData) {
+	public void readSpawnData(RegistryFriendlyByteBuf additionalData) {
 		zrot = additionalData.readFloat();
-		issuer = additionalData.readItem();
+		issuer = ItemStack.OPTIONAL_STREAM_CODEC.decode(additionalData);
 	}
 
 	public ItemStack getStack() {

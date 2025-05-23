@@ -3,21 +3,21 @@ package dev.xkmc.curseofpandora.content.hostility;
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
 import dev.xkmc.curseofpandora.content.complex.BaseTickingToken;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
+import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
+import dev.xkmc.l2core.util.ServerProxy;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
-import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -29,7 +29,8 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> list, TooltipFlag flag) {
-		var player = Proxy.getPlayer();
+		var level = ctx.level();
+		var player = ClientSpellText.getPlayer(level);
 		boolean pass = level == null || player == null || check(player);
 		var spell = Component.translatable(CoPAttrs.SPELL.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
 		var magic = Component.translatable(L2DamageTracker.MAGIC_FACTOR.get().getDescriptionId()).withStyle(ChatFormatting.BLUE);
@@ -44,11 +45,12 @@ public class SpellSingularity extends ITokenProviderItem<SpellSingularity.Data> 
 	}
 
 	private static boolean check(Player player) {
+		var reg = player.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
 		boolean pass = true;
 		int reality = (int) player.getAttributeValue(CoPAttrs.REALITY);
 		for (var e : EquipmentSlot.values()) {
 			ItemStack stack = player.getItemBySlot(e);
-			int count = stack.getAllEnchantments().size();
+			int count = stack.getAllEnchantments(reg).size();
 			pass &= count <= reality;
 		}
 		return pass;

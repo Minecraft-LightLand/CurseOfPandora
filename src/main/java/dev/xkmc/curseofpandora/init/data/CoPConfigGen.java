@@ -22,7 +22,7 @@ public class CoPConfigGen extends ConfigDataProvider {
 		if (ModList.get().isLoaded(L2Hostility.MODID)) {
 			CoPTraits.onConfigGen(collector);
 		}
-		collector.add(L2Tabs.ATTRIBUTE_ENTRY, new ResourceLocation(CurseOfPandora.MODID, "pandora"),
+		collector.add(L2Tabs.ATTRIBUTE_ENTRY, CurseOfPandora.loc( "pandora"),
 				new AttributeDisplayConfig()
 						.add(CoPAttrs.SPELL.get(), 20000)
 						.add(CoPAttrs.REALITY.get(), 21000));

@@ -3,9 +3,9 @@ package dev.xkmc.curseofpandora.event;
 import dev.xkmc.curseofpandora.content.weapon.EmptyClickListener;
 import dev.xkmc.l2complements.events.ItemUseEventHandler;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemClickListener implements ItemUseEventHandler.ItemClickHandler {
 

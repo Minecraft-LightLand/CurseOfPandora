@@ -6,33 +6,33 @@ import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
-import dev.xkmc.l2library.capability.conditionals.ConditionalData;
-import dev.xkmc.l2library.capability.conditionals.TokenKey;
-import dev.xkmc.l2library.util.Proxy;
-import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
+import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2library.content.raytrace.RayTraceUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = CurseOfPandora.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(value = Dist.CLIENT, modid = CurseOfPandora.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ClientSpellText {
 
 	public static void addTotal(List<Component> list) {
-		Player player = Proxy.getClientPlayer();
+		Player player = Minecraft.getInstance().player;
 		if (player == null) return;
 		int load = (int) Math.round(CurseOfSpellItem.getSpellPenalty(player) * 100);
 		list.add(CoPLangData.Reality.SPELL_2.get(load).withStyle(ChatFormatting.RED));
@@ -43,13 +43,16 @@ public class ClientSpellText {
 		if (event.getEntity() == null) return;
 		if (L2LibReg.CONDITIONAL.type().getOrCreate(event.getEntity()).getData(CurseOfSpellItem.KEY) == null) return;
 		if (!event.getItemStack().isEnchanted()) return;
-		double bonus = event.getEntity().getAttributeValue(CoPAttrs.SPELL.get());
+		double bonus = event.getEntity().getAttributeValue(CoPAttrs.SPELL);
 		bonus = Math.max(1, bonus);
-		double penalty = CurseOfSpellItem.getItemSpellPenalty(bonus, event.getItemStack());
+		var access = event.getEntity().registryAccess();
+		double penalty = CurseOfSpellItem.getItemSpellPenalty(bonus, event.getItemStack(), access);
 		int load = (int) Math.round(penalty * 100);
 		if (Screen.hasShiftDown()) {
+			var reg = access.lookupOrThrow(Registries.ENCHANTMENT);
 			double level = 0;
-			for (var i : event.getItemStack().getAllEnchantments().values()) {
+			for (var ent : event.getItemStack().getAllEnchantments(reg).entrySet()) {
+				int i = ent.getIntValue();
 				if (i > 0) {
 					level += Math.pow(2, i - 1);
 				}
@@ -69,12 +72,11 @@ public class ClientSpellText {
 
 	public static int getReality(@Nullable Level level) {
 		if (level == null) return 0;
-		Player player = Proxy.getClientPlayer();
+		Player player = Minecraft.getInstance().player;
 		if (player == null) return 0;
-		var ins = player.getAttribute(CoPAttrs.REALITY.get());
+		var ins = player.getAttribute(CoPAttrs.REALITY);
 		return ins == null ? 0 : (int) Math.round(ins.getValue());
 	}
-
 
 	public static void onClientAutoAttack(Player player) {
 		if (!player.isLocalPlayer()) return;
@@ -82,7 +84,7 @@ public class ClientSpellText {
 		if (mode == null) return;
 		var cd = player.getAttackStrengthScale(1);
 		if (cd < 1) return;
-		var hit = RayTraceUtil.rayTraceEntity(player, player.getEntityReach(), e -> true);
+		var hit = RayTraceUtil.rayTraceEntity(player, player.getAttributeValue(Attributes.ENTITY_INTERACTION_RANGE), e -> true);
 		if (hit == null) return;
 		var entity = hit.getEntity();
 		if (!entity.isAlive()) return;
@@ -95,7 +97,7 @@ public class ClientSpellText {
 	public static Component getDepth(@Nullable Level level) {
 		int def = CoPConfig.COMMON.abyssal.abyssalDepthStep.get();
 		if (level != null) {
-			Player player = Proxy.getClientPlayer();
+			Player player = Minecraft.getInstance().player;
 			if (player != null) {
 				if (L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey())) {
 					int val = CoPConfig.COMMON.abyssal.abyssalWillDepthStep.get();
@@ -106,4 +108,9 @@ public class ClientSpellText {
 		return Component.literal(def + "").withStyle(ChatFormatting.GRAY);
 	}
 
+	@Nullable
+	public static Player getPlayer(@Nullable Level level) {
+		if (level == null || !level.isClientSide) return null;
+		return Minecraft.getInstance().player;
+	}
 }

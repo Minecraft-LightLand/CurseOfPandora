@@ -171,7 +171,7 @@ public class LootGen {
 		}
 
 		public ResourceLocation getInner() {
-			return new ResourceLocation(CurseOfPandora.MODID, id);
+			return CurseOfPandora.loc( id);
 		}
 
 	}

@@ -2,15 +2,14 @@ package dev.xkmc.curseofpandora.content.hostility;
 
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.registrate.CoPAttrs;
-import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
+import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
-import dev.xkmc.l2hostility.content.capability.mob.MobTraitCap;
 import dev.xkmc.l2hostility.content.traits.base.MobTrait;
+import dev.xkmc.l2hostility.init.registrate.LHMiscs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
 public class RealityTrait extends MobTrait {
 
@@ -19,34 +18,31 @@ public class RealityTrait extends MobTrait {
 	}
 
 	@Override
-	public void onAttackedByOthers(int level, LivingEntity entity, LivingAttackEvent event) {
+	public boolean onAttackedByOthers(int level, LivingEntity entity, DamageData.Attack event) {
 		if (event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
-			return;
+			return false;
 		if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-			var ins = attacker.getAttribute(CoPAttrs.REALITY.get());
+			var ins = attacker.getAttribute(CoPAttrs.REALITY);
 			if (ins != null) {
 				int val = (int) Math.round(ins.getValue());
 				if (val >= level) {
-					return;
+					return false;
 				}
 			}
-			if (attacker instanceof Mob mob && MobTraitCap.HOLDER.isProper(mob)) {
-				if (MobTraitCap.HOLDER.get(mob).getTraitLevel(this) >= level) {
-					return;
-				}
+			if (attacker instanceof Mob mob) {
+				var opt = LHMiscs.MOB.type().getExisting(mob);
+				return opt.isEmpty() || opt.get().getTraitLevel(this) < level;
 			}
 		}
-		event.setCanceled(true);
+		return true;
 	}
 
 	@Override
-	public void onDamaged(int level, LivingEntity mob, AttackCache cache) {
-		var event = cache.getLivingDamageEvent();
-		assert event != null;
-		if (event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+	public void onDamaged(int level, LivingEntity entity, DamageData.Defence data) {
+		if (data.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
 			return;
-		if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-			var ins = attacker.getAttribute(CoPAttrs.REALITY.get());
+		if (data.getSource().getEntity() instanceof LivingEntity attacker) {
+			var ins = attacker.getAttribute(CoPAttrs.REALITY);
 			if (ins != null) {
 				int val = (int) Math.round(ins.getValue());
 				if (val >= level) {
@@ -54,7 +50,7 @@ public class RealityTrait extends MobTrait {
 				}
 			}
 		}
-		cache.addDealtModifier(DamageModifier.nonlinearFinal(12346, e -> 0));
+		data.addDealtModifier(DamageModifier.nonlinearFinal(12346, e -> 0, getRegistryName()));
 	}
 
 	@Override

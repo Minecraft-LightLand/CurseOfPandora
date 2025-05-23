@@ -16,6 +16,7 @@ import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.events.ItemUseEventHandler;
+import dev.xkmc.l2core.init.L2TagGen;
 import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
@@ -24,6 +25,7 @@ import dev.xkmc.l2serial.network.PacketHandler;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -71,13 +73,6 @@ public class CurseOfPandora {
 		if (ModList.get().isLoaded(L2Hostility.MODID))
 			CoPTraits.register();
 		AttackEventHandler.register(5200, new PandoraAttackListener());
-		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
-		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);
-		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, CoPTagGen::onEntityTagGen);
-		REGISTRATE.addDataGenerator(TagGen.EFF_TAGS, CoPTagGen::onEffectTagGen);
-		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
-		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);
 	}
 
 	@SubscribeEvent
@@ -95,15 +90,23 @@ public class CurseOfPandora {
 		event.add(EntityType.PLAYER, CoPAttrs.REALITY);
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
+		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);
+		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ENTITY_TAGS, CoPTagGen::onEntityTagGen);
+		REGISTRATE.addDataGenerator(L2TagGen.EFF_TAGS, CoPTagGen::onEffectTagGen);
+		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, CoPAdvGen::onAdvGen);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, LootGen::genLoot);
+		new CoPDamageTypeGen(REGISTRATE).generate();
+
 		boolean run = event.includeServer();
 		var gen = event.getGenerator();
 		PackOutput output = gen.getPackOutput();
 		var pvd = event.getLookupProvider();
 		var helper = event.getExistingFileHelper();
 		gen.addProvider(run, new CoPConfigGen(gen));
-		new CoPDamageTypeGen(output, pvd, helper).generate(run, gen);
 		gen.addProvider(run, new CoPGLMProvider(output));
 		gen.addProvider(run, new CoPSlotGen(gen));
 	}

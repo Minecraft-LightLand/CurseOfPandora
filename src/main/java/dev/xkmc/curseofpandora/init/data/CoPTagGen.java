@@ -19,22 +19,22 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class CoPTagGen {
-	public static final TagKey<Item> PANDORA_BASE = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "pandora_base"));
-	public static final TagKey<Item> ATTR = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "attribute_charms"));
-	public static final TagKey<Item> BEACON = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "mini_beacons"));
-	public static final TagKey<Item> CURSE = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "pandora_curse"));
+	public static final TagKey<Item> PANDORA_BASE = ItemTags.create(CurseOfPandora.loc( "pandora_base"));
+	public static final TagKey<Item> ATTR = ItemTags.create(CurseOfPandora.loc( "attribute_charms"));
+	public static final TagKey<Item> BEACON = ItemTags.create(CurseOfPandora.loc( "mini_beacons"));
+	public static final TagKey<Item> CURSE = ItemTags.create(CurseOfPandora.loc( "pandora_curse"));
 
-	public static final TagKey<Item> REALITY = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "reality_charms"));
-	public static final TagKey<Item> ANGELIC = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "angelic_charms"));
-	public static final TagKey<Item> HELL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "hell_charms"));
-	public static final TagKey<Item> SHADOW = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "shadow_charms"));
-	public static final TagKey<Item> ABYSSAL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "abyssal_charms"));
-	public static final TagKey<Item> BARBARIC = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "barbaric_charms"));
-	public static final TagKey<Item> MUTATION = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "mutation_charms"));
-	public static final TagKey<Item> EVIL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "evil_spirit_charms"));
-	public static final TagKey<Item> ELEMENTAL = ItemTags.create(new ResourceLocation(CurseOfPandora.MODID, "elemental_charms"));
+	public static final TagKey<Item> REALITY = ItemTags.create(CurseOfPandora.loc( "reality_charms"));
+	public static final TagKey<Item> ANGELIC = ItemTags.create(CurseOfPandora.loc( "angelic_charms"));
+	public static final TagKey<Item> HELL = ItemTags.create(CurseOfPandora.loc( "hell_charms"));
+	public static final TagKey<Item> SHADOW = ItemTags.create(CurseOfPandora.loc( "shadow_charms"));
+	public static final TagKey<Item> ABYSSAL = ItemTags.create(CurseOfPandora.loc( "abyssal_charms"));
+	public static final TagKey<Item> BARBARIC = ItemTags.create(CurseOfPandora.loc( "barbaric_charms"));
+	public static final TagKey<Item> MUTATION = ItemTags.create(CurseOfPandora.loc( "mutation_charms"));
+	public static final TagKey<Item> EVIL = ItemTags.create(CurseOfPandora.loc( "evil_spirit_charms"));
+	public static final TagKey<Item> ELEMENTAL = ItemTags.create(CurseOfPandora.loc( "elemental_charms"));
 
-	public static final TagKey<EntityType<?>> PRUDENCE_WHITELIST = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(CurseOfPandora.MODID, "prudence_whitelist"));
+	public static final TagKey<EntityType<?>> PRUDENCE_WHITELIST = TagKey.create(Registries.ENTITY_TYPE, CurseOfPandora.loc( "prudence_whitelist"));
 
 	public static final TagKey<MobEffect> HIDDEN = TagKey.create(ForgeRegistries.MOB_EFFECTS.getRegistryKey(),
 			new ResourceLocation("jeed", "hidden"));

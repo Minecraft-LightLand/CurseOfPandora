@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 public class CurseIngredient extends BaseIngredient<CurseIngredient> {
 
 	public static final BaseIngredient.Serializer<CurseIngredient> INSTANCE =
-			new BaseIngredient.Serializer<>(CurseIngredient.class, new ResourceLocation(CurseOfPandora.MODID, "cursed_enchantments"));
+			new BaseIngredient.Serializer<>(CurseIngredient.class, CurseOfPandora.loc( "cursed_enchantments"));
 
 	public CurseIngredient() {
 		super();
