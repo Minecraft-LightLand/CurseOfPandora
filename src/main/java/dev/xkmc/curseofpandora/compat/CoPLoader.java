@@ -1,7 +1,7 @@
 package dev.xkmc.curseofpandora.compat;
 
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2hostility.init.entries.LHRegistrate;
-import dev.xkmc.l2library.base.L2Registrate;
 
 public class CoPLoader {
 

@@ -1,47 +1,45 @@
 package dev.xkmc.curseofpandora.init.data;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.IConfigSpec;
-import net.minecraftforge.fml.config.ModConfig;
+import dev.xkmc.l2core.util.ConfigInit;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class CoPConfig {
 
-	public static class Client {
+	public static class Client extends ConfigInit {
 
-		Client(ForgeConfigSpec.Builder builder) {
+		Client(Builder builder) {
 		}
 
 	}
 
-	public static class Common {
+	public static class Common extends ConfigInit{
 
 		public static class Attr {
 
-			public final ForgeConfigSpec.DoubleValue charmOfHealth;
-			public final ForgeConfigSpec.DoubleValue charmOfArmor;
-			public final ForgeConfigSpec.DoubleValue charmOfArmorToughness;
-			public final ForgeConfigSpec.DoubleValue charmOfSpeed;
-			public final ForgeConfigSpec.DoubleValue charmOfDamage;
-			public final ForgeConfigSpec.DoubleValue charmOfCritical;
-			public final ForgeConfigSpec.DoubleValue charmOfArchery;
-			public final ForgeConfigSpec.DoubleValue charmOfHeavyWeapon;
-			public final ForgeConfigSpec.DoubleValue charmOfHeavyWeaponSlow;
-			public final ForgeConfigSpec.DoubleValue charmOfAccuracy;
-			public final ForgeConfigSpec.DoubleValue charmOfAccuracySlow;
-			public final ForgeConfigSpec.DoubleValue charmOfProtection;
-			public final ForgeConfigSpec.DoubleValue charmOfMagic;
-			public final ForgeConfigSpec.DoubleValue charmOfExplosion;
-			public final ForgeConfigSpec.DoubleValue charmOfLuck;
-			public final ForgeConfigSpec.DoubleValue orbOfExecutorAttack;
-			public final ForgeConfigSpec.DoubleValue orbOfExecutorHealth;
-			public final ForgeConfigSpec.DoubleValue orbOfSoulGuardSpeed;
-			public final ForgeConfigSpec.DoubleValue orbOfSoulGuardReduction;
-			public final ForgeConfigSpec.DoubleValue orbOfProsecutorCritRate;
-			public final ForgeConfigSpec.DoubleValue orbOfProsecutorCritDmg;
+			public final ModConfigSpec.DoubleValue charmOfHealth;
+			public final ModConfigSpec.DoubleValue charmOfArmor;
+			public final ModConfigSpec.DoubleValue charmOfArmorToughness;
+			public final ModConfigSpec.DoubleValue charmOfSpeed;
+			public final ModConfigSpec.DoubleValue charmOfDamage;
+			public final ModConfigSpec.DoubleValue charmOfCritical;
+			public final ModConfigSpec.DoubleValue charmOfArchery;
+			public final ModConfigSpec.DoubleValue charmOfHeavyWeapon;
+			public final ModConfigSpec.DoubleValue charmOfHeavyWeaponSlow;
+			public final ModConfigSpec.DoubleValue charmOfAccuracy;
+			public final ModConfigSpec.DoubleValue charmOfAccuracySlow;
+			public final ModConfigSpec.DoubleValue charmOfProtection;
+			public final ModConfigSpec.DoubleValue charmOfMagic;
+			public final ModConfigSpec.DoubleValue charmOfExplosion;
+			public final ModConfigSpec.DoubleValue charmOfLuck;
+			public final ModConfigSpec.DoubleValue orbOfExecutorAttack;
+			public final ModConfigSpec.DoubleValue orbOfExecutorHealth;
+			public final ModConfigSpec.DoubleValue orbOfSoulGuardSpeed;
+			public final ModConfigSpec.DoubleValue orbOfSoulGuardReduction;
+			public final ModConfigSpec.DoubleValue orbOfProsecutorCritRate;
+			public final ModConfigSpec.DoubleValue orbOfProsecutorCritDmg;
 
-			private Attr(ForgeConfigSpec.Builder builder) {
+			private Attr(Builder builder) {
 				builder.push("AttributeCharms");
 				charmOfHealth = builder.defineInRange("charmOfHealth", 2d, 0, 100);
 				charmOfArmor = builder.defineInRange("charmOfArmor", 2d, 0, 100);
@@ -72,42 +70,42 @@ public class CoPConfig {
 		public static class Curse {
 
 			// reality
-			public final ForgeConfigSpec.DoubleValue curseOfInertiaCap;
-			public final ForgeConfigSpec.DoubleValue curseOfInertiaBase;
-			public final ForgeConfigSpec.DoubleValue curseOfInertiaBonus;
-			public final ForgeConfigSpec.DoubleValue curseOfProximityCap;
-			public final ForgeConfigSpec.DoubleValue curseOfProximityBase;
-			public final ForgeConfigSpec.DoubleValue curseOfProximityBonus;
-			public final ForgeConfigSpec.IntValue curseOfFleshThreshold;
-			public final ForgeConfigSpec.IntValue curseOfFleshDuration;
-			public final ForgeConfigSpec.DoubleValue curseOfFleshBonus;
-			public final ForgeConfigSpec.IntValue curseOfMetabolismThreshold;
-			public final ForgeConfigSpec.DoubleValue curseOfMetabolismFactor;
-			public final ForgeConfigSpec.DoubleValue curseOfMetabolismBonus;
-			public final ForgeConfigSpec.IntValue curseOfMetabolismIndexReq;
-			public final ForgeConfigSpec.IntValue curseOfTensionPenaltyDuration;
-			public final ForgeConfigSpec.DoubleValue curseOfTensionPenaltyThreshold;
-			public final ForgeConfigSpec.IntValue curseOfTensionTokenMatureTime;
-			public final ForgeConfigSpec.IntValue curseOfTensionTokenEffectiveTime;
-			public final ForgeConfigSpec.DoubleValue curseOfTensionDamageBonus;
-			public final ForgeConfigSpec.IntValue curseOfTensionMaxLevel;
-			public final ForgeConfigSpec.IntValue curseOfPrudenceMaxLevel;
-			public final ForgeConfigSpec.DoubleValue curseOfPrudenceDamageFactor;
-			public final ForgeConfigSpec.IntValue curseOfPrudenceDuration;
-			public final ForgeConfigSpec.DoubleValue curseOfPrudenceMaxDamage;
-			public final ForgeConfigSpec.DoubleValue curseOfSpellLoadFactor;
-			public final ForgeConfigSpec.DoubleValue curseOfSpellDamageFactor;
-			public final ForgeConfigSpec.DoubleValue curseOfSpellWeakenFactor;
+			public final ModConfigSpec.DoubleValue curseOfInertiaCap;
+			public final ModConfigSpec.DoubleValue curseOfInertiaBase;
+			public final ModConfigSpec.DoubleValue curseOfInertiaBonus;
+			public final ModConfigSpec.DoubleValue curseOfProximityCap;
+			public final ModConfigSpec.DoubleValue curseOfProximityBase;
+			public final ModConfigSpec.DoubleValue curseOfProximityBonus;
+			public final ModConfigSpec.IntValue curseOfFleshThreshold;
+			public final ModConfigSpec.IntValue curseOfFleshDuration;
+			public final ModConfigSpec.DoubleValue curseOfFleshBonus;
+			public final ModConfigSpec.IntValue curseOfMetabolismThreshold;
+			public final ModConfigSpec.DoubleValue curseOfMetabolismFactor;
+			public final ModConfigSpec.DoubleValue curseOfMetabolismBonus;
+			public final ModConfigSpec.IntValue curseOfMetabolismIndexReq;
+			public final ModConfigSpec.IntValue curseOfTensionPenaltyDuration;
+			public final ModConfigSpec.DoubleValue curseOfTensionPenaltyThreshold;
+			public final ModConfigSpec.IntValue curseOfTensionTokenMatureTime;
+			public final ModConfigSpec.IntValue curseOfTensionTokenEffectiveTime;
+			public final ModConfigSpec.DoubleValue curseOfTensionDamageBonus;
+			public final ModConfigSpec.IntValue curseOfTensionMaxLevel;
+			public final ModConfigSpec.IntValue curseOfPrudenceMaxLevel;
+			public final ModConfigSpec.DoubleValue curseOfPrudenceDamageFactor;
+			public final ModConfigSpec.IntValue curseOfPrudenceDuration;
+			public final ModConfigSpec.DoubleValue curseOfPrudenceMaxDamage;
+			public final ModConfigSpec.DoubleValue curseOfSpellLoadFactor;
+			public final ModConfigSpec.DoubleValue curseOfSpellDamageFactor;
+			public final ModConfigSpec.DoubleValue curseOfSpellWeakenFactor;
 
 
-			public final ForgeConfigSpec.ConfigValue<String> curseOfInertiaSlot;
-			public final ForgeConfigSpec.ConfigValue<String> curseOfProximitySlot;
-			public final ForgeConfigSpec.ConfigValue<String> curseOfFleshSlot;
-			public final ForgeConfigSpec.ConfigValue<String> curseOfTensionSlot;
-			public final ForgeConfigSpec.ConfigValue<String> curseOfPrudenceSlot;
-			public final ForgeConfigSpec.ConfigValue<String> curseOfSpellSlot;
+			public final ModConfigSpec.ConfigValue<String> curseOfInertiaSlot;
+			public final ModConfigSpec.ConfigValue<String> curseOfProximitySlot;
+			public final ModConfigSpec.ConfigValue<String> curseOfFleshSlot;
+			public final ModConfigSpec.ConfigValue<String> curseOfTensionSlot;
+			public final ModConfigSpec.ConfigValue<String> curseOfPrudenceSlot;
+			public final ModConfigSpec.ConfigValue<String> curseOfSpellSlot;
 
-			private Curse(ForgeConfigSpec.Builder builder) {
+			private Curse(Builder builder) {
 				builder.push("Reality");
 
 				curseOfInertiaCap = builder.comment("Curse of Inertia max attack speed for weapon allowed")
@@ -186,22 +184,22 @@ public class CoPConfig {
 		public static class Angelic {
 
 			// angelic
-			public final ForgeConfigSpec.IntValue angelicWingRealityIndex;
-			public final ForgeConfigSpec.DoubleValue angelicWingBoost;
-			public final ForgeConfigSpec.DoubleValue angelicWingMaxSpeed;
-			public final ForgeConfigSpec.IntValue angelicBlessRealityIndex;
-			public final ForgeConfigSpec.DoubleValue angelicBlessDamageReduction;
-			public final ForgeConfigSpec.DoubleValue angelicBlessAbsorption;
-			public final ForgeConfigSpec.IntValue angelicDescentRealityIndex;
-			public final ForgeConfigSpec.DoubleValue angelicDescentMeleeBonus;
-			public final ForgeConfigSpec.DoubleValue angelicDescentUndeadBonus;
-			public final ForgeConfigSpec.IntValue angelicProtectionRealityIndex;
-			public final ForgeConfigSpec.IntValue angelicProtectionCoolDown;
-			public final ForgeConfigSpec.IntValue angelicPunishmentRealityIndex;
-			public final ForgeConfigSpec.IntValue angelicPunishmentCoolDown;
-			public final ForgeConfigSpec.DoubleValue angelicPunishmentDamageBase;
+			public final ModConfigSpec.IntValue angelicWingRealityIndex;
+			public final ModConfigSpec.DoubleValue angelicWingBoost;
+			public final ModConfigSpec.DoubleValue angelicWingMaxSpeed;
+			public final ModConfigSpec.IntValue angelicBlessRealityIndex;
+			public final ModConfigSpec.DoubleValue angelicBlessDamageReduction;
+			public final ModConfigSpec.DoubleValue angelicBlessAbsorption;
+			public final ModConfigSpec.IntValue angelicDescentRealityIndex;
+			public final ModConfigSpec.DoubleValue angelicDescentMeleeBonus;
+			public final ModConfigSpec.DoubleValue angelicDescentUndeadBonus;
+			public final ModConfigSpec.IntValue angelicProtectionRealityIndex;
+			public final ModConfigSpec.IntValue angelicProtectionCoolDown;
+			public final ModConfigSpec.IntValue angelicPunishmentRealityIndex;
+			public final ModConfigSpec.IntValue angelicPunishmentCoolDown;
+			public final ModConfigSpec.DoubleValue angelicPunishmentDamageBase;
 
-			private Angelic(ForgeConfigSpec.Builder builder) {
+			private Angelic(Builder builder) {
 				builder.push("Angelic");
 
 				angelicWingRealityIndex = builder.comment("Reality Index requirement for Angelic Wing")
@@ -239,20 +237,20 @@ public class CoPConfig {
 
 		public static class Hell {
 
-			public final ForgeConfigSpec.IntValue hellfireSkullRealityIndex;
-			public final ForgeConfigSpec.IntValue hellfireSkullMinimumDuration;
-			public final ForgeConfigSpec.IntValue hellfireReformationRealityIndex;
-			public final ForgeConfigSpec.IntValue eyeOfCursedSoulRealityIndex;
-			public final ForgeConfigSpec.DoubleValue eyeOfCursedSoulRange;
-			public final ForgeConfigSpec.IntValue eyeOfCursedSoulCoolDown;
-			public final ForgeConfigSpec.IntValue cursedSoulCrystalRealityIndex;
-			public final ForgeConfigSpec.IntValue cursedSoulCrystalTriggerCoolDown;
-			public final ForgeConfigSpec.DoubleValue cursedSoulCrystalRange;
-			public final ForgeConfigSpec.IntValue crownOfDemonRealityIndex;
-			public final ForgeConfigSpec.IntValue crownOfDemonBaseHealthThreshold;
-			public final ForgeConfigSpec.IntValue crownOfDemonRange;
+			public final ModConfigSpec.IntValue hellfireSkullRealityIndex;
+			public final ModConfigSpec.IntValue hellfireSkullMinimumDuration;
+			public final ModConfigSpec.IntValue hellfireReformationRealityIndex;
+			public final ModConfigSpec.IntValue eyeOfCursedSoulRealityIndex;
+			public final ModConfigSpec.DoubleValue eyeOfCursedSoulRange;
+			public final ModConfigSpec.IntValue eyeOfCursedSoulCoolDown;
+			public final ModConfigSpec.IntValue cursedSoulCrystalRealityIndex;
+			public final ModConfigSpec.IntValue cursedSoulCrystalTriggerCoolDown;
+			public final ModConfigSpec.DoubleValue cursedSoulCrystalRange;
+			public final ModConfigSpec.IntValue crownOfDemonRealityIndex;
+			public final ModConfigSpec.IntValue crownOfDemonBaseHealthThreshold;
+			public final ModConfigSpec.IntValue crownOfDemonRange;
 
-			private Hell(ForgeConfigSpec.Builder builder) {
+			private Hell(Builder builder) {
 				builder.push("Hell");
 
 				hellfireSkullRealityIndex = builder.comment("Reality Index requirement for Hellfire Skull")
@@ -286,22 +284,22 @@ public class CoPConfig {
 
 		public static class Shadow {
 
-			public final ForgeConfigSpec.IntValue shadowCoreRealityIndex;
-			public final ForgeConfigSpec.IntValue shadowCoreDurationPerIndex;
-			public final ForgeConfigSpec.DoubleValue damageReduction;
-			public final ForgeConfigSpec.IntValue shadowConvergenceRealityIndex;
-			public final ForgeConfigSpec.DoubleValue shadowConvergenceHealFactor;
-			public final ForgeConfigSpec.IntValue shadowConsolidationRealityIndex;
-			public final ForgeConfigSpec.DoubleValue shadowConsolidationRange;
-			public final ForgeConfigSpec.DoubleValue shadowConsolidationFactor;
-			public final ForgeConfigSpec.IntValue shadowConsolidationDelay;
-			public final ForgeConfigSpec.IntValue shadowConsolidationCoolDown;
-			public final ForgeConfigSpec.IntValue shadowReformationRealityIndex;
-			public final ForgeConfigSpec.DoubleValue shadowReformationBonus;
-			public final ForgeConfigSpec.DoubleValue shadowReformationReduction;
-			public final ForgeConfigSpec.IntValue voidOverflowRealityIndex;
+			public final ModConfigSpec.IntValue shadowCoreRealityIndex;
+			public final ModConfigSpec.IntValue shadowCoreDurationPerIndex;
+			public final ModConfigSpec.DoubleValue damageReduction;
+			public final ModConfigSpec.IntValue shadowConvergenceRealityIndex;
+			public final ModConfigSpec.DoubleValue shadowConvergenceHealFactor;
+			public final ModConfigSpec.IntValue shadowConsolidationRealityIndex;
+			public final ModConfigSpec.DoubleValue shadowConsolidationRange;
+			public final ModConfigSpec.DoubleValue shadowConsolidationFactor;
+			public final ModConfigSpec.IntValue shadowConsolidationDelay;
+			public final ModConfigSpec.IntValue shadowConsolidationCoolDown;
+			public final ModConfigSpec.IntValue shadowReformationRealityIndex;
+			public final ModConfigSpec.DoubleValue shadowReformationBonus;
+			public final ModConfigSpec.DoubleValue shadowReformationReduction;
+			public final ModConfigSpec.IntValue voidOverflowRealityIndex;
 
-			private Shadow(ForgeConfigSpec.Builder builder) {
+			private Shadow(Builder builder) {
 				builder.push("Shadow");
 				shadowCoreRealityIndex = builder.comment("Reality Index requirement for Shadow Core")
 						.defineInRange("shadowCoreRealityIndex", 3, 0, 7);
@@ -338,20 +336,20 @@ public class CoPConfig {
 
 		public static class Elemental {
 
-			public final ForgeConfigSpec.IntValue windThrustRealityIndex;
-			public final ForgeConfigSpec.DoubleValue windThrustSpeed;
-			public final ForgeConfigSpec.DoubleValue windThrustDamage;
-			public final ForgeConfigSpec.IntValue earthCrushRealityIndex;
-			public final ForgeConfigSpec.DoubleValue earthCrushThreshold;
-			public final ForgeConfigSpec.DoubleValue earthCrushBonus;
-			public final ForgeConfigSpec.IntValue flamingExplosionRealityIndex;
-			public final ForgeConfigSpec.DoubleValue flamingExplosionBonus;
-			public final ForgeConfigSpec.IntValue wavingSpellRealityIndex;
-			public final ForgeConfigSpec.DoubleValue wavingSpellBonus;
-			public final ForgeConfigSpec.IntValue curseRedirectionRealityIndex;
-			public final ForgeConfigSpec.DoubleValue curseRedirectionBonus;
+			public final ModConfigSpec.IntValue windThrustRealityIndex;
+			public final ModConfigSpec.DoubleValue windThrustSpeed;
+			public final ModConfigSpec.DoubleValue windThrustDamage;
+			public final ModConfigSpec.IntValue earthCrushRealityIndex;
+			public final ModConfigSpec.DoubleValue earthCrushThreshold;
+			public final ModConfigSpec.DoubleValue earthCrushBonus;
+			public final ModConfigSpec.IntValue flamingExplosionRealityIndex;
+			public final ModConfigSpec.DoubleValue flamingExplosionBonus;
+			public final ModConfigSpec.IntValue wavingSpellRealityIndex;
+			public final ModConfigSpec.DoubleValue wavingSpellBonus;
+			public final ModConfigSpec.IntValue curseRedirectionRealityIndex;
+			public final ModConfigSpec.DoubleValue curseRedirectionBonus;
 
-			private Elemental(ForgeConfigSpec.Builder builder) {
+			private Elemental(Builder builder) {
 				builder.push("Elemental");
 				windThrustRealityIndex = builder.comment("Reality Index requirement for Wind Thrust")
 						.defineInRange("windThrustRealityIndex", 4, 0, 7);
@@ -384,20 +382,20 @@ public class CoPConfig {
 
 		public static class Abyssal {
 
-			public final ForgeConfigSpec.IntValue abyssalTreasureRealityIndex;
-			public final ForgeConfigSpec.IntValue abyssalWatcherRealityIndex;
-			public final ForgeConfigSpec.IntValue abyssalShellRealityIndex;
-			public final ForgeConfigSpec.IntValue abyssalCrownRealityIndex;
-			public final ForgeConfigSpec.IntValue abyssalWillRealityIndex;
-			public final ForgeConfigSpec.IntValue abyssalDepthStep;
-			public final ForgeConfigSpec.IntValue abyssalWillDepthStep;
-			public final ForgeConfigSpec.DoubleValue abyssalWatcherRegen;
-			public final ForgeConfigSpec.DoubleValue abyssalShellBonus;
-			public final ForgeConfigSpec.DoubleValue abyssalCrownChance;
-			public final ForgeConfigSpec.IntValue abyssalWillCoolDown;
-			public final ForgeConfigSpec.IntValue abyssalWillDuration;
+			public final ModConfigSpec.IntValue abyssalTreasureRealityIndex;
+			public final ModConfigSpec.IntValue abyssalWatcherRealityIndex;
+			public final ModConfigSpec.IntValue abyssalShellRealityIndex;
+			public final ModConfigSpec.IntValue abyssalCrownRealityIndex;
+			public final ModConfigSpec.IntValue abyssalWillRealityIndex;
+			public final ModConfigSpec.IntValue abyssalDepthStep;
+			public final ModConfigSpec.IntValue abyssalWillDepthStep;
+			public final ModConfigSpec.DoubleValue abyssalWatcherRegen;
+			public final ModConfigSpec.DoubleValue abyssalShellBonus;
+			public final ModConfigSpec.DoubleValue abyssalCrownChance;
+			public final ModConfigSpec.IntValue abyssalWillCoolDown;
+			public final ModConfigSpec.IntValue abyssalWillDuration;
 
-			private Abyssal(ForgeConfigSpec.Builder builder) {
+			private Abyssal(Builder builder) {
 				builder.push("Abyssal");
 				abyssalDepthStep = builder.comment("Depth requirement for Abyssal charms")
 						.defineInRange("abyssalDepthStep", 12, 0, 64);
@@ -430,24 +428,24 @@ public class CoPConfig {
 
 		public static class Barbaric {
 
-			public final ForgeConfigSpec.DoubleValue magicDamageDebuff;
-			public final ForgeConfigSpec.IntValue barbaricInstinctRealityIndex;
-			public final ForgeConfigSpec.DoubleValue barbaricInstinctHeal;
-			public final ForgeConfigSpec.IntValue barbaricInstinctCoolDown;
-			public final ForgeConfigSpec.IntValue barbaricWrathRealityIndex;
-			public final ForgeConfigSpec.DoubleValue barbaricWrathCritBonus;
-			public final ForgeConfigSpec.DoubleValue barbaricWrathToughBonus;
-			public final ForgeConfigSpec.IntValue barbaricRoarRealityIndex;
-			public final ForgeConfigSpec.DoubleValue barbaricRoarReduction;
-			public final ForgeConfigSpec.DoubleValue barbaricRoarAttack;
-			public final ForgeConfigSpec.IntValue barbaricBladeRealityIndex;
-			public final ForgeConfigSpec.DoubleValue barbaricBladeProjectile;
-			public final ForgeConfigSpec.DoubleValue barbaricBladeAttack;
-			public final ForgeConfigSpec.IntValue primalForceRealityIndex;
-			public final ForgeConfigSpec.DoubleValue primalForceSelfArmor;
-			public final ForgeConfigSpec.DoubleValue primalForceTargetArmor;
+			public final ModConfigSpec.DoubleValue magicDamageDebuff;
+			public final ModConfigSpec.IntValue barbaricInstinctRealityIndex;
+			public final ModConfigSpec.DoubleValue barbaricInstinctHeal;
+			public final ModConfigSpec.IntValue barbaricInstinctCoolDown;
+			public final ModConfigSpec.IntValue barbaricWrathRealityIndex;
+			public final ModConfigSpec.DoubleValue barbaricWrathCritBonus;
+			public final ModConfigSpec.DoubleValue barbaricWrathToughBonus;
+			public final ModConfigSpec.IntValue barbaricRoarRealityIndex;
+			public final ModConfigSpec.DoubleValue barbaricRoarReduction;
+			public final ModConfigSpec.DoubleValue barbaricRoarAttack;
+			public final ModConfigSpec.IntValue barbaricBladeRealityIndex;
+			public final ModConfigSpec.DoubleValue barbaricBladeProjectile;
+			public final ModConfigSpec.DoubleValue barbaricBladeAttack;
+			public final ModConfigSpec.IntValue primalForceRealityIndex;
+			public final ModConfigSpec.DoubleValue primalForceSelfArmor;
+			public final ModConfigSpec.DoubleValue primalForceTargetArmor;
 
-			private Barbaric(ForgeConfigSpec.Builder builder) {
+			private Barbaric(Builder builder) {
 				builder.push("Barbaric");
 				magicDamageDebuff = builder.comment("Magic damage reduction in percentage for all barbaric set")
 						.defineInRange("magicDamageDebuff", 1d, 0, 100);
@@ -488,13 +486,13 @@ public class CoPConfig {
 
 		public static class Mutation {
 
-			public final ForgeConfigSpec.IntValue infectiveMutationRealityIndex;
-			public final ForgeConfigSpec.IntValue parasiticMutationRealityIndex;
-			public final ForgeConfigSpec.IntValue deformingMutationRealityIndex;
-			public final ForgeConfigSpec.IntValue hostileMutationRealityIndex;
-			public final ForgeConfigSpec.IntValue distortedMutationRealityIndex;
+			public final ModConfigSpec.IntValue infectiveMutationRealityIndex;
+			public final ModConfigSpec.IntValue parasiticMutationRealityIndex;
+			public final ModConfigSpec.IntValue deformingMutationRealityIndex;
+			public final ModConfigSpec.IntValue hostileMutationRealityIndex;
+			public final ModConfigSpec.IntValue distortedMutationRealityIndex;
 
-			private Mutation(ForgeConfigSpec.Builder builder) {
+			private Mutation(Builder builder) {
 				builder.push("Mutation");
 				infectiveMutationRealityIndex = builder.comment("Reality Index requirement for Infective Mutation")
 						.defineInRange("infectiveMutationRealityIndex", 3, 0, 7);
@@ -513,25 +511,25 @@ public class CoPConfig {
 
 		public static class Evil {
 
-			public final ForgeConfigSpec.IntValue evilSpiritRitualRealityIndex;
-			public final ForgeConfigSpec.DoubleValue evilSpiritRitualExpRate;
-			public final ForgeConfigSpec.IntValue evilSpiritEvokeRealityIndex;
-			public final ForgeConfigSpec.IntValue evilSpiritEvokeDuration;
-			public final ForgeConfigSpec.IntValue evilSpiritEvokeCoolDown;
-			public final ForgeConfigSpec.IntValue evilSpiritAwakeningRealityIndex;
-			public final ForgeConfigSpec.DoubleValue evilSpiritAwakeningMagicBonus;
-			public final ForgeConfigSpec.DoubleValue evilSpiritAwakeningReduction;
-			public final ForgeConfigSpec.IntValue evilSpiritAwakeningDuration;
-			public final ForgeConfigSpec.IntValue evilSpiritAwakeningMaxLevel;
-			public final ForgeConfigSpec.IntValue evilSpiritCurseRealityIndex;
-			public final ForgeConfigSpec.DoubleValue evilSpiritCurseThreshold;
-			public final ForgeConfigSpec.DoubleValue evilSpiritCurseBonus;
-			public final ForgeConfigSpec.IntValue evilSpiritWalkRealityIndex;
-			public final ForgeConfigSpec.DoubleValue evilSpiritWalkMagicBonus;
-			public final ForgeConfigSpec.DoubleValue evilSpiritWalkAtkBonus;
-			public final ForgeConfigSpec.IntValue evilSpiritWalkCoolDown;
+			public final ModConfigSpec.IntValue evilSpiritRitualRealityIndex;
+			public final ModConfigSpec.DoubleValue evilSpiritRitualExpRate;
+			public final ModConfigSpec.IntValue evilSpiritEvokeRealityIndex;
+			public final ModConfigSpec.IntValue evilSpiritEvokeDuration;
+			public final ModConfigSpec.IntValue evilSpiritEvokeCoolDown;
+			public final ModConfigSpec.IntValue evilSpiritAwakeningRealityIndex;
+			public final ModConfigSpec.DoubleValue evilSpiritAwakeningMagicBonus;
+			public final ModConfigSpec.DoubleValue evilSpiritAwakeningReduction;
+			public final ModConfigSpec.IntValue evilSpiritAwakeningDuration;
+			public final ModConfigSpec.IntValue evilSpiritAwakeningMaxLevel;
+			public final ModConfigSpec.IntValue evilSpiritCurseRealityIndex;
+			public final ModConfigSpec.DoubleValue evilSpiritCurseThreshold;
+			public final ModConfigSpec.DoubleValue evilSpiritCurseBonus;
+			public final ModConfigSpec.IntValue evilSpiritWalkRealityIndex;
+			public final ModConfigSpec.DoubleValue evilSpiritWalkMagicBonus;
+			public final ModConfigSpec.DoubleValue evilSpiritWalkAtkBonus;
+			public final ModConfigSpec.IntValue evilSpiritWalkCoolDown;
 
-			private Evil(ForgeConfigSpec.Builder builder) {
+			private Evil(Builder builder) {
 				builder.push("Evil");
 				evilSpiritRitualRealityIndex = builder.comment("Reality Index requirement for Evil Spirit Ritual")
 						.defineInRange("infectiveMutationRealityIndex", 3, 0, 7);
@@ -574,14 +572,14 @@ public class CoPConfig {
 
 		public static class Weapon {
 
-			public final ForgeConfigSpec.IntValue angelicJudgementRealityIndex;
-			public final ForgeConfigSpec.IntValue doomStarRealityIndex;
-			public final ForgeConfigSpec.IntValue cursedKarmaRealityIndex;
-			public final ForgeConfigSpec.IntValue cursedKarmaExplosionRadius;
-			public final ForgeConfigSpec.IntValue cursedKarmaEffectDuration;
-			public final ForgeConfigSpec.IntValue abyssalEdgeRealityIndex;
+			public final ModConfigSpec.IntValue angelicJudgementRealityIndex;
+			public final ModConfigSpec.IntValue doomStarRealityIndex;
+			public final ModConfigSpec.IntValue cursedKarmaRealityIndex;
+			public final ModConfigSpec.IntValue cursedKarmaExplosionRadius;
+			public final ModConfigSpec.IntValue cursedKarmaEffectDuration;
+			public final ModConfigSpec.IntValue abyssalEdgeRealityIndex;
 
-			private Weapon(ForgeConfigSpec.Builder builder) {
+			private Weapon(Builder builder) {
 				builder.push("Weapon");
 				angelicJudgementRealityIndex = builder.comment("Reality Index requirement for Angelic Judgement")
 						.defineInRange("angelicJudgementRealityIndex", 5, 0, 7);
@@ -602,14 +600,14 @@ public class CoPConfig {
 
 		public static class Compat {
 
-			public final ForgeConfigSpec.IntValue sealOfSwordDifficultyPerBonus;
-			public final ForgeConfigSpec.IntValue sealOfSwordMaxRealityBonus;
-			public final ForgeConfigSpec.DoubleValue spellSingularitySpellBonusPerReality;
-			public final ForgeConfigSpec.DoubleValue spellSingularityMagicDamageBonusPerReality;
+			public final ModConfigSpec.IntValue sealOfSwordDifficultyPerBonus;
+			public final ModConfigSpec.IntValue sealOfSwordMaxRealityBonus;
+			public final ModConfigSpec.DoubleValue spellSingularitySpellBonusPerReality;
+			public final ModConfigSpec.DoubleValue spellSingularityMagicDamageBonusPerReality;
 
-			public final ForgeConfigSpec.BooleanValue allowRealityTrait;
+			public final ModConfigSpec.BooleanValue allowRealityTrait;
 
-			private Compat(ForgeConfigSpec.Builder builder) {
+			private Compat(Builder builder) {
 				builder.push("Compat");
 				allowRealityTrait = builder.comment("L2Hostility compat: allow Reality trait")
 						.define("allowRealityTrait", true);
@@ -643,10 +641,10 @@ public class CoPConfig {
 		public final Weapon weapon;
 		public final Compat compat;
 
-		public final ForgeConfigSpec.DoubleValue lootLuckFactor;
-		public final ForgeConfigSpec.IntValue maxItemGenerated;
+		public final ModConfigSpec.DoubleValue lootLuckFactor;
+		public final ModConfigSpec.IntValue maxItemGenerated;
 
-		Common(ForgeConfigSpec.Builder builder) {
+		Common(Builder builder) {
 			builder.push("Loot");
 			lootLuckFactor = builder.comment("Scale up/down luck in calculation of chance to find a pandora charm in chest")
 					.defineInRange("lootLuckFactor", 1d, 0, 10);
@@ -669,20 +667,14 @@ public class CoPConfig {
 
 	}
 
-	public static final ForgeConfigSpec CLIENT_SPEC;
+	public static final ModConfigSpec CLIENT_SPEC;
 	public static final Client CLIENT;
 
-	public static final ForgeConfigSpec COMMON_SPEC;
+	public static final ModConfigSpec COMMON_SPEC;
 	public static final Common COMMON;
 
 	static {
-		final Pair<Client, ForgeConfigSpec> client = new ForgeConfigSpec.Builder().configure(Client::new);
-		CLIENT_SPEC = client.getRight();
-		CLIENT = client.getLeft();
 
-		final Pair<Common, ForgeConfigSpec> common = new ForgeConfigSpec.Builder().configure(Common::new);
-		COMMON_SPEC = common.getRight();
-		COMMON = common.getLeft();
 	}
 
 	/**

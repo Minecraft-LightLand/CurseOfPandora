@@ -16,31 +16,28 @@ import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.curseofpandora.init.registrate.CoPEntities;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2complements.events.ItemUseEventHandler;
-import dev.xkmc.l2complements.init.data.TagGen;
+import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
+import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
 import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2hostility.init.L2Hostility;
-import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.init.events.EffectSyncEvents;
-import dev.xkmc.l2library.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2serial.network.PacketHandler;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(CurseOfPandora.MODID)
-@Mod.EventBusSubscriber(modid = CurseOfPandora.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = CurseOfPandora.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class CurseOfPandora {
 
 	public static final String MODID = "curseofpandora";
@@ -49,8 +46,8 @@ public class CurseOfPandora {
 	public static final L2Registrate REGISTRATE;
 
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
-			new ResourceLocation(MODID, "main"), 2,
-			e -> e.create(LootDataToClient.class, NetworkDirection.PLAY_TO_CLIENT)
+			MODID, 2,
+			e -> e.create(LootDataToClient.class, PacketHandler.NetDir.PLAY_TO_CLIENT)
 	);
 
 	static {
@@ -94,8 +91,8 @@ public class CurseOfPandora {
 
 	@SubscribeEvent
 	public static void modifyAttributes(EntityAttributeModificationEvent event) {
-		event.add(EntityType.PLAYER, CoPAttrs.SPELL.get());
-		event.add(EntityType.PLAYER, CoPAttrs.REALITY.get());
+		event.add(EntityType.PLAYER, CoPAttrs.SPELL);
+		event.add(EntityType.PLAYER, CoPAttrs.REALITY);
 	}
 
 	@SubscribeEvent
