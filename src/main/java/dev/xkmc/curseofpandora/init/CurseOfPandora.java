@@ -92,6 +92,7 @@ public class CurseOfPandora {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void gatherData(GatherDataEvent event) {
+		CoPAdvGen.init();
 		REGISTRATE.addDataGenerator(ProviderType.LANG, CoPLangData::addTranslations);
 		REGISTRATE.addDataGenerator(ProviderType.RECIPE, CoPRecipeGen::recipeGen);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, CoPTagGen::onItemTagGen);

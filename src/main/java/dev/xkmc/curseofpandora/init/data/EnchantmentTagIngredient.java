@@ -29,7 +29,7 @@ public record EnchantmentTagIngredient(HolderSet<Enchantment> enchantment) imple
 	}
 
 	public Stream<ItemStack> getItems() {
-		return this.enchantment.stream().flatMap(e -> IntStream.range(1, e.value().definition().maxLevel())
+		return this.enchantment.stream().flatMap(e -> IntStream.range(1, e.value().definition().maxLevel() + 1)
 				.mapToObj(i -> EnchantedBookItem.createForEnchantment(new EnchantmentInstance(e, i))));
 	}
 

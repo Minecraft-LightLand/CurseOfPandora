@@ -1,0 +1,77 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "curseofpandora:plain_charm"
+    },
+    "C": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "components": {
+      "pandora:backpack_content": [
+        {
+          "item": {
+            "count": 1,
+            "id": "curseofpandora:curse_of_inertia"
+          },
+          "slot": 0
+        },
+        {
+          "item": {
+            "count": 1,
+            "id": "curseofpandora:curse_of_proximity"
+          },
+          "slot": 1
+        },
+        {
+          "item": {
+            "count": 1,
+            "id": "curseofpandora:curse_of_flesh"
+          },
+          "slot": 2
+        },
+        {
+          "item": {
+            "count": 1,
+            "id": "curseofpandora:curse_of_metabolism"
+          },
+          "slot": 3
+        },
+        {
+          "item": {
+            "count": 1,
+            "id": "curseofpandora:curse_of_tension"
+          },
+          "slot": 4
+        },
+        {
+          "item": {
+            "count": 1,
+            "id": "curseofpandora:curse_of_prudence"
+          },
+          "slot": 5
+        },
+        {
+          "item": {
+            "count": 1,
+            "id": "curseofpandora:curse_of_spell"
+          },
+          "slot": 6
+        }
+      ]
+    },
+    "count": 1,
+    "id": "pandora:pandora_necklace"
+  }
+}

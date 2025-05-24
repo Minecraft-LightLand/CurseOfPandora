@@ -12,10 +12,12 @@ import dev.xkmc.l2core.serial.configval.BooleanValueCondition;
 import dev.xkmc.l2core.serial.ingredients.EnchantmentIngredient;
 import dev.xkmc.l2core.serial.ingredients.PotionIngredient;
 import dev.xkmc.l2core.serial.recipe.ConditionalRecipeWrapper;
+import dev.xkmc.l2core.serial.recipe.DataRecipeWrapper;
 import dev.xkmc.l2damagetracker.contents.materials.vanilla.Tools;
 import dev.xkmc.l2hostility.init.L2Hostility;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
 import dev.xkmc.l2hostility.init.registrate.LHTraits;
+import dev.xkmc.pandora.init.registrate.PandoraItems;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -256,16 +258,16 @@ public class CoPRecipeGen {
 
 		// sets
 		{
-			/* TODO
-			var stack = CursePandoraUtil.allCurses(PandoraItems.PANDORA_NECKLACE.get());
+
+			var stack = PandoraItems.DC_ITEMS.set(PandoraItems.PANDORA_NECKLACE.asStack(), CoPAdvGen.allCurses());
+
 			unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PandoraItems.PANDORA_NECKLACE.get(), 1)::unlockedBy, CoPItems.CHARM.get())
 					.pattern("ABA").pattern("BCB").pattern("ABA")
 					.define('C', Items.NETHER_STAR)
 					.define('B', CoPItems.CHARM.get())
 					.define('A', Items.GOLD_INGOT)
-					.save(e -> pvd.accept(new DataRecipeWrapper(e, stack)), CurseOfPandora.loc("seven_curses"));
+					.save(new DataRecipeWrapper(pvd, stack), CurseOfPandora.loc("seven_curses"));
 
-			 */
 			{
 				unlock(pvd, ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CoPItems.ANGELIC_FEATHER.get(), 1)::unlockedBy, CoPItems.CHARM.get())
 						.pattern("ABA").pattern("FCF").pattern("MBM")

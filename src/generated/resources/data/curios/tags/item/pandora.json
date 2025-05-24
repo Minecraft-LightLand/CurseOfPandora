@@ -14,22 +14,6 @@
     "curseofpandora:orb_of_magic_rejection",
     "#curseofpandora:pandora_base",
     "#curseofpandora:mini_beacons",
-    "#curseofpandora:pandora_curse",
-    {
-      "id": "l2hostility:charm_of_looting_1",
-      "required": false
-    },
-    {
-      "id": "l2hostility:charm_of_looting_2",
-      "required": false
-    },
-    {
-      "id": "l2hostility:charm_of_looting_3",
-      "required": false
-    },
-    {
-      "id": "l2hostility:charm_of_looting_4",
-      "required": false
-    }
+    "#curseofpandora:pandora_curse"
   ]
 }

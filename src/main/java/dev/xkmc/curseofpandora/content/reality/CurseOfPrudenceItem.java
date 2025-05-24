@@ -139,6 +139,7 @@ public class CurseOfPrudenceItem extends ISlotAdderItem<CurseOfPrudenceItem.Tick
 			if (old != null)
 				old.removeEffect(player);
 			checkEffect(player);
+			update();
 		}
 
 		private void removeEffect(Player player) {

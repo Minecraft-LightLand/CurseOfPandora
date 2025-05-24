@@ -7,6 +7,7 @@ import dev.xkmc.curseofpandora.init.CurseOfPandora;
 import dev.xkmc.curseofpandora.init.registrate.CoPEffects;
 import dev.xkmc.l2complements.init.data.LCTagGen;
 import dev.xkmc.l2hostility.init.registrate.LHItems;
+import dev.xkmc.pandora.init.data.PandoraTagGen;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -31,8 +32,8 @@ public class CoPTagGen {
 	public static final TagKey<Item> EVIL = ItemTags.create(CurseOfPandora.loc("evil_spirit_charms"));
 	public static final TagKey<Item> ELEMENTAL = ItemTags.create(CurseOfPandora.loc("elemental_charms"));
 
-	public static final TagKey<Item> PANDORA_SLOT = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "pandora"));
-	public static final TagKey<Item> ALLOW_DUPLICATE = ItemTags.create(CurseOfPandora.loc("allow_duplicate"));
+	public static final TagKey<Item> PANDORA_SLOT = PandoraTagGen.PANDORA_SLOT;
+	public static final TagKey<Item> ALLOW_DUPLICATE = PandoraTagGen.ALLOW_DUPLICATE;
 
 	public static final TagKey<EntityType<?>> PRUDENCE_WHITELIST = TagKey.create(Registries.ENTITY_TYPE, CurseOfPandora.loc("prudence_whitelist"));
 
@@ -42,11 +43,7 @@ public class CoPTagGen {
 	@SuppressWarnings("unchecked")
 	public static void onItemTagGen(RegistrateItemTagsProvider pvd) {
 		pvd.addTag(REALITY).addTags(ANGELIC, HELL, SHADOW, ABYSSAL, BARBARIC, EVIL, ELEMENTAL);// MUTATION
-		pvd.addTag(PANDORA_SLOT).addTags(PANDORA_BASE, BEACON, CURSE)
-				.addOptional(LHItems.LOOT_1.getId())
-				.addOptional(LHItems.LOOT_2.getId())
-				.addOptional(LHItems.LOOT_3.getId())
-				.addOptional(LHItems.LOOT_4.getId());
+		pvd.addTag(PANDORA_SLOT).addTags(PANDORA_BASE, BEACON, CURSE);
 		pvd.addTag(PANDORA_BASE).addTags(ATTR, REALITY)
 				.addOptional(CoPTraits.SEAL_OF_SWORDS.getId())
 				.addOptional(CoPTraits.SPELL_SINGULARITY.getId());

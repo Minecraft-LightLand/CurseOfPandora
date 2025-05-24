@@ -41,7 +41,7 @@ public class CoPItems {
 	public static final SimpleEntry<CreativeModeTab> TAB;
 
 	static {
-		TAB = REGISTRATE.buildL2CreativeTab("pandora", "Curse of Pandora", b ->
+		TAB = REGISTRATE.buildL2CreativeTab("curse_of_pandora", "Curse of Pandora", b ->
 				b.icon(CoPItems.CURSE_OF_SPELL::asStack));
 	}
 

@@ -180,6 +180,7 @@ public class CurseOfTensionItem extends ISlotAdderItem<CurseOfTensionItem.Ticker
 			if (old != null)
 				old.removeEffect(player);
 			checkEffect(player);
+			update();
 		}
 
 		private void removeEffect(Player player) {

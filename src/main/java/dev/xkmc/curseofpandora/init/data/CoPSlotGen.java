@@ -17,10 +17,10 @@ public class CoPSlotGen extends CuriosDataProvider {
 
 	@Override
 	public void generate(HolderLookup.Provider provider, ExistingFileHelper existingFileHelper) {
-		createSlot("pandora").order(943).size(36);
+		createSlot("curio").size(0).operation("SET");
 		createEntities("player")
 				.addEntities(EntityType.PLAYER)
-				.addSlots("curio", "hands", "pandora");
+				.addSlots("curio", "hands");
 	}
 
 }

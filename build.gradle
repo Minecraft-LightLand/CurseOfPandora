@@ -171,6 +171,8 @@ dependencies {
     runtimeOnly "dev.xkmc:l2weaponry:${l2weaponry_ver}"
     runtimeOnly "dev.xkmc:l2archery:${l2archery_ver}"
 
+    implementation jarJar(group: 'dev.xkmc', name: 'pandora', version: "[${pandora_ver},)")
+
     implementation "curse.maven:patchouli-306770:6164617"
 
     runtimeOnly "dev.xkmc:better_creative_tabs:0.1.2"
@@ -203,7 +205,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addModLoader("NeoForge")
     mainFile.addRequirement("l2library", "l2-complements", "curios")
     mainFile.addOptional("l2hostility")
-    mainFile.releaseType = "release"
+    mainFile.releaseType = "beta"
     disableVersionDetection()
 }
 
@@ -212,7 +214,7 @@ modrinth {
     projectId = project.modrinth_project
     versionName = "L2Hostility ${project.mod_version}"
     versionNumber = project.mod_version
-    versionType = "release"
+    versionType = "beta"
     uploadFile = new File("./build/libs/${mod_id}-${mod_version}.jar")
     gameVersions = ["1.21.1"]
     loaders = ["neoforge"]

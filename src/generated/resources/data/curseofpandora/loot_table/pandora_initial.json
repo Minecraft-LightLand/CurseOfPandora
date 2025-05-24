@@ -1,0 +1,74 @@
+{
+  "type": "minecraft:empty",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
+                "pandora:backpack_content": [
+                  {
+                    "item": {
+                      "count": 1,
+                      "id": "curseofpandora:curse_of_inertia"
+                    },
+                    "slot": 0
+                  },
+                  {
+                    "item": {
+                      "count": 1,
+                      "id": "curseofpandora:curse_of_proximity"
+                    },
+                    "slot": 1
+                  },
+                  {
+                    "item": {
+                      "count": 1,
+                      "id": "curseofpandora:curse_of_flesh"
+                    },
+                    "slot": 2
+                  },
+                  {
+                    "item": {
+                      "count": 1,
+                      "id": "curseofpandora:curse_of_metabolism"
+                    },
+                    "slot": 3
+                  },
+                  {
+                    "item": {
+                      "count": 1,
+                      "id": "curseofpandora:curse_of_tension"
+                    },
+                    "slot": 4
+                  },
+                  {
+                    "item": {
+                      "count": 1,
+                      "id": "curseofpandora:curse_of_prudence"
+                    },
+                    "slot": 5
+                  },
+                  {
+                    "item": {
+                      "count": 1,
+                      "id": "curseofpandora:curse_of_spell"
+                    },
+                    "slot": 6
+                  }
+                ]
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "pandora:pandora_necklace"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "curseofpandora:pandora_initial"
+}

@@ -580,7 +580,7 @@
   "item.curseofpandora.void_overflow": "Void Overflow",
   "item.curseofpandora.waving_spell": "Waving Spell",
   "item.curseofpandora.wind_thrust": "Wind Thrust",
-  "itemGroup.l2core.pandora": "Curse of Pandora",
+  "itemGroup.l2core.curse_of_pandora": "Curse of Pandora",
   "trait.curseofpandora.reality": "Reality",
   "trait.curseofpandora.reality.desc": "Immune to damage from entities will less reality index than rank of this trait."
 }
