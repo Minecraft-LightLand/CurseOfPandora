@@ -24,6 +24,10 @@ public abstract class ITokenProviderItem<R extends BasePandoraToken> extends Ite
 	}
 
 	public void tick(Player player) {
+		tickToken(player);
+	}
+
+	public void tickToken(Player player) {
 		L2LibReg.CONDITIONAL.type().getOrCreate(player).getOrCreateData(getKey(), sup).update();
 	}
 

@@ -1,3 +1,6 @@
+3.0.5
+- Do my own tick to resolve the tick skip problem
+
 3.0.4
 - Fix Tick Skip causing curios to pop out in various scenarios
 
