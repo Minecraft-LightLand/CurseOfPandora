@@ -1,2 +1,9 @@
+3.0.4
+- Fix Tick Skip causing curios to pop out in various scenarios
+
+3.0.3
+- Fix curse of tension description translation
+- Add token icon overlay render config
+
 3.0.2
 - Initial release

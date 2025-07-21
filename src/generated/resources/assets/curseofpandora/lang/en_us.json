@@ -306,6 +306,8 @@
   "curseofpandora.configuration.primalForceTargetArmor": "Primal Force armor bonus for attacker as percentage of max health",
   "curseofpandora.configuration.primalForceTargetArmor.tooltip": " Default: 1.0\n Range: 0.0 ~ 100.0",
   "curseofpandora.configuration.reality": "Reality",
+  "curseofpandora.configuration.renderTokenIcons": "Render Pandora Curse Token Icons",
+  "curseofpandora.configuration.renderTokenIcons.tooltip": "",
   "curseofpandora.configuration.sealOfSwordDifficultyPerBonus": "Seal of Swords: player difficulty required per reality index bonus",
   "curseofpandora.configuration.sealOfSwordDifficultyPerBonus.tooltip": " Default: 500\n Range: 1 ~ 10000",
   "curseofpandora.configuration.sealOfSwordMaxRealityBonus": "Seal of Swords: max reality index bonus",

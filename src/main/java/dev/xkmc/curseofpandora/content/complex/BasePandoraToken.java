@@ -23,7 +23,7 @@ public abstract class BasePandoraToken extends ConditionalToken {
 	}
 
 	public void update() {
-		life = 2;
+		life = 3;
 	}
 
 	protected abstract void removeImpl(Player player);

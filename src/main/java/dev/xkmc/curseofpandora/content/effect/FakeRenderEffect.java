@@ -1,5 +1,6 @@
 package dev.xkmc.curseofpandora.content.effect;
 
+import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.l2core.base.effects.api.DelayedEntityRender;
 import dev.xkmc.l2core.base.effects.api.IconOverlayEffect;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -7,6 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+
+import java.util.function.Consumer;
 
 public class FakeRenderEffect extends MobEffect implements IconOverlayEffect {
 
@@ -19,6 +22,11 @@ public class FakeRenderEffect extends MobEffect implements IconOverlayEffect {
 
 	public FakeRenderEffect() {
 		this(0);
+	}
+
+	public void render(LivingEntity entity, int lv, Consumer<DelayedEntityRender> adder) {
+		if (CoPConfig.CLIENT.renderTokenIcons.get())
+			adder.accept(this.getIcon(entity, lv));
 	}
 
 	@Override

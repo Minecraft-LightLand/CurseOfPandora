@@ -8,8 +8,11 @@ public class CoPConfig {
 
 	public static class Client extends ConfigInit {
 
+		public final ModConfigSpec.BooleanValue renderTokenIcons;
+
 		Client(Builder builder) {
 			markL2();
+			renderTokenIcons = builder.text("Render Pandora Curse Token Icons").define("renderTokenIcons", true);
 		}
 
 	}
