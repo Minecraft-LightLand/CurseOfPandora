@@ -1,3 +1,6 @@
+3.0.6
+- Fix totem charms
+
 3.0.5
 - Do my own tick to resolve the tick skip problem
 

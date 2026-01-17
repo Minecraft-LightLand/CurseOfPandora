@@ -2,6 +2,7 @@ package dev.xkmc.curseofpandora.content.sets.abyss;
 
 import dev.xkmc.curseofpandora.content.complex.BasePandoraToken;
 import dev.xkmc.curseofpandora.content.complex.IAttackListenerToken;
+import dev.xkmc.curseofpandora.content.complex.IPandoraTotem;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
@@ -12,7 +13,6 @@ import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.l2core.base.effects.EffectUtil;
 import dev.xkmc.l2core.init.L2LibReg;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
-import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
 import dev.xkmc.l2damagetracker.contents.curios.TotemUseToClient;
 import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
@@ -29,7 +29,7 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements L2Totem {
+public class AbyssalWill extends ITokenProviderItem<AbyssalWill.Data> implements IPandoraTotem {
 
 	public static int getDepth(Player player) {
 		return L2LibReg.CONDITIONAL.type().getOrCreate(player).hasData(CoPItems.ABYSSAL_WILL.get().getKey()) ?

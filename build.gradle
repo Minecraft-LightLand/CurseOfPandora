@@ -171,6 +171,7 @@ dependencies {
     runtimeOnly "dev.xkmc:l2weaponry:${l2weaponry_ver}"
     runtimeOnly "dev.xkmc:l2archery:${l2archery_ver}"
 
+    implementation jarJar(group: 'dev.xkmc', name: 'l2damagetracker', version: "[${l2damagetracker_ver},)")
     implementation jarJar(group: 'dev.xkmc', name: 'pandora', version: "[${pandora_ver},)")
 
     implementation "curse.maven:patchouli-306770:6164617"

@@ -1,5 +1,6 @@
 package dev.xkmc.curseofpandora.content.sets.angle;
 
+import dev.xkmc.curseofpandora.content.complex.IPandoraTotem;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
 import dev.xkmc.curseofpandora.init.data.CoPConfig;
 import dev.xkmc.curseofpandora.init.data.CoPLangData;
@@ -18,7 +19,7 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class AngelicProtection extends Item implements L2Totem {
+public class AngelicProtection extends Item implements IPandoraTotem {
 
 	public AngelicProtection(Properties properties) {
 		super(properties);

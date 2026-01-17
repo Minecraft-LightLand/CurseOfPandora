@@ -1,6 +1,7 @@
 package dev.xkmc.curseofpandora.content.sets.evil;
 
 import dev.xkmc.curseofpandora.content.complex.AttrAdder;
+import dev.xkmc.curseofpandora.content.complex.IPandoraTotem;
 import dev.xkmc.curseofpandora.content.complex.ITokenProviderItem;
 import dev.xkmc.curseofpandora.content.complex.ListTickingToken;
 import dev.xkmc.curseofpandora.event.ClientSpellText;
@@ -29,7 +30,7 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> implements L2Totem {
+public class EvilSpiritWalk extends ITokenProviderItem<EvilSpiritWalk.Data> implements IPandoraTotem {
 
 	private static final AttrAdder MAGIC = AttrAdder.of("evil_spirit_walk", L2DamageTracker.MAGIC_FACTOR,
 			AttributeModifier.Operation.ADD_VALUE, EvilSpiritWalk::getMagic);

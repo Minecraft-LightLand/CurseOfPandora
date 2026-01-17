@@ -9,9 +9,13 @@ import dev.xkmc.curseofpandora.init.loot.MobKillMobLootModifier;
 import dev.xkmc.curseofpandora.init.registrate.CoPItems;
 import dev.xkmc.curseofpandora.mixin.NeoForgeEventHandlerAccessor;
 import dev.xkmc.l2core.init.L2LibReg;
+import dev.xkmc.l2damagetracker.contents.curios.L2Totem;
+import dev.xkmc.l2damagetracker.contents.curios.TotemHelper;
 import dev.xkmc.pandora.content.base.IPandoraHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -19,10 +23,12 @@ import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @EventBusSubscriber(modid = CurseOfPandora.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class PandoraEvents {
@@ -84,6 +90,44 @@ public class PandoraEvents {
 		if (data != null) {
 			data.trigger(player);
 		}
+	}
+
+	@SubscribeEvent
+	public static void onTotemSearch(TotemHelper.TotemFinderEvent event) {
+		var le = event.getEntity();
+		var opt = CuriosApi.getCuriosInventory(le);
+		if (opt.isEmpty()) return;
+		var curio = opt.get();
+		for (var handler : curio.getCurios().values()) {
+			var stacks = handler.getStacks();
+			int n = stacks.getSlots();
+			for (int i = 0; i < n; i++) {
+				ItemStack stack = stacks.getStackInSlot(i);
+				if (!(stack.getItem() instanceof IPandoraHolder item)) continue;
+				Optional<IItemHandlerModifiable> cap = item.getCap(stack);
+				if (cap.isEmpty()) continue;
+				for (int j = 0; j < cap.get().getSlots(); ++j) {
+					ItemStack charm = cap.get().getStackInSlot(j);
+					if (!(charm.getItem() instanceof L2Totem totem)) continue;
+					var slot = new PandoraSlot(le, stack, cap.get(), j, charm);
+					if (totem.isValid(le, charm, slot)) {
+						event.add(slot);
+					}
+				}
+			}
+		}
+	}
+
+	public record PandoraSlot(
+			LivingEntity user, ItemStack holder,
+			IItemHandlerModifiable cont, int index, ItemStack stack
+	) implements TotemHelper.TotemSlot {
+
+		@Override
+		public void accept(ItemStack stack) {
+			cont.setStackInSlot(index, stack);
+		}
+
 	}
 
 }
